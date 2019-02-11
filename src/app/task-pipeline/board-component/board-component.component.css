@@ -1,5 +1,11 @@
 
-
+.sidebar{
+    width: 200px;
+    background-color: lavenderblush;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
 
 
 .scroll-this {

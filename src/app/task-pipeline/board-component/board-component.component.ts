@@ -1,15 +1,13 @@
 import {Component, OnInit, Input, Output, EventEmitter, ElementRef, ChangeDetectorRef, NgZone} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {Database} from "../shared/status-pipeline-module.database";
 import {
   IPipelineColumn,
   IPipelineColumnElement,
   IStatusChange,
-  ITransition
 } from "../shared/status-pipeline-module.interface";
-import {Column} from "../shared/column";
 import {Board} from "../shared/board";
 import {StatusPipelineShared} from "../shared/status-pipeline-shared";
+import {Card} from "../shared/card";
 
 
 @Component({
@@ -34,7 +32,8 @@ export class BoardComponentComponent implements OnInit {
   board$:Observable<Board>
 
 
-
+  isSidebarOpen:boolean=false; // initially sidebar is closed.
+  sideCardFormData: Card;
   addingColumn = false;
   addColumnText: string;
   editingTilte = false;
@@ -55,11 +54,26 @@ export class BoardComponentComponent implements OnInit {
       console.log('BoardComponent#constructor subscribe board$ {}'/*,JSON.stringify(data,null,'\t')*/)
       this.board = board
     })
+    this.onCardClick.subscribe(
+        item => {
+          this.sideCardFormData = item;
+          this.isSidebarOpen=true;
+  })
+
   }
 
   editTitle() {
     this.currentTitle = this.board.title;
     this.editingTilte = true;
   }
+
+  sidebarOpen(){
+  this.isSidebarOpen=true;
+  }
+
+  sidebarClose(){
+    this.isSidebarOpen=false;
+  }
+
 
 }

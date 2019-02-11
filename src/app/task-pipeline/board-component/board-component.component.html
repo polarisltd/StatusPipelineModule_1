@@ -1,5 +1,26 @@
 
+
+<mat-drawer-container class="example-container">
+
+    <mat-drawer #sideNav mode="side" [opened]="isSidebarOpen" position="end">
+
+       <div class="sidebar">
+
+          <button (click)="sidebarClose()"  class="side-nav-btn">[X]</button>
+
+          <h1>{{sideCardFormData.title}}</h1>
+
+          {{sideCardFormData.content}}
+
+        </div>
+
+    </mat-drawer>
+
+    <mat-drawer-content>
+
 <section id="main" >
+
+    <button (click)="sidebarOpen()"  class="side-nav-btn">[O]</button>
 
 <div *ngIf="board$ | async as board else loading" class="board-title">
 
@@ -25,7 +46,6 @@
 
          <app-column-component
            [column]="column"
-           (onAddCard)="addCard($event)"
            [onCardClick]="onCardClick"
            [boardSubject$]="boardSubject$"
            [onTransition]="onTransition"
@@ -46,5 +66,6 @@
 </div>
 </section>
 
+</mat-drawer-content>
 
-
+</mat-drawer-container>
