@@ -8,9 +8,29 @@
 
           <button (click)="sidebarClose()"  class="side-nav-btn">[X]</button>
 
-          <h1>{{sideCardFormData.title}}</h1>
+           <form [formGroup]="cardForm">
 
-          {{sideCardFormData.content}}
+               <mat-form-field>
+                   <input matInput  placeholder="Title" formControlName="title" >
+               </mat-form-field>
+
+               <mat-form-field>
+                   <textarea matInput upperCaseInput placeholder="Content" formControlName="content" cdkTextareaAutosize></textarea>
+               </mat-form-field>
+
+
+               <mat-form-field>
+                   <input matInput upperCaseInput placeholder="Order" formControlName="order" />
+               </mat-form-field>
+
+               <mat-form-field>
+                   <input matInput upperCaseInput placeholder="Status" formControlName="status" >
+               </mat-form-field>
+
+           </form>
+
+
+
 
         </div>
 
