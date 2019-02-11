@@ -1,0 +1,16 @@
+
+<div class="message-area" >
+    {{messageArea}}
+</div>
+
+<dvtx-status-pipeline
+        [boardSubject$]="boardSubject$"
+        [onTransition]="onTransition"
+        [onClickColumnTitle]="onClickColumnTitle"
+        [validateDropRules]="validateDragFunction"
+        [onAddCard]="onAddCard"
+        [onUpdateCard]="onUpdateCard"
+        [onRemoveColumn]="onRemoveColumn"
+        [onCardClick]="onCardClick"
+        [onDeleteCard]="onDeleteCard">
+</dvtx-status-pipeline>

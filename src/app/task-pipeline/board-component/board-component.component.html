@@ -1,0 +1,50 @@
+
+<section id="main" >
+
+<div *ngIf="board$ | async as board else loading" class="board-title">
+
+<ng-template #loading>
+        <p>Task pipoeline is loading ...</p>
+</ng-template>
+
+ <span  (click)="editTitle()">
+   {{ board?.title }}
+ </span>
+
+
+ <div class="container"
+     fxLayout
+     fxLayout.xs="column"
+     fxLayoutAlign="left"
+     fxLayoutGap="10px"
+     fxLayoutGap.xs="2px"
+     class="scroll-this">
+   <span *ngFor="let column of board.columns | sort">
+
+       <div class="column-spacer" fxFlex="200px">
+
+         <app-column-component
+           [column]="column"
+           (onAddCard)="addCard($event)"
+           [onCardClick]="onCardClick"
+           [boardSubject$]="boardSubject$"
+           [onTransition]="onTransition"
+           [onClickColumnTitle]="onClickColumnTitle"
+           [validateDropRules]="validateDropRules"
+           [onRemoveColumn]="onRemoveColumn"
+           [onAddCard]="onAddCard"
+           [onDeleteCard]="onDeleteCard"
+           [onUpdateCard]="onUpdateCard"
+           >
+
+         </app-column-component>
+        </div>
+  </span>
+ </div>
+
+
+</div>
+</section>
+
+
+

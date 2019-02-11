@@ -1,0 +1,43 @@
+p, div, textarea, h2 {
+  font-family: Lato;
+}
+
+.dvtx-node {
+  padding: 3px 5px;
+  font-size: 0.9rem;
+}
+
+.dvtx-node span {
+  /**v ertical-align: -webkit-baseline-middle; */
+}
+
+.dvtx-node.selected {
+  font-size: 0.9rem;
+  padding: 3px 5px;
+  color: white;
+  background-color: #0090cf;
+  border-radius: 3px;
+}
+
+::ng-deep .dvtx-node span .mat-icon {
+  font-size: 14px;
+  height: 14px;
+  width: 16px;
+  line-height: 14px;
+  vertical-align: middle; 
+  padding-bottom: 3px;
+}
+
+.dvtx-node-checkbox {
+  display: inline-block;
+  margin-right: 3px;
+}
+
+.message-area{
+  height: 50px;
+  color: blue;
+  white-space:pre-wrap;
+  background-color: dodgerblue;
+  overflow-y: scroll;
+  /*resize: none; *//* Remove this if you want the user to resize the textarea */
+}
