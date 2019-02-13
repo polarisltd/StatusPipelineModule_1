@@ -27,7 +27,7 @@ export class CardComponentComponent implements OnInit {
   board : Board
   cardForm: FormGroup;
   cardFormChanged: boolean = false;
-  dragNodeExpandOverArea: string;
+  dragNodeState: string;
   dragStatus : string;
 
   constructor(private fb: FormBuilder) { }
@@ -69,8 +69,9 @@ handleDragStart(event, card) {
 
 handleDragOver(event, node) {
     event.preventDefault();
-      const sourceId = this.extractDragSourceId(event)
-      console.log('CardComponent#handleDragOver #sourceId '   , sourceId )
+    const sourceId = this.extractDragSourceId(event)
+    // console.log('CardComponent#handleDragOver #sourceId '   , sourceId )
+    this.dragNodeState= this.getDragTargetState(event);
 }
 
   
@@ -78,8 +79,8 @@ handleDrop(event, card) {
     event.preventDefault();
 
     // Handle drag area
-    this.updateDragSource(event)
-    console.log('Drop on card ',this.card.title,this.card.id,' => ' ,this.dragNodeExpandOverArea,' col/order ',this.card.columnId,'/' , this.card.order  )
+    this.dragNodeState= this.getDragTargetState(event);
+    console.log('Drop on card ',this.card.title,this.card.id,' => ' ,this.dragNodeState,' col/order ',this.card.columnId,'/' , this.card.order  )
     //
     // cards are ordered per column it belongs. Different Columns can have Cards with same order no.
     // - get card onto which drag op is happening.
@@ -87,7 +88,7 @@ handleDrop(event, card) {
     // - increase order number for all cards starting insertion point
     // - change columnId if required.
 
-    const targetCard: Card = (this.dragNodeExpandOverArea === 'above') ? this.database.getPreviousCardInSequence(this.card) : this.card;
+    const targetCard: Card = (this.dragNodeState === 'drag_above') ? this.database.getPreviousCardInSequence(this.card) : this.card;
     // we having card bellow which we accomodating source Card
     const srcCardId = this.extractDragSourceId(event)
     const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
@@ -98,7 +99,7 @@ handleDrop(event, card) {
     srcCard.order=tatgetOrderPosition
     // next on datasource + trigger event
     this.database.updateDatasouce() // next on datasource./
-
+    this.dragNodeState= ''
 }
 
 handleDragEnd(event) {
@@ -145,14 +146,14 @@ insertDragSourceId(event,id:string){
 }
 
 
-updateDragSource(event){
+getDragTargetState(event):string{
     const percentageX = event.offsetX / event.target.clientWidth;
     const percentageY = event.offsetY / event.target.clientHeight;
     this.dragStatus = `card = ${this.card.id}  % = ${percentageY} `
-    if (percentageY < 0.25) {
-        this.dragNodeExpandOverArea = 'above';
+    if (percentageY < 0.5) {
+        return 'above';
     } else
-        this.dragNodeExpandOverArea = 'below';
+        return 'below';
 
 }
 

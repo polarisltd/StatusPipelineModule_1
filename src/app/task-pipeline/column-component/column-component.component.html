@@ -3,11 +3,16 @@
   <div *ngIf="board$ | async as board">
 
   <!--h2 class="column-header"> {{column.title}}</h2-->
-     <div>
-        <input [value]="column.title" (input)="column.title = $event.target.value;" (click)="onColumnClick($event)"  class="column-header" ngClass="col-heading-{{column.color}}"/>
+      <div class="column-header-outer">
+        <div class="column-header">
+         {{column.title}}
+         <!--
+        <input [value]="column.title" (input)="column.title = $event.target.value;" (click)="onColumnClick($event)"   >   />
         <button  (click)="onColumnButtonClick(column)"  >[+card]</button>
         <button  (click)="onColumnButtonClickRemove(column)"  >[-column]</button>
-     </div>
+         -->
+        </div>
+      </div>
      <div class="card-list" [attr.column-id]="column.id">
         <div *ngFor="let card of getCards(column.id,board) | sortCards">
             <app-card-component

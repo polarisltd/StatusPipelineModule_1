@@ -1,14 +1,13 @@
-<div class="space-card" >
+<!--div class="space-card" [ngClass]="{'drop-above':dragNodeState=='above'}">
+</div-->
 	<mat-card class="card" draggable="true" (dragstart)="handleDragStart($event,card)" (dragover)="handleDragOver($event,card)"
 	 (drop)="handleDrop($event,card)" (dragend)="handleDragEnd($event)"  (click)="clickOnCard(card)"  (keyup.enter)="clickExitUpdate()"
-			  [ngClass]="{'drop-above': dragNodeExpandOverArea === 'above' && dragNodeExpandOverNode === node,
-                          'drop-below': dragNodeExpandOverArea === 'below' && dragNodeExpandOverNode === node,
-                           'drop-center': dragNodeExpandOverArea === 'center' && dragNodeExpandOverNode === node}">
+			  [ngClass]="{'drop-above':dragNodeState=='above','drop-below':dragNodeState=='below'}" 	  >
         <form [formGroup]="cardForm">
 		<mat-card-title>
 				<div class="card-title"  [ngSwitch]="isCardEditMode">
 					<div *ngSwitchCase="false">
-                        <a (click)="clickOnCardField($event)">{{card.title}}<small>{{card.order}}</small></a>
+                        <a (click)="clickOnCardField($event)">{{card.title}}<small>{{card.order}} {{dragNodeState}}</small>  </a>
 					</div>
 					<div *ngSwitchCase="true">
 						<input  mdInput type="text" formControlName="title"   required>
@@ -31,5 +30,6 @@
         </form>
 	</mat-card>
 
-</div>
+<!-- div class="space-card" [ngClass]="{'drop-below':dragNodeState=='below'}">
+</div-->
 <span #emptyItem></span>
