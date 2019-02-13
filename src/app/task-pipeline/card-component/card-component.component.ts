@@ -27,13 +27,15 @@ export class CardComponentComponent implements OnInit {
   board : Board
   cardForm: FormGroup;
   cardFormChanged: boolean = false;
+  dragNodeExpandOverArea: string;
+  dragStatus : string;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
         this.board$ = this.boardSubject$; //this.database.getBoardObservable()
         this.board$.subscribe(board => {
-            console.log('ColumnComponent#ngOnInit board$.subscrive '/*, JSON.stringify(board,null,'\t')*/)
+            // console.log('CardComponent#ngOnInit board$.subscrive '/*, JSON.stringify(board,null,'\t')*/)
             this.board = board
             this.database = new Database(this.boardSubject$,this.board);
             }
@@ -74,9 +76,33 @@ handleDragOver(event, node) {
   
 handleDrop(event, card) {
     event.preventDefault();
+
+    // Handle drag area
+    this.updateDragSource(event)
+    console.log('Drop on card ',this.card.title,this.card.id,' => ' ,this.dragNodeExpandOverArea,' col/order ',this.card.columnId,'/' , this.card.order  )
+    //
+    // cards are ordered per column it belongs. Different Columns can have Cards with same order no.
+    // - get card onto which drag op is happening.
+    // - if marker is 'above' take card with -1 order number
+    // - increase order number for all cards starting insertion point
+    // - change columnId if required.
+
+    const targetCard: Card = (this.dragNodeExpandOverArea === 'above') ? this.database.getPreviousCardInSequence(this.card) : this.card;
+    // we having card bellow which we accomodating source Card
+    const srcCardId = this.extractDragSourceId(event)
+    const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
+    // moved card is getting that column id were drag target is found.
+    srcCard.columnId = targetCard.columnId
+    const tatgetOrderPosition: number = targetCard.order
+    this.database.promoteOrderFromCard(targetCard);
+    srcCard.order=tatgetOrderPosition
+    // next on datasource + trigger event
+    this.database.updateDatasouce() // next on datasource./
+
 }
 
 handleDragEnd(event) {
+
 }
 
 clickCardDeleteButton(card){
@@ -116,6 +142,18 @@ insertDragSourceId(event,id:string){
     // but now we cheat by inserting  event.dataTransfer.setData('key=value',whatever)
     // dragOver strips only value but not key so thats our backdoor solution
     event.dataTransfer.setData(`id=${id}`, 'data'); // whatever data
+}
+
+
+updateDragSource(event){
+    const percentageX = event.offsetX / event.target.clientWidth;
+    const percentageY = event.offsetY / event.target.clientHeight;
+    this.dragStatus = `card = ${this.card.id}  % = ${percentageY} `
+    if (percentageY < 0.25) {
+        this.dragNodeExpandOverArea = 'above';
+    } else
+        this.dragNodeExpandOverArea = 'below';
+
 }
 
 }
