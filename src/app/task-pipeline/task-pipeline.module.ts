@@ -16,7 +16,8 @@ import {
   MatMenuModule,
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {ColumnsSortPipe} from "./shared/sortby-pipe";
+import {ColumnsSortPipe} from "./shared/column-sort-pipe";
+import {CardsSortPipe} from "./shared/card-sort-pipe";
 import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
@@ -24,7 +25,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     BoardComponentComponent,
     CardComponentComponent,
     ColumnComponentComponent,
-    ColumnsSortPipe
+    ColumnsSortPipe,
+    CardsSortPipe
   ],
   imports: [
     CommonModule,

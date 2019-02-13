@@ -57,7 +57,7 @@ export class BoardComponentComponent implements OnInit {
 
     this.board$ = this.boardSubject$
     this.board$.subscribe(board => {
-      console.log('BoardComponent#constructor subscribe board$ {}'/*,JSON.stringify(data,null,'\t')*/)
+      // console.log('BoardComponent#ngOnInit subscribe board$ {}'/*,JSON.stringify(data,null,'\t')*/)
       this.board = board
     })
 

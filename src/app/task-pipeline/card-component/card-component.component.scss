@@ -64,3 +64,18 @@
   padding: 0 0px;
 }
 
+.drop-above {
+  border-top: 10px solid #dddddd;
+  margin-top: -10px;
+  border-bottom-color: yellowgreen;
+}
+
+.drop-below {
+  border-bottom: 10px solid #dddddd;
+  margin-bottom: -10px;
+  border-bottom-color: green;
+}
+
+.drop-center {
+  background-color: grey;
+}

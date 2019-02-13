@@ -21,7 +21,7 @@ export class Database {
 
   constructor(boardSubject$: Subject<Board>,
               board : Board) {
-    console.log('Database# constructor{}')
+    // console.log('Database# constructor{}')
     this.boardSubject$ = boardSubject$;
     this.boardInternal = board;
   }
@@ -131,7 +131,29 @@ export class Database {
     });
   }
 
+  /** Take card and renumber starting from this card */
+  promoteOrderFromCard(card:Card){
 
+    this.boardInternal.cards
+      .filter(item => item.columnId == card.columnId && item.order >= card.order )
+      .sort((a,b) => {if(a.order < b.order) return -1; else if(a.order > b.order)return 1; else return 0 })
+      .forEach( item => item.order=item.order+10)
 
+  }
+
+  /** return either previous card by sequence or same if such previous did not exsist.*/
+  getPreviousCardInSequence(card: Card):Card{
+
+    const cards:Card[] = this.boardInternal.cards
+        .filter(item => item.columnId == card.columnId && item.order < card.order )
+        .sort((a,b) => {if(a.order < b.order) return -1; else if(a.order > b.order)return 1; else return 0 })
+    if(cards.length>0)return cards[0]
+    else return card;
+
+  }
+
+  updateDatasouce(){
+    this.boardSubject$.next(this.boardInternal);
+  }
 
 }

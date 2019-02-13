@@ -64,7 +64,7 @@ export class DataSource  {
                 "title": "Id 1",
                 "content": "a variable amount of columns depending on the amount of stati a task can show",
                 "boardId": "000-000",
-                "order": 0,
+                "order": 1,
                 "columnId": "001-001"
             },
             {
@@ -72,7 +72,7 @@ export class DataSource  {
                 "title": "Id 2",
                 "content": "Each column must have an editable title",
                 "boardId": "000-000",
-                "order": 1,
+                "order": 2,
                 "columnId": "001-001"
             },
             {
@@ -80,7 +80,7 @@ export class DataSource  {
                 "title": "Id 3",
                 "content": "Each column must have an editable title",
                 "boardId": "000-000",
-                "order": 2,
+                "order": 1,
                 "columnId": "001-002"
             },
             {
@@ -88,7 +88,7 @@ export class DataSource  {
                 "title": "Id 4",
                 "content": "Each column must allow to transit a task from one column to the next.This goal must be achievable by drag ‘n drop.",
                 "boardId": "000-000",
-                "order": 3,
+                "order": 1,
                 "columnId": "001-003"
             },
             {
@@ -96,7 +96,7 @@ export class DataSource  {
                 "title": "Id 5",
                 "content": "Each column must be able to trigger events on the tasks, so a transition of a task from one column to the next is able to change task attributes.",
                 "boardId": "000-000",
-                "order": 4,
+                "order": 1,
                 "columnId": "001-004"
             }
             ,
@@ -105,7 +105,7 @@ export class DataSource  {
                 "title": "Id 6",
                 "content": "Each column must be able to trigger events on the tasks, so a transition of a task from one column to the next is able to change task attributes.",
                 "boardId": "000-000",
-                "order": 4,
+                "order": 2,
                 "columnId": "001-002"
             }
             ,
@@ -114,7 +114,7 @@ export class DataSource  {
                 "title": "Id 7",
                 "content": "Each column must be able to trigger events on the tasks, so a transition of a task from one column to the next is able to change task attributes.",
                 "boardId": "000-000",
-                "order": 4,
+                "order": 3,
                 "columnId": "001-002"
             }
         ]

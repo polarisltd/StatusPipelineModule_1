@@ -5,7 +5,6 @@ import {Board} from "../shared/board";
 import {Column} from "../shared/column";
 import {Card} from "../shared/card";
 import {IPipelineColumn, IPipelineColumnElement, IStatusChange} from "../shared/status-pipeline-module.interface";
-import {ColumnsSortPipe} from "../shared/sortby-pipe";
 
 
 
@@ -45,7 +44,7 @@ export class ColumnComponentComponent implements OnInit {
   ngOnInit() {
        this.board$ = this.boardSubject$;
        this.board$.subscribe(board => {
-           console.log('ColumnComponent#ngOnInit board$.subscrive '/*, JSON.stringify(board,null,'\t')*/)
+           // console.log('ColumnComponent#ngOnInit board$.subscribe '/*, JSON.stringify(board,null,'\t')*/)
            this.board = board
            this.database = new Database(this.boardSubject$,this.board);
       }
@@ -72,13 +71,15 @@ export class ColumnComponentComponent implements OnInit {
     // known behaviuor, dragOver discards data value.
     // therefore we cheat :)
     //
-    const sourceId = this.extractDragSourceId(event)
-    if(!sourceId)console.log('********* Drag miss sourceId')
+    // const sourceId = this.extractDragSourceId(event)
+    // if(!sourceId)console.log('********* Drag miss sourceId')
     // console.log('CardComponent#handleDragOver #sourceId '   , sourceId )
 
+    /*
     if(!this.validateDropRulesWrapper(sourceId,this.column.id)) { // functionality from internal method
       this.colorDragProtectedArea(node)
     }
+    */
   }
 
 
@@ -122,6 +123,7 @@ export class ColumnComponentComponent implements OnInit {
 
 
   handleDrop(event, node) {
+    /*
     event.preventDefault();
     // const dragId = event.dataTransfer.getData('foo')
     const dragId = this.extractDragSourceId(event)
@@ -147,6 +149,7 @@ export class ColumnComponentComponent implements OnInit {
        console.log('emitting statusChange: ', statusChange)
        this.onTransition.emit(statusChange)
     }
+    */
   }
 
   handleDragEnd(event)  {

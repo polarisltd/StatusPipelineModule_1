@@ -1,18 +1,21 @@
 <div class="space-card" >
 	<mat-card class="card" draggable="true" (dragstart)="handleDragStart($event,card)" (dragover)="handleDragOver($event,card)"
-	 (drop)="handleDrop($event,card)" (dragend)="handleDragEnd($event)"  (click)="clickOnCard(card)"  (keyup.enter)="clickExitUpdate()" >
+	 (drop)="handleDrop($event,card)" (dragend)="handleDragEnd($event)"  (click)="clickOnCard(card)"  (keyup.enter)="clickExitUpdate()"
+			  [ngClass]="{'drop-above': dragNodeExpandOverArea === 'above' && dragNodeExpandOverNode === node,
+                          'drop-below': dragNodeExpandOverArea === 'below' && dragNodeExpandOverNode === node,
+                           'drop-center': dragNodeExpandOverArea === 'center' && dragNodeExpandOverNode === node}">
         <form [formGroup]="cardForm">
 		<mat-card-title>
 				<div class="card-title"  [ngSwitch]="isCardEditMode">
 					<div *ngSwitchCase="false">
-						<a (click)="clickOnCardField($event)">{{card.title}}</a>
+                        <a (click)="clickOnCardField($event)">{{card.title}}<small>{{card.order}}</small></a>
 					</div>
 					<div *ngSwitchCase="true">
 						<input  mdInput type="text" formControlName="title"   required>
                      </div>
                 </div>
 		</mat-card-title>
-		<mat-card-content >
+		<mat-card-content>
 			<div  [ngSwitch]="isCardEditMode">
 			    <div *ngSwitchCase="false" (click)="clickOnCardField($event)" >{{card.content}}</div>
 				<div *ngSwitchCase="true">
