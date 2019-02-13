@@ -40,12 +40,32 @@
     margin: -2px;
 }
 
+.card-content-list{
+  $mat-list-base-height: 18px;
+  $mat-list-avatar-height: 20px;
+  // spec requires two- and three-line lists be taller
+  $mat-list-two-line-height: 20px;
+  $mat-list-three-line-height: 20px;
+  $mat-list-multi-line-padding: 20px;
+  $mat-list-icon-size: 10px;
+}
+
+
+.mat-list-base .mat-list-item {
+  font-size: 13px;
+}
+
+
 .card-title{
   font-size: 24px;
 }
 
 .card-text{
   font-size: 14px;
+}
+
+.card-item-row{
+ height: 10px;
 }
 
 .press-enter-text{

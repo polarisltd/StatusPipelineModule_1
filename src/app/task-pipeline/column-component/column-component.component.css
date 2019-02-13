@@ -96,18 +96,4 @@ ul.card-list {
 ul.card-list > li {
   list-style: none;
 }
-.col-heading-red{
-  background-color: red;
-}
-.col-heading-blue{
-  background-color: blue;
-}
-.col-heading-cyan{
-  background-color: red;
-}
-.col-heading-magenta{
-  background-color: magenta;
-}
-.col-heading-green{
-  background-color: green;
-}
+

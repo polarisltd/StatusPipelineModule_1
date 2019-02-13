@@ -61,61 +61,68 @@ export class DataSource  {
         "cards": [
             {
                 "id": "002-001",
-                "title": "Id 1",
-                "content": "a variable amount of columns depending on the amount of stati a task can show",
+                "title": "DAily topic test task",
+                "content": "DAily topic test task",
                 "boardId": "000-000",
                 "order": 1,
-                "columnId": "001-001"
+                "columnId": "001-001",
+                "due_date":"2019-02-01T10:34:45.310+01:00"
             },
             {
                 "id": "002-002",
-                "title": "Id 2",
-                "content": "Each column must have an editable title",
+                "title": "Each column must ",
+                "content": "Each column must ",
                 "boardId": "000-000",
                 "order": 2,
-                "columnId": "001-001"
+                "columnId": "001-001",
+                "due_date":"2019-02-01T10:34:45.310+01:00"
             },
             {
                 "id": "002-003",
-                "title": "Id 3",
-                "content": "Each column must have an editable title",
+                "title": "editable title",
+                "content": "editable title",
                 "boardId": "000-000",
                 "order": 1,
-                "columnId": "001-002"
+                "columnId": "001-002",
+                "due_date":"2019-02-01T10:34:45.310+01:00"
             },
             {
                 "id": "002-004",
-                "title": "Id 4",
-                "content": "Each column must allow to transit a task from one column to the next.This goal must be achievable by drag ‘n drop.",
+                "title": "allow to transit ",
+                "content": "allow to transit .",
                 "boardId": "000-000",
                 "order": 1,
-                "columnId": "001-003"
+                "columnId": "001-003",
+                "due_date":"2019-02-01T10:34:45.310+01:00"
             },
             {
                 "id": "002-005",
-                "title": "Id 5",
-                "content": "Each column must be able to trigger events on the tasks, so a transition of a task from one column to the next is able to change task attributes.",
+                "title": "so a transition",
+                "content": "so a transition",
                 "boardId": "000-000",
                 "order": 1,
-                "columnId": "001-004"
+                "columnId": "001-004",
+                "due_date":"2019-02-01T10:34:45.310+01:00"
             }
             ,
             {
                 "id": "002-006",
-                "title": "Id 6",
-                "content": "Each column must be able to trigger events on the tasks, so a transition of a task from one column to the next is able to change task attributes.",
+                "title": "so a transition",
+                "content": "so a transition.",
                 "boardId": "000-000",
                 "order": 2,
-                "columnId": "001-002"
+                "columnId": "001-002",
+                "due_date":"2019-02-01T10:34:45.310+01:00"
             }
             ,
             {
                 "id": "002-007",
-                "title": "Id 7",
-                "content": "Each column must be able to trigger events on the tasks, so a transition of a task from one column to the next is able to change task attributes.",
+                "title": "Each column ",
+                "content": "Each column .",
                 "boardId": "000-000",
                 "order": 3,
-                "columnId": "001-002"
+                "columnId": "001-002",
+                "due_date":"2019-02-01T10:34:45.310+01:00"
             }
         ]
     } as Board;

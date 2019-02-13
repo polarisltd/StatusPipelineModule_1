@@ -3,6 +3,29 @@
 	<mat-card class="card" draggable="true" (dragstart)="handleDragStart($event,card)" (dragover)="handleDragOver($event,card)"
 	 (drop)="handleDrop($event,card)" (dragend)="handleDragEnd($event)"  (click)="clickOnCard(card)"  (keyup.enter)="clickExitUpdate()"
 			  [ngClass]="{'drop-above':dragNodeState=='above','drop-below':dragNodeState=='below'}" 	  >
+        <mat-list class="card-content-list">
+			<mat-list-item >
+				<mat-icon md-list-icon>folder</mat-icon>
+				<mat-icon md-list-icon>folder</mat-icon>
+				<mat-icon md-list-icon>folder</mat-icon>
+			</mat-list-item>
+			<mat-list-item>
+					{{card.due_date}}
+			</mat-list-item>
+	       <mat-list-item>
+			   {{card.title}}
+		   </mat-list-item>
+			<mat-list-item>
+				{{card.content}}
+			</mat-list-item>
+			<mat-list-item>
+				<mat-icon md-list-icon>folder</mat-icon>
+				<mat-icon md-list-icon>folder</mat-icon>
+				<mat-icon md-list-icon>folder</mat-icon>
+			</mat-list-item>
+		</mat-list>
+
+		<!--
         <form [formGroup]="cardForm">
 		<mat-card-title>
 				<div class="card-title"  [ngSwitch]="isCardEditMode">
@@ -28,6 +51,11 @@
 			  <button mat-button class="mini-button" (click)="clickCardEditButton(card)">[e]</button>
         </mat-card-actions>
         </form>
+		-->
+
+
+
+
 	</mat-card>
 
 <!-- div class="space-card" [ngClass]="{'drop-below':dragNodeState=='below'}">
