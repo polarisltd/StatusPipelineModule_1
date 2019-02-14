@@ -92,4 +92,35 @@
   border-bottom-width: 5px;
 }
 
-
+.card-top-row{
+  min-height:40px;
+  max-height: 40px;
+  font-size: 25px;
+  /*background-color: palevioletred;*/
+}
+.card-bottop-row{
+  min-height:60px;
+  max-height: 60px;
+  /*background-color: palevioletred;*/
+}
+.card-row-1{
+ min-height:25px;
+ max-height: 25px;
+ font-size: 25px;
+ color:orange;
+ /*background-color: palevioletred;*/
+}
+.card-row-2{
+  min-height:25px;
+  max-height: 25px;
+  font-size: 25px;
+  font-weight: bolder;
+  /*background-color: royalblue ;*/
+}
+.card-row-3{
+  min-height:25px;
+  max-height: 25px;
+  font-size: 25px;
+  font-weight: bolder;
+  /*background-color: goldenrod ;*/
+}
