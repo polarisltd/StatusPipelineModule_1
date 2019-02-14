@@ -3,22 +3,22 @@
 	<mat-card class="card" draggable="true" (dragstart)="handleDragStart($event,card)" (dragover)="handleDragOver($event,card)"
 	 (drop)="handleDrop($event,card)" (dragend)="handleDragEnd($event)"  (click)="clickOnCard(card)"  (keyup.enter)="clickExitUpdate()"
 			  [ngClass]="{'drop-above':dragNodeState=='above','drop-below':dragNodeState=='below'}" 	  >
-        <mat-list class="card-content-list">
-			<mat-list-item >
+        <mat-list>
+			<mat-list-item class="card-top-row">
 				<mat-icon md-list-icon>folder</mat-icon>
 				<mat-icon md-list-icon>folder</mat-icon>
 				<mat-icon md-list-icon>folder</mat-icon>
 			</mat-list-item>
-			<mat-list-item>
+			<mat-list-item class="card-row-1">
 					{{card.due_date}}
 			</mat-list-item>
-	       <mat-list-item>
+	       <mat-list-item class="card-row-2">
 			   {{card.title}}
 		   </mat-list-item>
-			<mat-list-item>
+			<mat-list-item class="card-row-3">
 				{{card.content}}
 			</mat-list-item>
-			<mat-list-item>
+			<mat-list-item class="card-bottom-row">
 				<mat-icon md-list-icon>folder</mat-icon>
 				<mat-icon md-list-icon>folder</mat-icon>
 				<mat-icon md-list-icon>folder</mat-icon>
