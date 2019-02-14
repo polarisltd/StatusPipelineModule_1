@@ -1,0 +1,62 @@
+.avatar {
+  display: flex;
+  align-items: center;
+}
+.mat-fab:not(button) {
+  cursor: default;
+}
+.avatar-icon {
+  padding: 2px !important;
+  overflow: hidden !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 50%;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .mat {
+    &-button-wrapper {
+      background: none;
+      padding: 0 0 !important;
+      display: flex;
+      justify-content: center;
+      align-content: center; 
+      line-height: 1;
+    }
+    &-icon {
+      height: auto;
+      width: auto;
+    }
+  }
+  [class^=mat] {
+    font-size: inherit;
+    color: inherit;
+  }
+  .avatar-xs &{
+    font-size: 1rem;
+  }
+  .avatar-sm &{
+    font-size: 1.5rem;
+  }
+  .avatar-md &{
+    font-size: 2rem;
+  }
+  .avatar-lg &{
+    font-size: 2.5rem;
+  }
+}
+.avatar-title {
+  margin-left: .5rem;
+}
+

@@ -38,6 +38,10 @@ export class ColumnComponentComponent implements OnInit {
   dragClass: string = 'drag-color0'; // drag/drop enable/disable color
   inTimer:boolean = false;
 
+  getCardCount():number{
+    return 13;
+  }
+
   constructor( ) {
   }
 
@@ -174,5 +178,8 @@ extractDragSourceId(event):string{
   return event.dataTransfer.types.find(entry => entry.includes("id=")).substr(3);
 }
 
+clickAnything(){
+    console.log('you clicked a button!' )
+}
 
 }

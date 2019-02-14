@@ -6299,59 +6299,80 @@ var DataSource = /** @class */ (function () {
             "cards": [
                 {
                     "id": "002-001",
-                    "title": "Id 1",
-                    "content": "a variable amount of columns depending on the amount of stati a task can show",
+                    "title": "DAily topic test task",
+                    "content": "DAily topic test task",
                     "boardId": "000-000",
-                    "order": 0,
-                    "columnId": "001-001"
+                    "order": 1,
+                    "columnId": "001-001",
+                    "due_date": "2019-02-01T10:34:45.310+01:00",
+                    "responsible_email": "aaa@bbb.com",
+                    "responsible_name": "aaaaa"
                 },
                 {
                     "id": "002-002",
-                    "title": "Id 2",
-                    "content": "Each column must have an editable title",
+                    "title": "Each column must ",
+                    "content": "Each column must ",
                     "boardId": "000-000",
-                    "order": 1,
-                    "columnId": "001-001"
+                    "order": 2,
+                    "columnId": "001-001",
+                    "due_date": "2019-02-01T10:34:45.310+01:00",
+                    "responsible_email": "aaa@bbb.com",
+                    "responsible_name": "aaaaa"
                 },
                 {
                     "id": "002-003",
-                    "title": "Id 3",
-                    "content": "Each column must have an editable title",
+                    "title": "editable title",
+                    "content": "editable title",
                     "boardId": "000-000",
-                    "order": 2,
-                    "columnId": "001-002"
+                    "order": 1,
+                    "columnId": "001-002",
+                    "due_date": "2019-02-01T10:34:45.310+01:00",
+                    "responsible_email": "aaa@bbb.com",
+                    "responsible_name": "aaaaa"
                 },
                 {
                     "id": "002-004",
-                    "title": "Id 4",
-                    "content": "Each column must allow to transit a task from one column to the next.This goal must be achievable by drag ‘n drop.",
+                    "title": "allow to transit ",
+                    "content": "allow to transit .",
                     "boardId": "000-000",
-                    "order": 3,
-                    "columnId": "001-003"
+                    "order": 1,
+                    "columnId": "001-003",
+                    "due_date": "2019-02-01T10:34:45.310+01:00",
+                    "responsible_email": "aaa@bbb.com",
+                    "responsible_name": "aaaaa"
                 },
                 {
                     "id": "002-005",
-                    "title": "Id 5",
-                    "content": "Each column must be able to trigger events on the tasks, so a transition of a task from one column to the next is able to change task attributes.",
+                    "title": "so a transition",
+                    "content": "so a transition",
                     "boardId": "000-000",
-                    "order": 4,
-                    "columnId": "001-004"
+                    "order": 1,
+                    "columnId": "001-004",
+                    "due_date": "2019-02-01T10:34:45.310+01:00",
+                    "responsible_email": "aaa@bbb.com",
+                    "responsible_name": "aaaaa"
                 },
                 {
                     "id": "002-006",
-                    "title": "Id 6",
-                    "content": "Each column must be able to trigger events on the tasks, so a transition of a task from one column to the next is able to change task attributes.",
+                    "title": "so a transition",
+                    "content": "so a transition.",
                     "boardId": "000-000",
-                    "order": 4,
-                    "columnId": "001-002"
+                    "order": 2,
+                    "columnId": "001-002",
+                    "due_date": "2019-02-01T10:34:45.310+01:00",
+                    "responsible_email": "aaa@bbb.com",
+                    "responsible_name": "aaaaa"
                 },
                 {
                     "id": "002-007",
-                    "title": "Id 7",
-                    "content": "Each column must be able to trigger events on the tasks, so a transition of a task from one column to the next is able to change task attributes.",
+                    "title": "Each column ",
+                    "content": "Each column .",
                     "boardId": "000-000",
-                    "order": 4,
-                    "columnId": "001-002"
+                    "order": 3,
+                    "columnId": "001-002",
+                    "due_date": "2019-02-01T10:34:45.310+01:00",
+                    "responsible_email": "aaa@bbb.com",
+                    "responsible_name": "aaaaa"
                 }
             ]
         };
@@ -6383,7 +6404,7 @@ module.exports = "p, div, textarea, h2 {\n  font-family: Lato;\n}\n\n.dvtx-node 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"message-area\" >\n    {{messageArea}}\n</div>\n\n<dvtx-status-pipeline\n        [boardSubject$]=\"boardSubject$\"\n        [onTransition]=\"onTransition\"\n        [onClickColumnTitle]=\"onClickColumnTitle\"\n        [validateDropRules]=\"validateDragFunction\"\n        [onAddCard]=\"onAddCard\"\n        [onUpdateCard]=\"onUpdateCard\"\n        [onRemoveColumn]=\"onRemoveColumn\"\n        [onCardClick]=\"onCardClick\"\n        [onDeleteCard]=\"onDeleteCard\">\n</dvtx-status-pipeline>\n"
+module.exports = "\n<!--div class=\"message-area\" >\n    {{messageArea}}\n</div-->\n\n<dvtx-status-pipeline\n        [boardSubject$]=\"boardSubject$\"\n        [onTransition]=\"onTransition\"\n        [onClickColumnTitle]=\"onClickColumnTitle\"\n        [validateDropRules]=\"validateDragFunction\"\n        [onAddCard]=\"onAddCard\"\n        [onUpdateCard]=\"onUpdateCard\"\n        [onRemoveColumn]=\"onRemoveColumn\"\n        [onCardClick]=\"onCardClick\"\n        [onDeleteCard]=\"onDeleteCard\">\n</dvtx-status-pipeline>\n\n<!--div>\n {{boardSubject$ | async | json }}}}\n</div-->\n"
 
 /***/ }),
 
@@ -6481,8 +6502,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _task_pipeline_task_pipeline_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./task-pipeline/task-pipeline.module */ "./src/app/task-pipeline/task-pipeline.module.ts");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _modules_task_pipeline_task_pipeline_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/task-pipeline/task-pipeline.module */ "./src/app/modules/task-pipeline/task-pipeline.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6499,8 +6520,8 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             imports: [
-                _task_pipeline_task_pipeline_module__WEBPACK_IMPORTED_MODULE_2__["TaskPipelineModule"],
-                _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"]
+                _modules_task_pipeline_task_pipeline_module__WEBPACK_IMPORTED_MODULE_3__["TaskPipelineModule"],
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
             ],
             declarations: [_app_component__WEBPACK_IMPORTED_MODULE_1__["AppComponent"]],
             providers: [],
@@ -6514,32 +6535,165 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/board-component/board-component.component.css":
-/*!*****************************************************************************!*\
-  !*** ./src/app/task-pipeline/board-component/board-component.component.css ***!
-  \*****************************************************************************/
+/***/ "./src/app/modules/avatar/component/avatar.component.html":
+/*!****************************************************************!*\
+  !*** ./src/app/modules/avatar/component/avatar.component.html ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n\n.scroll-this {\n  overflow: scroll;\n}\n\n\n\n.column-spacer {\n  padding: 5px 5px 5px 5px;\n  /* column background-color: white; */\n  background-color: whitesmoke; /* column background color*/\n\n  /* column vertical scroll*/\n  -webkit-flex: 1 1 auto;\n  overflow-y: auto;\n  height: 100%;\n}\n\n\n\n/* conatiner for scrolling pieces */\n\n\n\n.scrolling-wrapper {\n  overflow-x: scroll;\n  overflow-y: hidden;\n  white-space: nowrap;\n}\n\n\n\n#main {\n  min-width: 100%;\n  /*height: calc(100% - 90px);*/\n  overflow: hidden;\n  border: 1px dotted blue;\n  background-color: #0079BF;\n}\n\n\n\n.board-title {\n  font-size: 25px;\n  margin-left: 18px;\n  margin-top: 10px;\n  margin-bottom: 15px;\n\n}\n\n\n\n.board-title div {\n  font-size: 5px;\n  font-weight: bold;\n  color: white;\n  cursor: pointer;\n  cursor: hand;\n}\n\n\n\n.board-title input {\n    margin: -3px -2px;\n    font-size: 18px;\n    font-weight: bold;\n}\n\n\n\n.add-column {\n  width: 280px;\n  height: 40px;\n  background-color: #0067A3;\n  border-radius: 3px; \n  width: 270px;\n  margin-left: 10px;\n  padding: 2px;\n  box-sizing: border-box;\n  display: inline-block;\n  vertical-align: top;\n  white-space: nowrap;\n  cursor: pointer;\n  cursor: hand;\n}\n\n\n\n.add-column span {\n\tcolor: rgba(255,255,255,.7);\n\tline-height: 40px;\n\tvertical-align: middle;\n\tpadding: 7px;\n\tfont-size: 14px;\n  cursor: pointer;\n  cursor: hand;\n}\n\n\n\n.add-column input {\t\n\twidth: 100%;\n\theight: 100%;\n\tfont-weight: 700;\n\tborder: none;\n\tline-height: 18px;\n\tpadding: 3px 5px 4px 5px;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFzay1waXBlbGluZS9ib2FyZC1jb21wb25lbnQvYm9hcmQtY29tcG9uZW50LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUlBO0VBQ0UsZ0JBQWdCO0FBQ2xCOzs7O0FBSUE7RUFDRSx3QkFBd0I7RUFDeEIsb0NBQW9DO0VBQ3BDLDRCQUE0QixFQUFFLDJCQUEyQjs7RUFFekQsMEJBQTBCO0VBQzFCLHNCQUFzQjtFQUN0QixnQkFBZ0I7RUFDaEIsWUFBWTtBQUNkOzs7O0FBRUEsbUNBQW1DOzs7O0FBQ25DO0VBQ0Usa0JBQWtCO0VBQ2xCLGtCQUFrQjtFQUNsQixtQkFBbUI7QUFDckI7Ozs7QUFHQTtFQUNFLGVBQWU7RUFDZiw2QkFBNkI7RUFDN0IsZ0JBQWdCO0VBQ2hCLHVCQUF1QjtFQUN2Qix5QkFBeUI7QUFDM0I7Ozs7QUFFQTtFQUNFLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsZ0JBQWdCO0VBQ2hCLG1CQUFtQjs7QUFFckI7Ozs7QUFFQTtFQUNFLGNBQWM7RUFDZCxpQkFBaUI7RUFDakIsWUFBWTtFQUNaLGVBQWU7RUFDZixZQUFZO0FBQ2Q7Ozs7QUFFQTtJQUNJLGlCQUFpQjtJQUNqQixlQUFlO0lBQ2YsaUJBQWlCO0FBQ3JCOzs7O0FBRUE7RUFDRSxZQUFZO0VBQ1osWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixrQkFBa0I7RUFDbEIsWUFBWTtFQUNaLGlCQUFpQjtFQUNqQixZQUFZO0VBQ1osc0JBQXNCO0VBQ3RCLHFCQUFxQjtFQUNyQixtQkFBbUI7RUFDbkIsbUJBQW1CO0VBQ25CLGVBQWU7RUFDZixZQUFZO0FBQ2Q7Ozs7QUFFQTtDQUNDLDJCQUEyQjtDQUMzQixpQkFBaUI7Q0FDakIsc0JBQXNCO0NBQ3RCLFlBQVk7Q0FDWixlQUFlO0VBQ2QsZUFBZTtFQUNmLFlBQVk7QUFDZDs7OztBQUVBO0NBQ0MsV0FBVztDQUNYLFlBQVk7Q0FDWixnQkFBZ0I7Q0FDaEIsWUFBWTtDQUNaLGlCQUFpQjtDQUNqQix3QkFBd0I7QUFDekIiLCJmaWxlIjoic3JjL2FwcC90YXNrLXBpcGVsaW5lL2JvYXJkLWNvbXBvbmVudC9ib2FyZC1jb21wb25lbnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuXG5cblxuLnNjcm9sbC10aGlzIHtcbiAgb3ZlcmZsb3c6IHNjcm9sbDtcbn1cblxuXG5cbi5jb2x1bW4tc3BhY2VyIHtcbiAgcGFkZGluZzogNXB4IDVweCA1cHggNXB4O1xuICAvKiBjb2x1bW4gYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7ICovXG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlc21va2U7IC8qIGNvbHVtbiBiYWNrZ3JvdW5kIGNvbG9yKi9cblxuICAvKiBjb2x1bW4gdmVydGljYWwgc2Nyb2xsKi9cbiAgLXdlYmtpdC1mbGV4OiAxIDEgYXV0bztcbiAgb3ZlcmZsb3cteTogYXV0bztcbiAgaGVpZ2h0OiAxMDAlO1xufVxuXG4vKiBjb25hdGluZXIgZm9yIHNjcm9sbGluZyBwaWVjZXMgKi9cbi5zY3JvbGxpbmctd3JhcHBlciB7XG4gIG92ZXJmbG93LXg6IHNjcm9sbDtcbiAgb3ZlcmZsb3cteTogaGlkZGVuO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xufVxuXG5cbiNtYWluIHtcbiAgbWluLXdpZHRoOiAxMDAlO1xuICAvKmhlaWdodDogY2FsYygxMDAlIC0gOTBweCk7Ki9cbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgYm9yZGVyOiAxcHggZG90dGVkIGJsdWU7XG4gIGJhY2tncm91bmQtY29sb3I6ICMwMDc5QkY7XG59XG5cbi5ib2FyZC10aXRsZSB7XG4gIGZvbnQtc2l6ZTogMjVweDtcbiAgbWFyZ2luLWxlZnQ6IDE4cHg7XG4gIG1hcmdpbi10b3A6IDEwcHg7XG4gIG1hcmdpbi1ib3R0b206IDE1cHg7XG5cbn1cblxuLmJvYXJkLXRpdGxlIGRpdiB7XG4gIGZvbnQtc2l6ZTogNXB4O1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgY29sb3I6IHdoaXRlO1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGN1cnNvcjogaGFuZDtcbn1cblxuLmJvYXJkLXRpdGxlIGlucHV0IHtcbiAgICBtYXJnaW46IC0zcHggLTJweDtcbiAgICBmb250LXNpemU6IDE4cHg7XG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5hZGQtY29sdW1uIHtcbiAgd2lkdGg6IDI4MHB4O1xuICBoZWlnaHQ6IDQwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICMwMDY3QTM7XG4gIGJvcmRlci1yYWRpdXM6IDNweDsgXG4gIHdpZHRoOiAyNzBweDtcbiAgbWFyZ2luLWxlZnQ6IDEwcHg7XG4gIHBhZGRpbmc6IDJweDtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xuICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGN1cnNvcjogaGFuZDtcbn1cblxuLmFkZC1jb2x1bW4gc3BhbiB7XG5cdGNvbG9yOiByZ2JhKDI1NSwyNTUsMjU1LC43KTtcblx0bGluZS1oZWlnaHQ6IDQwcHg7XG5cdHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XG5cdHBhZGRpbmc6IDdweDtcblx0Zm9udC1zaXplOiAxNHB4O1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGN1cnNvcjogaGFuZDtcbn1cblxuLmFkZC1jb2x1bW4gaW5wdXQge1x0XG5cdHdpZHRoOiAxMDAlO1xuXHRoZWlnaHQ6IDEwMCU7XG5cdGZvbnQtd2VpZ2h0OiA3MDA7XG5cdGJvcmRlcjogbm9uZTtcblx0bGluZS1oZWlnaHQ6IDE4cHg7XG5cdHBhZGRpbmc6IDNweCA1cHggNHB4IDVweDtcbn1cblxuIl19 */"
+module.exports = "<div *ngIf=\"profile && profile.email\" class=\"avatar avatar-{{avatarSizeString}}\">\n  <ng-template [ngIf]=\"this.avatarButtonCallback\" [ngIfElse]=\"noActionAvatar\" >\n    <button mat-fab (click)=\"avatarButtonCallback()\" class=\"avatar-icon\" [style.color]=\"profile.fg_color\" [style.background-color]=\"profile.bg_color\" [style.border-color]=\"profile.bg_color\" [style.width.px]=\"avatarSizeNumber\" [style.height.px]=\"avatarSizeNumber\">\n    \n      <ng-template [ngIf]=\"profile.image\" [ngIfElse]=\"nameLetters\">\n        <img [src]=\"profile.image\" />\n      </ng-template>\n\n      <ng-template #nameLetters>\n        <ng-template [ngIf]=\"profile.first_name\" [ngIfElse]=\"avatarIcon\">\n          {{profile.first_name.charAt(0).toUpperCase() + profile.last_name.charAt(0).toUpperCase()}}\n        </ng-template>\n      </ng-template>\n\n      <ng-template  #avatarIcon>\n        <mat-icon>person</mat-icon>\n      </ng-template>\n      \n    </button>\n  </ng-template>\n  \n  <ng-template #noActionAvatar>\n    <span class=\"avatar-icon mat-fab mat-elevation-z\" [style.color]=\"profile.fg_color\" [style.background-color]=\"profile.bg_color\" [style.border-color]=\"profile.bg_color\" [style.width.px]=\"avatarSizeNumber\" [style.height.px]=\"avatarSizeNumber\">\n      \n      <ng-template [ngIf]=\"profile.image\" [ngIfElse]=\"nameLetters\">\n        <img [src]=\"profile.image\" />\n      </ng-template>\n\n      <ng-template #nameLetters>\n        <ng-template [ngIf]=\"profile.first_name\" [ngIfElse]=\"avatarIcon\">\n          {{profile.first_name.charAt(0).toUpperCase() + profile.last_name.charAt(0).toUpperCase()}}\n        </ng-template>\n      </ng-template>\n\n      <ng-template  #avatarIcon>\n        <mat-icon>person</mat-icon>\n      </ng-template>\n\n    </span>\n  </ng-template>\n  \n  \n  <span class=\"avatar-title\" *ngIf=\"avatarShowTitle\">{{profile.first_name ? profile.first_name + \" \" + profile.last_name : profile.email}}</span>\n\n</div>\n\n\n"
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/board-component/board-component.component.html":
-/*!******************************************************************************!*\
-  !*** ./src/app/task-pipeline/board-component/board-component.component.html ***!
-  \******************************************************************************/
+/***/ "./src/app/modules/avatar/component/avatar.component.scss":
+/*!****************************************************************!*\
+  !*** ./src/app/modules/avatar/component/avatar.component.scss ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<section id=\"main\" >\n\n<div *ngIf=\"board$ | async as board else loading\" class=\"board-title\">\n\n<ng-template #loading>\n        <p>Task pipoeline is loading ...</p>\n</ng-template>\n\n <span  (click)=\"editTitle()\">\n   {{ board?.title }}\n </span>\n\n\n <div class=\"container\"\n     fxLayout\n     fxLayout.xs=\"column\"\n     fxLayoutAlign=\"left\"\n     fxLayoutGap=\"10px\"\n     fxLayoutGap.xs=\"2px\"\n     class=\"scroll-this\">\n   <span *ngFor=\"let column of board.columns | sort\">\n\n       <div class=\"column-spacer\" fxFlex=\"200px\">\n\n         <app-column-component\n           [column]=\"column\"\n           (onAddCard)=\"addCard($event)\"\n           [onCardClick]=\"onCardClick\"\n           [boardSubject$]=\"boardSubject$\"\n           [onTransition]=\"onTransition\"\n           [onClickColumnTitle]=\"onClickColumnTitle\"\n           [validateDropRules]=\"validateDropRules\"\n           [onRemoveColumn]=\"onRemoveColumn\"\n           [onAddCard]=\"onAddCard\"\n           [onDeleteCard]=\"onDeleteCard\"\n           [onUpdateCard]=\"onUpdateCard\"\n           >\n\n         </app-column-component>\n        </div>\n  </span>\n </div>\n\n\n</div>\n</section>\n\n\n\n"
+module.exports = ".avatar {\n  display: flex;\n  align-items: center; }\n\n.mat-fab:not(button) {\n  cursor: default; }\n\n.avatar-icon {\n  padding: 2px !important;\n  overflow: hidden !important;\n  border-width: 2px !important;\n  border-style: solid !important;\n  display: flex !important;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  border-radius: 50%; }\n\n.avatar-icon img {\n    height: 100%;\n    width: 100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0; }\n\n.avatar-icon .mat-button-wrapper {\n    background: none;\n    padding: 0 0 !important;\n    display: flex;\n    justify-content: center;\n    align-content: center;\n    line-height: 1; }\n\n.avatar-icon .mat-icon {\n    height: auto;\n    width: auto; }\n\n.avatar-icon [class^=mat] {\n    font-size: inherit;\n    color: inherit; }\n\n.avatar-xs .avatar-icon {\n    font-size: 1rem; }\n\n.avatar-sm .avatar-icon {\n    font-size: 1.5rem; }\n\n.avatar-md .avatar-icon {\n    font-size: 2rem; }\n\n.avatar-lg .avatar-icon {\n    font-size: 2.5rem; }\n\n.avatar-title {\n  margin-left: .5rem; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9yb2JlcnRzcG9saXMvcHJvamVjdHMvYW5ndWxhcl9wcm9qZWN0cy9TdGF0dXNQaXBlbGluZU1vZHVsZV8yMDE4MDIxMS9TdGF0dXNQaXBlbGluZU1vZHVsZV8xL3NyYy9hcHAvbW9kdWxlcy9hdmF0YXIvY29tcG9uZW50L2F2YXRhci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYixtQkFBbUIsRUFBQTs7QUFFckI7RUFDRSxlQUFlLEVBQUE7O0FBRWpCO0VBQ0UsdUJBQXVCO0VBQ3ZCLDJCQUEyQjtFQUMzQiw0QkFBNEI7RUFDNUIsOEJBQThCO0VBQzlCLHdCQUF3QjtFQUN4QixtQkFBbUI7RUFDbkIsdUJBQXVCO0VBQ3ZCLGtCQUFrQjtFQUNsQixrQkFBa0IsRUFBQTs7QUFUcEI7SUFXSSxZQUFZO0lBQ1osV0FBVztJQUNYLG9CQUFpQjtPQUFqQixpQkFBaUI7SUFDakIsa0JBQWtCO0lBQ2xCLE1BQU07SUFDTixTQUFTO0lBQ1QsT0FBTztJQUNQLFFBQVEsRUFBQTs7QUFsQlo7SUFzQk0sZ0JBQWdCO0lBQ2hCLHVCQUF1QjtJQUN2QixhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLHFCQUFxQjtJQUNyQixjQUFjLEVBQUE7O0FBM0JwQjtJQThCTSxZQUFZO0lBQ1osV0FBVyxFQUFBOztBQS9CakI7SUFtQ0ksa0JBQWtCO0lBQ2xCLGNBQWMsRUFBQTs7QUFFaEI7SUFDRSxlQUFlLEVBQUE7O0FBRWpCO0lBQ0UsaUJBQWlCLEVBQUE7O0FBRW5CO0lBQ0UsZUFBZSxFQUFBOztBQUVqQjtJQUNFLGlCQUFpQixFQUFBOztBQUdyQjtFQUNFLGtCQUFrQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvbW9kdWxlcy9hdmF0YXIvY29tcG9uZW50L2F2YXRhci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hdmF0YXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuLm1hdC1mYWI6bm90KGJ1dHRvbikge1xuICBjdXJzb3I6IGRlZmF1bHQ7XG59XG4uYXZhdGFyLWljb24ge1xuICBwYWRkaW5nOiAycHggIWltcG9ydGFudDtcbiAgb3ZlcmZsb3c6IGhpZGRlbiAhaW1wb3J0YW50O1xuICBib3JkZXItd2lkdGg6IDJweCAhaW1wb3J0YW50O1xuICBib3JkZXItc3R5bGU6IHNvbGlkICFpbXBvcnRhbnQ7XG4gIGRpc3BsYXk6IGZsZXggIWltcG9ydGFudDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xuICBpbWcge1xuICAgIGhlaWdodDogMTAwJTtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBvYmplY3QtZml0OiBjb3ZlcjtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiAwO1xuICAgIGJvdHRvbTogMDtcbiAgICBsZWZ0OiAwO1xuICAgIHJpZ2h0OiAwO1xuICB9XG4gIC5tYXQge1xuICAgICYtYnV0dG9uLXdyYXBwZXIge1xuICAgICAgYmFja2dyb3VuZDogbm9uZTtcbiAgICAgIHBhZGRpbmc6IDAgMCAhaW1wb3J0YW50O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgYWxpZ24tY29udGVudDogY2VudGVyOyBcbiAgICAgIGxpbmUtaGVpZ2h0OiAxO1xuICAgIH1cbiAgICAmLWljb24ge1xuICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgd2lkdGg6IGF1dG87XG4gICAgfVxuICB9XG4gIFtjbGFzc149bWF0XSB7XG4gICAgZm9udC1zaXplOiBpbmhlcml0O1xuICAgIGNvbG9yOiBpbmhlcml0O1xuICB9XG4gIC5hdmF0YXIteHMgJntcbiAgICBmb250LXNpemU6IDFyZW07XG4gIH1cbiAgLmF2YXRhci1zbSAme1xuICAgIGZvbnQtc2l6ZTogMS41cmVtO1xuICB9XG4gIC5hdmF0YXItbWQgJntcbiAgICBmb250LXNpemU6IDJyZW07XG4gIH1cbiAgLmF2YXRhci1sZyAme1xuICAgIGZvbnQtc2l6ZTogMi41cmVtO1xuICB9XG59XG4uYXZhdGFyLXRpdGxlIHtcbiAgbWFyZ2luLWxlZnQ6IC41cmVtO1xufVxuXG4iXX0= */"
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/board-component/board-component.component.ts":
-/*!****************************************************************************!*\
-  !*** ./src/app/task-pipeline/board-component/board-component.component.ts ***!
-  \****************************************************************************/
+/***/ "./src/app/modules/avatar/component/avatar.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/modules/avatar/component/avatar.component.ts ***!
+  \**************************************************************/
+/*! exports provided: AvatarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AvatarComponent", function() { return AvatarComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _avatar_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./avatar.model */ "./src/app/modules/avatar/component/avatar.model.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AvatarComponent = /** @class */ (function () {
+    function AvatarComponent() {
+        this.avatarShowTitle = false;
+        this.avatarButtonCallback = null;
+    }
+    Object.defineProperty(AvatarComponent.prototype, "size", {
+        set: function (size) {
+            this.avatarSizeNumber = parseInt(_avatar_model__WEBPACK_IMPORTED_MODULE_1__["Sizes"][size]);
+            this.avatarSizeString = size;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ;
+    Object.defineProperty(AvatarComponent.prototype, "showTitle", {
+        set: function (showTitle) {
+            this.avatarShowTitle = showTitle;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ;
+    Object.defineProperty(AvatarComponent.prototype, "callbackFn", {
+        set: function (callbackFn) {
+            this.avatarButtonCallback = callbackFn;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ;
+    AvatarComponent.prototype.ngOnInit = function () {
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], AvatarComponent.prototype, "profile", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], AvatarComponent.prototype, "size", null);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean),
+        __metadata("design:paramtypes", [Boolean])
+    ], AvatarComponent.prototype, "showTitle", null);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], AvatarComponent.prototype, "callbackFn", null);
+    AvatarComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'dvtx-avatar',
+            template: __webpack_require__(/*! ./avatar.component.html */ "./src/app/modules/avatar/component/avatar.component.html"),
+            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+            styles: [__webpack_require__(/*! ./avatar.component.scss */ "./src/app/modules/avatar/component/avatar.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AvatarComponent);
+    return AvatarComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modules/avatar/component/avatar.model.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/modules/avatar/component/avatar.model.ts ***!
+  \**********************************************************/
+/*! exports provided: Sizes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sizes", function() { return Sizes; });
+var Sizes;
+(function (Sizes) {
+    Sizes[Sizes["xs"] = 24] = "xs";
+    Sizes[Sizes["sm"] = 36] = "sm";
+    Sizes[Sizes["md"] = 48] = "md";
+    Sizes[Sizes["lg"] = 64] = "lg";
+})(Sizes || (Sizes = {}));
+
+
+/***/ }),
+
+/***/ "./src/app/modules/task-pipeline/board-component/board-component.component.css":
+/*!*************************************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/board-component/board-component.component.css ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n.sidebar{\n    width: 250px;\n    background-color: #E9EBEC;\n    margin-left: 10px;\n    margin-right: 10px;\n    margin-top: 10px;\n}\n\n\n.scroll-this {\n  overflow: scroll;\n}\n\n\n.column-spacer {\n  padding: 0px 0px 0px 0px;\n  /* column background-color: white; */\n  background-color: whitesmoke; /* column background color*/\n\n  /* column vertical scroll*/\n  -webkit-flex: 1 1 auto;\n  overflow-y: auto;\n  height: 100%;\n}\n\n\n/* conatiner for scrolling pieces */\n\n\n.scrolling-wrapper {\n  overflow-x: scroll;\n  overflow-y: hidden;\n  white-space: nowrap;\n}\n\n\n#main {\n  min-width: 100%;\n  /*height: calc(100% - 90px);*/\n  overflow: hidden;\n  border: 1px dotted blue;\n  background-color: #E9EBEC; /* board background color */\n}\n\n\n.board-title {\n  font-size: 25px;\n  margin-left: 18px;\n  margin-top: 10px;\n  margin-bottom: 15px;\n\n}\n\n\n.board-title div {\n  font-size: 5px;\n  font-weight: bold;\n  color: white;\n  cursor: pointer;\n  cursor: hand;\n}\n\n\n.board-title input {\n    margin: -3px -2px;\n    font-size: 18px;\n    font-weight: bold;\n}\n\n\n.add-column {\n  width: 280px;\n  height: 40px;\n  background-color: #0067A3;\n  border-radius: 3px; \n  width: 270px;\n  margin-left: 10px;\n  padding: 2px;\n  box-sizing: border-box;\n  display: inline-block;\n  vertical-align: top;\n  white-space: nowrap;\n  cursor: pointer;\n  cursor: hand;\n}\n\n\n.add-column span {\n\tcolor: rgba(255,255,255,.7);\n\tline-height: 40px;\n\tvertical-align: middle;\n\tpadding: 7px;\n\tfont-size: 14px;\n  cursor: pointer;\n  cursor: hand;\n}\n\n\n.add-column input {\t\n\twidth: 100%;\n\theight: 100%;\n\tfont-weight: 700;\n\tborder: none;\n\tline-height: 18px;\n\tpadding: 3px 5px 4px 5px;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kdWxlcy90YXNrLXBpcGVsaW5lL2JvYXJkLWNvbXBvbmVudC9ib2FyZC1jb21wb25lbnQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7SUFDSSxZQUFZO0lBQ1oseUJBQXlCO0lBQ3pCLGlCQUFpQjtJQUNqQixrQkFBa0I7SUFDbEIsZ0JBQWdCO0FBQ3BCOzs7QUFHQTtFQUNFLGdCQUFnQjtBQUNsQjs7O0FBSUE7RUFDRSx3QkFBd0I7RUFDeEIsb0NBQW9DO0VBQ3BDLDRCQUE0QixFQUFFLDJCQUEyQjs7RUFFekQsMEJBQTBCO0VBQzFCLHNCQUFzQjtFQUN0QixnQkFBZ0I7RUFDaEIsWUFBWTtBQUNkOzs7QUFFQSxtQ0FBbUM7OztBQUNuQztFQUNFLGtCQUFrQjtFQUNsQixrQkFBa0I7RUFDbEIsbUJBQW1CO0FBQ3JCOzs7QUFHQTtFQUNFLGVBQWU7RUFDZiw2QkFBNkI7RUFDN0IsZ0JBQWdCO0VBQ2hCLHVCQUF1QjtFQUN2Qix5QkFBeUIsRUFBRSwyQkFBMkI7QUFDeEQ7OztBQUVBO0VBQ0UsZUFBZTtFQUNmLGlCQUFpQjtFQUNqQixnQkFBZ0I7RUFDaEIsbUJBQW1COztBQUVyQjs7O0FBRUE7RUFDRSxjQUFjO0VBQ2QsaUJBQWlCO0VBQ2pCLFlBQVk7RUFDWixlQUFlO0VBQ2YsWUFBWTtBQUNkOzs7QUFFQTtJQUNJLGlCQUFpQjtJQUNqQixlQUFlO0lBQ2YsaUJBQWlCO0FBQ3JCOzs7QUFFQTtFQUNFLFlBQVk7RUFDWixZQUFZO0VBQ1oseUJBQXlCO0VBQ3pCLGtCQUFrQjtFQUNsQixZQUFZO0VBQ1osaUJBQWlCO0VBQ2pCLFlBQVk7RUFDWixzQkFBc0I7RUFDdEIscUJBQXFCO0VBQ3JCLG1CQUFtQjtFQUNuQixtQkFBbUI7RUFDbkIsZUFBZTtFQUNmLFlBQVk7QUFDZDs7O0FBRUE7Q0FDQywyQkFBMkI7Q0FDM0IsaUJBQWlCO0NBQ2pCLHNCQUFzQjtDQUN0QixZQUFZO0NBQ1osZUFBZTtFQUNkLGVBQWU7RUFDZixZQUFZO0FBQ2Q7OztBQUVBO0NBQ0MsV0FBVztDQUNYLFlBQVk7Q0FDWixnQkFBZ0I7Q0FDaEIsWUFBWTtDQUNaLGlCQUFpQjtDQUNqQix3QkFBd0I7QUFDekIiLCJmaWxlIjoic3JjL2FwcC9tb2R1bGVzL3Rhc2stcGlwZWxpbmUvYm9hcmQtY29tcG9uZW50L2JvYXJkLWNvbXBvbmVudC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4uc2lkZWJhcntcbiAgICB3aWR0aDogMjUwcHg7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogI0U5RUJFQztcbiAgICBtYXJnaW4tbGVmdDogMTBweDtcbiAgICBtYXJnaW4tcmlnaHQ6IDEwcHg7XG4gICAgbWFyZ2luLXRvcDogMTBweDtcbn1cblxuXG4uc2Nyb2xsLXRoaXMge1xuICBvdmVyZmxvdzogc2Nyb2xsO1xufVxuXG5cblxuLmNvbHVtbi1zcGFjZXIge1xuICBwYWRkaW5nOiAwcHggMHB4IDBweCAwcHg7XG4gIC8qIGNvbHVtbiBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTsgKi9cbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGVzbW9rZTsgLyogY29sdW1uIGJhY2tncm91bmQgY29sb3IqL1xuXG4gIC8qIGNvbHVtbiB2ZXJ0aWNhbCBzY3JvbGwqL1xuICAtd2Via2l0LWZsZXg6IDEgMSBhdXRvO1xuICBvdmVyZmxvdy15OiBhdXRvO1xuICBoZWlnaHQ6IDEwMCU7XG59XG5cbi8qIGNvbmF0aW5lciBmb3Igc2Nyb2xsaW5nIHBpZWNlcyAqL1xuLnNjcm9sbGluZy13cmFwcGVyIHtcbiAgb3ZlcmZsb3cteDogc2Nyb2xsO1xuICBvdmVyZmxvdy15OiBoaWRkZW47XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG59XG5cblxuI21haW4ge1xuICBtaW4td2lkdGg6IDEwMCU7XG4gIC8qaGVpZ2h0OiBjYWxjKDEwMCUgLSA5MHB4KTsqL1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBib3JkZXI6IDFweCBkb3R0ZWQgYmx1ZTtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0U5RUJFQzsgLyogYm9hcmQgYmFja2dyb3VuZCBjb2xvciAqL1xufVxuXG4uYm9hcmQtdGl0bGUge1xuICBmb250LXNpemU6IDI1cHg7XG4gIG1hcmdpbi1sZWZ0OiAxOHB4O1xuICBtYXJnaW4tdG9wOiAxMHB4O1xuICBtYXJnaW4tYm90dG9tOiAxNXB4O1xuXG59XG5cbi5ib2FyZC10aXRsZSBkaXYge1xuICBmb250LXNpemU6IDVweDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBjdXJzb3I6IGhhbmQ7XG59XG5cbi5ib2FyZC10aXRsZSBpbnB1dCB7XG4gICAgbWFyZ2luOiAtM3B4IC0ycHg7XG4gICAgZm9udC1zaXplOiAxOHB4O1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4uYWRkLWNvbHVtbiB7XG4gIHdpZHRoOiAyODBweDtcbiAgaGVpZ2h0OiA0MHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDA2N0EzO1xuICBib3JkZXItcmFkaXVzOiAzcHg7IFxuICB3aWR0aDogMjcwcHg7XG4gIG1hcmdpbi1sZWZ0OiAxMHB4O1xuICBwYWRkaW5nOiAycHg7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IHRvcDtcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBjdXJzb3I6IGhhbmQ7XG59XG5cbi5hZGQtY29sdW1uIHNwYW4ge1xuXHRjb2xvcjogcmdiYSgyNTUsMjU1LDI1NSwuNyk7XG5cdGxpbmUtaGVpZ2h0OiA0MHB4O1xuXHR2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xuXHRwYWRkaW5nOiA3cHg7XG5cdGZvbnQtc2l6ZTogMTRweDtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBjdXJzb3I6IGhhbmQ7XG59XG5cbi5hZGQtY29sdW1uIGlucHV0IHtcdFxuXHR3aWR0aDogMTAwJTtcblx0aGVpZ2h0OiAxMDAlO1xuXHRmb250LXdlaWdodDogNzAwO1xuXHRib3JkZXI6IG5vbmU7XG5cdGxpbmUtaGVpZ2h0OiAxOHB4O1xuXHRwYWRkaW5nOiAzcHggNXB4IDRweCA1cHg7XG59XG5cbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/modules/task-pipeline/board-component/board-component.component.html":
+/*!**************************************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/board-component/board-component.component.html ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n\n<mat-drawer-container class=\"example-container\">\n\n    <mat-drawer #sideNav mode=\"side\" [opened]=\"isSidebarOpen\" position=\"end\">\n\n       <div class=\"sidebar\">\n\n          <button (click)=\"sidebarClose()\"  class=\"side-nav-btn\">[X]</button>\n\n           <form [formGroup]=\"cardForm\">\n               <mat-form-field>\n                   <input matInput  placeholder=\"Title\" formControlName=\"title\" [disabled]=\"true\">\n               </mat-form-field>\n               <mat-form-field>\n                   <textarea matInput  placeholder=\"Content\" formControlName=\"content\" cdkTextareaAutosize></textarea>\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Order\" formControlName=\"order\" />\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Status\" formControlName=\"status\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Description\" formControlName=\"description\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Priority\" formControlName=\"priority\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Favorite\" formControlName=\"favorite\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Process_id\" formControlName=\"process_id\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Color\" formControlName=\"color\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Creator_name\" formControlName=\"creator_name\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Creator_email\" formControlName=\"creator_email\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Responsible_name\" formControlName=\"responsible_name\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Responsible_email\" formControlName=\"responsible_email\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Pre_due_date\" formControlName=\"pre_due_date\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Due_date\" formControlName=\"due_date\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Started_at\" formControlName=\"started_at\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Completed_at\" formControlName=\"completed_at\" >\n               </mat-form-field>\n               <mat-form-field>\n                   <input matInput  placeholder=\"Created_at\" formControlName=\"created_at\" >\n               </mat-form-field>\n           </form>\n\n\n\n\n        </div>\n\n    </mat-drawer>\n\n    <mat-drawer-content>\n\n<section id=\"main\" >\n\n    <button (click)=\"sidebarOpen()\"  class=\"side-nav-btn\">[O]</button>\n\n<div *ngIf=\"board$ | async as board else loading\" class=\"board-title\">\n\n<ng-template #loading>\n        <p>Task pipoeline is loading ...</p>\n</ng-template>\n\n <!--span  (click)=\"editTitle()\">\n   {{ board?.title }}\n </span-->\n\n\n <div class=\"container\"\n     fxLayout\n     fxLayout.xs=\"column\"\n     fxLayoutAlign=\"left\"\n     fxLayoutGap=\"20px\"\n     fxLayoutGap.xs=\"2px\"\n     class=\"scroll-this\">\n   <span *ngFor=\"let column of board.columns | sort\">\n\n       <div class=\"column-spacer\" fxFlex=\"320px\">\n\n         <app-column-component\n           [column]=\"column\"\n           [onCardClick]=\"onCardClick\"\n           [boardSubject$]=\"boardSubject$\"\n           [onTransition]=\"onTransition\"\n           [onClickColumnTitle]=\"onClickColumnTitle\"\n           [validateDropRules]=\"validateDropRules\"\n           [onRemoveColumn]=\"onRemoveColumn\"\n           [onAddCard]=\"onAddCard\"\n           [onDeleteCard]=\"onDeleteCard\"\n           [onUpdateCard]=\"onUpdateCard\"\n           >\n\n         </app-column-component>\n        </div>\n  </span>\n </div>\n\n\n</div>\n</section>\n\n</mat-drawer-content>\n\n</mat-drawer-container>\n"
+
+/***/ }),
+
+/***/ "./src/app/modules/task-pipeline/board-component/board-component.component.ts":
+/*!************************************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/board-component/board-component.component.ts ***!
+  \************************************************************************************/
 /*! exports provided: BoardComponentComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -6548,7 +6702,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BoardComponentComponent", function() { return BoardComponentComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _shared_status_pipeline_shared__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/status-pipeline-shared */ "./src/app/task-pipeline/shared/status-pipeline-shared.ts");
+/* harmony import */ var _shared_status_pipeline_shared__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/status-pipeline-shared */ "./src/app/modules/task-pipeline/shared/status-pipeline-shared.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6561,23 +6716,115 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var BoardComponentComponent = /** @class */ (function () {
-    function BoardComponentComponent(statusPipelineShared) {
+    function BoardComponentComponent(statusPipelineShared, formBuilder) {
+        this.formBuilder = formBuilder;
+        this.isSidebarOpen = false; // initially sidebar is closed.
         this.addingColumn = false;
         this.editingTilte = false;
         this.columnsAdded = 0;
+        this.cardForm = formBuilder.group({
+            title: formBuilder.control('initial value')
+        });
     }
     BoardComponentComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.board$ = this.boardSubject$;
         this.board$.subscribe(function (board) {
-            console.log('BoardComponent#constructor subscribe board$ {}' /*,JSON.stringify(data,null,'\t')*/);
+            // console.log('BoardComponent#ngOnInit subscribe board$ {}'/*,JSON.stringify(data,null,'\t')*/)
             _this.board = board;
+        });
+        // create empty
+        this.cardForm = this.formBuilder.group({
+            'title': this.formBuilder.control(''),
+            'content': this.formBuilder.control(''),
+            'order': this.formBuilder.control(''),
+            'status': this.formBuilder.control(''),
+            'description': this.formBuilder.control(''),
+            'priority': this.formBuilder.control(''),
+            'favorite': this.formBuilder.control(''),
+            'process_id': this.formBuilder.control(''),
+            'color': this.formBuilder.control(''),
+            'creator_name': this.formBuilder.control(''),
+            'creator_email': this.formBuilder.control(''),
+            'responsible_name': this.formBuilder.control(''),
+            'responsible_email': this.formBuilder.control(''),
+            'pre_due_date': this.formBuilder.control(''),
+            'due_date': this.formBuilder.control(''),
+            'archived_at': this.formBuilder.control(''),
+            'started_at': this.formBuilder.control(''),
+            'completed_at': this.formBuilder.control(''),
+            'created_at': this.formBuilder.control(''),
+            'updated_at': this.formBuilder.control('')
+        });
+        // can't find a method to disable controls!
+        Object.keys(this.cardForm.controls).forEach(function (key) {
+            var abstractControl = _this.cardForm.controls[key];
+            abstractControl.disable({ emitEvent: true, onlySelf: true });
+        });
+        /*
+    
+    
+    public markControlsDirty(group: FormGroup | FormArray): void {
+        Object.keys(group.controls).forEach((key: string) => {
+            const abstractControl = group.controls[key];
+    
+            if (abstractControl instanceof FormGroup || abstractControl instanceof FormArray) {
+                this.markControlsDirty(abstractControl);
+            } else {
+                abstractControl.markAsDirty();
+            }
+        });
+    }
+    
+    
+    
+        this.this.cardForm.get('title').disabled = true;
+        this.this.cardForm.get('content').disabled = true;
+        this.this.cardForm.get('order').disabled = true;
+        this.this.cardForm.get('status').disabled = true;
+        */
+        // this.cardForm.
+        // this.cardForm
+        // formCtrl.disable()
+        // subscribe to card data
+        this.onCardClick.subscribe(function (card) {
+            _this.sideCardFormData = card;
+            _this.isSidebarOpen = true;
+            _this.cardForm = _this.formBuilder.group({
+                'title': [_this.sideCardFormData.title],
+                'content': [_this.sideCardFormData.content],
+                'order': [_this.sideCardFormData.order],
+                'status': [_this.sideCardFormData.status],
+                'description': [_this.sideCardFormData.description],
+                'priority': [_this.sideCardFormData.priority],
+                'favorite': [_this.sideCardFormData.favorite],
+                'process_id': [_this.sideCardFormData.process_id],
+                'color': [_this.sideCardFormData.color],
+                'creator_name': [_this.sideCardFormData.creator_name],
+                'creator_email': [_this.sideCardFormData.creator_email],
+                'responsible_name': [_this.sideCardFormData.responsible_name],
+                'responsible_email': [_this.sideCardFormData.responsible_email],
+                'pre_due_date': [_this.sideCardFormData.pre_due_date],
+                'due_date': [_this.sideCardFormData.due_date],
+                'archived_at': [_this.sideCardFormData.archived_at],
+                'started_at': [_this.sideCardFormData.started_at],
+                'completed_at': [_this.sideCardFormData.completed_at],
+                'created_at': [_this.sideCardFormData.created_at],
+                'updated_at': [_this.sideCardFormData.updated_at]
+            });
         });
     };
     BoardComponentComponent.prototype.editTitle = function () {
         this.currentTitle = this.board.title;
         this.editingTilte = true;
+    };
+    BoardComponentComponent.prototype.sidebarOpen = function () {
+        this.isSidebarOpen = true;
+    };
+    BoardComponentComponent.prototype.sidebarClose = function () {
+        this.isSidebarOpen = false;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -6621,11 +6868,12 @@ var BoardComponentComponent = /** @class */ (function () {
     BoardComponentComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'dvtx-status-pipeline',
-            template: __webpack_require__(/*! ./board-component.component.html */ "./src/app/task-pipeline/board-component/board-component.component.html"),
+            template: __webpack_require__(/*! ./board-component.component.html */ "./src/app/modules/task-pipeline/board-component/board-component.component.html"),
             providers: [_shared_status_pipeline_shared__WEBPACK_IMPORTED_MODULE_2__["StatusPipelineShared"]],
-            styles: [__webpack_require__(/*! ./board-component.component.css */ "./src/app/task-pipeline/board-component/board-component.component.css")]
+            styles: [__webpack_require__(/*! ./board-component.component.css */ "./src/app/modules/task-pipeline/board-component/board-component.component.css")]
         }),
-        __metadata("design:paramtypes", [_shared_status_pipeline_shared__WEBPACK_IMPORTED_MODULE_2__["StatusPipelineShared"]])
+        __metadata("design:paramtypes", [_shared_status_pipeline_shared__WEBPACK_IMPORTED_MODULE_2__["StatusPipelineShared"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"]])
     ], BoardComponentComponent);
     return BoardComponentComponent;
 }());
@@ -6634,32 +6882,32 @@ var BoardComponentComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/card-component/card-component.component.html":
-/*!****************************************************************************!*\
-  !*** ./src/app/task-pipeline/card-component/card-component.component.html ***!
-  \****************************************************************************/
+/***/ "./src/app/modules/task-pipeline/card-component/card-component.component.html":
+/*!************************************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/card-component/card-component.component.html ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"space-card\" >\n\t<mat-card class=\"card\" draggable=\"true\" (dragstart)=\"handleDragStart($event,card)\" (dragover)=\"handleDragOver($event,card)\"\n\t (drop)=\"handleDrop($event,card)\" (dragend)=\"handleDragEnd($event)\"  (click)=\"clickOnCard(card)\"  (keyup.enter)=\"clickExitUpdate()\" >\n        <form [formGroup]=\"cardForm\">\n\t\t<mat-card-title>\n\t\t\t\t<div class=\"card-title\"  [ngSwitch]=\"isCardEditMode\">\n\t\t\t\t\t<div *ngSwitchCase=\"false\">\n\t\t\t\t\t\t<a (click)=\"clickOnCardField($event)\">{{card.title}}</a>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div *ngSwitchCase=\"true\">\n\t\t\t\t\t\t<input  mdInput type=\"text\" formControlName=\"title\"   required>\n                     </div>\n                </div>\n\t\t</mat-card-title>\n\t\t<mat-card-content >\n\t\t\t<div  [ngSwitch]=\"isCardEditMode\">\n\t\t\t    <div *ngSwitchCase=\"false\" (click)=\"clickOnCardField($event)\" >{{card.content}}</div>\n\t\t\t\t<div *ngSwitchCase=\"true\">\n\t\t\t\t\t<textarea mdInput class=\"card-textarea-input\" type=\"text\" formControlName=\"content\"   required></textarea>\n\t\t\t\t    <a class=\"press-enter-text\"  (click)=\"clickExitUpdate()\"><br>Enter to complete</a>\n\t\t\t    </div>\n\t\t\t</div>\n\t\t</mat-card-content>\n        <mat-card-actions>\n              <button mat-button class=\"mini-button\" (click)=\"clickCardDeleteButton(card)\">[-]</button>\n\t\t\t  <button mat-button class=\"mini-button\" (click)=\"clickCardEditButton(card)\">[e]</button>\n        </mat-card-actions>\n        </form>\n\t</mat-card>\n\n</div>\n<span #emptyItem></span>\n"
+module.exports = "<!--div class=\"space-card\" [ngClass]=\"{'drop-above':dragNodeState=='above'}\">\n</div-->\n\t<mat-card class=\"card\" draggable=\"true\" (dragstart)=\"handleDragStart($event,card)\" (dragover)=\"handleDragOver($event,card)\"\n\t (drop)=\"handleDrop($event,card)\" (dragend)=\"handleDragEnd($event)\"  (click)=\"clickOnCard(card)\"  (keyup.enter)=\"clickExitUpdate()\"\n\t\t\t  [ngClass]=\"{'drop-above':dragNodeState=='above','drop-below':dragNodeState=='below'}\" \t  >\n        <mat-list>\n\t\t\t<mat-list-item class=\"card-top-row\">\n\t\t\t\t<dvtx-avatar (profile)=\"getProfile(card)\"></dvtx-avatar>\n\t\t\t\t<mat-icon md-list-icon>folder</mat-icon>\n\t\t\t\t<mat-icon md-list-icon>folder</mat-icon>\n\t\t\t</mat-list-item>\n\t\t\t<mat-list-item class=\"card-row-1\">\n\t\t\t\t\t{{card.due_date}}\n\t\t\t</mat-list-item>\n\t       <mat-list-item class=\"card-row-2\">\n\t\t\t   {{card.title}}\n\t\t   </mat-list-item>\n\t\t\t<mat-list-item class=\"card-row-3\">\n\t\t\t\t{{card.content}}\n\t\t\t</mat-list-item>\n\t\t\t<mat-list-item class=\"card-bottom-row\">\n\t\t\t\t<mat-icon md-list-icon>folder</mat-icon>\n\t\t\t\t<mat-icon md-list-icon>folder</mat-icon>\n\t\t\t\t<mat-icon md-list-icon>folder</mat-icon>\n\t\t\t</mat-list-item>\n\t\t</mat-list>\n\n\t\t<!--\n        <form [formGroup]=\"cardForm\">\n\t\t<mat-card-title>\n\t\t\t\t<div class=\"card-title\"  [ngSwitch]=\"isCardEditMode\">\n\t\t\t\t\t<div *ngSwitchCase=\"false\">\n                        <a (click)=\"clickOnCardField($event)\">{{card.title}}<small>{{card.order}} {{dragNodeState}}</small>  </a>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div *ngSwitchCase=\"true\">\n\t\t\t\t\t\t<input  mdInput type=\"text\" formControlName=\"title\"   required>\n                     </div>\n                </div>\n\t\t</mat-card-title>\n\t\t<mat-card-content>\n\t\t\t<div  [ngSwitch]=\"isCardEditMode\">\n\t\t\t    <div *ngSwitchCase=\"false\" (click)=\"clickOnCardField($event)\" >{{card.content}}</div>\n\t\t\t\t<div *ngSwitchCase=\"true\">\n\t\t\t\t\t<textarea mdInput class=\"card-textarea-input\" type=\"text\" formControlName=\"content\"   required></textarea>\n\t\t\t\t    <a class=\"press-enter-text\"  (click)=\"clickExitUpdate()\"><br>Enter to complete</a>\n\t\t\t    </div>\n\t\t\t</div>\n\t\t</mat-card-content>\n        <mat-card-actions>\n              <button mat-button class=\"mini-button\" (click)=\"clickCardDeleteButton(card)\">[-]</button>\n\t\t\t  <button mat-button class=\"mini-button\" (click)=\"clickCardEditButton(card)\">[e]</button>\n        </mat-card-actions>\n        </form>\n\t\t-->\n\n\n\n\n\t</mat-card>\n\n<!-- div class=\"space-card\" [ngClass]=\"{'drop-below':dragNodeState=='below'}\">\n</div-->\n<span #emptyItem></span>\n"
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/card-component/card-component.component.scss":
-/*!****************************************************************************!*\
-  !*** ./src/app/task-pipeline/card-component/card-component.component.scss ***!
-  \****************************************************************************/
+/***/ "./src/app/modules/task-pipeline/card-component/card-component.component.scss":
+/*!************************************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/card-component/card-component.component.scss ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".space-card {\n  /*\n    padding-top: 10px;\n    padding-bottom: 10px; */ }\n\n.card {\n  background-color: #fff;\n  text-decoration: none;\n  padding: 5px;\n  margin: 10px 0 8px 0;\n  border-radius: 3px;\n  color: #4d4d4d;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: normal;\n  font-stretch: normal;\n  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;\n  font-size: 14px;\n  line-height: 18px;\n  cursor: pointer;\n  white-space: normal;\n  word-wrap: break-word;\n  list-style: none;\n  border-bottom: solid 1px #ccc;\n  transition: all;\n  transition-property: all;\n  transition-duration: 150ms;\n  transition-timing-function: ease; }\n\n.card:hover {\n  background-color: #ddd; }\n\n.card textarea {\n  display: inherit;\n  width: 100%;\n  height: 100px;\n  border: none;\n  font-size: 14px;\n  resize: vertical;\n  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;\n  margin: -2px; }\n\n.card-title {\n  font-size: 24px; }\n\n.card-text {\n  font-size: 14px; }\n\n.press-enter-text {\n  color: blue; }\n\n.mini-button {\n  min-width: 16px;\n  padding: 0 0px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9yb2JlcnRzcG9saXMvcHJvamVjdHMvYW5ndWxhcl9wcm9qZWN0cy9TdGF0dXNQaXBlbGluZU1vZHVsZV8yMDE4MDIxMS9TdGF0dXNQaXBlbGluZU1vZHVsZV8xL3NyYy9hcHAvdGFzay1waXBlbGluZS9jYXJkLWNvbXBvbmVudC9jYXJkLWNvbXBvbmVudC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvdGFzay1waXBlbGluZS9jYXJkLWNvbXBvbmVudC9jYXJkLWNvbXBvbmVudC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNBOzsyQkNBMkIsRURFQzs7QUFJNUI7RUFDRSxzQkFBc0I7RUFDdEIscUJBQXFCO0VBQ3JCLFlBQVk7RUFDWixvQkFBb0I7RUFDcEIsa0JBQWtCO0VBQ2xCLGNBQWM7RUFDZCxrQkFBa0I7RUFDbEIsb0JBQW9CO0VBQ3BCLG1CQUFtQjtFQUNuQixvQkFBb0I7RUFDcEIsMkRBQTJEO0VBQzNELGVBQWU7RUFDZixpQkFBaUI7RUFDakIsZUFBZTtFQUNmLG1CQUFtQjtFQUNuQixxQkFBcUI7RUFDckIsZ0JBQWdCO0VBQ2hCLDZCQUE2QjtFQUM3QixlQUFlO0VBQ2Ysd0JBQXdCO0VBQ3hCLDBCQUEwQjtFQUMxQixnQ0FBZ0MsRUFBQTs7QUFHbEM7RUFDRSxzQkFBc0IsRUFBQTs7QUFHeEI7RUFDSSxnQkFBZ0I7RUFDaEIsV0FBVztFQUNYLGFBQWE7RUFDYixZQUFZO0VBQ1osZUFBZTtFQUNmLGdCQUFnQjtFQUNoQiwyREFBMkQ7RUFDM0QsWUFBWSxFQUFBOztBQUdoQjtFQUNFLGVBQWUsRUFBQTs7QUFHakI7RUFDRSxlQUFlLEVBQUE7O0FBR2pCO0VBQ0UsV0FBVyxFQUFBOztBQUdiO0VBQ0UsZUFBZTtFQUNmLGNBQWMsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3Rhc2stcGlwZWxpbmUvY2FyZC1jb21wb25lbnQvY2FyZC1jb21wb25lbnQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcblxuLnNwYWNlLWNhcmR7XG4vKlxuICAgIHBhZGRpbmctdG9wOiAxMHB4O1xuICAgIHBhZGRpbmctYm90dG9tOiAxMHB4OyAqL1xufVxuXG5cbi5jYXJkIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjsgICBcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICBwYWRkaW5nOiA1cHg7XG4gIG1hcmdpbjogMTBweCAwIDhweCAwO1xuICBib3JkZXItcmFkaXVzOiAzcHg7XG4gIGNvbG9yOiAjNGQ0ZDRkO1xuICBmb250LXN0eWxlOiBub3JtYWw7XG4gIGZvbnQtdmFyaWFudDogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBmb250LXN0cmV0Y2g6IG5vcm1hbDtcbiAgZm9udC1mYW1pbHk6ICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWY7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbGluZS1oZWlnaHQ6IDE4cHg7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcbiAgd29yZC13cmFwOiBicmVhay13b3JkO1xuICBsaXN0LXN0eWxlOiBub25lO1xuICBib3JkZXItYm90dG9tOiBzb2xpZCAxcHggI2NjYztcbiAgdHJhbnNpdGlvbjogYWxsO1xuICB0cmFuc2l0aW9uLXByb3BlcnR5OiBhbGw7XG4gIHRyYW5zaXRpb24tZHVyYXRpb246IDE1MG1zO1xuICB0cmFuc2l0aW9uLXRpbWluZy1mdW5jdGlvbjogZWFzZTtcbn1cblxuLmNhcmQ6aG92ZXJ7XG4gIGJhY2tncm91bmQtY29sb3I6ICNkZGQ7XG59XG5cbi5jYXJkIHRleHRhcmVhIHtcbiAgICBkaXNwbGF5OiBpbmhlcml0O1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMTAwcHg7XG4gICAgYm9yZGVyOiBub25lO1xuICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICByZXNpemU6IHZlcnRpY2FsO1xuICAgIGZvbnQtZmFtaWx5OiAnSGVsdmV0aWNhIE5ldWUnLCBBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmO1xuICAgIG1hcmdpbjogLTJweDtcbn1cblxuLmNhcmQtdGl0bGV7XG4gIGZvbnQtc2l6ZTogMjRweDtcbn1cblxuLmNhcmQtdGV4dHtcbiAgZm9udC1zaXplOiAxNHB4O1xufVxuXG4ucHJlc3MtZW50ZXItdGV4dHtcbiAgY29sb3I6IGJsdWU7XG59XG5cbi5taW5pLWJ1dHRvbntcbiAgbWluLXdpZHRoOiAxNnB4O1xuICBwYWRkaW5nOiAwIDBweDtcbn1cblxuIiwiLnNwYWNlLWNhcmQge1xuICAvKlxuICAgIHBhZGRpbmctdG9wOiAxMHB4O1xuICAgIHBhZGRpbmctYm90dG9tOiAxMHB4OyAqLyB9XG5cbi5jYXJkIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICBwYWRkaW5nOiA1cHg7XG4gIG1hcmdpbjogMTBweCAwIDhweCAwO1xuICBib3JkZXItcmFkaXVzOiAzcHg7XG4gIGNvbG9yOiAjNGQ0ZDRkO1xuICBmb250LXN0eWxlOiBub3JtYWw7XG4gIGZvbnQtdmFyaWFudDogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBmb250LXN0cmV0Y2g6IG5vcm1hbDtcbiAgZm9udC1mYW1pbHk6ICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWY7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbGluZS1oZWlnaHQ6IDE4cHg7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcbiAgd29yZC13cmFwOiBicmVhay13b3JkO1xuICBsaXN0LXN0eWxlOiBub25lO1xuICBib3JkZXItYm90dG9tOiBzb2xpZCAxcHggI2NjYztcbiAgdHJhbnNpdGlvbjogYWxsO1xuICB0cmFuc2l0aW9uLXByb3BlcnR5OiBhbGw7XG4gIHRyYW5zaXRpb24tZHVyYXRpb246IDE1MG1zO1xuICB0cmFuc2l0aW9uLXRpbWluZy1mdW5jdGlvbjogZWFzZTsgfVxuXG4uY2FyZDpob3ZlciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNkZGQ7IH1cblxuLmNhcmQgdGV4dGFyZWEge1xuICBkaXNwbGF5OiBpbmhlcml0O1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDBweDtcbiAgYm9yZGVyOiBub25lO1xuICBmb250LXNpemU6IDE0cHg7XG4gIHJlc2l6ZTogdmVydGljYWw7XG4gIGZvbnQtZmFtaWx5OiAnSGVsdmV0aWNhIE5ldWUnLCBBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmO1xuICBtYXJnaW46IC0ycHg7IH1cblxuLmNhcmQtdGl0bGUge1xuICBmb250LXNpemU6IDI0cHg7IH1cblxuLmNhcmQtdGV4dCB7XG4gIGZvbnQtc2l6ZTogMTRweDsgfVxuXG4ucHJlc3MtZW50ZXItdGV4dCB7XG4gIGNvbG9yOiBibHVlOyB9XG5cbi5taW5pLWJ1dHRvbiB7XG4gIG1pbi13aWR0aDogMTZweDtcbiAgcGFkZGluZzogMCAwcHg7IH1cbiJdfQ== */"
+module.exports = ".card {\n  background-color: #fff;\n  text-decoration: none;\n  padding: 5px;\n  margin: 0.5px 0 0.5px 0;\n  border-radius: 3px;\n  color: #4d4d4d;\n  font-style: normal;\n  font-variant: normal;\n  font-weight: normal;\n  font-stretch: normal;\n  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;\n  font-size: 14px;\n  line-height: 18px;\n  cursor: pointer;\n  white-space: normal;\n  word-wrap: break-word;\n  list-style: none;\n  border-bottom: solid 1px #ccc;\n  transition: all;\n  transition-property: all;\n  transition-duration: 150ms;\n  transition-timing-function: ease; }\n\n.card:hover {\n  background-color: #ddd; }\n\n.card textarea {\n  display: inherit;\n  width: 100%;\n  height: 100px;\n  border: none;\n  font-size: 14px;\n  resize: vertical;\n  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;\n  margin: -2px; }\n\n.mat-list-base .mat-list-item {\n  font-size: 13px; }\n\n.card-title {\n  font-size: 24px; }\n\n.card-text {\n  font-size: 14px; }\n\n.card-item-row {\n  height: 10px; }\n\n.press-enter-text {\n  color: blue; }\n\n.mini-button {\n  min-width: 16px;\n  padding: 0 0px; }\n\n.space-card {\n  height: 3px;\n  width: 100%; }\n\n.drop-above {\n  border-top: 3px solid yellowgreen;\n  border-top-width: 5px; }\n\n.drop-below {\n  border-bottom: 3px solid green;\n  border-bottom-width: 5px; }\n\n.card-top-row {\n  min-height: 40px;\n  max-height: 40px;\n  font-size: 25px;\n  /*background-color: palevioletred;*/ }\n\n.card-bottop-row {\n  min-height: 60px;\n  max-height: 60px;\n  /*background-color: palevioletred;*/ }\n\n.card-row-1 {\n  min-height: 25px;\n  max-height: 25px;\n  font-size: 25px;\n  color: orange;\n  /*background-color: palevioletred;*/ }\n\n.card-row-2 {\n  min-height: 25px;\n  max-height: 25px;\n  font-size: 25px;\n  font-weight: bolder;\n  /*background-color: royalblue ;*/ }\n\n.card-row-3 {\n  min-height: 25px;\n  max-height: 25px;\n  font-size: 25px;\n  font-weight: bolder;\n  /*background-color: goldenrod ;*/ }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9yb2JlcnRzcG9saXMvcHJvamVjdHMvYW5ndWxhcl9wcm9qZWN0cy9TdGF0dXNQaXBlbGluZU1vZHVsZV8yMDE4MDIxMS9TdGF0dXNQaXBlbGluZU1vZHVsZV8xL3NyYy9hcHAvbW9kdWxlcy90YXNrLXBpcGVsaW5lL2NhcmQtY29tcG9uZW50L2NhcmQtY29tcG9uZW50LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0Usc0JBQXNCO0VBQ3RCLHFCQUFxQjtFQUNyQixZQUFZO0VBQ1osdUJBQXVCO0VBQ3ZCLGtCQUFrQjtFQUNsQixjQUFjO0VBQ2Qsa0JBQWtCO0VBQ2xCLG9CQUFvQjtFQUNwQixtQkFBbUI7RUFDbkIsb0JBQW9CO0VBQ3BCLDJEQUEyRDtFQUMzRCxlQUFlO0VBQ2YsaUJBQWlCO0VBQ2pCLGVBQWU7RUFDZixtQkFBbUI7RUFDbkIscUJBQXFCO0VBQ3JCLGdCQUFnQjtFQUNoQiw2QkFBNkI7RUFDN0IsZUFBZTtFQUNmLHdCQUF3QjtFQUN4QiwwQkFBMEI7RUFDMUIsZ0NBQWdDLEVBQUE7O0FBR2xDO0VBQ0Usc0JBQXNCLEVBQUE7O0FBR3hCO0VBQ0ksZ0JBQWdCO0VBQ2hCLFdBQVc7RUFDWCxhQUFhO0VBQ2IsWUFBWTtFQUNaLGVBQWU7RUFDZixnQkFBZ0I7RUFDaEIsMkRBQTJEO0VBQzNELFlBQVksRUFBQTs7QUFjaEI7RUFDRSxlQUFlLEVBQUE7O0FBSWpCO0VBQ0UsZUFBZSxFQUFBOztBQUdqQjtFQUNFLGVBQWUsRUFBQTs7QUFHakI7RUFDQyxZQUFZLEVBQUE7O0FBR2I7RUFDRSxXQUFXLEVBQUE7O0FBR2I7RUFDRSxlQUFlO0VBQ2YsY0FBYyxFQUFBOztBQUdoQjtFQUNFLFdBQVc7RUFDWCxXQUFXLEVBQUE7O0FBR2I7RUFDRSxpQ0FBaUM7RUFDakMscUJBQXFCLEVBQUE7O0FBR3ZCO0VBQ0UsOEJBQThCO0VBQzlCLHdCQUF3QixFQUFBOztBQUcxQjtFQUNFLGdCQUFlO0VBQ2YsZ0JBQWdCO0VBQ2hCLGVBQWU7RUFDZixtQ0FBQSxFQUFvQzs7QUFFdEM7RUFDRSxnQkFBZTtFQUNmLGdCQUFnQjtFQUNoQixtQ0FBQSxFQUFvQzs7QUFFdEM7RUFDQyxnQkFBZTtFQUNmLGdCQUFnQjtFQUNoQixlQUFlO0VBQ2YsYUFBWTtFQUNaLG1DQUFBLEVBQW9DOztBQUVyQztFQUNFLGdCQUFlO0VBQ2YsZ0JBQWdCO0VBQ2hCLGVBQWU7RUFDZixtQkFBbUI7RUFDbkIsZ0NBQUEsRUFBaUM7O0FBRW5DO0VBQ0UsZ0JBQWU7RUFDZixnQkFBZ0I7RUFDaEIsZUFBZTtFQUNmLG1CQUFtQjtFQUNuQixnQ0FBQSxFQUFpQyIsImZpbGUiOiJzcmMvYXBwL21vZHVsZXMvdGFzay1waXBlbGluZS9jYXJkLWNvbXBvbmVudC9jYXJkLWNvbXBvbmVudC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuXG4uY2FyZCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmY7ICAgXG4gIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgcGFkZGluZzogNXB4O1xuICBtYXJnaW46IDAuNXB4IDAgMC41cHggMDtcbiAgYm9yZGVyLXJhZGl1czogM3B4O1xuICBjb2xvcjogIzRkNGQ0ZDtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXZhcmlhbnQ6IG5vcm1hbDtcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgZm9udC1zdHJldGNoOiBub3JtYWw7XG4gIGZvbnQtZmFtaWx5OiAnSGVsdmV0aWNhIE5ldWUnLCBBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmO1xuICBmb250LXNpemU6IDE0cHg7XG4gIGxpbmUtaGVpZ2h0OiAxOHB4O1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XG4gIHdvcmQtd3JhcDogYnJlYWstd29yZDtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbiAgYm9yZGVyLWJvdHRvbTogc29saWQgMXB4ICNjY2M7XG4gIHRyYW5zaXRpb246IGFsbDtcbiAgdHJhbnNpdGlvbi1wcm9wZXJ0eTogYWxsO1xuICB0cmFuc2l0aW9uLWR1cmF0aW9uOiAxNTBtcztcbiAgdHJhbnNpdGlvbi10aW1pbmctZnVuY3Rpb246IGVhc2U7XG59XG5cbi5jYXJkOmhvdmVye1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZGRkO1xufVxuXG4uY2FyZCB0ZXh0YXJlYSB7XG4gICAgZGlzcGxheTogaW5oZXJpdDtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IDEwMHB4O1xuICAgIGJvcmRlcjogbm9uZTtcbiAgICBmb250LXNpemU6IDE0cHg7XG4gICAgcmVzaXplOiB2ZXJ0aWNhbDtcbiAgICBmb250LWZhbWlseTogJ0hlbHZldGljYSBOZXVlJywgQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZjtcbiAgICBtYXJnaW46IC0ycHg7XG59XG5cbi5jYXJkLWNvbnRlbnQtbGlzdHtcbiAgJG1hdC1saXN0LWJhc2UtaGVpZ2h0OiAxOHB4O1xuICAkbWF0LWxpc3QtYXZhdGFyLWhlaWdodDogMjBweDtcbiAgLy8gc3BlYyByZXF1aXJlcyB0d28tIGFuZCB0aHJlZS1saW5lIGxpc3RzIGJlIHRhbGxlclxuICAkbWF0LWxpc3QtdHdvLWxpbmUtaGVpZ2h0OiAyMHB4O1xuICAkbWF0LWxpc3QtdGhyZWUtbGluZS1oZWlnaHQ6IDIwcHg7XG4gICRtYXQtbGlzdC1tdWx0aS1saW5lLXBhZGRpbmc6IDIwcHg7XG4gICRtYXQtbGlzdC1pY29uLXNpemU6IDEwcHg7XG59XG5cblxuLm1hdC1saXN0LWJhc2UgLm1hdC1saXN0LWl0ZW0ge1xuICBmb250LXNpemU6IDEzcHg7XG59XG5cblxuLmNhcmQtdGl0bGV7XG4gIGZvbnQtc2l6ZTogMjRweDtcbn1cblxuLmNhcmQtdGV4dHtcbiAgZm9udC1zaXplOiAxNHB4O1xufVxuXG4uY2FyZC1pdGVtLXJvd3tcbiBoZWlnaHQ6IDEwcHg7XG59XG5cbi5wcmVzcy1lbnRlci10ZXh0e1xuICBjb2xvcjogYmx1ZTtcbn1cblxuLm1pbmktYnV0dG9ue1xuICBtaW4td2lkdGg6IDE2cHg7XG4gIHBhZGRpbmc6IDAgMHB4O1xufVxuXG4uc3BhY2UtY2FyZHtcbiAgaGVpZ2h0OiAzcHg7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4uZHJvcC1hYm92ZSB7XG4gIGJvcmRlci10b3A6IDNweCBzb2xpZCB5ZWxsb3dncmVlbjtcbiAgYm9yZGVyLXRvcC13aWR0aDogNXB4O1xufVxuXG4uZHJvcC1iZWxvdyB7XG4gIGJvcmRlci1ib3R0b206IDNweCBzb2xpZCBncmVlbjtcbiAgYm9yZGVyLWJvdHRvbS13aWR0aDogNXB4O1xufVxuXG4uY2FyZC10b3Atcm93e1xuICBtaW4taGVpZ2h0OjQwcHg7XG4gIG1heC1oZWlnaHQ6IDQwcHg7XG4gIGZvbnQtc2l6ZTogMjVweDtcbiAgLypiYWNrZ3JvdW5kLWNvbG9yOiBwYWxldmlvbGV0cmVkOyovXG59XG4uY2FyZC1ib3R0b3Atcm93e1xuICBtaW4taGVpZ2h0OjYwcHg7XG4gIG1heC1oZWlnaHQ6IDYwcHg7XG4gIC8qYmFja2dyb3VuZC1jb2xvcjogcGFsZXZpb2xldHJlZDsqL1xufVxuLmNhcmQtcm93LTF7XG4gbWluLWhlaWdodDoyNXB4O1xuIG1heC1oZWlnaHQ6IDI1cHg7XG4gZm9udC1zaXplOiAyNXB4O1xuIGNvbG9yOm9yYW5nZTtcbiAvKmJhY2tncm91bmQtY29sb3I6IHBhbGV2aW9sZXRyZWQ7Ki9cbn1cbi5jYXJkLXJvdy0ye1xuICBtaW4taGVpZ2h0OjI1cHg7XG4gIG1heC1oZWlnaHQ6IDI1cHg7XG4gIGZvbnQtc2l6ZTogMjVweDtcbiAgZm9udC13ZWlnaHQ6IGJvbGRlcjtcbiAgLypiYWNrZ3JvdW5kLWNvbG9yOiByb3lhbGJsdWUgOyovXG59XG4uY2FyZC1yb3ctM3tcbiAgbWluLWhlaWdodDoyNXB4O1xuICBtYXgtaGVpZ2h0OiAyNXB4O1xuICBmb250LXNpemU6IDI1cHg7XG4gIGZvbnQtd2VpZ2h0OiBib2xkZXI7XG4gIC8qYmFja2dyb3VuZC1jb2xvcjogZ29sZGVucm9kIDsqL1xufVxuIl19 */"
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/card-component/card-component.component.ts":
-/*!**************************************************************************!*\
-  !*** ./src/app/task-pipeline/card-component/card-component.component.ts ***!
-  \**************************************************************************/
+/***/ "./src/app/modules/task-pipeline/card-component/card-component.component.ts":
+/*!**********************************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/card-component/card-component.component.ts ***!
+  \**********************************************************************************/
 /*! exports provided: CardComponentComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -6667,8 +6915,8 @@ module.exports = ".space-card {\n  /*\n    padding-top: 10px;\n    padding-botto
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CardComponentComponent", function() { return CardComponentComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _shared_status_pipeline_module_database__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/status-pipeline-module.database */ "./src/app/task-pipeline/shared/status-pipeline-module.database.ts");
-/* harmony import */ var _shared_card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/card */ "./src/app/task-pipeline/shared/card.ts");
+/* harmony import */ var _shared_status_pipeline_module_database__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/status-pipeline-module.database */ "./src/app/modules/task-pipeline/shared/status-pipeline-module.database.ts");
+/* harmony import */ var _shared_card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/card */ "./src/app/modules/task-pipeline/shared/card.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
@@ -6696,7 +6944,7 @@ var CardComponentComponent = /** @class */ (function () {
         var _this = this;
         this.board$ = this.boardSubject$; //this.database.getBoardObservable()
         this.board$.subscribe(function (board) {
-            console.log('ColumnComponent#ngOnInit board$.subscrive ' /*, JSON.stringify(board,null,'\t')*/);
+            // console.log('CardComponent#ngOnInit board$.subscrive '/*, JSON.stringify(board,null,'\t')*/)
             _this.board = board;
             _this.database = new _shared_status_pipeline_module_database__WEBPACK_IMPORTED_MODULE_1__["Database"](_this.boardSubject$, _this.board);
         });
@@ -6721,10 +6969,32 @@ var CardComponentComponent = /** @class */ (function () {
     CardComponentComponent.prototype.handleDragOver = function (event, node) {
         event.preventDefault();
         var sourceId = this.extractDragSourceId(event);
-        console.log('CardComponent#handleDragOver #sourceId ', sourceId);
+        // console.log('CardComponent#handleDragOver #sourceId '   , sourceId )
+        this.dragNodeState = this.getDragTargetState(event);
     };
     CardComponentComponent.prototype.handleDrop = function (event, card) {
         event.preventDefault();
+        // Handle drag area
+        this.dragNodeState = this.getDragTargetState(event);
+        console.log('Drop on card ', this.card.title, this.card.id, ' => ', this.dragNodeState, ' col/order ', this.card.columnId, '/', this.card.order);
+        //
+        // cards are ordered per column it belongs. Different Columns can have Cards with same order no.
+        // - get card onto which drag op is happening.
+        // - if marker is 'above' take card with -1 order number
+        // - increase order number for all cards starting insertion point
+        // - change columnId if required.
+        var targetCard = (this.dragNodeState === 'drag_above') ? this.database.getPreviousCardInSequence(this.card) : this.card;
+        // we having card bellow which we accomodating source Card
+        var srcCardId = this.extractDragSourceId(event);
+        var srcCard = this.board.cards.find(function (entry) { return entry.id === srcCardId; });
+        // moved card is getting that column id were drag target is found.
+        srcCard.columnId = targetCard.columnId;
+        var tatgetOrderPosition = targetCard.order;
+        this.database.promoteOrderFromCard(targetCard);
+        srcCard.order = tatgetOrderPosition;
+        // next on datasource + trigger event
+        this.database.updateDatasouce(); // next on datasource./
+        this.dragNodeState = '';
     };
     CardComponentComponent.prototype.handleDragEnd = function (event) {
     };
@@ -6761,6 +7031,26 @@ var CardComponentComponent = /** @class */ (function () {
         // dragOver strips only value but not key so thats our backdoor solution
         event.dataTransfer.setData("id=" + id, 'data'); // whatever data
     };
+    CardComponentComponent.prototype.getDragTargetState = function (event) {
+        var percentageX = event.offsetX / event.target.clientWidth;
+        var percentageY = event.offsetY / event.target.clientHeight;
+        this.dragStatus = "card = " + this.card.id + "  % = " + percentageY + " ";
+        if (percentageY < 0.5) {
+            return 'above';
+        }
+        else
+            return 'below';
+    };
+    CardComponentComponent.prototype.getProfile = function (card) {
+        return {
+            email: card.responsible_email,
+            first_name: card.responsible_name,
+            last_name: '',
+            bg_color: 'yellow',
+            fg_color: 'blue',
+            image: null
+        };
+    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('emptyItem'),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
@@ -6788,8 +7078,8 @@ var CardComponentComponent = /** @class */ (function () {
     CardComponentComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-card-component',
-            template: __webpack_require__(/*! ./card-component.component.html */ "./src/app/task-pipeline/card-component/card-component.component.html"),
-            styles: [__webpack_require__(/*! ./card-component.component.scss */ "./src/app/task-pipeline/card-component/card-component.component.scss")]
+            template: __webpack_require__(/*! ./card-component.component.html */ "./src/app/modules/task-pipeline/card-component/card-component.component.html"),
+            styles: [__webpack_require__(/*! ./card-component.component.scss */ "./src/app/modules/task-pipeline/card-component/card-component.component.scss")]
         }),
         __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"]])
     ], CardComponentComponent);
@@ -6800,32 +7090,32 @@ var CardComponentComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/column-component/column-component.component.css":
-/*!*******************************************************************************!*\
-  !*** ./src/app/task-pipeline/column-component/column-component.component.css ***!
-  \*******************************************************************************/
+/***/ "./src/app/modules/task-pipeline/column-component/column-component.component.css":
+/*!***************************************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/column-component/column-component.component.css ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n.drag-color1{\n  background-color: mediumvioletred;\n}\n.drag-color0{\n  background-color: white;\n}\n.column {\n\n  border: 3px solid gray; /* border around card */\n  background-color: #E2E4E6;\n  border-radius: 10px; /* rounded corners of card*/\n  width: 290px; /* width of card*/\n  margin-left: 10px;\n  box-sizing: border-box;\n  display: inline-block;\n  vertical-align: top;\n  white-space: nowrap;\n  padding: 15px 15px 15px 15px;\n}\n.column h4 {\n  color: #4d4d4d;\n  line-height: 100%;\n  margin-left: 10px;\n  margin-top: 8px;\n  font-weight: 700;\n  line-height: 18px;\n  font-size: 14px;\n  margin-bottom: 3px;\n  height: 18px;\n  width: 260px;\n  display: inline-block;\n  cursor: pointer;\n  cursor: hand;\n}\n.column-header {\n  cursor: pointer;\n  cursor: hand;\n  /*position:sticky;\n  top: 0; */\n  /* can make fixed column header but didnt work in association w horisontal scroll\n  position: fixed;\n  z-index: 1;\n  */\n}\n.column-header {\n \n  margin-left: 5px;\n  margin-top: 5px;\n  font-weight: 700;\n  border: none;\n  line-height: 18px;\n  padding: 10px 5px 10px 5px;\n  font-size: 28px;\n  border-radius: 3px;\n  margin-bottom: -1px;\n  width: calc(100% - 10px);\n  background-color: cornflowerblue \n}\n.add-card {\n  color: #999;\n  font-size: 14px;\n  line-height: 18px;\n  margin-top: 0;\n  padding: 8px 10px;\n  cursor: pointer;\n  transition-property: all;\n  transition-duration: 150ms;\n  transition-timing-function: ease;\n}\n.add-card:hover {\n  text-decoration: underline;\n  color: #666;\n  background-color: #ccc;\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px;\n}\n.add-card input {\n  margin-left: -5px;\n  line-height: 18px;\n  font-size: 14px;\n  border: none;\n  border-radius: 3px;\n  padding: 5px 5px 4px 5px;\n  width: calc(100% - 10px);\n}\nul.card-list {\n  padding: 31px 11px 32px 9px;\n  margin: -26px 0 -31px 0;\n}\nul.card-list > li {\n  list-style: none;\n}\n.col-heading-red{\n  background-color: red;\n}\n.col-heading-blue{\n  background-color: blue;\n}\n.col-heading-cyan{\n  background-color: red;\n}\n.col-heading-magenta{\n  background-color: magenta;\n}\n.col-heading-green{\n  background-color: green;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFzay1waXBlbGluZS9jb2x1bW4tY29tcG9uZW50L2NvbHVtbi1jb21wb25lbnQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7RUFDRSxpQ0FBaUM7QUFDbkM7QUFDQTtFQUNFLHVCQUF1QjtBQUN6QjtBQUlBOztFQUVFLHNCQUFzQixFQUFFLHVCQUF1QjtFQUMvQyx5QkFBeUI7RUFDekIsbUJBQW1CLEVBQUUsMkJBQTJCO0VBQ2hELFlBQVksRUFBRSxpQkFBaUI7RUFDL0IsaUJBQWlCO0VBQ2pCLHNCQUFzQjtFQUN0QixxQkFBcUI7RUFDckIsbUJBQW1CO0VBQ25CLG1CQUFtQjtFQUNuQiw0QkFBNEI7QUFDOUI7QUFDQTtFQUNFLGNBQWM7RUFDZCxpQkFBaUI7RUFDakIsaUJBQWlCO0VBQ2pCLGVBQWU7RUFDZixnQkFBZ0I7RUFDaEIsaUJBQWlCO0VBQ2pCLGVBQWU7RUFDZixrQkFBa0I7RUFDbEIsWUFBWTtFQUNaLFlBQVk7RUFDWixxQkFBcUI7RUFDckIsZUFBZTtFQUNmLFlBQVk7QUFDZDtBQUNBO0VBQ0UsZUFBZTtFQUNmLFlBQVk7RUFDWjtXQUNTO0VBQ1Q7OztHQUdDO0FBQ0g7QUFDQTs7RUFFRSxnQkFBZ0I7RUFDaEIsZUFBZTtFQUNmLGdCQUFnQjtFQUNoQixZQUFZO0VBQ1osaUJBQWlCO0VBQ2pCLDBCQUEwQjtFQUMxQixlQUFlO0VBQ2Ysa0JBQWtCO0VBQ2xCLG1CQUFtQjtFQUNuQix3QkFBd0I7RUFDeEI7QUFDRjtBQUNBO0VBQ0UsV0FBVztFQUNYLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsYUFBYTtFQUNiLGlCQUFpQjtFQUNqQixlQUFlO0VBQ2Ysd0JBQXdCO0VBQ3hCLDBCQUEwQjtFQUMxQixnQ0FBZ0M7QUFDbEM7QUFDQTtFQUNFLDBCQUEwQjtFQUMxQixXQUFXO0VBQ1gsc0JBQXNCO0VBQ3RCLDhCQUE4QjtFQUM5QiwrQkFBK0I7QUFDakM7QUFDQTtFQUNFLGlCQUFpQjtFQUNqQixpQkFBaUI7RUFDakIsZUFBZTtFQUNmLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIsd0JBQXdCO0VBQ3hCLHdCQUF3QjtBQUMxQjtBQUNBO0VBQ0UsMkJBQTJCO0VBQzNCLHVCQUF1QjtBQUN6QjtBQUNBO0VBQ0UsZ0JBQWdCO0FBQ2xCO0FBQ0E7RUFDRSxxQkFBcUI7QUFDdkI7QUFDQTtFQUNFLHNCQUFzQjtBQUN4QjtBQUNBO0VBQ0UscUJBQXFCO0FBQ3ZCO0FBQ0E7RUFDRSx5QkFBeUI7QUFDM0I7QUFDQTtFQUNFLHVCQUF1QjtBQUN6QiIsImZpbGUiOiJzcmMvYXBwL3Rhc2stcGlwZWxpbmUvY29sdW1uLWNvbXBvbmVudC9jb2x1bW4tY29tcG9uZW50LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5kcmFnLWNvbG9yMXtcbiAgYmFja2dyb3VuZC1jb2xvcjogbWVkaXVtdmlvbGV0cmVkO1xufVxuLmRyYWctY29sb3Iwe1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbn1cblxuXG5cbi5jb2x1bW4ge1xuXG4gIGJvcmRlcjogM3B4IHNvbGlkIGdyYXk7IC8qIGJvcmRlciBhcm91bmQgY2FyZCAqL1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRTJFNEU2O1xuICBib3JkZXItcmFkaXVzOiAxMHB4OyAvKiByb3VuZGVkIGNvcm5lcnMgb2YgY2FyZCovXG4gIHdpZHRoOiAyOTBweDsgLyogd2lkdGggb2YgY2FyZCovXG4gIG1hcmdpbi1sZWZ0OiAxMHB4O1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIHBhZGRpbmc6IDE1cHggMTVweCAxNXB4IDE1cHg7XG59XG4uY29sdW1uIGg0IHtcbiAgY29sb3I6ICM0ZDRkNGQ7XG4gIGxpbmUtaGVpZ2h0OiAxMDAlO1xuICBtYXJnaW4tbGVmdDogMTBweDtcbiAgbWFyZ2luLXRvcDogOHB4O1xuICBmb250LXdlaWdodDogNzAwO1xuICBsaW5lLWhlaWdodDogMThweDtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBtYXJnaW4tYm90dG9tOiAzcHg7XG4gIGhlaWdodDogMThweDtcbiAgd2lkdGg6IDI2MHB4O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgY3Vyc29yOiBoYW5kO1xufVxuLmNvbHVtbi1oZWFkZXIge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGN1cnNvcjogaGFuZDtcbiAgLypwb3NpdGlvbjpzdGlja3k7XG4gIHRvcDogMDsgKi9cbiAgLyogY2FuIG1ha2UgZml4ZWQgY29sdW1uIGhlYWRlciBidXQgZGlkbnQgd29yayBpbiBhc3NvY2lhdGlvbiB3IGhvcmlzb250YWwgc2Nyb2xsXG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgei1pbmRleDogMTtcbiAgKi9cbn1cbi5jb2x1bW4taGVhZGVyIHtcbiBcbiAgbWFyZ2luLWxlZnQ6IDVweDtcbiAgbWFyZ2luLXRvcDogNXB4O1xuICBmb250LXdlaWdodDogNzAwO1xuICBib3JkZXI6IG5vbmU7XG4gIGxpbmUtaGVpZ2h0OiAxOHB4O1xuICBwYWRkaW5nOiAxMHB4IDVweCAxMHB4IDVweDtcbiAgZm9udC1zaXplOiAyOHB4O1xuICBib3JkZXItcmFkaXVzOiAzcHg7XG4gIG1hcmdpbi1ib3R0b206IC0xcHg7XG4gIHdpZHRoOiBjYWxjKDEwMCUgLSAxMHB4KTtcbiAgYmFja2dyb3VuZC1jb2xvcjogY29ybmZsb3dlcmJsdWUgXG59XG4uYWRkLWNhcmQge1xuICBjb2xvcjogIzk5OTtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBsaW5lLWhlaWdodDogMThweDtcbiAgbWFyZ2luLXRvcDogMDtcbiAgcGFkZGluZzogOHB4IDEwcHg7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgdHJhbnNpdGlvbi1wcm9wZXJ0eTogYWxsO1xuICB0cmFuc2l0aW9uLWR1cmF0aW9uOiAxNTBtcztcbiAgdHJhbnNpdGlvbi10aW1pbmctZnVuY3Rpb246IGVhc2U7XG59XG4uYWRkLWNhcmQ6aG92ZXIge1xuICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTtcbiAgY29sb3I6ICM2NjY7XG4gIGJhY2tncm91bmQtY29sb3I6ICNjY2M7XG4gIGJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDNweDtcbiAgYm9yZGVyLWJvdHRvbS1yaWdodC1yYWRpdXM6IDNweDtcbn1cbi5hZGQtY2FyZCBpbnB1dCB7XG4gIG1hcmdpbi1sZWZ0OiAtNXB4O1xuICBsaW5lLWhlaWdodDogMThweDtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBib3JkZXI6IG5vbmU7XG4gIGJvcmRlci1yYWRpdXM6IDNweDtcbiAgcGFkZGluZzogNXB4IDVweCA0cHggNXB4O1xuICB3aWR0aDogY2FsYygxMDAlIC0gMTBweCk7XG59XG51bC5jYXJkLWxpc3Qge1xuICBwYWRkaW5nOiAzMXB4IDExcHggMzJweCA5cHg7XG4gIG1hcmdpbjogLTI2cHggMCAtMzFweCAwO1xufVxudWwuY2FyZC1saXN0ID4gbGkge1xuICBsaXN0LXN0eWxlOiBub25lO1xufVxuLmNvbC1oZWFkaW5nLXJlZHtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmVkO1xufVxuLmNvbC1oZWFkaW5nLWJsdWV7XG4gIGJhY2tncm91bmQtY29sb3I6IGJsdWU7XG59XG4uY29sLWhlYWRpbmctY3lhbntcbiAgYmFja2dyb3VuZC1jb2xvcjogcmVkO1xufVxuLmNvbC1oZWFkaW5nLW1hZ2VudGF7XG4gIGJhY2tncm91bmQtY29sb3I6IG1hZ2VudGE7XG59XG4uY29sLWhlYWRpbmctZ3JlZW57XG4gIGJhY2tncm91bmQtY29sb3I6IGdyZWVuO1xufVxuIl19 */"
+module.exports = "\n.drag-color1{\n  background-color: mediumvioletred;\n}\n.drag-color0{\n  background-color: white;\n}\n.column {\n\n  border: 3px solid gray; /* border around card */\n  background-color: #E2E4E6;\n  /* border-radius: 10px;  rounded corners of card */\n  width:  400px; /* !!! width of Column */\n  margin-left: 10px;\n  box-sizing: border-box;\n  display: inline-block;\n  vertical-align: top;\n  white-space: nowrap;\n  padding: 15px 15px 15px 15px;\n}\n.column h4 {\n  color: #4d4d4d;\n  line-height: 100%;\n  margin-left: 10px;\n  margin-top: 8px;\n  font-weight: 700;\n  line-height: 18px;\n  font-size: 14px;\n  margin-bottom: 3px;\n  height: 18px;\n  width: 260px;\n  display: inline-block;\n  cursor: pointer;\n  cursor: hand;\n}\n/* This outer which embeds inter is to make vertical alignement */\n.column-header-outer{\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height:100px;\n  background-color: #4F5B6B;\n}\n.column-header {\n  width:100%;\n  color: #FFFFF9;\n  height: 20px;\n  min-height: 20px;\n  border: none;\n  line-height: 18px;\n  padding-left: 15px; /* this is left offset for column text */\n  font-size: 18px;\n  border-radius: 3px;\n  margin: 0px 0px 0px 0px;\n  /* background-color: #4F5B6B; column header background color */\n}\n.add-card {\n  color: #999;\n  font-size: 14px;\n  line-height: 18px;\n  margin-top: 0;\n  padding: 8px 10px;\n  cursor: pointer;\n  transition-property: all;\n  transition-duration: 150ms;\n  transition-timing-function: ease;\n}\n.add-card:hover {\n  text-decoration: underline;\n  color: #666;\n  background-color: #ccc;\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px;\n}\n.add-card input {\n  margin-left: -5px;\n  line-height: 18px;\n  font-size: 14px;\n  border: none;\n  border-radius: 3px;\n  padding: 5px 5px 4px 5px;\n  width: calc(100% - 10px);\n}\nul.card-list {\n  padding: 31px 11px 32px 9px;\n  margin: -26px 0 -31px 0;\n}\nul.card-list > li {\n  list-style: none;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kdWxlcy90YXNrLXBpcGVsaW5lL2NvbHVtbi1jb21wb25lbnQvY29sdW1uLWNvbXBvbmVudC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtFQUNFLGlDQUFpQztBQUNuQztBQUNBO0VBQ0UsdUJBQXVCO0FBQ3pCO0FBSUE7O0VBRUUsc0JBQXNCLEVBQUUsdUJBQXVCO0VBQy9DLHlCQUF5QjtFQUN6QixrREFBa0Q7RUFDbEQsYUFBYSxFQUFFLHdCQUF3QjtFQUN2QyxpQkFBaUI7RUFDakIsc0JBQXNCO0VBQ3RCLHFCQUFxQjtFQUNyQixtQkFBbUI7RUFDbkIsbUJBQW1CO0VBQ25CLDRCQUE0QjtBQUM5QjtBQUNBO0VBQ0UsY0FBYztFQUNkLGlCQUFpQjtFQUNqQixpQkFBaUI7RUFDakIsZUFBZTtFQUNmLGdCQUFnQjtFQUNoQixpQkFBaUI7RUFDakIsZUFBZTtFQUNmLGtCQUFrQjtFQUNsQixZQUFZO0VBQ1osWUFBWTtFQUNaLHFCQUFxQjtFQUNyQixlQUFlO0VBQ2YsWUFBWTtBQUNkO0FBR0EsaUVBQWlFO0FBQ2pFO0VBQ0UsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQix1QkFBdUI7RUFDdkIsV0FBVztFQUNYLFlBQVk7RUFDWix5QkFBeUI7QUFDM0I7QUFHQTtFQUNFLFVBQVU7RUFDVixjQUFjO0VBQ2QsWUFBWTtFQUNaLGdCQUFnQjtFQUNoQixZQUFZO0VBQ1osaUJBQWlCO0VBQ2pCLGtCQUFrQixFQUFFLHdDQUF3QztFQUM1RCxlQUFlO0VBQ2Ysa0JBQWtCO0VBQ2xCLHVCQUF1QjtFQUN2Qiw4REFBOEQ7QUFDaEU7QUFDQTtFQUNFLFdBQVc7RUFDWCxlQUFlO0VBQ2YsaUJBQWlCO0VBQ2pCLGFBQWE7RUFDYixpQkFBaUI7RUFDakIsZUFBZTtFQUNmLHdCQUF3QjtFQUN4QiwwQkFBMEI7RUFDMUIsZ0NBQWdDO0FBQ2xDO0FBQ0E7RUFDRSwwQkFBMEI7RUFDMUIsV0FBVztFQUNYLHNCQUFzQjtFQUN0Qiw4QkFBOEI7RUFDOUIsK0JBQStCO0FBQ2pDO0FBQ0E7RUFDRSxpQkFBaUI7RUFDakIsaUJBQWlCO0VBQ2pCLGVBQWU7RUFDZixZQUFZO0VBQ1osa0JBQWtCO0VBQ2xCLHdCQUF3QjtFQUN4Qix3QkFBd0I7QUFDMUI7QUFDQTtFQUNFLDJCQUEyQjtFQUMzQix1QkFBdUI7QUFDekI7QUFDQTtFQUNFLGdCQUFnQjtBQUNsQiIsImZpbGUiOiJzcmMvYXBwL21vZHVsZXMvdGFzay1waXBlbGluZS9jb2x1bW4tY29tcG9uZW50L2NvbHVtbi1jb21wb25lbnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuLmRyYWctY29sb3Ixe1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBtZWRpdW12aW9sZXRyZWQ7XG59XG4uZHJhZy1jb2xvcjB7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xufVxuXG5cblxuLmNvbHVtbiB7XG5cbiAgYm9yZGVyOiAzcHggc29saWQgZ3JheTsgLyogYm9yZGVyIGFyb3VuZCBjYXJkICovXG4gIGJhY2tncm91bmQtY29sb3I6ICNFMkU0RTY7XG4gIC8qIGJvcmRlci1yYWRpdXM6IDEwcHg7ICByb3VuZGVkIGNvcm5lcnMgb2YgY2FyZCAqL1xuICB3aWR0aDogIDQwMHB4OyAvKiAhISEgd2lkdGggb2YgQ29sdW1uICovXG4gIG1hcmdpbi1sZWZ0OiAxMHB4O1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG4gIHBhZGRpbmc6IDE1cHggMTVweCAxNXB4IDE1cHg7XG59XG4uY29sdW1uIGg0IHtcbiAgY29sb3I6ICM0ZDRkNGQ7XG4gIGxpbmUtaGVpZ2h0OiAxMDAlO1xuICBtYXJnaW4tbGVmdDogMTBweDtcbiAgbWFyZ2luLXRvcDogOHB4O1xuICBmb250LXdlaWdodDogNzAwO1xuICBsaW5lLWhlaWdodDogMThweDtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBtYXJnaW4tYm90dG9tOiAzcHg7XG4gIGhlaWdodDogMThweDtcbiAgd2lkdGg6IDI2MHB4O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgY3Vyc29yOiBoYW5kO1xufVxuXG5cbi8qIFRoaXMgb3V0ZXIgd2hpY2ggZW1iZWRzIGludGVyIGlzIHRvIG1ha2UgdmVydGljYWwgYWxpZ25lbWVudCAqL1xuLmNvbHVtbi1oZWFkZXItb3V0ZXJ7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OjEwMHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNEY1QjZCO1xufVxuXG5cbi5jb2x1bW4taGVhZGVyIHtcbiAgd2lkdGg6MTAwJTtcbiAgY29sb3I6ICNGRkZGRjk7XG4gIGhlaWdodDogMjBweDtcbiAgbWluLWhlaWdodDogMjBweDtcbiAgYm9yZGVyOiBub25lO1xuICBsaW5lLWhlaWdodDogMThweDtcbiAgcGFkZGluZy1sZWZ0OiAxNXB4OyAvKiB0aGlzIGlzIGxlZnQgb2Zmc2V0IGZvciBjb2x1bW4gdGV4dCAqL1xuICBmb250LXNpemU6IDE4cHg7XG4gIGJvcmRlci1yYWRpdXM6IDNweDtcbiAgbWFyZ2luOiAwcHggMHB4IDBweCAwcHg7XG4gIC8qIGJhY2tncm91bmQtY29sb3I6ICM0RjVCNkI7IGNvbHVtbiBoZWFkZXIgYmFja2dyb3VuZCBjb2xvciAqL1xufVxuLmFkZC1jYXJkIHtcbiAgY29sb3I6ICM5OTk7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbGluZS1oZWlnaHQ6IDE4cHg7XG4gIG1hcmdpbi10b3A6IDA7XG4gIHBhZGRpbmc6IDhweCAxMHB4O1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHRyYW5zaXRpb24tcHJvcGVydHk6IGFsbDtcbiAgdHJhbnNpdGlvbi1kdXJhdGlvbjogMTUwbXM7XG4gIHRyYW5zaXRpb24tdGltaW5nLWZ1bmN0aW9uOiBlYXNlO1xufVxuLmFkZC1jYXJkOmhvdmVyIHtcbiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XG4gIGNvbG9yOiAjNjY2O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjY2NjO1xuICBib3JkZXItYm90dG9tLWxlZnQtcmFkaXVzOiAzcHg7XG4gIGJvcmRlci1ib3R0b20tcmlnaHQtcmFkaXVzOiAzcHg7XG59XG4uYWRkLWNhcmQgaW5wdXQge1xuICBtYXJnaW4tbGVmdDogLTVweDtcbiAgbGluZS1oZWlnaHQ6IDE4cHg7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgYm9yZGVyOiBub25lO1xuICBib3JkZXItcmFkaXVzOiAzcHg7XG4gIHBhZGRpbmc6IDVweCA1cHggNHB4IDVweDtcbiAgd2lkdGg6IGNhbGMoMTAwJSAtIDEwcHgpO1xufVxudWwuY2FyZC1saXN0IHtcbiAgcGFkZGluZzogMzFweCAxMXB4IDMycHggOXB4O1xuICBtYXJnaW46IC0yNnB4IDAgLTMxcHggMDtcbn1cbnVsLmNhcmQtbGlzdCA+IGxpIHtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbn1cblxuIl19 */"
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/column-component/column-component.component.html":
-/*!********************************************************************************!*\
-  !*** ./src/app/task-pipeline/column-component/column-component.component.html ***!
-  \********************************************************************************/
+/***/ "./src/app/modules/task-pipeline/column-component/column-component.component.html":
+/*!****************************************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/column-component/column-component.component.html ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div [ngClass]=\"dragClass\" class=\"column-container\">\n  <div *ngIf=\"board$ | async as board\"\ndroppable=\"true\"\n(dragstart)=\"handleDragStart($event,column)\"  (dragover)=\"handleDragOver($event,column)\" \n(drop)=\"handleDrop($event,column)\" (dragend)=\"handleDragEnd($event)\">\n\n  <!--h2 class=\"column-header\"> {{column.title}}</h2-->\n     <div>\n        <input [value]=\"column.title\" (input)=\"column.title = $event.target.value;\" (click)=\"onColumnClick($event)\"  class=\"column-header\" ngClass=\"col-heading-{{column.color}}\"/>\n        <button  (click)=\"onColumnButtonClick(column)\"  >[+card]</button>\n        <button  (click)=\"onColumnButtonClickRemove(column)\"  >[-column]</button>\n     </div>\n     <div class=\"card-list\" [attr.column-id]=\"column.id\">\n        <div *ngFor=\"let card of getCards(column.id,board)\">\n            <app-card-component\n                    [card]=\"card\"\n                    [boardSubject$]=\"boardSubject$\"\n                    [onCardClick]=\"onCardClick\"\n                    [onUpdateCard]=\"onUpdateCard\"\n                    [onDeleteCard]=\"onDeleteCard\">\n            </app-card-component>\n        </div>\n     </div>\n  </div>\n</div>\n"
+module.exports = "\n<div [ngClass]=\"dragClass\" class=\"column-container\">\n  <div *ngIf=\"board$ | async as board\">\n\n  <!--h2 class=\"column-header\"> {{column.title}}</h2-->\n      <div class=\"column-header-outer\">\n        <div class=\"column-header\">\n         {{column.title}}\n         <!--\n        <input [value]=\"column.title\" (input)=\"column.title = $event.target.value;\" (click)=\"onColumnClick($event)\"   >   />\n        <button  (click)=\"onColumnButtonClick(column)\"  >[+card]</button>\n        <button  (click)=\"onColumnButtonClickRemove(column)\"  >[-column]</button>\n         -->\n        </div>\n      </div>\n     <div class=\"card-list\" [attr.column-id]=\"column.id\">\n        <div *ngFor=\"let card of getCards(column.id,board) | sortCards\">\n            <app-card-component\n                    [card]=\"card\"\n                    [boardSubject$]=\"boardSubject$\"\n                    [onCardClick]=\"onCardClick\"\n                    [onUpdateCard]=\"onUpdateCard\"\n                    [onDeleteCard]=\"onDeleteCard\">\n            </app-card-component>\n        </div>\n     </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/column-component/column-component.component.ts":
-/*!******************************************************************************!*\
-  !*** ./src/app/task-pipeline/column-component/column-component.component.ts ***!
-  \******************************************************************************/
+/***/ "./src/app/modules/task-pipeline/column-component/column-component.component.ts":
+/*!**************************************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/column-component/column-component.component.ts ***!
+  \**************************************************************************************/
 /*! exports provided: ColumnComponentComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -6834,8 +7124,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ColumnComponentComponent", function() { return ColumnComponentComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _shared_status_pipeline_module_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/status-pipeline-module.database */ "./src/app/task-pipeline/shared/status-pipeline-module.database.ts");
-/* harmony import */ var _shared_column__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/column */ "./src/app/task-pipeline/shared/column.ts");
+/* harmony import */ var _shared_status_pipeline_module_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/status-pipeline-module.database */ "./src/app/modules/task-pipeline/shared/status-pipeline-module.database.ts");
+/* harmony import */ var _shared_column__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/column */ "./src/app/modules/task-pipeline/shared/column.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6870,7 +7160,7 @@ var ColumnComponentComponent = /** @class */ (function () {
         var _this = this;
         this.board$ = this.boardSubject$;
         this.board$.subscribe(function (board) {
-            console.log('ColumnComponent#ngOnInit board$.subscrive ' /*, JSON.stringify(board,null,'\t')*/);
+            // console.log('ColumnComponent#ngOnInit board$.subscribe '/*, JSON.stringify(board,null,'\t')*/)
             _this.board = board;
             _this.database = new _shared_status_pipeline_module_database__WEBPACK_IMPORTED_MODULE_2__["Database"](_this.boardSubject$, _this.board);
         });
@@ -6890,13 +7180,14 @@ var ColumnComponentComponent = /** @class */ (function () {
         // known behaviuor, dragOver discards data value.
         // therefore we cheat :)
         //
-        var sourceId = this.extractDragSourceId(event);
-        if (!sourceId)
-            console.log('********* Drag miss sourceId');
+        // const sourceId = this.extractDragSourceId(event)
+        // if(!sourceId)console.log('********* Drag miss sourceId')
         // console.log('CardComponent#handleDragOver #sourceId '   , sourceId )
-        if (!this.validateDropRulesWrapper(sourceId, this.column.id)) { // functionality from internal method
-            this.colorDragProtectedArea(node);
+        /*
+        if(!this.validateDropRulesWrapper(sourceId,this.column.id)) { // functionality from internal method
+          this.colorDragProtectedArea(node)
         }
+        */
     };
     ColumnComponentComponent.prototype.validateDropRulesWrapper = function (srcCardId, targetColumnId) {
         var srcCard = this.board.cards.find(function (entry) { return entry.id === srcCardId; });
@@ -6911,25 +7202,33 @@ var ColumnComponentComponent = /** @class */ (function () {
         return this.validateDropRules({ src: srcColumn, dst: targColumn, elem: srcCard });
     };
     ColumnComponentComponent.prototype.handleDrop = function (event, node) {
+        /*
         event.preventDefault();
         // const dragId = event.dataTransfer.getData('foo')
-        var dragId = this.extractDragSourceId(event);
-        console.log('ColumnComponent#handleDrop ', dragId, '->', node.id);
+        const dragId = this.extractDragSourceId(event)
+        console.log('ColumnComponent#handleDrop ',dragId,'->',node.id)
+    
         // external validator
-        if (this.validateDropRulesWrapper(dragId, node.id)) {
-            console.log('moving ...');
-            this.database.moveCard(dragId, node.id);
-            var movedCard_1 = this.board.cards.find(function (entry) { return entry.id === dragId; });
-            var fromColumn = this.board.columns.find(function (entry) { return entry.id === movedCard_1.columnId; });
-            var toColumn = this.board.columns.find(function (entry) { return entry.id === node.id; });
-            var statusChange = {
-                src: fromColumn,
-                dst: toColumn,
-                elem: movedCard_1
-            };
-            console.log('emitting statusChange: ', statusChange);
-            this.onTransition.emit(statusChange);
+    
+        if(this.validateDropRulesWrapper(dragId,node.id)){
+           console.log('moving ...')
+           this.database.moveCard(dragId, node.id)
+    
+           const movedCard =  this.board.cards.find(entry => entry.id === dragId);
+           const fromColumn = this.board.columns.find(entry => entry.id === movedCard.columnId);
+           const toColumn = this.board.columns.find(entry => entry.id === node.id);
+    
+    
+           const statusChange = {
+             src:fromColumn,
+             dst:toColumn,
+             elem:movedCard
+           } as IStatusChange;
+    
+           console.log('emitting statusChange: ', statusChange)
+           this.onTransition.emit(statusChange)
         }
+        */
     };
     ColumnComponentComponent.prototype.handleDragEnd = function (event) {
     };
@@ -6989,8 +7288,8 @@ var ColumnComponentComponent = /** @class */ (function () {
     ColumnComponentComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-column-component',
-            template: __webpack_require__(/*! ./column-component.component.html */ "./src/app/task-pipeline/column-component/column-component.component.html"),
-            styles: [__webpack_require__(/*! ./column-component.component.css */ "./src/app/task-pipeline/column-component/column-component.component.css")]
+            template: __webpack_require__(/*! ./column-component.component.html */ "./src/app/modules/task-pipeline/column-component/column-component.component.html"),
+            styles: [__webpack_require__(/*! ./column-component.component.css */ "./src/app/modules/task-pipeline/column-component/column-component.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], ColumnComponentComponent);
@@ -7001,10 +7300,58 @@ var ColumnComponentComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/shared/card.ts":
-/*!**********************************************!*\
-  !*** ./src/app/task-pipeline/shared/card.ts ***!
-  \**********************************************/
+/***/ "./src/app/modules/task-pipeline/shared/card-sort-pipe.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/shared/card-sort-pipe.ts ***!
+  \****************************************************************/
+/*! exports provided: CardsSortPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CardsSortPipe", function() { return CardsSortPipe; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var CardsSortPipe = /** @class */ (function () {
+    function CardsSortPipe() {
+    }
+    CardsSortPipe.prototype.transform = function (array) {
+        if (!Array.isArray(array)) {
+            return;
+        }
+        array.sort(function (a, b) {
+            if (a.order < b.order) {
+                return -1;
+            }
+            else if (a.order > b.order) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        });
+        return array;
+    };
+    CardsSortPipe = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({ name: "sortCards" })
+    ], CardsSortPipe);
+    return CardsSortPipe;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modules/task-pipeline/shared/card.ts":
+/*!******************************************************!*\
+  !*** ./src/app/modules/task-pipeline/shared/card.ts ***!
+  \******************************************************/
 /*! exports provided: Card */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7021,30 +7368,10 @@ var Card = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/shared/column.ts":
-/*!************************************************!*\
-  !*** ./src/app/task-pipeline/shared/column.ts ***!
-  \************************************************/
-/*! exports provided: Column */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Column", function() { return Column; });
-var Column = /** @class */ (function () {
-    function Column() {
-    }
-    return Column;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/task-pipeline/shared/sortby-pipe.ts":
-/*!*****************************************************!*\
-  !*** ./src/app/task-pipeline/shared/sortby-pipe.ts ***!
-  \*****************************************************/
+/***/ "./src/app/modules/task-pipeline/shared/column-sort-pipe.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/shared/column-sort-pipe.ts ***!
+  \******************************************************************/
 /*! exports provided: ColumnsSortPipe */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7063,7 +7390,6 @@ var ColumnsSortPipe = /** @class */ (function () {
     function ColumnsSortPipe() {
     }
     ColumnsSortPipe.prototype.transform = function (array) {
-        console.log('pipe-sorting');
         if (!Array.isArray(array)) {
             return;
         }
@@ -7090,21 +7416,41 @@ var ColumnsSortPipe = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/shared/status-pipeline-module.database.ts":
-/*!*************************************************************************!*\
-  !*** ./src/app/task-pipeline/shared/status-pipeline-module.database.ts ***!
-  \*************************************************************************/
+/***/ "./src/app/modules/task-pipeline/shared/column.ts":
+/*!********************************************************!*\
+  !*** ./src/app/modules/task-pipeline/shared/column.ts ***!
+  \********************************************************/
+/*! exports provided: Column */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Column", function() { return Column; });
+var Column = /** @class */ (function () {
+    function Column() {
+    }
+    return Column;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modules/task-pipeline/shared/status-pipeline-module.database.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/shared/status-pipeline-module.database.ts ***!
+  \*********************************************************************************/
 /*! exports provided: Database */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Database", function() { return Database; });
-/* harmony import */ var _card__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./card */ "./src/app/task-pipeline/shared/card.ts");
+/* harmony import */ var _card__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./card */ "./src/app/modules/task-pipeline/shared/card.ts");
 
 var Database = /** @class */ (function () {
     function Database(boardSubject$, board) {
-        console.log('Database# constructor{}');
+        // console.log('Database# constructor{}')
         this.boardSubject$ = boardSubject$;
         this.boardInternal = board;
     }
@@ -7177,6 +7523,36 @@ var Database = /** @class */ (function () {
             return v.toString(16);
         });
     };
+    /** Take card and renumber starting from this card */
+    Database.prototype.promoteOrderFromCard = function (card) {
+        this.boardInternal.cards
+            .filter(function (item) { return item.columnId == card.columnId && item.order >= card.order; })
+            .sort(function (a, b) { if (a.order < b.order)
+            return -1;
+        else if (a.order > b.order)
+            return 1;
+        else
+            return 0; })
+            .forEach(function (item) { return item.order = item.order + 10; });
+    };
+    /** return either previous card by sequence or same if such previous did not exsist.*/
+    Database.prototype.getPreviousCardInSequence = function (card) {
+        var cards = this.boardInternal.cards
+            .filter(function (item) { return item.columnId == card.columnId && item.order < card.order; })
+            .sort(function (a, b) { if (a.order < b.order)
+            return -1;
+        else if (a.order > b.order)
+            return 1;
+        else
+            return 0; });
+        if (cards.length > 0)
+            return cards[0];
+        else
+            return card;
+    };
+    Database.prototype.updateDatasouce = function () {
+        this.boardSubject$.next(this.boardInternal);
+    };
     return Database;
 }());
 
@@ -7184,10 +7560,10 @@ var Database = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/shared/status-pipeline-shared.ts":
-/*!****************************************************************!*\
-  !*** ./src/app/task-pipeline/shared/status-pipeline-shared.ts ***!
-  \****************************************************************/
+/***/ "./src/app/modules/task-pipeline/shared/status-pipeline-shared.ts":
+/*!************************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/shared/status-pipeline-shared.ts ***!
+  \************************************************************************/
 /*! exports provided: StatusPipelineShared */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7204,10 +7580,10 @@ var StatusPipelineShared = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/task-pipeline/task-pipeline.module.ts":
-/*!*******************************************************!*\
-  !*** ./src/app/task-pipeline/task-pipeline.module.ts ***!
-  \*******************************************************/
+/***/ "./src/app/modules/task-pipeline/task-pipeline.module.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/modules/task-pipeline/task-pipeline.module.ts ***!
+  \***************************************************************/
 /*! exports provided: TaskPipelineModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7216,21 +7592,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskPipelineModule", function() { return TaskPipelineModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _board_component_board_component_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./board-component/board-component.component */ "./src/app/task-pipeline/board-component/board-component.component.ts");
-/* harmony import */ var _card_component_card_component_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./card-component/card-component.component */ "./src/app/task-pipeline/card-component/card-component.component.ts");
-/* harmony import */ var _column_component_column_component_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./column-component/column-component.component */ "./src/app/task-pipeline/column-component/column-component.component.ts");
+/* harmony import */ var _board_component_board_component_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./board-component/board-component.component */ "./src/app/modules/task-pipeline/board-component/board-component.component.ts");
+/* harmony import */ var _card_component_card_component_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./card-component/card-component.component */ "./src/app/modules/task-pipeline/card-component/card-component.component.ts");
+/* harmony import */ var _column_component_column_component_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./column-component/column-component.component */ "./src/app/modules/task-pipeline/column-component/column-component.component.ts");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
-/* harmony import */ var _shared_sortby_pipe__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./shared/sortby-pipe */ "./src/app/task-pipeline/shared/sortby-pipe.ts");
+/* harmony import */ var _shared_column_sort_pipe__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./shared/column-sort-pipe */ "./src/app/modules/task-pipeline/shared/column-sort-pipe.ts");
+/* harmony import */ var _shared_card_sort_pipe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./shared/card-sort-pipe */ "./src/app/modules/task-pipeline/shared/card-sort-pipe.ts");
+/* harmony import */ var _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/sidenav */ "./node_modules/@angular/material/esm5/sidenav.es5.js");
+/* harmony import */ var _avatar_component_avatar_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../avatar/component/avatar.component */ "./src/app/modules/avatar/component/avatar.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -7252,7 +7634,8 @@ var TaskPipelineModule = /** @class */ (function () {
                 _board_component_board_component_component__WEBPACK_IMPORTED_MODULE_2__["BoardComponentComponent"],
                 _card_component_card_component_component__WEBPACK_IMPORTED_MODULE_3__["CardComponentComponent"],
                 _column_component_column_component_component__WEBPACK_IMPORTED_MODULE_4__["ColumnComponentComponent"],
-                _shared_sortby_pipe__WEBPACK_IMPORTED_MODULE_10__["ColumnsSortPipe"]
+                _shared_column_sort_pipe__WEBPACK_IMPORTED_MODULE_10__["ColumnsSortPipe"],
+                _shared_card_sort_pipe__WEBPACK_IMPORTED_MODULE_11__["CardsSortPipe"]
             ],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
@@ -7269,7 +7652,9 @@ var TaskPipelineModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatGridListModule"],
                 _angular_flex_layout__WEBPACK_IMPORTED_MODULE_9__["FlexLayoutModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatFormFieldModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"],
+                _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_12__["MatSidenavModule"],
+                _avatar_component_avatar_component__WEBPACK_IMPORTED_MODULE_13__["AvatarComponent"]
             ],
             exports: [
                 _board_component_board_component_component__WEBPACK_IMPORTED_MODULE_2__["BoardComponentComponent"],

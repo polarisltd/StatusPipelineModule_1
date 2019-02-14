@@ -7,6 +7,9 @@ import {Observable, Subject} from "rxjs";
 import {Board} from "../shared/board";
 import {IPipelineColumnElement} from "../shared/status-pipeline-module.interface";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {Profile} from "../../profile/component/profile.model";
+import {MatIconRegistry} from "@angular/material";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-card-component',
@@ -30,7 +33,23 @@ export class CardComponentComponent implements OnInit {
   dragNodeState: string;
   dragStatus : string;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer
+              ) {
+      this.matIconRegistry.addSvgIcon(
+          "task",
+          this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/task.svg")
+
+      );
+      this.matIconRegistry.addSvgIcon(
+          "project_room",
+          this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/project_room.svg")
+
+      );
+
+
+  }
 
   ngOnInit() {
         this.board$ = this.boardSubject$; //this.database.getBoardObservable()
@@ -156,5 +175,26 @@ getDragTargetState(event):string{
         return 'below';
 
 }
+
+
+getProfile(card:Card):Profile{
+
+  const profile =  {
+    email         : card.responsible_email,
+    first_name    : card.responsible_name,
+    last_name     : card.responsible_name,
+    bg_color      : 'blue',
+    fg_color      : 'white',
+    image         : null
+} as Profile;
+
+    return profile;
+}
+
+
+ clickAnything(){
+        console.log('you clicked a button!' )
+    }
+
 
 }

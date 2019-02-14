@@ -1,0 +1,47 @@
+<div *ngIf="profile && profile.email" class="avatar avatar-{{avatarSizeString}}">
+  <ng-template [ngIf]="this.avatarButtonCallback" [ngIfElse]="noActionAvatar" >
+    <button mat-fab (click)="avatarButtonCallback()" class="avatar-icon" [style.color]="profile.fg_color" [style.background-color]="profile.bg_color" [style.border-color]="profile.bg_color" [style.width.px]="avatarSizeNumber" [style.height.px]="avatarSizeNumber">
+    
+      <ng-template [ngIf]="profile.image" [ngIfElse]="nameLetters">
+        <img [src]="profile.image" />
+      </ng-template>
+
+      <ng-template #nameLetters>
+        <ng-template [ngIf]="profile.first_name" [ngIfElse]="avatarIcon">
+          {{profile.first_name.charAt(0).toUpperCase() + profile.last_name.charAt(0).toUpperCase()}}
+        </ng-template>
+      </ng-template>
+
+      <ng-template  #avatarIcon>
+        <mat-icon>person</mat-icon>
+      </ng-template>
+      
+    </button>
+  </ng-template>
+  
+  <ng-template #noActionAvatar>
+    <span class="avatar-icon mat-fab mat-elevation-z" [style.color]="profile.fg_color" [style.background-color]="profile.bg_color" [style.border-color]="profile.bg_color" [style.width.px]="avatarSizeNumber" [style.height.px]="avatarSizeNumber">
+      
+      <ng-template [ngIf]="profile.image" [ngIfElse]="nameLetters">
+        <img [src]="profile.image" />
+      </ng-template>
+
+      <ng-template #nameLetters>
+        <ng-template [ngIf]="profile.first_name" [ngIfElse]="avatarIcon">
+          {{profile.first_name.charAt(0).toUpperCase() + profile.last_name.charAt(0).toUpperCase()}}
+        </ng-template>
+      </ng-template>
+
+      <ng-template  #avatarIcon>
+        <mat-icon>person</mat-icon>
+      </ng-template>
+
+    </span>
+  </ng-template>
+  
+  
+  <span class="avatar-title" *ngIf="avatarShowTitle">{{profile.first_name ? profile.first_name + " " + profile.last_name : profile.email}}</span>
+
+</div>
+
+

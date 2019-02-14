@@ -3,7 +3,7 @@
 .card {
   background-color: #fff;   
   text-decoration: none;
-  padding: 5px;
+  padding-top: 0px;
   margin: 0.5px 0 0.5px 0;
   border-radius: 3px;
   color: #4d4d4d;
@@ -24,6 +24,12 @@
   transition-duration: 150ms;
   transition-timing-function: ease;
 }
+
+
+.card-left-color-marker-red{
+  border-left: solid red 8px;
+}
+
 
 .card:hover{
   background-color: #ddd;
@@ -93,34 +99,60 @@
 }
 
 .card-top-row{
-  min-height:40px;
-  max-height: 40px;
+  padding-top: 0px;
+  margin-top: 0px;
+  min-height:30px;
+  max-height: 30px;
   font-size: 25px;
+ /* border-width: 1px;
+  border-style: inset;*/
   /*background-color: palevioletred;*/
 }
 .card-bottop-row{
+  padding-top: 10px;
+  margin-top: 10px;
   min-height:60px;
   max-height: 60px;
   /*background-color: palevioletred;*/
 }
 .card-row-1{
- min-height:25px;
- max-height: 25px;
- font-size: 25px;
+ min-height:20px;
+ max-height: 20px;
+ font-size: 20px;
  color:orange;
  /*background-color: palevioletred;*/
 }
 .card-row-2{
-  min-height:25px;
-  max-height: 25px;
-  font-size: 25px;
+  min-height:20px;
+  max-height: 20px;
+  font-size: 20px;
   font-weight: bolder;
   /*background-color: royalblue ;*/
 }
 .card-row-3{
-  min-height:25px;
-  max-height: 25px;
-  font-size: 25px;
+  min-height:20px;
+  max-height: 20px;
+  font-size: 20px;
   font-weight: bolder;
   /*background-color: goldenrod ;*/
+}
+
+.svgIcon{
+  background-color: white;
+}
+
+.dvtx-svg-size{
+  font-size: 24px;
+  size: 24px;
+  height: 24px;
+  width: 24px;
+  min-height: 14px;
+  alignment-baseline: bottom;
+}
+
+
+.card-header-icon-spacing{
+  padding-left: 15px;
+  padding-right: 15px;
+
 }

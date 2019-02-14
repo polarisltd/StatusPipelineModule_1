@@ -5,12 +5,20 @@
   <!--h2 class="column-header"> {{column.title}}</h2-->
       <div class="column-header-outer">
         <div class="column-header">
-         {{column.title}}
-         <!--
-        <input [value]="column.title" (input)="column.title = $event.target.value;" (click)="onColumnClick($event)"   >   />
-        <button  (click)="onColumnButtonClick(column)"  >[+card]</button>
-        <button  (click)="onColumnButtonClickRemove(column)"  >[-column]</button>
-         -->
+         <div class="column-heading-row">
+             <div class="column-heading-left">
+                 {{column.title}}
+             </div>
+             <!--mat-icon matBadge="15" matBadgeColor="warn" ></mat-icon-->
+             <div [matBadge]="getCardCount()" matBadgeOverlap="false" class="column-heading-right" matBadgeSize="medium"></div>
+
+         </div>
+
+            <!--
+           <input [value]="column.title" (input)="column.title = $event.target.value;" (click)="onColumnClick($event)"   >   />
+           <button  (click)="onColumnButtonClick(column)"  >[+card]</button>
+           <button  (click)="onColumnButtonClickRemove(column)"  >[-column]</button>
+            -->
         </div>
       </div>
      <div class="card-list" [attr.column-id]="column.id">

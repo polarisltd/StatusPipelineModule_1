@@ -14,11 +14,15 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
+  MatBadgeModule
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {ColumnsSortPipe} from "./shared/column-sort-pipe";
 import {CardsSortPipe} from "./shared/card-sort-pipe";
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {AvatarModule} from "../avatar/avatar.module";
+import {HttpClientModule} from "@angular/common/http";
+
 
 @NgModule({
   declarations: [
@@ -41,10 +45,13 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     MatListModule,
     MatCheckboxModule,
     MatGridListModule,
+    MatBadgeModule,
     FlexLayoutModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    HttpClientModule,
+    AvatarModule
   ],
   exports: [
     BoardComponentComponent,

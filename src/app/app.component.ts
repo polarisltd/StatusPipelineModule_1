@@ -1,9 +1,13 @@
 import {Component, EventEmitter, OnInit} from '@angular/core';
-import {Board} from "./task-pipeline/shared/board";
 import {Subject} from "rxjs";
 import {DataSource} from "./DataSource";
-import {IPipelineColumn, IPipelineColumnElement,IStatusChange
-} from "./task-pipeline/shared/status-pipeline-module.interface";
+import {Board} from "./modules/task-pipeline/shared/board";
+import {
+  IPipelineColumn,
+  IPipelineColumnElement,
+  IStatusChange
+} from "./modules/task-pipeline/shared/status-pipeline-module.interface";
+
 
 
 

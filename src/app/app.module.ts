@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import {TaskPipelineModule} from "./task-pipeline/task-pipeline.module";
 import { CommonModule } from '@angular/common';
+import {TaskPipelineModule} from "./modules/task-pipeline/task-pipeline.module";
 
 
 @NgModule({

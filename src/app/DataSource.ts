@@ -1,6 +1,6 @@
-import {Board} from "./task-pipeline/shared/board";
 import {BehaviorSubject, Subject} from "rxjs";
 import {OnInit} from "@angular/core";
+import {Board} from "./modules/task-pipeline/shared/board";
 
 export class DataSource  {
 
@@ -66,7 +66,9 @@ export class DataSource  {
                 "boardId": "000-000",
                 "order": 1,
                 "columnId": "001-001",
-                "due_date":"2019-02-01T10:34:45.310+01:00"
+                "due_date":"2019-02-01T10:34:45.310+01:00",
+                "responsible_email":"aaa@bbb.com",
+                "responsible_name":"aaaaa"
             },
             {
                 "id": "002-002",
@@ -75,7 +77,9 @@ export class DataSource  {
                 "boardId": "000-000",
                 "order": 2,
                 "columnId": "001-001",
-                "due_date":"2019-02-01T10:34:45.310+01:00"
+                "due_date":"2019-02-01T10:34:45.310+01:00",
+                "responsible_email":"aaa@bbb.com",
+                "responsible_name":"aaaaa"
             },
             {
                 "id": "002-003",
@@ -84,7 +88,9 @@ export class DataSource  {
                 "boardId": "000-000",
                 "order": 1,
                 "columnId": "001-002",
-                "due_date":"2019-02-01T10:34:45.310+01:00"
+                "due_date":"2019-02-01T10:34:45.310+01:00",
+                "responsible_email":"aaa@bbb.com",
+                "responsible_name":"aaaaa"
             },
             {
                 "id": "002-004",
@@ -93,7 +99,9 @@ export class DataSource  {
                 "boardId": "000-000",
                 "order": 1,
                 "columnId": "001-003",
-                "due_date":"2019-02-01T10:34:45.310+01:00"
+                "due_date":"2019-02-01T10:34:45.310+01:00",
+                "responsible_email":"aaa@bbb.com",
+                "responsible_name":"aaaaa"
             },
             {
                 "id": "002-005",
@@ -102,7 +110,9 @@ export class DataSource  {
                 "boardId": "000-000",
                 "order": 1,
                 "columnId": "001-004",
-                "due_date":"2019-02-01T10:34:45.310+01:00"
+                "due_date":"2019-02-01T10:34:45.310+01:00",
+                "responsible_email":"aaa@bbb.com",
+                "responsible_name":"aaaaa"
             }
             ,
             {
@@ -112,7 +122,9 @@ export class DataSource  {
                 "boardId": "000-000",
                 "order": 2,
                 "columnId": "001-002",
-                "due_date":"2019-02-01T10:34:45.310+01:00"
+                "due_date":"2019-02-01T10:34:45.310+01:00",
+                "responsible_email":"aaa@bbb.com",
+                "responsible_name":"aaaaa"
             }
             ,
             {
@@ -122,7 +134,9 @@ export class DataSource  {
                 "boardId": "000-000",
                 "order": 3,
                 "columnId": "001-002",
-                "due_date":"2019-02-01T10:34:45.310+01:00"
+                "due_date":"2019-02-01T10:34:45.310+01:00",
+                "responsible_email":"aaa@bbb.com",
+                "responsible_name":"aaaaa"
             }
         ]
     } as Board;
