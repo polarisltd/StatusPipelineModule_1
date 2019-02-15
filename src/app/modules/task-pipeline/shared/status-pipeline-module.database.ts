@@ -156,4 +156,8 @@ export class Database {
     this.boardSubject$.next(this.boardInternal);
   }
 
+  getCardCountPerColumn(columnId:string):number{
+    return this.boardInternal.cards.filter(item => item.columnId == columnId).length
+  }
+
 }

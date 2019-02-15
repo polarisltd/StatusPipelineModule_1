@@ -39,7 +39,7 @@ export class ColumnComponentComponent implements OnInit {
   inTimer:boolean = false;
 
   getCardCount():number{
-    return 13;
+    return this.database.getCardCountPerColumn(this.column.id);
   }
 
   constructor( ) {

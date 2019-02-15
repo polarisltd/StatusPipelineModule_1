@@ -26,8 +26,9 @@
 }
 
 
-.card-left-color-marker-red{
-  border-left: solid red 8px;
+.card-left-color-marker{
+  border-left-style: solid;
+  border-left-width: 8px;
 }
 
 
@@ -89,12 +90,12 @@
 }
 
 .drop-above {
-  border-top: 3px solid yellowgreen;
+  border-top: 10px solid yellowgreen;
   border-top-width: 5px;
 }
 
 .drop-below {
-  border-bottom: 3px solid green;
+  border-bottom: 10px solid green;
   border-bottom-width: 5px;
 }
 

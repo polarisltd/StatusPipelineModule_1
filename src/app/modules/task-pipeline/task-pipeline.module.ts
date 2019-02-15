@@ -14,7 +14,7 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatBadgeModule
+  MatBadgeModule, MatDialogModule
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {ColumnsSortPipe} from "./shared/column-sort-pipe";
@@ -22,6 +22,8 @@ import {CardsSortPipe} from "./shared/card-sort-pipe";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {AvatarModule} from "../avatar/avatar.module";
 import {HttpClientModule} from "@angular/common/http";
+import {DialogConfirmComponent} from "./dialog-confirm-component/dialog-confirm.component";
+import {DialogEditCardComponent} from "./dialog-edit-card-component/dialog-edit-card.component";
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import {HttpClientModule} from "@angular/common/http";
     BoardComponentComponent,
     CardComponentComponent,
     ColumnComponentComponent,
+    DialogConfirmComponent,
+    DialogEditCardComponent,
     ColumnsSortPipe,
     CardsSortPipe
   ],
@@ -37,6 +41,7 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatDialogModule,
     MatMenuModule,
     MatButtonModule,
     MatCardModule,
@@ -56,9 +61,14 @@ import {HttpClientModule} from "@angular/common/http";
   exports: [
     BoardComponentComponent,
     CardComponentComponent,
-    ColumnComponentComponent
+    ColumnComponentComponent,
+    DialogConfirmComponent,
+    DialogEditCardComponent
   ],
   providers: [
-  ]
+  ],
+  entryComponents: [
+      DialogConfirmComponent,
+      DialogEditCardComponent]
 })
 export class TaskPipelineModule { }

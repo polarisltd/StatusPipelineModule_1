@@ -5,11 +5,13 @@ import {Database} from "../shared/status-pipeline-module.database";
 import {Card} from "../shared/card";
 import {Observable, Subject} from "rxjs";
 import {Board} from "../shared/board";
-import {IPipelineColumnElement} from "../shared/status-pipeline-module.interface";
+import {IPipelineColumnElement, IStatusChange} from "../shared/status-pipeline-module.interface";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Profile} from "../../profile/component/profile.model";
-import {MatIconRegistry} from "@angular/material";
+import {MatDialog, MatIconRegistry} from "@angular/material";
 import {DomSanitizer} from "@angular/platform-browser";
+import {DialogConfirmComponent} from "../dialog-confirm-component/dialog-confirm.component";
+import {DialogEditCardComponent} from "../dialog-edit-card-component/dialog-edit-card.component";
 
 @Component({
   selector: 'app-card-component',
@@ -33,9 +35,13 @@ export class CardComponentComponent implements OnInit {
   dragNodeState: string;
   dragStatus : string;
 
+  field1: string;
+  field2: string;
+
   constructor(private fb: FormBuilder,
               private matIconRegistry: MatIconRegistry,
-              private domSanitizer: DomSanitizer
+              private domSanitizer: DomSanitizer,
+              private dialog: MatDialog
               ) {
       this.matIconRegistry.addSvgIcon(
           "task",
@@ -139,7 +145,7 @@ clickCardEditButton(card){
 
 clickOnCard(card){
     console.log('CardComponent#clickOnCard' , card.id)
-    this.onCardClick.emit(this.database.getCard(card.id))
+    // this.onCardClick.emit(this.database.getCard(card.id))
 }
 
 clickExitUpdate() {
@@ -192,9 +198,52 @@ getProfile(card:Card):Profile{
 }
 
 
- clickAnything(){
-        console.log('you clicked a button!' )
+    clickBtnMessage(){
+        console.log('you clicked a button! - openDialog' )
+        this.openDialog()
     }
+
+    clickBtnInfo(){
+        console.log('you clicked a button! - openDialogEditCard' )
+        this.openDialogEditCard()
+    }
+    clickBtnFavorite(){
+        console.log('you clicked a button!' )
+        this.openDialogEditCard()
+    }
+    clickBtnRightArrow(){
+        console.log('you clicked a button!' )
+        this.openDialogEditCard()
+    }
+
+
+    openDialog(): void {
+        console.log('open dialog')
+        let dialogRef = this.dialog.open(DialogConfirmComponent, {
+            width: '250px',
+            data: {name: this.field1, animal: this.field2}
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+            this.field2 = result;
+        });
+    }
+
+    openDialogEditCard(): void {
+        console.log('open dialog')
+        let dialogRef = this.dialog.open(DialogEditCardComponent, {
+            width: '250px',
+            data: {name: this.field1, animal: this.field2}
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+            this.field2 = result;
+        });
+    }
+
+
 
 
 }

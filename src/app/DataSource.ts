@@ -68,7 +68,9 @@ export class DataSource  {
                 "columnId": "001-001",
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
-                "responsible_name":"aaaaa"
+                "responsible_name":"aaaaa",
+                "color":"#996680"
+
             },
             {
                 "id": "002-002",
@@ -79,7 +81,8 @@ export class DataSource  {
                 "columnId": "001-001",
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
-                "responsible_name":"aaaaa"
+                "responsible_name":"aaaaa",
+                "color":"#6693c4"
             },
             {
                 "id": "002-003",
@@ -90,7 +93,8 @@ export class DataSource  {
                 "columnId": "001-002",
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
-                "responsible_name":"aaaaa"
+                "responsible_name":"aaaaa",
+                "color":"#6693c4"
             },
             {
                 "id": "002-004",
@@ -101,7 +105,8 @@ export class DataSource  {
                 "columnId": "001-003",
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
-                "responsible_name":"aaaaa"
+                "responsible_name":"aaaaa",
+                "color":"#996680"
             },
             {
                 "id": "002-005",
@@ -112,7 +117,8 @@ export class DataSource  {
                 "columnId": "001-004",
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
-                "responsible_name":"aaaaa"
+                "responsible_name":"aaaaa",
+                "color":"#996680"
             }
             ,
             {
@@ -124,7 +130,8 @@ export class DataSource  {
                 "columnId": "001-002",
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
-                "responsible_name":"aaaaa"
+                "responsible_name":"aaaaa",
+                "color":"#996680"
             }
             ,
             {
@@ -136,7 +143,8 @@ export class DataSource  {
                 "columnId": "001-002",
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
-                "responsible_name":"aaaaa"
+                "responsible_name":"aaaaa",
+                "color":"#F2C405"
             }
         ]
     } as Board;
