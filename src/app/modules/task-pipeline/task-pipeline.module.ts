@@ -14,7 +14,7 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatBadgeModule, MatDialogModule
+  MatBadgeModule, MatDialogModule, MatSliderModule
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {ColumnsSortPipe} from "./shared/column-sort-pipe";
@@ -56,6 +56,8 @@ import {DialogEditCardComponent} from "./dialog-edit-card-component/dialog-edit-
     ReactiveFormsModule,
     MatSidenavModule,
     HttpClientModule,
+    MatSliderModule,
+    MatCheckboxModule,
     AvatarModule
   ],
   exports: [

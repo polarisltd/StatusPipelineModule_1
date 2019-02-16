@@ -217,7 +217,7 @@ getProfile(card:Card):Profile{
 
     clickBtnInfo(){
         console.log('you clicked a button! - openDialogEditCard' )
-        this.openDialogEditCard()
+        //this.openDialogEditCard()
     }
 
     clickBtnFavorite(){
@@ -235,8 +235,15 @@ getProfile(card:Card):Profile{
 
     clickBtnRightArrow(){
         console.log('you clicked a button!' )
-        this.openDialogEditCard()
+        //this.openDialogEditCard()
     }
+
+    clickBtnUpdateCard(mode:string){
+        console.log('insert/edit button clicked!')
+        const card = (mode==='add')?this.database.addCardRefColumn(this.card.columnId):this.card
+        this.openDialogEditCard(card)
+    }
+
 
 
     openDialog(promptText: string,action: (input) => void): void {
@@ -255,16 +262,19 @@ getProfile(card:Card):Profile{
         });
     }
 
-    openDialogEditCard(): void {
+    openDialogEditCard(card:Card): void {
         console.log('open dialog')
+        const dialogData = {card:card}
         let dialogRef = this.dialog.open(DialogEditCardComponent, {
-            width: '250px',
-            data: {name: this.field1, animal: this.field2}
+            width: '350px',
+            height: '600px',
+            data: dialogData
         });
 
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
-            this.field2 = result;
+            // we need updateCard (remove old/insert new)
+            this.database.updateCard(dialogData.card)
         });
     }
 

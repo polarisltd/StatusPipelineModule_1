@@ -67,6 +67,25 @@ export class Database {
     return newCard;
   }
 
+
+  updateCard(newImage:Card){
+
+   const oldImage: Card = this.boardInternal.cards.find(c => c.id === newImage.id)
+   const oldCardIdx =  this.boardInternal.cards.indexOf(oldImage)
+   if(oldCardIdx>=0)  {
+     console.log('Database#updating card',newImage)
+     this.boardInternal.cards.splice(oldCardIdx,1,newImage)
+     this.boardSubject$.next(this.boardInternal);
+   }
+  }
+
+
+
+
+
+
+
+
   addCardRefColumn(columnId: string): Card  {
     const c: Column = this.boardInternal.columns.find(c => c.id === columnId)
     const newCard = new Card()

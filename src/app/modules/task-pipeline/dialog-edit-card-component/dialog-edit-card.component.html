@@ -1,11 +1,45 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<h1 mat-dialog-title>Edit Card [{{data.card.id}}]</h1>
 <div mat-dialog-content>
-  <p>Edit Card Action</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.animal">
-  </mat-form-field>
+  <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput  placeholder="Title" formControlName="title">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput  placeholder="Content" formControlName="content" cdkTextareaAutosize></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput  placeholder="Status" formControlName="status" >
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput  placeholder="Description" formControlName="description" >
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput  placeholder="Priority" formControlName="priority" >
+    </mat-form-field>
+    <mat-checkbox  placeholder="Favorite" formControlName="favorite"></mat-checkbox>
+    <mat-form-field>
+      <input matInput type="color"  placeholder="Color" formControlName="color" >
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput  placeholder="Responsible_name" formControlName="responsible_name" >
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput  placeholder="Responsible_email" formControlName="responsible_email" >
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput  type="date" placeholder="Pre_due_date" formControlName="pre_due_date" >
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput  type="date" placeholder="Due_date" formControlName="due_date" >
+    </mat-form-field>
+    <div mat-dialog-actions>
+    <button type="submit" class="btn btn-primary" cdkFocusInitial>Submit</button>
+    <button type="reset" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
-</div>
+
+
+
+

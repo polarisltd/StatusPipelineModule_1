@@ -31,7 +31,8 @@
 				<mat-icon (click)="clickBtnInfo()"  class="card-header-icon-spacing">info</mat-icon>
 
 				<mat-icon *ngIf="card.favorite" (click)="clickBtnFavorite()"  class="card-header-icon-spacing">star_rate</mat-icon>
-
+				<mat-icon (click)="clickBtnUpdateCard('add')" class="card-header-icon-spacing">library_add</mat-icon>
+				<mat-icon (click)="clickBtnUpdateCard('edit')" class="card-header-icon-spacing">edit</mat-icon>
 				||<mat-icon (click)="clickBtnRightArrow()"  class="card-header-icon-spacing">arrow_forward</mat-icon>
 			</mat-list-item>
 		</mat-list>
