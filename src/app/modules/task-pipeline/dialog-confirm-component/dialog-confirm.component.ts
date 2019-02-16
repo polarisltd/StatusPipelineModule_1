@@ -10,9 +10,13 @@ export class DialogConfirmComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DialogConfirmComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+    console.log('=>dialog data ',data)
+  }
 
-  onNoClick(): void {
+  onClick(response:number): void {
+    console.log('<= Response is : ',response)
+    this.data.response = response;
     this.dialogRef.close();
   }
 

@@ -13,6 +13,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 import {DialogConfirmComponent} from "../dialog-confirm-component/dialog-confirm.component";
 import {DialogEditCardComponent} from "../dialog-edit-card-component/dialog-edit-card.component";
 
+
 @Component({
   selector: 'app-card-component',
   templateUrl: './card-component.component.html',
@@ -43,14 +44,17 @@ export class CardComponentComponent implements OnInit {
               private domSanitizer: DomSanitizer,
               private dialog: MatDialog
               ) {
+
       this.matIconRegistry.addSvgIcon(
           "task",
           this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/task.svg")
-
+          // this.domSanitizer.bypassSecurityTrustHtml(svg1) // alternative not working for me.
       );
       this.matIconRegistry.addSvgIcon(
           "project_room",
+          //
           this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/project_room.svg")
+          // this.domSanitizer.bypassSecurityTrustHtml(svg1)
 
       );
 
@@ -200,33 +204,54 @@ getProfile(card:Card):Profile{
 
     clickBtnMessage(){
         console.log('you clicked a button! - openDialog' )
-        this.openDialog()
+        this.openDialog('Are you sure to remove card from Favorites?',
+            (result) => {
+                if(result ===1){
+                    console.log('confirmed')
+                }
+            }
+
+
+            )
     }
 
     clickBtnInfo(){
         console.log('you clicked a button! - openDialogEditCard' )
         this.openDialogEditCard()
     }
+
     clickBtnFavorite(){
         console.log('you clicked a button!' )
-        this.openDialogEditCard()
+        this.openDialog('Are you sure to remove this card from Favorites?',
+            (result) => {
+                if(result ===1){
+                    console.log('removing favorite! ',this.card.id)
+                    this.card.favorite = false;
+                    this.database.updateDatasouce();
+                }
+             }
+        )
     }
+
     clickBtnRightArrow(){
         console.log('you clicked a button!' )
         this.openDialogEditCard()
     }
 
 
-    openDialog(): void {
+    openDialog(promptText: string,action: (input) => void): void {
         console.log('open dialog')
+        const dialogData = {message: promptText,response:0}
         let dialogRef = this.dialog.open(DialogConfirmComponent, {
             width: '250px',
-            data: {name: this.field1, animal: this.field2}
+            height: '200px',
+            data: dialogData
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-            this.field2 = result;
+            console.log('Dialog was closed, result: ',result,'=>', dialogData.response);
+            action(dialogData.response)
+
         });
     }
 

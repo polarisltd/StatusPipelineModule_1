@@ -153,6 +153,7 @@ export class Database {
   }
 
   updateDatasouce(){
+    console.log('boardSubject$.next')
     this.boardSubject$.next(this.boardInternal);
   }
 

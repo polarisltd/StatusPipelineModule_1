@@ -69,7 +69,8 @@ export class DataSource  {
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
                 "responsible_name":"aaaaa",
-                "color":"#996680"
+                "color":"#996680",
+                "favorite":false
 
             },
             {
@@ -82,7 +83,8 @@ export class DataSource  {
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
                 "responsible_name":"aaaaa",
-                "color":"#6693c4"
+                "color":"#6693c4",
+                "favorite":true
             },
             {
                 "id": "002-003",
@@ -94,7 +96,8 @@ export class DataSource  {
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
                 "responsible_name":"aaaaa",
-                "color":"#6693c4"
+                "color":"#6693c4",
+                "favorite":false
             },
             {
                 "id": "002-004",
@@ -106,7 +109,8 @@ export class DataSource  {
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
                 "responsible_name":"aaaaa",
-                "color":"#996680"
+                "color":"#996680",
+                "favorite":true
             },
             {
                 "id": "002-005",
@@ -118,7 +122,8 @@ export class DataSource  {
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
                 "responsible_name":"aaaaa",
-                "color":"#996680"
+                "color":"#996680",
+                "favorite":true
             }
             ,
             {
@@ -131,7 +136,8 @@ export class DataSource  {
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
                 "responsible_name":"aaaaa",
-                "color":"#996680"
+                "color":"#996680",
+                "favorite":false
             }
             ,
             {
@@ -144,7 +150,8 @@ export class DataSource  {
                 "due_date":"2019-02-01T10:34:45.310+01:00",
                 "responsible_email":"aaa@bbb.com",
                 "responsible_name":"aaaaa",
-                "color":"#F2C405"
+                "color":"#F2C405",
+                "favorite":false
             }
         ]
     } as Board;
