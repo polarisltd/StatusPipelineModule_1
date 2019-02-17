@@ -266,7 +266,7 @@ getProfile(card:Card):Profile{
 
     openDialogEditCard(card:Card): void {
         console.log('open dialog')
-        const dialogData = {card:card}
+        const dialogData = {card:card,response:false}
         let dialogRef = this.dialog.open(DialogEditCardComponent, {
             width: '350px',
             height: '600px',
@@ -274,9 +274,11 @@ getProfile(card:Card):Profile{
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-            // we need updateCard (remove old/insert new)
-            this.database.updateCard(dialogData.card)
+            console.log('The dialog was closed, submit = ',dialogData.response);
+            if(dialogData.response){
+              // we need updateCard (remove old/insert new)
+              this.database.updateCard(dialogData.card)
+            }
         });
     }
 

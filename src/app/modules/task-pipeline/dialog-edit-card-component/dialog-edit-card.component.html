@@ -1,34 +1,32 @@
 <h1 mat-dialog-title>Edit Card [{{data.card.id}}]</h1>
 <div mat-dialog-content>
-  <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+  <form  (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <input matInput  placeholder="Title" formControlName="title">
+      <input matInput  placeholder="Title" name="title" [(ngModel)]="data.card.email" #title="ngModel" required title>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput  placeholder="Content" formControlName="content" cdkTextareaAutosize></textarea>
+      <textarea matInput  placeholder="Content" name="content" [(ngModel)]="data.card.content" cdkTextareaAutosize  #content="ngModel" required content ></textarea>
     </mat-form-field>
     <mat-form-field>
-      <input matInput  placeholder="Description" formControlName="description" >
+      <input matInput  placeholder="Description" name="description" [(ngModel)]="data.card.description" #description="ngModel" required description >
     </mat-form-field>
-
-     <mat-form-field>
-      <input matInput  placeholder="Priority" formControlName="priority" >
-    </mat-form-field>
-    <mat-checkbox  placeholder="Favorite" formControlName="favorite"></mat-checkbox>
+    <br>
+    <mat-checkbox  placeholder="Favorite" name="favorite" [(ngModel)]="data.card.favorite"></mat-checkbox>
+    <br>
     <mat-form-field>
-      <input matInput type="color"  placeholder="Color" formControlName="color" >
+      <input matInput type="color" placeholder="Color"  name="color" [(ngModel)]="data.card.color" >
     </mat-form-field>
     <mat-form-field>
-      <input matInput  placeholder="Responsible_name" formControlName="responsible_name" >
+      <input matInput  placeholder="Responsible_name"  name="responsible_name" [(ngModel)]="data.card.responsible_name" >
     </mat-form-field>
     <mat-form-field>
-      <input matInput  placeholder="Responsible_email" formControlName="responsible_email" >
+      <input matInput  placeholder="Responsible_email" name="responsible_email" [(ngModel)]="data.card.responsible_email" >
     </mat-form-field>
     <mat-form-field>
-      <input matInput  type="date" placeholder="Pre_due_date" formControlName="pre_due_date" >
+      <input matInput  type="date" placeholder="Pre_due_date" name="pre_due_date" [(ngModel)]="data.card.pre_due_date" >
     </mat-form-field>
     <mat-form-field>
-      <input matInput  type="date" placeholder="Due_date" formControlName="due_date" >
+      <input matInput  type="date" placeholder="Due_date" name="due_date" [(ngModel)]="data.card.due_date" >
     </mat-form-field>
     <div mat-dialog-actions>
     <button type="submit" class="btn btn-primary" cdkFocusInitial>Submit</button>
