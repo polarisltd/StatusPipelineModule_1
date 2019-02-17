@@ -282,7 +282,20 @@ getProfile(card:Card):Profile{
         });
     }
 
+    /** Detect due in days (return positive) or ovedue (return negative)*/
+    getDueInDays(card:Card):number{
+      const ONE_DAY_MS = 86400000
+      const now_ms = new Date().getTime()
+      const dueDate_ms = Date.parse(card.due_date) // date.parse = milliseconds elapsed since January 1, 1970, 00:00:00 UTC
+      const diff_days = Math.round(( dueDate_ms - now_ms)/ONE_DAY_MS)
+      // console.log('getDueInDays',new Date(),card.due_date,diff_days)
+      if (diff_days>0 && diff_days<=3)
+          return diff_days;
+      else if(diff_days<0)
+          return diff_days;
+      else return 0;
 
+    }
 
 
 }

@@ -12,7 +12,11 @@
 				</svg>
 			</mat-list-item>
 			<mat-list-item class="card-row-1">
-					{{card.due_date}}
+				<div [ngClass]="{'dueInDays':getDueInDays(card)>0,'overDue':getDueInDays(card)<0,'inRange':getDueInDays(card)===0}">
+				  {{card.due_date}}
+				  <div *ngIf="getDueInDays(card)>0">Due in {{getDueInDays(card)}}days</div>
+				  <div *ngIf="getDueInDays(card)<0">Over Due</div>
+				</div>
 			</mat-list-item>
 	       <mat-list-item class="card-row-2">
 			    {{card.title}} [{{card.id}}]
