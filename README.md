@@ -282,3 +282,14 @@ ng serve -o
 ```
 
 
+# Implementation status
+
+## 2019-0218
+
+- badge with actual number of cards per column
+- removal from Favorite, dialog prompt.
+- Card insert with popup
+- Card update with popup
+- tooltips for icons
+
+

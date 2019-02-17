@@ -23,13 +23,17 @@ export class DialogEditCardComponent {
 
   }
 
-  ngOnInit() {
+  /*
+  Angular formcontrol is not convinients as form controls are internal data store so it should be first populated and then
+  retrieved back. Better would work ngModel but then change should happen only in cvase of submit is pressed.
+  */
 
+  ngOnInit() {
+   console.log('ngOnInit()')
    // create empty
    this.cardForm = this.formBuilder.group({
      'title': this.formBuilder.control(this.data.card.title),
      'content': this.formBuilder.control(this.data.card.content),
-     'status': this.formBuilder.control(this.data.card.status),
      'description': this.formBuilder.control(this.data.card.description),
      'priority': this.formBuilder.control(this.data.card.priority),
      'favorite': this.formBuilder.control(this.data.card.favorite),
@@ -37,36 +41,11 @@ export class DialogEditCardComponent {
      'responsible_name': this.formBuilder.control(this.data.card.responsible_name),
      'responsible_email': this.formBuilder.control(this.data.card.responsible_email),
      'pre_due_date': this.formBuilder.control(this.data.card.pre_due_date),
-     'due_date': this.formBuilder.control(this.data.card.due_date),
-     /*
-     'creator_name': this.formBuilder.control(''),
-     'creator_email': this.formBuilder.control(''),
-
-     'archived_at': this.formBuilder.control(''),
-     'started_at': this.formBuilder.control(''),
-     'completed_at': this.formBuilder.control(''),
-     'created_at': this.formBuilder.control(''),
-     'updated_at': this.formBuilder.control('')
-    */
-
+     'due_date': this.formBuilder.control(this.data.card.due_date)
    })
-
-
  }
 
 
-
-  /*
-
-      // can't find a method to disable controls!
-      Object.keys(this.cardForm.controls).forEach((key: string) => {
-      const abstractControl = this.cardForm.controls[key];
-      abstractControl.disable({emitEvent:true,onlySelf:true});
-    })
-
-
-
-  */
 
 onCancel(){
   console.log('Form CANCEL')
@@ -74,7 +53,19 @@ onCancel(){
 }
 
 onSubmit(){
-    console.log('Form SUBMIT')
+    // accept update only in case of submit pressed.
+    // console.log('Form SUBMIT',this.cardForm.value)
+    //
+    this.data.card.title = this.cardForm.value.title
+    this.data.card.content = this.cardForm.value.content
+    this.data.card.description = this.cardForm.value.description
+    this.data.card.priority = this.cardForm.value.priority
+    this.data.card.favorite = this.cardForm.value.favorite
+    this.data.card.color = this.cardForm.value.color
+    this.data.card.responsible_name = this.cardForm.value.responsible_name
+    this.data.card.responsible_email = this.cardForm.value.responsible_email
+    this.data.card.due_date = this.cardForm.value.due_date
+    this.data.card.pre_due_date = this.cardForm.value.pre_due_date
     this.dialogRef.close();
   }
 

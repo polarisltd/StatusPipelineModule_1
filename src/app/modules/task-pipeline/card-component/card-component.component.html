@@ -23,51 +23,22 @@
 			</mat-list-item>
 			<mat-list-item class="card-bottom-row">
 				<!--mat-icon svgIcon="project-room" class="dvtx-svg-size card-header-icon-spacing"></mat-icon-->
+				<div matTooltip="Project-Room">
 				<svg class="dvtx-svg-size" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 					<path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H4V4h16v16z"/>
 					<path d="M8 17h4c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2h-2c-1.1 0-2 .9-2 2H8v-2l-3 3 3 3v-2zm6-2h2v2h-2v-2zM8 11h2c1.1 0 2-.9 2-2h4v2l3-3-3-3v2h-4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2zm0-4h2v2H8V7z"/>
 				</svg>
-				<mat-icon (click)="clickBtnMessage()" class="card-header-icon-spacing"  >message</mat-icon>
-				<mat-icon (click)="clickBtnInfo()"  class="card-header-icon-spacing">info</mat-icon>
+				</div>
+				<mat-icon (click)="clickBtnMessage()" class="card-header-icon-spacing" matTooltip="Message" >message</mat-icon>
+				<mat-icon (click)="clickBtnInfo()"  class="card-header-icon-spacing" matTooltip="Info">info</mat-icon>
 
-				<mat-icon *ngIf="card.favorite" (click)="clickBtnFavorite()"  class="card-header-icon-spacing">star_rate</mat-icon>
-				<mat-icon (click)="clickBtnUpdateCard('add')" class="card-header-icon-spacing">library_add</mat-icon>
-				<mat-icon (click)="clickBtnUpdateCard('edit')" class="card-header-icon-spacing">edit</mat-icon>
-				||<mat-icon (click)="clickBtnRightArrow()"  class="card-header-icon-spacing">arrow_forward</mat-icon>
+				<mat-icon *ngIf="card.favorite" (click)="clickBtnFavorite()"  class="card-header-icon-spacing"  matTooltip="Remove Favorite">star_rate</mat-icon>
+				<mat-icon (click)="clickBtnUpdateCard('add')" class="card-header-icon-spacing" matTooltip="Add Card">add_to_queue</mat-icon>
+				<mat-icon (click)="clickBtnUpdateCard('edit')" class="card-header-icon-spacing" matTooltip="Edit Card">airplay</mat-icon>
+				<mat-icon (click)="clickBtnUpdateCard('delete')" class="card-header-icon-spacing" matTooltip="Delete Card">remove_from_queue</mat-icon>
+				<mat-icon (click)="clickBtnRightArrow()"  class="card-header-icon-spacing" matTooltip="Arrow function">arrow_forward</mat-icon>
 			</mat-list-item>
 		</mat-list>
-
-		<!--
-        <form [formGroup]="cardForm">
-		<mat-card-title>
-				<div class="card-title"  [ngSwitch]="isCardEditMode">
-					<div *ngSwitchCase="false">
-                        <a (click)="clickOnCardField($event)">{{card.title}}<small>{{card.order}} {{dragNodeState}}</small>  </a>
-					</div>
-					<div *ngSwitchCase="true">
-						<input  mdInput type="text" formControlName="title"   required>
-                     </div>
-                </div>
-		</mat-card-title>
-		<mat-card-content>
-			<div  [ngSwitch]="isCardEditMode">
-			    <div *ngSwitchCase="false" (click)="clickOnCardField($event)" >{{card.content}}</div>
-				<div *ngSwitchCase="true">
-					<textarea mdInput class="card-textarea-input" type="text" formControlName="content"   required></textarea>
-				    <a class="press-enter-text"  (click)="clickExitUpdate()"><br>Enter to complete</a>
-			    </div>
-			</div>
-		</mat-card-content>
-        <mat-card-actions>
-              <button mat-button class="mini-button" (click)="clickCardDeleteButton(card)">[-]</button>
-			  <button mat-button class="mini-button" (click)="clickCardEditButton(card)">[e]</button>
-        </mat-card-actions>
-        </form>
-		-->
-
-
-
-
 	</mat-card>
 
 <!-- div class="space-card" [ngClass]="{'drop-below':dragNodeState=='below'}">

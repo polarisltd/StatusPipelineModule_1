@@ -203,26 +203,19 @@ getProfile(card:Card):Profile{
 
 
     clickBtnMessage(){
-        console.log('you clicked a button! - openDialog' )
-        this.openDialog('Are you sure to remove card from Favorites?',
-            (result) => {
-                if(result ===1){
-                    console.log('confirmed')
-                }
-            }
+        console.log('you clicked a MESSAGE button!')
 
-
-            )
     }
 
     clickBtnInfo(){
-        console.log('you clicked a button! - openDialogEditCard' )
+        console.log('you clicked an INFO button!')
         //this.openDialogEditCard()
     }
 
     clickBtnFavorite(){
         console.log('you clicked a button!' )
-        this.openDialog('Are you sure to remove this card from Favorites?',
+        this.openDialogConfirm('Are you sure to remove this card from Favorites?',
+            this.card,
             (result) => {
                 if(result ===1){
                     console.log('removing favorite! ',this.card.id)
@@ -234,21 +227,30 @@ getProfile(card:Card):Profile{
     }
 
     clickBtnRightArrow(){
-        console.log('you clicked a button!' )
-        //this.openDialogEditCard()
+        console.log('you clicked a RIGHT_ARROW button!' )
     }
 
     clickBtnUpdateCard(mode:string){
         console.log('insert/edit button clicked!')
         const card = (mode==='add')?this.database.addCardRefColumn(this.card.columnId):this.card
-        this.openDialogEditCard(card)
+        if(mode==='delete'){
+            this.openDialogConfirm('Are you sure to remove this card?',
+                this.card,
+                (result) => {
+                    if(result ===1){
+                        console.log('removing favorite! ',this.card.id)
+                        this.database.removeCard(this.card.id)
+                    }
+                }
+            )
+
+        }
+        else this.openDialogEditCard(card)
     }
 
-
-
-    openDialog(promptText: string,action: (input) => void): void {
+    openDialogConfirm(promptText: string,card: Card, action: (input) => void): void {
         console.log('open dialog')
-        const dialogData = {message: promptText,response:0}
+        const dialogData = {card:card,message: promptText,response:0}
         let dialogRef = this.dialog.open(DialogConfirmComponent, {
             width: '250px',
             height: '200px',
