@@ -25,7 +25,7 @@ export class ColumnComponentComponent implements OnInit {
   @Input() validateDropRules: Function
   @Input() onAddCard: EventEmitter<Card>;
   @Input() onRemoveColumn : EventEmitter<IPipelineColumn>;
-  @Input() onCardClick : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowMessages : EventEmitter<IPipelineColumnElement>;
   @Input() onUpdateCard: EventEmitter<Card>;
   @Input() onDeleteCard: EventEmitter<Card>;
 

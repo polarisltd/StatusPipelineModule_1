@@ -31,7 +31,7 @@ export class AppComponent implements OnInit{
   dataSource: DataSource;
   onTransition = new EventEmitter<IStatusChange>();
   onClickColumnTitle = new EventEmitter<IPipelineColumn>();
-  onCardClick = new EventEmitter<IPipelineColumnElement>();
+  onShowMessages = new EventEmitter<IPipelineColumnElement>();
   onAddCard = new EventEmitter<IPipelineColumnElement>();
   onDeleteCard = new EventEmitter<IPipelineColumnElement>();
   onUpdateCard = new EventEmitter<IPipelineColumnElement>();
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit{
     this.onUpdateCard.subscribe(item => this.showMessage('updateCard',item))
     this.onDeleteCard.subscribe(item => this.showMessage('deleteCard',item))
     this.onRemoveColumn.subscribe(item => this.showMessage('deleteColumn',item))
-    this.onCardClick.subscribe(item => this.showMessage('cardClick',item))
+    this.onShowMessages.subscribe(item => this.showMessage('onShowMessage',item))
 
   }
 

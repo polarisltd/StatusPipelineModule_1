@@ -14,7 +14,7 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatBadgeModule, MatDialogModule, MatSliderModule, MatTooltipModule
+  MatBadgeModule, MatDialogModule, MatSliderModule, MatTooltipModule, MatTabsModule
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {ColumnsSortPipe} from "./shared/column-sort-pipe";
@@ -24,6 +24,8 @@ import {AvatarModule} from "../avatar/avatar.module";
 import {HttpClientModule} from "@angular/common/http";
 import {DialogConfirmComponent} from "./dialog-confirm-component/dialog-confirm.component";
 import {DialogEditCardComponent} from "./dialog-edit-card-component/dialog-edit-card.component";
+import {PortalModule} from "@angular/cdk/portal";
+import {MessagesPortalService} from "./shared/messages-portal-service";
 
 
 @NgModule({
@@ -59,6 +61,8 @@ import {DialogEditCardComponent} from "./dialog-edit-card-component/dialog-edit-
     MatSliderModule,
     MatCheckboxModule,
     MatTooltipModule,
+    MatTabsModule,
+    PortalModule,
     AvatarModule
   ],
   exports: [
@@ -69,6 +73,7 @@ import {DialogEditCardComponent} from "./dialog-edit-card-component/dialog-edit-
     DialogEditCardComponent
   ],
   providers: [
+    MessagesPortalService
   ],
   entryComponents: [
       DialogConfirmComponent,

@@ -25,7 +25,7 @@ export class CardComponentComponent implements OnInit {
   @Input() card: Card;
   @Input() onUpdateCard: EventEmitter<IPipelineColumnElement>;
   @Input() onDeleteCard: EventEmitter<IPipelineColumnElement>;
-  @Input() onCardClick : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowMessages : EventEmitter<IPipelineColumnElement>;
   database: Database;
 
   isCardEditMode : boolean = false;
@@ -135,21 +135,12 @@ handleDragEnd(event) {
 
 }
 
-clickCardDeleteButton(card){
-  console.log('CardComponent#clickCardDeleteButton' , card.id)
-  this.database.removeCard(card.id)
-  this.onDeleteCard.emit(card)
-}
-
-clickCardEditButton(card){
-    console.log('CardComponent#clickCardEditButton' , card.id)
-    this.isCardEditMode = true
-}
 
 
-clickOnCard(card){
-    console.log('CardComponent#clickOnCard' , card.id)
-    // this.onCardClick.emit(this.database.getCard(card.id))
+
+
+clickBtnProjectRoom(card){
+    console.log('CardComponent#clickOnPROJECT_ROOM' , card.id)
 }
 
 clickExitUpdate() {
@@ -204,6 +195,7 @@ getProfile(card:Card):Profile{
 
     clickBtnMessage(){
         console.log('you clicked a MESSAGE button!')
+        this.onShowMessages.emit(this.card)
 
     }
 
@@ -289,9 +281,7 @@ getProfile(card:Card):Profile{
       const dueDate_ms = Date.parse(card.due_date) // date.parse = milliseconds elapsed since January 1, 1970, 00:00:00 UTC
       const diff_days = Math.round(( dueDate_ms - now_ms)/ONE_DAY_MS)
       // console.log('getDueInDays',new Date(),card.due_date,diff_days)
-      if (diff_days>0 && diff_days<=3)
-          return diff_days;
-      else if(diff_days<0)
+      if (diff_days>0 && diff_days<=3 || diff_days<0)
           return diff_days;
       else return 0;
 

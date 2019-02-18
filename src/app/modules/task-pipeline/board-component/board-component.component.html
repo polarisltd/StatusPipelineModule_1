@@ -8,7 +8,35 @@
 
           <button (click)="sidebarClose()"  class="side-nav-btn">[X]</button>
 
-          <h1> Under construction</h1>
+           <mat-tab-group [selectedIndex]="sideBarTabIndex">
+               <mat-tab label="Comments" >
+                   <h1>Some tab content</h1>
+                   <p>...</p>
+               </mat-tab>
+               <mat-tab label="Messages">
+
+                   <div>- Opening side bar when clicked on messages icon and open comments tab:
+                       this must be implemented both ways: must open sidebar and emit an event onDetails(item)
+                       so the item can be fetched by the container.</div>
+
+                   <div >
+
+                       content could be implemented as portal <br>
+
+                       which type are we using here? <br>
+
+                       Portal. This is a component (ComponentPortal), or an embedded template (TemplatePortal) you would like to display
+
+
+                   </div>
+                   <div *ngIf="messagesPortalService?.messagesPortal$| async as portal">
+                     <div class="portal_container">
+                       <ng-container [cdkPortalOutlet]="portal"></ng-container>
+                     </div>
+                   </div>
+
+               </mat-tab>
+           </mat-tab-group>
 
         </div>
 
@@ -44,7 +72,7 @@
 
          <app-column-component
            [column]="column"
-           [onCardClick]="onCardClick"
+           [onShowMessages]="onShowMessages"
            [boardSubject$]="boardSubject$"
            [onTransition]="onTransition"
            [onClickColumnTitle]="onClickColumnTitle"

@@ -287,9 +287,64 @@ ng serve -o
 ## 2019-0218
 
 - badge with actual number of cards per column
+- card side color
 - removal from Favorite, dialog prompt.
 - Card insert with popup
 - Card update with popup
+- Card delete popup confirmation.
 - tooltips for icons
+- Coluring Due Date In days and OverDue
+
+# TODOs
+- Drop into empty column
+- drop uncolors a trace of drag target
+- drop with required visual effect
+- When the user picks a card he can see where the original item place was (in light grey box), 
+
+  and where it might be placed between other cards 
+  
+  Icon for Drag&Drop (<mat-icon>drag_indicator</mat-icon>) 
+  
+- Bell appearance when new notification available on item
+
+- Opening side bar when clicked on messages icon and open comments tab 
+
+- Arrow navigates to groups listing of selected item (if task) 
+
+- Ability to change the title and the due date (datepicker) by clicking on it
+
+- Events:
+  
+  -> drag_n_drop emit_event
+  
+    - Click on Project Room
+  event emitted @Output() onProjectRoomClick
+  
+    - Remove from Favorite
+  emitted @Output() onToggleFavorite 
+  
+    - Navigate to documents view inside project room when clicking on the [docs icon]: 
+  event emitted on click on document icon @Output() onDocumentClick     
+  
+    - Bell appearance when new notification available on item: this would be a property on the card item 
+  that is injected by the store. But he must read an attribute unreadCount from the card item.
+  
+    - Opening side bar when clicked on messages icon and open comments tab: 
+this must be implemented both ways: must open sidebar and emit an event onDetails(item) 
+so the item can be fetched by the container 
+
+    - Arrow navigates to groups listing of selected item (if task): emitted as output @Output() onArrowClick 
+
+    - Ability to remove item (delete): emitted as output @Output() onDeleteItem(id) 
+
+    - Ability to add item (+ card is added): emitted as output @Output() onADddItem(Details) 
+
+
+
+
+
+
+
+ 
 
 

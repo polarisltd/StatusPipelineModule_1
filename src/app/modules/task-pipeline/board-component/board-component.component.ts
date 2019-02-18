@@ -9,6 +9,8 @@ import {Board} from "../shared/board";
 import {StatusPipelineShared} from "../shared/status-pipeline-shared";
 import {Card} from "../shared/card";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {Portal} from "@angular/cdk/portal";
+import {MessagesPortalService} from "../shared/messages-portal-service";
 
 
 @Component({
@@ -24,7 +26,7 @@ export class BoardComponentComponent implements OnInit {
   @Input() onAddCard : EventEmitter<IPipelineColumnElement>; // Add Card event
   @Input() onDeleteCard  : EventEmitter<IPipelineColumnElement>;
   @Input() onUpdateCard : EventEmitter<IPipelineColumnElement>; // Add Card event
-  @Input() onCardClick : EventEmitter<IPipelineColumnElement>; // Add Card event
+  @Input() onShowMessages : EventEmitter<IPipelineColumnElement>; // Add Card event
   @Input() onRemoveColumn : EventEmitter<IPipelineColumn>; // Add Card event
   @Input() validateDropRules: Function // asking permission for drag and drop
   // board: Board;
@@ -34,6 +36,7 @@ export class BoardComponentComponent implements OnInit {
 
 
   isSidebarOpen:boolean=false; // initially sidebar is closed.
+  sideBarTabIndex:number = 0;
   sideCardFormData: Card;
   addingColumn = false;
   addColumnText: string;
@@ -42,8 +45,11 @@ export class BoardComponentComponent implements OnInit {
   boardWidth: number;
   columnsAdded = 0;
 
+
+
   constructor(
-     statusPipelineShared: StatusPipelineShared
+     statusPipelineShared: StatusPipelineShared,
+     messagesPortalService: MessagesPortalService
      ) {
 
   }
@@ -58,39 +64,16 @@ export class BoardComponentComponent implements OnInit {
     })
 
 
-
-    /*
-
-
-public markControlsDirty(group: FormGroup | FormArray): void {
-    Object.keys(group.controls).forEach((key: string) => {
-        const abstractControl = group.controls[key];
-
-        if (abstractControl instanceof FormGroup || abstractControl instanceof FormArray) {
-            this.markControlsDirty(abstractControl);
-        } else {
-            abstractControl.markAsDirty();
-        }
-    });
-}
-
-
-
-    this.this.cardForm.get('title').disabled = true;
-    this.this.cardForm.get('content').disabled = true;
-    this.this.cardForm.get('order').disabled = true;
-    this.this.cardForm.get('status').disabled = true;
-    */
-   // this.cardForm.
-   // this.cardForm
-   // formCtrl.disable()
-
-
     // subscribe to card data
-    this.onCardClick.subscribe(
+    /**
+     * - Opening side bar when clicked on messages icon and open comments tab:
+     * this must be implemented both ways: must open sidebar and emit an event onDetails(item)
+     * so the item can be fetched by the container
+     */
+    this.onShowMessages.subscribe(
         card => {
-          this.sideCardFormData = card;
           this.isSidebarOpen=true;
+          this.sideBarTabIndex = 1; // messages tab
 
   })
 
