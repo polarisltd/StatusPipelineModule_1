@@ -26,4 +26,6 @@ export class Card implements IPipelineColumnElement{
   completed_at: string;
   created_at: string;
   updated_at: string;
+  hasNotifications: boolean;
+  unreadNotificationsCount: number;
 }

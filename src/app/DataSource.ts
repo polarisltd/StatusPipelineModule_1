@@ -70,7 +70,8 @@ export class DataSource  {
                 "responsible_email":"aaa@bbb.com",
                 "responsible_name":"aaaaa",
                 "color":"#996680",
-                "favorite":false
+                "favorite":false,
+                "hasNotifications": true
 
             },
             {
@@ -84,7 +85,8 @@ export class DataSource  {
                 "responsible_email":"aaa@bbb.com",
                 "responsible_name":"aaaaa",
                 "color":"#6693c4",
-                "favorite":true
+                "favorite":true,
+                "hasNotifications": true
             },
             {
                 "id": "002-003",
@@ -97,7 +99,8 @@ export class DataSource  {
                 "responsible_email":"aaa@bbb.com",
                 "responsible_name":"aaaaa",
                 "color":"#6693c4",
-                "favorite":false
+                "favorite":false,
+                "hasNotifications": true
             },
             {
                 "id": "002-004",
@@ -110,7 +113,8 @@ export class DataSource  {
                 "responsible_email":"aaa@bbb.com",
                 "responsible_name":"aaaaa",
                 "color":"#996680",
-                "favorite":true
+                "favorite":true,
+                "hasNotifications": false
             },
             {
                 "id": "002-005",
@@ -123,7 +127,8 @@ export class DataSource  {
                 "responsible_email":"aaa@bbb.com",
                 "responsible_name":"aaaaa",
                 "color":"#996680",
-                "favorite":true
+                "favorite":true,
+                "hasNotifications": false
             }
             ,
             {

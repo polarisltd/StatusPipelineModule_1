@@ -28,6 +28,13 @@ export class ColumnComponentComponent implements OnInit {
   @Input() onShowMessages : EventEmitter<IPipelineColumnElement>;
   @Input() onUpdateCard: EventEmitter<Card>;
   @Input() onDeleteCard: EventEmitter<Card>;
+  //
+  @Input() onShowNotifications : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowProjectRooms : EventEmitter<IPipelineColumnElement>;
+  @Input() onRemoveFromFavorites : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowDocuments : EventEmitter<IPipelineColumnElement>;
+  @Input() onArrowPress : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowTask : EventEmitter<IPipelineColumnElement>;
 
 
 

@@ -23,9 +23,17 @@ export class CardComponentComponent implements OnInit {
   @ViewChild('emptyItem') emptyItem: ElementRef;
   @Input() boardSubject$: Subject<Board> // initialised and provided by board component
   @Input() card: Card;
+  @Input() onAddCard: EventEmitter<IPipelineColumnElement>;
   @Input() onUpdateCard: EventEmitter<IPipelineColumnElement>;
   @Input() onDeleteCard: EventEmitter<IPipelineColumnElement>;
   @Input() onShowMessages : EventEmitter<IPipelineColumnElement>;
+  //
+  @Input() onShowNotifications : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowProjectRooms : EventEmitter<IPipelineColumnElement>;
+  @Input() onRemoveFromFavorites : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowDocuments : EventEmitter<IPipelineColumnElement>;
+  @Input() onArrowPress : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowTask : EventEmitter<IPipelineColumnElement>;
   database: Database;
 
   isCardEditMode : boolean = false;
@@ -141,6 +149,7 @@ handleDragEnd(event) {
 
 clickBtnProjectRoom(card){
     console.log('CardComponent#clickOnPROJECT_ROOM' , card.id)
+    this.onShowProjectRooms.emit(card)
 }
 
 clickExitUpdate() {
@@ -152,6 +161,9 @@ clickExitUpdate() {
         this.isCardEditMode = false
     }
 }
+
+
+
 
 extractDragSourceId(event):string{
     // extract drag source as we coded it.
@@ -199,9 +211,22 @@ getProfile(card:Card):Profile{
 
     }
 
-    clickBtnInfo(){
-        console.log('you clicked an INFO button!')
-        //this.openDialogEditCard()
+
+    clickBtnNotifications(card){
+        console.log('you clicked an NOTIFICATIONS button!')
+        this.onShowNotifications.emit(card)
+    }
+
+    clickBtnShowTask(card){
+        console.log('you clicked an TASK button!')
+        this.onShowTask.emit(card)
+
+    }
+
+
+    clickBtnDocuments(card){
+        console.log('you clicked an DOCUMENTS button!')
+        this.onShowDocuments.emit(card)
     }
 
     clickBtnFavorite(){
@@ -213,24 +238,28 @@ getProfile(card:Card):Profile{
                     console.log('removing favorite! ',this.card.id)
                     this.card.favorite = false;
                     this.database.updateDatasouce();
+                    this.onRemoveFromFavorites.emit(this.card)
                 }
              }
         )
     }
 
-    clickBtnRightArrow(){
+    clickBtnRightArrow(card){
         console.log('you clicked a RIGHT_ARROW button!' )
+        this.onArrowPress.emit(card)
     }
 
     clickBtnUpdateCard(mode:string){
         console.log('insert/edit button clicked!')
         const card = (mode==='add')?this.database.addCardRefColumn(this.card.columnId):this.card
+        if(mode==='add'){this.onAddCard.emit(card)}
         if(mode==='delete'){
             this.openDialogConfirm('Are you sure to remove this card?',
                 this.card,
                 (result) => {
                     if(result ===1){
                         console.log('removing favorite! ',this.card.id)
+                        this.onDeleteCard.emit(this.card)
                         this.database.removeCard(this.card.id)
                     }
                 }
@@ -270,6 +299,7 @@ getProfile(card:Card):Profile{
             if(dialogData.response){
               // we need updateCard (remove old/insert new)
               this.database.updateCard(dialogData.card)
+              this.onUpdateCard.emit(dialogData.card)
             }
         });
     }

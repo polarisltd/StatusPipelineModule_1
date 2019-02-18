@@ -21,31 +21,32 @@ import {MessagesPortalService} from "../shared/messages-portal-service";
 })
 export class BoardComponentComponent implements OnInit {
   @Input() boardSubject$ : Subject<Board>;
+  // drag and drop
   @Input() onTransition : EventEmitter<IStatusChange>; // drag and drop operation
-  @Input() onClickColumnTitle : EventEmitter<IPipelineColumn>; // column title click
-  @Input() onAddCard : EventEmitter<IPipelineColumnElement>; // Add Card event
-  @Input() onDeleteCard  : EventEmitter<IPipelineColumnElement>;
-  @Input() onUpdateCard : EventEmitter<IPipelineColumnElement>; // Add Card event
-  @Input() onShowMessages : EventEmitter<IPipelineColumnElement>; // Add Card event
-  @Input() onRemoveColumn : EventEmitter<IPipelineColumn>; // Add Card event
   @Input() validateDropRules: Function // asking permission for drag and drop
+  // Card events
+  @Input() onClickColumnTitle : EventEmitter<IPipelineColumn>; // column title click
+  @Input() onAddCard : EventEmitter<IPipelineColumnElement>;
+  @Input() onDeleteCard  : EventEmitter<IPipelineColumnElement>;
+  @Input() onUpdateCard : EventEmitter<IPipelineColumnElement>;
+  @Input() onRemoveColumn : EventEmitter<IPipelineColumn>;
+  // assorted events
+  @Input() onShowMessages : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowNotifications : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowProjectRooms : EventEmitter<IPipelineColumnElement>;
+  @Input() onRemoveFromFavorites : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowDocuments : EventEmitter<IPipelineColumnElement>;
+  @Input() onArrowPress : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowTask : EventEmitter<IPipelineColumnElement>;
   // board: Board;
   //board$: Observable<Board>;
   board: Board;
   board$:Observable<Board>
-
-
+  //
   isSidebarOpen:boolean=false; // initially sidebar is closed.
   sideBarTabIndex:number = 0;
-  sideCardFormData: Card;
-  addingColumn = false;
-  addColumnText: string;
   editingTilte = false;
   currentTitle: string;
-  boardWidth: number;
-  columnsAdded = 0;
-
-
 
   constructor(
      statusPipelineShared: StatusPipelineShared,
