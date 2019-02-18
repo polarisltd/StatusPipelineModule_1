@@ -34,6 +34,9 @@ export class CardComponentComponent implements OnInit {
   @Input() onShowDocuments : EventEmitter<IPipelineColumnElement>;
   @Input() onArrowPress : EventEmitter<IPipelineColumnElement>;
   @Input() onShowTask : EventEmitter<IPipelineColumnElement>;
+  //
+  @Input() validateDropRules: Function
+  //
   database: Database;
 
   isCardEditMode : boolean = false;
@@ -44,8 +47,8 @@ export class CardComponentComponent implements OnInit {
   dragNodeState: string;
   dragStatus : string;
 
-  field1: string;
-  field2: string;
+    dragClass: string = 'drag-color0'; // drag/drop enable/disable color
+    inTimer:boolean = false;
 
   constructor(private fb: FormBuilder,
               private matIconRegistry: MatIconRegistry,
@@ -106,9 +109,16 @@ handleDragStart(event, card) {
 
 handleDragOver(event, node) {
     event.preventDefault();
-    const sourceId = this.extractDragSourceId(event)
+    const srcCardId = this.extractDragSourceId(event)
+    const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
     // console.log('CardComponent#handleDragOver #sourceId '   , sourceId )
     this.dragNodeState= this.getDragTargetState(event);
+
+    if(!this.validateDropRulesWrapper(srcCard.id,this.card.columnId)) { // functionality from internal method
+      this.colorDragProtectedArea(node) // color card to show that drag is not allowed.
+    }
+
+
 }
 
   
@@ -129,13 +139,15 @@ handleDrop(event, card) {
     // we having card bellow which we accomodating source Card
     const srcCardId = this.extractDragSourceId(event)
     const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
-    // moved card is getting that column id were drag target is found.
-    srcCard.columnId = targetCard.columnId
-    const tatgetOrderPosition: number = targetCard.order
-    this.database.promoteOrderFromCard(targetCard);
-    srcCard.order=tatgetOrderPosition
-    // next on datasource + trigger event
-    this.database.updateDatasouce() // next on datasource./
+    if(this.validateDropRulesWrapper(srcCard.id,targetCard.columnId)) {
+        // moved card is getting that column id were drag target is found.
+        srcCard.columnId = targetCard.columnId
+        const tatgetOrderPosition: number = targetCard.order
+        this.database.promoteOrderFromCard(targetCard);
+        srcCard.order = tatgetOrderPosition
+        // next on datasource + trigger event
+        this.database.updateDatasouce() // next on datasource./
+    }
     this.dragNodeState= ''
 }
 
@@ -143,7 +155,46 @@ handleDragEnd(event) {
 
 }
 
+handleDragLeave(card){
+        console.log('dragLeave',card)
+        this.dragNodeState= ''
+}
 
+
+
+validateDropRulesWrapper(srcCardId:string, targetColumnId: string):boolean{
+
+        const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
+
+        if(srcCard)
+            console.log('CardComponent#validateRules #sourceId card/col => col' ,srcCardId,'/',srcCard.columnId,' => '   ,targetColumnId    )
+        else{
+            console.log('****** card not found ',srcCardId,' board_cards.len '  , this.board.cards.length)
+            return;
+        }
+        const srcColumn = this.board.columns.find(entry => entry.id === srcCard.columnId)
+
+        const targColumn = this.board.columns.find(entry => entry.id === targetColumnId)
+        // allowed ntom reorder cards!
+        return srcColumn.id === targColumn.id || this.validateDropRules({src:srcColumn,dst:targColumn,elem:srcCard} as IStatusChange)
+
+}
+
+
+colorDragProtectedArea = (node) => {
+
+        this.dragClass = 'drag-color1';
+        if (!this.inTimer) {
+            this.inTimer = true;
+            setTimeout(() => {
+                console.log('-> reset ngClass', ' =', node.id)
+                this.dragClass = 'drag-color0';
+                this.inTimer = false;
+            }, 2000);
+        }
+
+
+}
 
 
 
@@ -178,14 +229,15 @@ insertDragSourceId(event,id:string){
 }
 
 
-getDragTargetState(event):string{
+getDragTargetState(event):string {
     const percentageX = event.offsetX / event.target.clientWidth;
     const percentageY = event.offsetY / event.target.clientHeight;
     this.dragStatus = `card = ${this.card.id}  % = ${percentageY} `
-    if (percentageY < 0.5) {
-        return 'above';
-    } else
+    if (percentageY > 0 && percentageY < 0.5) {
         return 'below';
+    } else if (percentageY < 1 && percentageY > 0.5){
+        return 'above';
+    }else return 'off'
 
 }
 

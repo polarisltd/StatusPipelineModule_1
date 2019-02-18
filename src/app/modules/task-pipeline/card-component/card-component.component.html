@@ -1,8 +1,10 @@
 <!--div class="space-card" [ngClass]="{'drop-above':dragNodeState=='above'}">
 </div-->
-	<mat-card class="card card-left-color-marker" [style.border-left-color]="card.color"  draggable="true" (dragstart)="handleDragStart($event,card)" (dragover)="handleDragOver($event,card)"
-	 (drop)="handleDrop($event,card)" (dragend)="handleDragEnd($event)"  (keyup.enter)="clickExitUpdate()"
-			  [ngClass]="{'drop-above':dragNodeState=='above','drop-below':dragNodeState=='below'}" 	  >
+	<mat-card class="card card-left-color-marker" [style.border-left-color]="card.color"
+			  draggable="true" (dragstart)="handleDragStart($event,card)" (dragover)="handleDragOver($event,card)"
+	          (drop)="handleDrop($event,card)" (dragend)="handleDragEnd($event)"  (keyup.enter)="clickExitUpdate()"
+			  (ondragleave)="handleDragLeave()"
+			  [ngClass]="{'drop-above':dragNodeState=='above','drop-below':dragNodeState=='below','drop-off':dragNodeState=='off','drag-color1':dragClass == 'drag-color1'}" 	  >
         <mat-list>
 			<mat-list-item class="card-top-row">
 				<!--mat-icon svgIcon="task" class="dvtx-svg-size card-header-icon-spacing"></mat-icon-->
@@ -63,6 +65,4 @@
 		</mat-list>
 	</mat-card>
 
-<!-- div class="space-card" [ngClass]="{'drop-below':dragNodeState=='below'}">
-</div-->
 <span #emptyItem></span>
