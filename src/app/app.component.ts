@@ -7,6 +7,9 @@ import {
   IPipelineColumnElement,
   IStatusChange
 } from "./modules/task-pipeline/shared/status-pipeline-module.interface";
+import {MessagesPortalService} from "./modules/task-pipeline/shared/messages-portal-service";
+import {ComponentPortal, Portal} from "@angular/cdk/portal";
+import {DemoMessagesComponent} from "./demo-messages-component";
 
 
 
@@ -39,7 +42,9 @@ export class AppComponent implements OnInit{
 
   messageArea: string = 'Demo events.'
 
-  constructor(dataSource: DataSource) {
+  constructor(dataSource: DataSource,
+              messagePortalService:MessagesPortalService
+  ) {
     this.dataSource = dataSource;
     this.onTransition.subscribe(item => this.showMessage('Drag-n-drop:',item))
     this.onClickColumnTitle.subscribe(item => this.showMessage('click column:',item))
@@ -47,7 +52,11 @@ export class AppComponent implements OnInit{
     this.onUpdateCard.subscribe(item => this.showMessage('updateCard',item))
     this.onDeleteCard.subscribe(item => this.showMessage('deleteCard',item))
     this.onRemoveColumn.subscribe(item => this.showMessage('deleteColumn',item))
-    this.onShowMessages.subscribe(item => this.showMessage('onShowMessage',item))
+    this.onShowMessages.subscribe(item => {
+      this.showMessage('onShowMessage',item)
+      const portal   = new ComponentPortal(DemoMessagesComponent);
+      messagePortalService.setPortal(portal)
+    })
 
   }
 
