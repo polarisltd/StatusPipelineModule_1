@@ -1,6 +1,9 @@
 
 <div [ngClass]="dragClass" class="column-container">
-  <div *ngIf="board$ | async as board">
+  <div *ngIf="board$ | async as board"
+       droppable="true"
+       (dragover)="handleDragOver($event,column)"
+       (drop)="handleDrop($event,column)" (dragend)="handleDragEnd($event)">
 
   <!--h2 class="column-header"> {{column.title}}</h2-->
       <div class="column-header-outer">

@@ -78,20 +78,56 @@ export class ColumnComponentComponent implements OnInit {
 
   handleDragOver(event, node) {
     event.preventDefault();
-    //
-    // known behaviuor, dragOver discards data value.
-    // therefore we cheat :)
-    //
-    // const sourceId = this.extractDragSourceId(event)
-    // if(!sourceId)console.log('********* Drag miss sourceId')
-    // console.log('CardComponent#handleDragOver #sourceId '   , sourceId )
 
-    /*
-    if(!this.validateDropRulesWrapper(sourceId,this.column.id)) { // functionality from internal method
-      this.colorDragProtectedArea(node)
-    }
-    */
+    const srcCardId = this.extractDragSourceId(event)
+    const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
+
+    const columnCardCount = this.board.cards.filter(entry => entry.columnId === this.column.id).length
+    this.dragClass = ''   // reset drag indicator
+    if (columnCardCount>0)return; // perform card based drop
+
+    if(!this.validateDropRulesWrapper(srcCard.id,this.column.id)) { // functionality from internal method
+      this.colorDragProtectedArea(node,'drag-color-refuse','drag-color-0') // color card to show that drag is not allowed.
+    }else
+      this.colorDragProtectedArea(node,'drag-color-ok','drag-color-0') // color card to show that drag is not allowed.
+    console.log('ColumnComponent#handleDragOver()',this.dragClass)
   }
+
+
+
+
+  handleDrop(event, node) {
+    event.preventDefault();
+    // const dragId = event.dataTransfer.getData('foo')
+    const dragId = this.extractDragSourceId(event)
+    console.log('ColumnComponent#handleDrop ',dragId,'->',node.id)
+
+    const columnCardCount = this.board.cards.filter(entry => entry.columnId === this.column.id).length
+    if (columnCardCount>0)return; // instead perform card based drop
+
+    // external validator
+
+    if(this.validateDropRulesWrapper(dragId,node.id)){
+      console.log('ColumnComponent#handleDrop - MOVING')
+      this.database.moveCard(dragId, node.id)  // card => column
+
+      const movedCard =  this.board.cards.find(entry => entry.id === dragId);
+      const fromColumn = this.board.columns.find(entry => entry.id === movedCard.columnId);
+      const toColumn = this.board.columns.find(entry => entry.id === node.id);
+
+
+      const statusChange = {
+        src:fromColumn,
+        dst:toColumn,
+        elem:movedCard
+      } as IStatusChange;
+
+      console.log('emitting statusChange: ', statusChange)
+      this.onTransition.emit(statusChange)
+    }
+  }
+
+  handleDragEnd(event) {}
 
 
   validateDropRulesWrapper(srcCardId:string, targetColumnId: string):boolean{
@@ -116,14 +152,14 @@ export class ColumnComponentComponent implements OnInit {
 
 
 
-  colorDragProtectedArea = (node) => {
+  colorDragProtectedArea = (node,colorOn,colorOff) => {
 
-    this.dragClass = 'drag-color1';
+    this.dragClass = colorOn;
     if (!this.inTimer) {
       this.inTimer = true;
       setTimeout(() => {
         console.log('-> reset ngClass', ' =', node.id)
-        this.dragClass = 'drag-color0';
+        this.dragClass = colorOff;
         this.inTimer = false;
       }, 2000);
     }
@@ -133,41 +169,7 @@ export class ColumnComponentComponent implements OnInit {
 
 
 
-  handleDrop(event, node) {
-    /*
-    event.preventDefault();
-    // const dragId = event.dataTransfer.getData('foo')
-    const dragId = this.extractDragSourceId(event)
-    console.log('ColumnComponent#handleDrop ',dragId,'->',node.id)
-
-    // external validator
-
-    if(this.validateDropRulesWrapper(dragId,node.id)){
-       console.log('moving ...')
-       this.database.moveCard(dragId, node.id)
-
-       const movedCard =  this.board.cards.find(entry => entry.id === dragId);
-       const fromColumn = this.board.columns.find(entry => entry.id === movedCard.columnId);
-       const toColumn = this.board.columns.find(entry => entry.id === node.id);
-
-
-       const statusChange = {
-         src:fromColumn,
-         dst:toColumn,
-         elem:movedCard
-       } as IStatusChange;
-
-       console.log('emitting statusChange: ', statusChange)
-       this.onTransition.emit(statusChange)
-    }
-    */
-  }
-
-  handleDragEnd(event)  {
-  }
-
-
-onColumnButtonClick(column){
+  onColumnButtonClick(column){
   console.log('ColumnComponent#onColumnButtonClick_AddCard ' , column.id)
   const c:Card = this.database.addCardRefColumn(column.id)
   this.onAddCard.emit(c)

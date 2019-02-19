@@ -1,9 +1,20 @@
 
-.drag-color1{
-  background-color: mediumvioletred;
+.drag-color-ok{
+  border-color: greenyellow;
+  border-width: 5px;
+  border-style: dashed;
 }
+
+.drag-color-refuse{
+  border-color: mediumvioletred;
+  border-width: 5px;
+  border-style: dashed;
+}
+
+
 .drag-color0{
   background-color: white;
+  border-style: none;
 }
 
 
