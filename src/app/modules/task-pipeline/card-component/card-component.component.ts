@@ -113,10 +113,11 @@ handleDragOver(event, node) {
     const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
     // console.log('CardComponent#handleDragOver #sourceId '   , sourceId )
     this.dragNodeState= this.getDragTargetState(event);
-
+    if(srcCard.id === this.card.id)return; // dont try to drag on self
     if(!this.validateDropRulesWrapper(srcCard.id,this.card.columnId)) { // functionality from internal method
-      this.colorDragProtectedArea(node) // color card to show that drag is not allowed.
-    }
+      this.colorDragProtectedArea(node,'drag-color-refuse','drag-color-0' ) // color card to show that drag is not allowed.
+    }else
+      this.colorDragProtectedArea(node,'drag-color-ok','drag-color-0' ) // color card to show that drag is not allowed.
 
 
 }
@@ -135,10 +136,11 @@ handleDrop(event, card) {
     // - increase order number for all cards starting insertion point
     // - change columnId if required.
 
-    const targetCard: Card = (this.dragNodeState === 'drag_above') ? this.database.getPreviousCardInSequence(this.card) : this.card;
+    const targetCard: Card = this.card; // (this.dragNodeState === 'drag_above') ? this.database.getPreviousCardInSequence(this.card) : this.card;
     // we having card bellow which we accomodating source Card
     const srcCardId = this.extractDragSourceId(event)
     const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
+    if(srcCard.id === targetCard.id)return; // dont try to drag on self
     if(this.validateDropRulesWrapper(srcCard.id,targetCard.columnId)) {
         // moved card is getting that column id were drag target is found.
         srcCard.columnId = targetCard.columnId
@@ -181,20 +183,20 @@ validateDropRulesWrapper(srcCardId:string, targetColumnId: string):boolean{
 }
 
 
-colorDragProtectedArea = (node) => {
+    colorDragProtectedArea = (node,colorOn,colorOff) => {
 
-        this.dragClass = 'drag-color1';
+        this.dragClass = colorOn;
         if (!this.inTimer) {
             this.inTimer = true;
             setTimeout(() => {
                 console.log('-> reset ngClass', ' =', node.id)
-                this.dragClass = 'drag-color0';
+                this.dragClass = colorOff;
                 this.inTimer = false;
-            }, 2000);
+            }, 500);
         }
 
 
-}
+    }
 
 
 

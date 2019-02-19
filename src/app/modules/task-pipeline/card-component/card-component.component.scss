@@ -173,9 +173,19 @@
   color: black;
 }
 
-.drag-color1{
-  border-color: mediumvioletred;
+.drag-color-ok{
+  border-color: greenyellow;
+  border-width: 5px;
+  border-style: dashed;
 }
-.drag-color0{
-  border-color: white;
+
+.drag-color-refuse{
+  border-color: mediumvioletred;
+  border-width: 5px;
+  border-style: dashed;
+}
+
+
+.drag-color-0{
+  background-color: white;
 }

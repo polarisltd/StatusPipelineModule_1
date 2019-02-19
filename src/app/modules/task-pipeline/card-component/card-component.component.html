@@ -4,7 +4,7 @@
 			  draggable="true" (dragstart)="handleDragStart($event,card)" (dragover)="handleDragOver($event,card)"
 	          (drop)="handleDrop($event,card)" (dragend)="handleDragEnd($event)"  (keyup.enter)="clickExitUpdate()"
 			  (ondragleave)="handleDragLeave()"
-			  [ngClass]="{'drop-above':dragNodeState=='above','drop-below':dragNodeState=='below','drop-off':dragNodeState=='off','drag-color1':dragClass == 'drag-color1'}" 	  >
+			  [ngClass]="dragClass">
         <mat-list>
 			<mat-list-item class="card-top-row">
 				<!--mat-icon svgIcon="task" class="dvtx-svg-size card-header-icon-spacing"></mat-icon-->
