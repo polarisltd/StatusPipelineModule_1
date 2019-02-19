@@ -106,7 +106,7 @@ export class AppComponent implements OnInit{
   /** Actual validation function */
   validateDropRules(statusChange: IStatusChange):boolean{
 
-    console.log('app.component#validateDragRules  ',statusChange)
+    // console.log('app.component#validateDragRules  ',statusChange)
 
     return (this.ALLOWED_TRANSITIONS.filter(
 

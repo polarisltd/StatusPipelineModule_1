@@ -110,6 +110,8 @@
  /* border-width: 1px;
   border-style: inset;*/
   /*background-color: palevioletred;*/
+  display: flex;
+  flex-direction: row;
 }
 .card-bottom-row{
   padding-top: 10px;

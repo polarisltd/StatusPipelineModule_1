@@ -168,9 +168,9 @@ validateDropRulesWrapper(srcCardId:string, targetColumnId: string):boolean{
 
         const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
 
-        if(srcCard)
-            console.log('CardComponent#validateRules #sourceId card/col => col' ,srcCardId,'/',srcCard.columnId,' => '   ,targetColumnId    )
-        else{
+        if(srcCard){
+           // console.log('CardComponent#validateRules #sourceId card/col => col' ,srcCardId,'/',srcCard.columnId,' => '   ,targetColumnId    )
+        }else{
             console.log('****** card not found ',srcCardId,' board_cards.len '  , this.board.cards.length)
             return;
         }
@@ -189,7 +189,6 @@ validateDropRulesWrapper(srcCardId:string, targetColumnId: string):boolean{
         if (!this.inTimer) {
             this.inTimer = true;
             setTimeout(() => {
-                console.log('-> reset ngClass', ' =', node.id)
                 this.dragClass = colorOff;
                 this.inTimer = false;
             }, 500);

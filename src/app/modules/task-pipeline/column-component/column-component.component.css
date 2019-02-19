@@ -17,6 +17,20 @@
   border-style: none;
 }
 
+.drag-card-frame-placeholder{
+  min-height: 200px;
+  height: 200px;
+  background-color:lightgoldenrodyellow;
+}
+
+
+.drag-column-frame-green{
+  background-color:lightgoldenrodyellow;
+}
+
+.drag-column-frame-off{
+}
+
 
 
 .column {
@@ -122,9 +136,13 @@ ul.card-list > li {
 .column-heading-right{
   text-align: right;
   margin-left: 50px;
-/*  border-style: solid;
-  border-width: 1px;*/
   horiz-align: right;
   width:100px;
   min-width:100px;
+}
+
+
+.drag-column-container{ /* make sure its here for drag band drop to work*/
+  min-height:800px;
+  width:100%;
 }

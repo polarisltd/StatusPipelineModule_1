@@ -42,7 +42,9 @@ export class ColumnComponentComponent implements OnInit {
 
   database: Database
   board : Board
-  dragClass: string = 'drag-color0'; // drag/drop enable/disable color
+  dragColumnFrameClass: string = ''; // drag/drop enable/disable color
+  DragCardFrameId: string = ''; // drag/drop enable/disable color
+  dragOverId: string = ''
   inTimer:boolean = false;
 
   getCardCount():number{
@@ -68,7 +70,7 @@ export class ColumnComponentComponent implements OnInit {
   }
 
   onColumnClick(event){
-  console.log('ColumnComponent#-> onColumnClick ',this.column.title)
+    console.log('ColumnComponent#-> onColumnClick ',this.column.title)
     this.onClickColumnTitle.emit(this.column)
   }
 
@@ -76,9 +78,12 @@ export class ColumnComponentComponent implements OnInit {
   handleDragStart(event, node) {
   }
 
-  handleDragOver(event, node) {
+  handleDragOver_ColFrame(event, node) {
     event.preventDefault();
+    console.log('ColumnComponent#handleDragOver_ColFrame')
+    this.colorDragProtectedArea('drag-column-frame-green')
 
+    /*
     const srcCardId = this.extractDragSourceId(event)
     const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
 
@@ -90,13 +95,18 @@ export class ColumnComponentComponent implements OnInit {
       this.colorDragProtectedArea(node,'drag-color-refuse','drag-color-0') // color card to show that drag is not allowed.
     }else
       this.colorDragProtectedArea(node,'drag-color-ok','drag-color-0') // color card to show that drag is not allowed.
-    console.log('ColumnComponent#handleDragOver()',this.dragClass)
+    */
+
   }
 
 
+  handleDrop_ColFrame(event, column) {
+    const srcCardId = this.extractDragSourceId(event)
+    console.log('ColumnComponent#handleDrop-ColFrame','card => tcard,column ',srcCardId,'=>', this.dragOverId,column.id)
+    this.dragColumnFrameClass = '';
+  }
 
-
-  handleDrop(event, node) {
+  handleDrop_(event, node) {
     event.preventDefault();
     // const dragId = event.dataTransfer.getData('foo')
     const dragId = this.extractDragSourceId(event)
@@ -127,7 +137,43 @@ export class ColumnComponentComponent implements OnInit {
     }
   }
 
-  handleDragEnd(event) {}
+  handleDragEnd_ColFrame(event) {
+    console.log('ColumnComponent#handleDragEnd_ColFrame')
+  }
+
+  handleDragEnd_CardFrame(event) {
+    console.log('ColumnComponent#handleDragEnd_CardFrame')
+    this.DragCardFrameId=''
+  }
+
+  handleDrop_CardFrame(event, column:Column) {
+    const srcCardId = this.extractDragSourceId(event)
+    console.log('ColumnComponent#handleDrop_CardFrame',' card => card,column ',srcCardId,'=>', this.dragOverId,column.id)
+    this.DragCardFrameId=''
+  }
+
+  handleDragOver_CardFrame(event, node) {
+    event.preventDefault();
+    console.log('ColumnComponent#handleDragOver_CardFrame',node.id)
+    // event.currentTarget,
+    this.colorDragProtectedArea1(node.id)
+
+  }
+
+  colorDragProtectedArea1 = (valueOn) => {
+
+    this.DragCardFrameId = valueOn;
+    this.dragOverId = valueOn; // this is used for drop
+    if (!this.inTimer) {
+      this.inTimer = true;
+      setTimeout(() => {
+        this.DragCardFrameId = '';
+        this.inTimer = false;
+      }, 1000);
+    }
+  }
+
+
 
 
   validateDropRulesWrapper(srcCardId:string, targetColumnId: string):boolean{
@@ -152,14 +198,13 @@ export class ColumnComponentComponent implements OnInit {
 
 
 
-  colorDragProtectedArea = (node,colorOn,colorOff) => {
+  colorDragProtectedArea = (colorOn) => {
 
-    this.dragClass = colorOn;
+    this.dragColumnFrameClass = colorOn;
     if (!this.inTimer) {
       this.inTimer = true;
       setTimeout(() => {
-        console.log('-> reset ngClass', ' =', node.id)
-        this.dragClass = colorOff;
+        this.dragColumnFrameClass = 'drag-column-frame-off';
         this.inTimer = false;
       }, 2000);
     }
