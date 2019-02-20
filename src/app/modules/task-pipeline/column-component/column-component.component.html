@@ -24,7 +24,7 @@
                      {{column.title}}
                  </div>
              </div>
-             <!--mat-icon matBadge="15" matBadgeColor="warn" ></mat-icon-->
+
              <div [matBadge]="getCardCount()" matBadgeOverlap="false" class="column-heading-right" matBadgeColor="white" matBadgeSize="medium" ></div>
 
          </div>
@@ -52,7 +52,7 @@
                     [onShowTask]="onShowTask"
                     [validateDropRules]="validateDropRules">
             </app-card-component>
-            <div id="{{card.id}}"
+            <div
                  [ngClass]="{'drag-card-frame-green':DragCardFrameGreenId==card.id,'drag-card-frame-red':DragCardFrameRedId==card.id}"
                  droppable="true"
                  draggable="true"

@@ -47,8 +47,10 @@ export class CardComponentComponent implements OnInit {
   dragNodeState: string;
   dragStatus : string;
 
-    dragClass: string = 'drag-color0'; // drag/drop enable/disable color
-    inTimer:boolean = false;
+  dragClass: string = 'drag-color0'; // drag/drop enable/disable color
+  inTimer:boolean = false;
+
+  dueDateEditTrigger:boolean = false
 
   constructor(private fb: FormBuilder,
               private matIconRegistry: MatIconRegistry,
@@ -270,5 +272,13 @@ getProfile(card:Card):Profile{
 
     }
 
+
+    toggleDueDateEditTrigger(){
+        this.dueDateEditTrigger = !this.dueDateEditTrigger;
+    }
+
+    dueDateEditClosed(){
+        this.dueDateEditTrigger = false;
+    }
 
 }

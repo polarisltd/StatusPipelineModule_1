@@ -9,12 +9,21 @@ import {FormsModule} from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatBadgeModule, MatDialogModule, MatSliderModule, MatTooltipModule, MatTabsModule
+  MatBadgeModule,
+  MatDialogModule,
+  MatSliderModule,
+  MatTooltipModule,
+  MatTabsModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {ColumnsSortPipe} from "./shared/column-sort-pipe";
@@ -63,7 +72,9 @@ import {MessagesPortalService} from "./shared/messages-portal-service";
     MatTooltipModule,
     MatTabsModule,
     PortalModule,
-    AvatarModule
+    AvatarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     BoardComponentComponent,
@@ -73,7 +84,8 @@ import {MessagesPortalService} from "./shared/messages-portal-service";
     DialogEditCardComponent
   ],
   providers: [
-    MessagesPortalService
+    MessagesPortalService,
+    MatDatepickerModule
   ],
   entryComponents: [
       DialogConfirmComponent,
