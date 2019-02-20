@@ -17,12 +17,17 @@
   border-style: none;
 }
 
-.drag-card-frame-placeholder{
+.drag-card-frame-green{
   min-height: 200px;
   height: 200px;
   background-color:lightgoldenrodyellow;
 }
 
+.drag-card-frame-red{
+  min-height: 20px;
+  height: 20px;
+  background-color:lightpink;
+}
 
 .drag-column-frame-green{
   background-color:lightgoldenrodyellow;

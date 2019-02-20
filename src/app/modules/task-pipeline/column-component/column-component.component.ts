@@ -43,7 +43,8 @@ export class ColumnComponentComponent implements OnInit {
   database: Database
   board : Board
   dragColumnFrameClass: string = ''; // drag/drop enable/disable color
-  DragCardFrameId: string = ''; // drag/drop enable/disable color
+  DragCardFrameGreenId: string = ''; // drag/drop enable/disable color
+  DragCardFrameRedId:string = '';
   dragOverId: string = ''
   inTimer:boolean = false;
 
@@ -81,58 +82,77 @@ export class ColumnComponentComponent implements OnInit {
   handleDragOver_ColFrame(event, node) {
     event.preventDefault();
     console.log('ColumnComponent#handleDragOver_ColFrame')
-    this.colorDragProtectedArea('drag-column-frame-green')
-
-    /*
+    
     const srcCardId = this.extractDragSourceId(event)
     const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
 
     const columnCardCount = this.board.cards.filter(entry => entry.columnId === this.column.id).length
-    this.dragClass = ''   // reset drag indicator
-    if (columnCardCount>0)return; // perform card based drop
+    this.dragColumnFrameClass = ''   // reset drag indicator
+
+    if (columnCardCount>0)return; // perform card based drop. giving priority for card drop guesture
 
     if(!this.validateDropRulesWrapper(srcCard.id,this.column.id)) { // functionality from internal method
-      this.colorDragProtectedArea(node,'drag-color-refuse','drag-color-0') // color card to show that drag is not allowed.
+      this.colorDragProtectedArea('drag-column-frame-red') // color card to show that drag is not allowed.
     }else
-      this.colorDragProtectedArea(node,'drag-color-ok','drag-color-0') // color card to show that drag is not allowed.
-    */
+      this.colorDragProtectedArea('drag-column-frame-green') // color card to show that drag is not allowed.
+
+
 
   }
 
-
+  
+  
+  
+  
   handleDrop_ColFrame(event, column) {
+    event.preventDefault();
     const srcCardId = this.extractDragSourceId(event)
     console.log('ColumnComponent#handleDrop-ColFrame','card => tcard,column ',srcCardId,'=>', this.dragOverId,column.id)
-    this.dragColumnFrameClass = '';
+    this.dragColumnFrameClass = ''; // remove colouring
+    this.handleDropInternal(srcCardId, this.dragOverId,column.id)
   }
 
-  handleDrop_(event, node) {
-    event.preventDefault();
-    // const dragId = event.dataTransfer.getData('foo')
-    const dragId = this.extractDragSourceId(event)
-    console.log('ColumnComponent#handleDrop ',dragId,'->',node.id)
 
-    const columnCardCount = this.board.cards.filter(entry => entry.columnId === this.column.id).length
-    if (columnCardCount>0)return; // instead perform card based drop
+  handleDropInternal(srcCardId:string, targetCardId:string, targetColumnId:string ) {
 
-    // external validator
+    // find originating column
+    const srcColumnId =  this.board.cards.find(entry => entry.id === srcCardId).columnId;
 
-    if(this.validateDropRulesWrapper(dragId,node.id)){
+    const targColumnCardCount = this.board.cards.filter(entry => entry.columnId === targetColumnId).length
+     if(srcCardId === targetCardId)return; // dont try to drag on self
+ 
+    if(this.validateDropRulesWrapper(srcCardId,targetColumnId)){
       console.log('ColumnComponent#handleDrop - MOVING')
-      this.database.moveCard(dragId, node.id)  // card => column
+      if (targColumnCardCount==0) {
+        this.database.moveCard(srcCardId, targetColumnId)  // card => column
+      }else{ // card => over placeholder card.
+        
+        const srcCard =  this.board.cards.find(entry => entry.id === srcCardId);
+        const targetCard =  this.board.cards.find(entry => entry.id === targetCardId);
+        
+        // moved card is getting that column id were drag target is found.
+        srcCard.columnId = targetCard.columnId
+        const tatgetOrderPosition: number = targetCard.order
+        this.database.promoteOrderFromCard(targetCard);
+        srcCard.order = tatgetOrderPosition
+        // next on datasource + trigger event
+        this.database.updateDatasouce() // next on datasource./
 
-      const movedCard =  this.board.cards.find(entry => entry.id === dragId);
-      const fromColumn = this.board.columns.find(entry => entry.id === movedCard.columnId);
-      const toColumn = this.board.columns.find(entry => entry.id === node.id);
-
-
+      }
+ 
+      // TODO: move card after given one
+      
+      const toColumn = this.board.columns.find(entry => entry.id === targetColumnId);
+      const fromColumn = this.board.columns.find(entry => entry.id === srcColumnId);
+      const movedCard = this.board.cards.find(entry => entry.id === srcCardId);
+      
       const statusChange = {
         src:fromColumn,
         dst:toColumn,
         elem:movedCard
       } as IStatusChange;
 
-      console.log('emitting statusChange: ', statusChange)
+      console.log('emitting DnD statusChange: ', statusChange)
       this.onTransition.emit(statusChange)
     }
   }
@@ -143,37 +163,72 @@ export class ColumnComponentComponent implements OnInit {
 
   handleDragEnd_CardFrame(event) {
     console.log('ColumnComponent#handleDragEnd_CardFrame')
-    this.DragCardFrameId=''
+    this.DragCardFrameGreenId = ''
+    this.DragCardFrameRedId = ''
   }
 
   handleDrop_CardFrame(event, column:Column) {
     const srcCardId = this.extractDragSourceId(event)
     console.log('ColumnComponent#handleDrop_CardFrame',' card => card,column ',srcCardId,'=>', this.dragOverId,column.id)
-    this.DragCardFrameId=''
+    this.handleDropInternal(srcCardId, this.dragOverId,column.id)
+    this.DragCardFrameGreenId = ''
+    this.DragCardFrameRedId = ''
   }
 
-  handleDragOver_CardFrame(event, node) {
+  handleDragOver_CardFrame(event, overCard) {
     event.preventDefault();
-    console.log('ColumnComponent#handleDragOver_CardFrame',node.id)
+
     // event.currentTarget,
-    this.colorDragProtectedArea1(node.id)
+
+
+    const srcCardId = this.extractDragSourceId(event)
+    const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
+
+    const columnCardCount = this.board.cards.filter(entry => entry.columnId === this.column.id).length
+
+
+    // if (columnCardCount>0)return; // perform card based drop. giving priority for card drop guesture
+
+    this.dragColumnFrameClass = ''   // reset column guesture drag indicator
+    
+    if(!this.validateDropRulesWrapper(srcCardId,this.column.id)) { // functionality from internal method
+      this.colorDragCardFrameAreaRed(overCard.id) // color card to show that drag is not allowed.
+    }else
+      this.colorDragCardFrameAreaGreen(overCard.id)   // updates DragCardFrameId // color card to show that drag is not allowed.
+
+    console.log('ColumnComponent#handleDragOver_CardFrame OverCardId,greenId,RedId',this.DragCardFrameGreenId, overCard.id,this.DragCardFrameRedId )
 
   }
 
-  colorDragProtectedArea1 = (valueOn) => {
+  colorDragCardFrameAreaGreen = (valueOn) => {
 
-    this.DragCardFrameId = valueOn;
-    this.dragOverId = valueOn; // this is used for drop
+    this.DragCardFrameGreenId = valueOn;
+    this.DragCardFrameRedId = ''
+
+        this.dragOverId = valueOn; // this is used for drop
     if (!this.inTimer) {
       this.inTimer = true;
       setTimeout(() => {
-        this.DragCardFrameId = '';
+        this.DragCardFrameGreenId = '';
         this.inTimer = false;
       }, 1000);
     }
   }
 
+  colorDragCardFrameAreaRed = (valueOn) => {
 
+    this.DragCardFrameRedId = valueOn;
+    this.DragCardFrameGreenId = ''
+
+        this.dragOverId = valueOn; // this is used for drop
+    if (!this.inTimer) {
+      this.inTimer = true;
+      setTimeout(() => {
+        this.DragCardFrameRedId = '';
+        this.inTimer = false;
+      }, 1000);
+    }
+  }
 
 
   validateDropRulesWrapper(srcCardId:string, targetColumnId: string):boolean{
