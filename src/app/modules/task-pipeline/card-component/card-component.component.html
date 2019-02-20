@@ -15,7 +15,12 @@
 				</svg>
 				</a>
 
-				<div class="card-top-row-item" id="card-top-row-item-1"></div>
+				<div class="card-top-row-item" id="card-top-row-item-1">
+							<input [matDatepicker]="picker2" type="hidden"
+								   [(ngModel)]="card.due_date" name="due_date">
+							<mat-datepicker-toggle matSuffix [for]="picker2" matTooltip="Update Due Date"></mat-datepicker-toggle>
+							<mat-datepicker #picker2 (closed)="dueDateEditClosed()"></mat-datepicker>
+				</div>
 				<div class="card-top-row-item" id="card-top-row-item-2"></div>
 				<div class="card-top-row-item" id="card-top-row-item-3"></div>
 
@@ -61,14 +66,7 @@
 				</div>
 				<ng-template #placeHolderRow1Item1>
 				<div>
-					<form>
-					<mat-form-field>
-						<input matInput [matDatepicker]="picker2"
-							   [(ngModel)]="card.due_date" name="due_date">
-						<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-						<mat-datepicker #picker2 (closed)="dueDateEditClosed()"></mat-datepicker>
-					</mat-form-field>
-					</form>
+
 				</div>
 				</ng-template>
 
