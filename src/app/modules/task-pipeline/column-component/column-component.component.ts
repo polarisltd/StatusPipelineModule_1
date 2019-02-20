@@ -48,7 +48,7 @@ export class ColumnComponentComponent implements OnInit {
   DragCardFrameRedId:string = '';
   dragOverId: string = ''
   inTimer:boolean = false;
-
+  toggleColumnTitleEdit: boolean = false
   getCardCount():number{
     return this.database.getCardCountPerColumn(this.column.id);
   }
@@ -286,5 +286,21 @@ extractDragSourceId(event):string{
 clickAnything(){
     console.log('you clicked a button!' )
 }
+
+  onColumnTitleSubmit(){
+    console.log('New column title ',this.column.title)
+    this.database.updateDatasouce()
+    this.toggleColumnTitleEdit=!this.toggleColumnTitleEdit
+  }
+
+  onColumnTitleClick(){
+    if(!this.toggleColumnTitleEdit){
+      this.onClickColumnTitle.emit(this.column)  // emit event
+      this.toggleColumnTitleEdit = true  // change to edit
+    }
+  }
+
+
+
 
 }

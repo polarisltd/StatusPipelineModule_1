@@ -10,10 +10,22 @@
         <div class="column-header">
          <div class="column-heading-row">
              <div class="column-heading-left">
-                 {{column.title}}
+                 <div *ngIf="toggleColumnTitleEdit" style="height:10px">
+                 <form  (ngSubmit)="onColumnTitleSubmit()">
+                     <div style="display:flex">
+                       <input name="title" [(ngModel)]="column.title" #title="ngModel" required title >
+                       <button mat-button type="submit">
+                           <mat-icon>check</mat-icon>
+                       </button>
+                     </div>
+                 </form>
+                 </div>
+                 <div *ngIf="!toggleColumnTitleEdit" (click)="onColumnTitleClick()">
+                     {{column.title}}
+                 </div>
              </div>
              <!--mat-icon matBadge="15" matBadgeColor="warn" ></mat-icon-->
-             <div [matBadge]="getCardCount()" matBadgeOverlap="false" class="column-heading-right" matBadgeSize="medium"></div>
+             <div [matBadge]="getCardCount()" matBadgeOverlap="false" class="column-heading-right" matBadgeColor="white" matBadgeSize="medium" ></div>
 
          </div>
             <!--
