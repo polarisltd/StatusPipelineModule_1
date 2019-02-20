@@ -24,13 +24,17 @@
 }
 
 .drag-card-frame-red{
-  min-height: 20px;
-  height: 20px;
-  background-color:lightpink;
+  min-height: 200px;
+  height: 200px;
+  background-color:palevioletred;
 }
 
 .drag-column-frame-green{
   background-color:lightgoldenrodyellow;
+}
+
+.drag-column-frame-red{
+  background-color:palevioletred;
 }
 
 .drag-column-frame-off{

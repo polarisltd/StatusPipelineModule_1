@@ -107,95 +107,11 @@ handleDragStart(event, card) {
    console.log('CardComponent#handleDragStart',card.id)
 }
 
-handleDragOver(event, node) {
-    event.preventDefault();
-    const srcCardId = this.extractDragSourceId(event)
-    const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
-    // console.log('CardComponent#handleDragOver #sourceId '   , sourceId )
-    this.dragNodeState= this.getDragTargetState(event);
-    if(srcCard.id === this.card.id)return; // dont try to drag on self
-    if(!this.validateDropRulesWrapper(srcCard.id,this.card.columnId)) { // functionality from internal method
-      this.colorDragProtectedArea(node,'drag-color-refuse','drag-color-0' ) // color card to show that drag is not allowed.
-    }else
-      this.colorDragProtectedArea(node,'drag-color-ok','drag-color-0' ) // color card to show that drag is not allowed.
-
-
-}
-
-  
-handleDrop(event, card) {
-    event.preventDefault();
-
-    // Handle drag area
-    this.dragNodeState= this.getDragTargetState(event);
-    console.log('Drop on card ',this.card.title,this.card.id,' => ' ,this.dragNodeState,' col/order ',this.card.columnId,'/' , this.card.order  )
-    //
-    // cards are ordered per column it belongs. Different Columns can have Cards with same order no.
-    // - get card onto which drag op is happening.
-    // - if marker is 'above' take card with -1 order number
-    // - increase order number for all cards starting insertion point
-    // - change columnId if required.
-
-    const targetCard: Card = this.card; // (this.dragNodeState === 'drag_above') ? this.database.getPreviousCardInSequence(this.card) : this.card;
-    // we having card bellow which we accomodating source Card
-    const srcCardId = this.extractDragSourceId(event)
-    const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
-    if(srcCard.id === targetCard.id)return; // dont try to drag on self
-    if(this.validateDropRulesWrapper(srcCard.id,targetCard.columnId)) {
-        // moved card is getting that column id were drag target is found.
-        srcCard.columnId = targetCard.columnId
-        const tatgetOrderPosition: number = targetCard.order
-        this.database.promoteOrderFromCard(targetCard);
-        srcCard.order = tatgetOrderPosition
-        // next on datasource + trigger event
-        this.database.updateDatasouce() // next on datasource./
-    }
-    this.dragNodeState= ''
-}
-
-handleDragEnd(event) {
-
-}
 
 handleDragLeave(card){
         console.log('dragLeave',card)
         this.dragNodeState= ''
 }
-
-
-
-validateDropRulesWrapper(srcCardId:string, targetColumnId: string):boolean{
-
-        const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
-
-        if(srcCard){
-           // console.log('CardComponent#validateRules #sourceId card/col => col' ,srcCardId,'/',srcCard.columnId,' => '   ,targetColumnId    )
-        }else{
-            console.log('****** card not found ',srcCardId,' board_cards.len '  , this.board.cards.length)
-            return;
-        }
-        const srcColumn = this.board.columns.find(entry => entry.id === srcCard.columnId)
-
-        const targColumn = this.board.columns.find(entry => entry.id === targetColumnId)
-        // allowed ntom reorder cards!
-        return srcColumn.id === targColumn.id || this.validateDropRules({src:srcColumn,dst:targColumn,elem:srcCard} as IStatusChange)
-
-}
-
-
-    colorDragProtectedArea = (node,colorOn,colorOff) => {
-
-        this.dragClass = colorOn;
-        if (!this.inTimer) {
-            this.inTimer = true;
-            setTimeout(() => {
-                this.dragClass = colorOff;
-                this.inTimer = false;
-            }, 500);
-        }
-
-
-    }
 
 
 
@@ -216,11 +132,6 @@ clickExitUpdate() {
 
 
 
-
-extractDragSourceId(event):string{
-    // extract drag source as we coded it.
-    return event.dataTransfer.types.find(entry => entry.includes("id=")).substr(3);
-}
 insertDragSourceId(event,id:string){
     // known behavior, dragOver did not make available originating item.
     // normally we insert drag source via event.dataTransfer.setData(key,value)
@@ -230,17 +141,6 @@ insertDragSourceId(event,id:string){
 }
 
 
-getDragTargetState(event):string {
-    const percentageX = event.offsetX / event.target.clientWidth;
-    const percentageY = event.offsetY / event.target.clientHeight;
-    this.dragStatus = `card = ${this.card.id}  % = ${percentageY} `
-    if (percentageY > 0 && percentageY < 0.5) {
-        return 'below';
-    } else if (percentageY < 1 && percentageY > 0.5){
-        return 'above';
-    }else return 'off'
-
-}
 
 
 getProfile(card:Card):Profile{

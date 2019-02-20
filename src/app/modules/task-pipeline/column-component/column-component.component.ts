@@ -15,6 +15,7 @@ import {IPipelineColumn, IPipelineColumnElement, IStatusChange} from "../shared/
 })
 export class ColumnComponentComponent implements OnInit {
 
+  DEBUG_LOG_ENABLED = false
 
   @Input()
   boardSubject$: Subject<Board> // initialised and provided by board component
@@ -81,7 +82,7 @@ export class ColumnComponentComponent implements OnInit {
 
   handleDragOver_ColFrame(event, node) {
     event.preventDefault();
-    console.log('ColumnComponent#handleDragOver_ColFrame')
+    if(this.DEBUG_LOG_ENABLED)console.log('ColumnComponent#handleDragOver_ColFrame')
     
     const srcCardId = this.extractDragSourceId(event)
     const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
@@ -96,13 +97,8 @@ export class ColumnComponentComponent implements OnInit {
     }else
       this.colorDragProtectedArea('drag-column-frame-green') // color card to show that drag is not allowed.
 
-
-
   }
 
-  
-  
-  
   
   handleDrop_ColFrame(event, column) {
     event.preventDefault();
@@ -133,8 +129,8 @@ export class ColumnComponentComponent implements OnInit {
         // moved card is getting that column id were drag target is found.
         srcCard.columnId = targetCard.columnId
         const tatgetOrderPosition: number = targetCard.order
-        this.database.promoteOrderFromCard(targetCard);
-        srcCard.order = tatgetOrderPosition
+        this.database.promoteOrderAfterCard(targetCard,2);
+        srcCard.order = tatgetOrderPosition+1 // we inserting after this card
         // next on datasource + trigger event
         this.database.updateDatasouce() // next on datasource./
 
@@ -196,7 +192,7 @@ export class ColumnComponentComponent implements OnInit {
     }else
       this.colorDragCardFrameAreaGreen(overCard.id)   // updates DragCardFrameId // color card to show that drag is not allowed.
 
-    console.log('ColumnComponent#handleDragOver_CardFrame OverCardId,greenId,RedId',this.DragCardFrameGreenId, overCard.id,this.DragCardFrameRedId )
+    if(this.DEBUG_LOG_ENABLED)console.log('ColumnComponent#handleDragOver_CardFrame OverCardId,greenId,RedId',this.DragCardFrameGreenId, overCard.id,this.DragCardFrameRedId )
 
   }
 
@@ -235,9 +231,9 @@ export class ColumnComponentComponent implements OnInit {
 
     const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
 
-    if(srcCard)
-      console.log('CardComponent#validateRules #sourceId card/col => col' ,srcCardId,'/',srcCard.columnId,' => '   ,targetColumnId    )
-    else{
+    if(srcCard){
+      // console.log('CardComponent#validateRules #sourceId card/col => col' ,srcCardId,'/',srcCard.columnId,' => '   ,targetColumnId    )
+    }else{
       console.log('****** card not found ',srcCardId,' board_cards.len '  , this.board.cards.length)
       return;
     }
@@ -245,7 +241,7 @@ export class ColumnComponentComponent implements OnInit {
 
     const targColumn = this.board.columns.find(entry => entry.id === targetColumnId)
 
-    return this.validateDropRules({src:srcColumn,dst:targColumn,elem:srcCard} as IStatusChange)
+    return srcCard.columnId === targetColumnId || this.validateDropRules({src:srcColumn,dst:targColumn,elem:srcCard} as IStatusChange)
 
   }
 

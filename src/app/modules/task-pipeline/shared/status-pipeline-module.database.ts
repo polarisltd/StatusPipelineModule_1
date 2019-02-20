@@ -80,12 +80,6 @@ export class Database {
   }
 
 
-
-
-
-
-
-
   addCardRefColumn(columnId: string): Card  {
     const c: Column = this.boardInternal.columns.find(c => c.id === columnId)
     const newCard = new Card()
@@ -151,12 +145,12 @@ export class Database {
   }
 
   /** Take card and renumber starting from this card */
-  promoteOrderFromCard(card:Card){
+  promoteOrderAfterCard(card:Card,step: number){
 
     this.boardInternal.cards
-      .filter(item => item.columnId == card.columnId && item.order >= card.order )
+      .filter(item => item.columnId == card.columnId && item.order > card.order ) // all cards after given for same column
       .sort((a,b) => {if(a.order < b.order) return -1; else if(a.order > b.order)return 1; else return 0 })
-      .forEach( item => item.order=item.order+10)
+      .forEach( item => item.order=item.order+step)
 
   }
 
