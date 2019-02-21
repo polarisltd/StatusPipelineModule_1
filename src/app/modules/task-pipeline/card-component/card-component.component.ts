@@ -220,7 +220,7 @@ getProfile(card:Card):Profile{
 
     clickBtnUpdateCard(mode:string){
         console.log('insert/edit button clicked!')
-        const card = (mode==='add')?this.database.addCardRefColumn(this.card.columnId):this.card
+        const card = (mode==='add')?new Card():this.card
         if(mode==='add'){this.onAddCard.emit(card)}
         if(mode==='delete'){
             this.openDialogConfirm('Are you sure to remove this card?',
@@ -235,7 +235,10 @@ getProfile(card:Card):Profile{
             )
 
         }
-        else this.openDialogEditCard(card)
+        else {
+            this.openDialogEditCard(card,mode)
+
+        }
     }
 
     openDialogConfirm(promptText: string,card: Card, action: (input) => void): void {
@@ -254,9 +257,9 @@ getProfile(card:Card):Profile{
         });
     }
 
-    openDialogEditCard(card:Card): void {
+    openDialogEditCard(card:Card,mode:string): void {
         console.log('open dialog')
-        const dialogData = {card:card,response:false}
+        const dialogData = {card:card,response:false,mode:mode}
         let dialogRef = this.dialog.open(DialogEditCardComponent, {
             width: '350px',
             height: '600px',
@@ -267,8 +270,14 @@ getProfile(card:Card):Profile{
             console.log('The dialog was closed, submit = ',dialogData.response);
             if(dialogData.response){
               // we need updateCard (remove old/insert new)
-              this.database.updateCard(dialogData.card)
-              this.onUpdateCard.emit(dialogData.card)
+              if(dialogData.mode=='edit') {
+                  this.database.updateCard(dialogData.card)
+                  this.onUpdateCard.emit(dialogData.card)
+              }else if(dialogData.mode=='add'){
+                  dialogData.card.columnId = this.card.columnId
+                  dialogData.card.boardId = this.card.boardId
+                  this.database.insertCard(dialogData.card)
+              }
             }
         });
     }

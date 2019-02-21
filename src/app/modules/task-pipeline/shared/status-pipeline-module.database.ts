@@ -95,6 +95,17 @@ export class Database {
   }
 
 
+  insertCard(newCard:Card): Card  {
+    newCard.id = this.uuidv4()
+    this.boardInternal.cards.push(newCard)
+    this.boardSubject$.next(this.boardInternal);  // submit to topic
+    return newCard;
+  }
+
+
+
+
+
   getColumn(columnId:string):IPipelineColumn  {
     const column: Column =  this.boardInternal.columns.find(c => c.id === columnId);
     return column;
