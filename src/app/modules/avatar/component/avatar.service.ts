@@ -1,6 +1,6 @@
 import { Injectable, ComponentFactoryResolver, Injector } from '@angular/core';
 import { AvatarComponent } from './avatar.component';
-import { Profile } from "./../../profile/component/profile.model";
+import { Profile } from './../../profile/component/profile.model';
 
 @Injectable()
 export class AvatarService {
@@ -19,7 +19,7 @@ export class AvatarService {
    * 
    * @memberOf AvatarService
    */
-  get(profile: Profile, size: string, callbackFn?:any, showTitle?:boolean) {
+  get(profile: Profile, size: string, callbackFn?: any, showTitle?: boolean) {
     const factory = this.resolver.resolveComponentFactory(AvatarComponent);
     const componentRef = factory.create(this.injector);
     componentRef.instance.profile = profile;

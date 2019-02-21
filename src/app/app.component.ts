@@ -1,45 +1,47 @@
 import {Component, EventEmitter, Input, OnInit} from '@angular/core';
-import {Subject} from "rxjs";
-import {DataSource} from "./DataSource";
-import {Board} from "./modules/task-pipeline/shared/board";
+// tslint:disable-next-line:import-blacklist
+import {Subject} from 'rxjs';
+import {DataSource} from './DataSource';
+import {Board} from './modules/task-pipeline/shared/board';
 import {
   IPipelineColumn,
   IPipelineColumnElement,
   IStatusChange
-} from "./modules/task-pipeline/shared/status-pipeline-module.interface";
-import {MessagesPortalService} from "./modules/task-pipeline/shared/messages-portal-service";
-import {ComponentPortal, Portal} from "@angular/cdk/portal";
-import {DemoMessagesComponent} from "./demo-messages-component";
+} from './modules/task-pipeline/shared/status-pipeline-module.interface';
+import {MessagesPortalService} from './modules/task-pipeline/shared/messages-portal-service';
+import {ComponentPortal, Portal} from '@angular/cdk/portal';
+import {DemoMessagesComponent} from './demo-messages-component';
 
 
 
 
 
 @Component({
+  // tslint:disable-next-line
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ],
   providers: [DataSource]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   ALLOWED_TRANSITIONS = [
-    ['001-002','001-003'],
-    ['001-003','001-004'],
-    ['001-004','001-005'],
-    ['001-004','001-006'],
-    ['001-004','001-007'],
+    ['001-002', '001-003'],
+    ['001-003', '001-004'],
+    ['001-004', '001-005'],
+    ['001-004', '001-006'],
+    ['001-004', '001-007'],
 
     // allowed to move into empty columns except 001-005
 
-    ['001-002','001-006'],
-    ['001-002','001-007'],
+    ['001-002', '001-006'],
+    ['001-002', '001-007'],
 
-    ['001-003','001-006'],
-    ['001-003','001-007'],
+    ['001-003', '001-006'],
+    ['001-003', '001-007'],
 
-    ['001-004','001-006'],
-    ['001-004','001-007'],
+    ['001-004', '001-006'],
+    ['001-004', '001-007'],
 
 
 
@@ -48,7 +50,7 @@ export class AppComponent implements OnInit{
   ]
 
   validateDragFunction: Function;
-  boardSubject$ : Subject<Board>
+  boardSubject$: Subject<Board>
   dataSource: DataSource;
   onTransition = new EventEmitter<IStatusChange>();
   onClickColumnTitle = new EventEmitter<IPipelineColumn>();
@@ -69,27 +71,27 @@ export class AppComponent implements OnInit{
   messageArea: string = 'Demo events.'
 
   constructor(dataSource: DataSource,
-              messagePortalService:MessagesPortalService
+              messagePortalService: MessagesPortalService
   ) {
     this.dataSource = dataSource;
-    this.onTransition.subscribe(item => this.showMessage('Drag-n-drop:',item))
-    this.onClickColumnTitle.subscribe(item => this.showMessage('click column:',item))
-    this.onAddCard.subscribe(item => this.showMessage('addCard:',item))
-    this.onUpdateCard.subscribe(item => this.showMessage('updateCard',item))
-    this.onDeleteCard.subscribe(item => this.showMessage('deleteCard',item))
-    this.onRemoveColumn.subscribe(item => this.showMessage('deleteColumn',item))
-    this.onShowNotifications.subscribe(item => this.showMessage('onShowNotifications',item))
-    this.onShowProjectRooms.subscribe(item => this.showMessage('onShowProjectRooms',item))
-    this.onRemoveFromFavorites.subscribe(item => this.showMessage('onRemoveFromFavorites',item))
-    this.onShowDocuments .subscribe(item => this.showMessage('onShowDocuments',item))
-    this.onArrowPress .subscribe(item => this.showMessage('onArrowPress',item))
-    this.onShowTask .subscribe(item => this.showMessage('onShowTask',item))
+    this.onTransition.subscribe(item => this.showMessage('Drag-n-drop:', item))
+    this.onClickColumnTitle.subscribe(item => this.showMessage('click column:', item))
+    this.onAddCard.subscribe(item => this.showMessage('addCard:', item))
+    this.onUpdateCard.subscribe(item => this.showMessage('updateCard', item))
+    this.onDeleteCard.subscribe(item => this.showMessage('deleteCard', item))
+    this.onRemoveColumn.subscribe(item => this.showMessage('deleteColumn', item))
+    this.onShowNotifications.subscribe(item => this.showMessage('onShowNotifications', item))
+    this.onShowProjectRooms.subscribe(item => this.showMessage('onShowProjectRooms', item))
+    this.onRemoveFromFavorites.subscribe(item => this.showMessage('onRemoveFromFavorites', item))
+    this.onShowDocuments .subscribe(item => this.showMessage('onShowDocuments', item))
+    this.onArrowPress .subscribe(item => this.showMessage('onArrowPress', item))
+    this.onShowTask .subscribe(item => this.showMessage('onShowTask', item))
 
 
 
 
     this.onShowMessages.subscribe(item => {
-      this.showMessage('onShowMessage',item)
+      this.showMessage('onShowMessage', item)
       const portal   = new ComponentPortal(DemoMessagesComponent);
       messagePortalService.setPortal(portal)
     })
@@ -104,7 +106,7 @@ export class AppComponent implements OnInit{
 
 
   /** Actual validation function */
-  validateDropRules(statusChange: IStatusChange):boolean{
+  validateDropRules(statusChange: IStatusChange): boolean {
 
     // console.log('app.component#validateDragRules  ',statusChange)
 
@@ -117,10 +119,10 @@ export class AppComponent implements OnInit{
   }
 
 
-  showMessage(prefix:string, value:string){
+  showMessage(prefix: string, value: string) {
 
       this.messageArea =  prefix + JSON.stringify(value)
-      console.log('=>',this.messageArea)
+      console.log('=>', this.messageArea)
       setTimeout(() => {
           this.messageArea = 'Demo events.'
       }, 10000);

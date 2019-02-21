@@ -1,8 +1,8 @@
-import {Pipe, PipeTransform} from "@angular/core";
-import {Column} from "./column";
+import {Pipe, PipeTransform} from '@angular/core';
+import {Column} from './column';
 
 
-@Pipe({name: "sort"})
+@Pipe({name: 'sort'})
 export class ColumnsSortPipe implements PipeTransform {
     transform(array: Array<Column>): Array<Column> {
         if (!Array.isArray(array)) {

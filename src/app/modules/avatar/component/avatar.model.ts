@@ -1,4 +1,4 @@
-import {AvatarComponent} from "./avatar.component";
+import {AvatarComponent} from './avatar.component';
 
 export enum Sizes {
   xs = 24,
@@ -8,8 +8,8 @@ export enum Sizes {
 }
 
 export interface Avatars {
-  xs  : AvatarComponent;
-  sm  : AvatarComponent;
-  md  : AvatarComponent;
-  lg  : AvatarComponent;
+  xs: AvatarComponent;
+  sm: AvatarComponent;
+  md: AvatarComponent;
+  lg: AvatarComponent;
 }

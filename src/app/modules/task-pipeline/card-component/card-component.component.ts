@@ -1,20 +1,22 @@
 
 import {Component, Input, Output, OnInit, AfterViewInit, EventEmitter, ElementRef} from '@angular/core';
 import { ViewChild} from '@angular/core';
-import {Database} from "../shared/status-pipeline-module.database";
-import {Card} from "../shared/card";
-import {Observable, Subject} from "rxjs";
-import {Board} from "../shared/board";
-import {IPipelineColumnElement, IStatusChange} from "../shared/status-pipeline-module.interface";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {Profile} from "../../profile/component/profile.model";
-import {MatDialog, MatIconRegistry} from "@angular/material";
-import {DomSanitizer} from "@angular/platform-browser";
-import {DialogConfirmComponent} from "../dialog-confirm-component/dialog-confirm.component";
-import {DialogEditCardComponent} from "../dialog-edit-card-component/dialog-edit-card.component";
+import {Database} from '../shared/status-pipeline-module.database';
+import {Card} from '../shared/card';
+// tslint:disable-next-line:import-blacklist
+import {Observable, Subject} from 'rxjs';
+import {Board} from '../shared/board';
+import {IPipelineColumnElement, IStatusChange} from '../shared/status-pipeline-module.interface';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {Profile} from '../../profile/component/profile.model';
+import {MatDialog, MatIconRegistry} from '@angular/material';
+import {DomSanitizer} from '@angular/platform-browser';
+import {DialogConfirmComponent} from '../dialog-confirm-component/dialog-confirm.component';
+import {DialogEditCardComponent} from '../dialog-edit-card-component/dialog-edit-card.component';
 
 
 @Component({
+// tslint:disable-next-line
   selector: 'app-card-component',
   templateUrl: './card-component.component.html',
   styleUrls: ['./card-component.component.scss']
@@ -26,31 +28,31 @@ export class CardComponentComponent implements OnInit {
   @Input() onAddCard: EventEmitter<IPipelineColumnElement>;
   @Input() onUpdateCard: EventEmitter<IPipelineColumnElement>;
   @Input() onDeleteCard: EventEmitter<IPipelineColumnElement>;
-  @Input() onShowMessages : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowMessages: EventEmitter<IPipelineColumnElement>;
   //
-  @Input() onShowNotifications : EventEmitter<IPipelineColumnElement>;
-  @Input() onShowProjectRooms : EventEmitter<IPipelineColumnElement>;
-  @Input() onRemoveFromFavorites : EventEmitter<IPipelineColumnElement>;
-  @Input() onShowDocuments : EventEmitter<IPipelineColumnElement>;
-  @Input() onArrowPress : EventEmitter<IPipelineColumnElement>;
-  @Input() onShowTask : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowNotifications: EventEmitter<IPipelineColumnElement>;
+  @Input() onShowProjectRooms: EventEmitter<IPipelineColumnElement>;
+  @Input() onRemoveFromFavorites: EventEmitter<IPipelineColumnElement>;
+  @Input() onShowDocuments: EventEmitter<IPipelineColumnElement>;
+  @Input() onArrowPress: EventEmitter<IPipelineColumnElement>;
+  @Input() onShowTask: EventEmitter<IPipelineColumnElement>;
   //
   @Input() validateDropRules: Function
   //
   database: Database;
 
-  isCardEditMode : boolean = false;
-  board$ : Observable<Board>;
-  board : Board
+  isCardEditMode: boolean = false;
+  board$: Observable<Board>;
+  board: Board
   cardForm: FormGroup;
   cardFormChanged: boolean = false;
   dragNodeState: string;
-  dragStatus : string;
+  dragStatus: string;
 
   dragClass: string = 'drag-color0'; // drag/drop enable/disable color
-  inTimer:boolean = false;
+  inTimer: boolean = false;
 
-  dueDateEditTrigger:boolean = false
+  dueDateEditTrigger: boolean = false
 
   dueDateFg: FormGroup;
 
@@ -61,14 +63,14 @@ export class CardComponentComponent implements OnInit {
               ) {
 
       this.matIconRegistry.addSvgIcon(
-          "task",
-          this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/task.svg")
+          'task',
+          this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/task.svg')
           // this.domSanitizer.bypassSecurityTrustHtml(svg1) // alternative not working for me.
       );
       this.matIconRegistry.addSvgIcon(
-          "project_room",
+          'project_room',
           //
-          this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/project_room.svg")
+          this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/project_room.svg')
           // this.domSanitizer.bypassSecurityTrustHtml(svg1)
 
       );
@@ -84,11 +86,11 @@ export class CardComponentComponent implements OnInit {
   }
 
   ngOnInit() {
-        this.board$ = this.boardSubject$; //this.database.getBoardObservable()
+        this.board$ = this.boardSubject$; // this.database.getBoardObservable()
         this.board$.subscribe(board => {
             // console.log('CardComponent#ngOnInit board$.subscrive '/*, JSON.stringify(board,null,'\t')*/)
             this.board = board
-            this.database = new Database(this.boardSubject$,this.board);
+            this.database = new Database(this.boardSubject$, this.board);
             }
         )
 
@@ -104,34 +106,34 @@ export class CardComponentComponent implements OnInit {
       });
 
 
-      //this.dueDateValue.setValue(this.card.due_date)
-      //this.dueDateValue.registerOnChange(item => console.log('datePicker changed',item))
+      // this.dueDateValue.setValue(this.card.due_date)
+      // this.dueDateValue.registerOnChange(item => console.log('datePicker changed',item))
 
   }
 
-  clickOnCardField(event){
+  clickOnCardField(event) {
   console.log('CardComponent#-> onCardTitleClick ',   this.card.title)
 
-  //this.dueDateFg = this.fb.group({'due_date':this.card.due_date})
+  // this.dueDateFg = this.fb.group({'due_date':this.card.due_date})
 
 }
 
 
 
 handleDragStart(event, card) {
-   this.insertDragSourceId(event,this.card.id)
-   console.log('CardComponent#handleDragStart',card.id)
+   this.insertDragSourceId(event, this.card.id)
+   console.log('CardComponent#handleDragStart', card.id)
 }
 
 
-handleDragLeave(card){
-        console.log('dragLeave',card)
-        this.dragNodeState= ''
+handleDragLeave(card) {
+        console.log('dragLeave', card)
+        this.dragNodeState = ''
 }
 
 
 
-clickBtnProjectRoom(card){
+clickBtnProjectRoom(card) {
     console.log('CardComponent#clickOnPROJECT_ROOM' , card.id)
     this.onShowProjectRooms.emit(card)
 }
@@ -140,7 +142,7 @@ clickExitUpdate() {
     console.log('onKeyEnter()')
     // we will emit from formGroup change subscription.
     this.isCardEditMode = false
-    if(this.cardFormChanged){
+    if (this.cardFormChanged) {
         this.onUpdateCard.emit(this.card)
         this.isCardEditMode = false
     }
@@ -148,7 +150,7 @@ clickExitUpdate() {
 
 
 
-insertDragSourceId(event,id:string){
+insertDragSourceId(event, id: string) {
     // known behavior, dragOver did not make available originating item.
     // normally we insert drag source via event.dataTransfer.setData(key,value)
     // but now we cheat by inserting  event.dataTransfer.setData('key=value',whatever)
@@ -159,7 +161,7 @@ insertDragSourceId(event,id:string){
 
 
 
-getProfile(card:Card):Profile{
+getProfile(card: Card): Profile {
 
   const profile =  {
     email         : card.responsible_email,
@@ -174,37 +176,37 @@ getProfile(card:Card):Profile{
 }
 
 
-    clickBtnMessage(){
+    clickBtnMessage() {
         console.log('you clicked a MESSAGE button!')
         this.onShowMessages.emit(this.card)
 
     }
 
 
-    clickBtnNotifications(card){
+    clickBtnNotifications(card) {
         console.log('you clicked an NOTIFICATIONS button!')
         this.onShowNotifications.emit(card)
     }
 
-    clickBtnShowTask(card){
+    clickBtnShowTask(card) {
         console.log('you clicked an TASK button!')
         this.onShowTask.emit(card)
 
     }
 
 
-    clickBtnDocuments(card){
+    clickBtnDocuments(card) {
         console.log('you clicked an DOCUMENTS button!')
         this.onShowDocuments.emit(card)
     }
 
-    clickBtnFavorite(){
+    clickBtnFavorite() {
         console.log('you clicked a button!' )
         this.openDialogConfirm('Are you sure to remove this card from Favorites?',
             this.card,
             (result) => {
-                if(result ===1){
-                    console.log('removing favorite! ',this.card.id)
+                if (result === 1) {
+                    console.log('removing favorite! ', this.card.id)
                     this.card.favorite = false;
                     this.database.updateDatasouce();
                     this.onRemoveFromFavorites.emit(this.card)
@@ -213,67 +215,66 @@ getProfile(card:Card):Profile{
         )
     }
 
-    clickBtnRightArrow(card){
+    clickBtnRightArrow(card) {
         console.log('you clicked a RIGHT_ARROW button!' )
         this.onArrowPress.emit(card)
     }
 
-    clickBtnUpdateCard(mode:string){
+    clickBtnUpdateCard(mode: string) {
         console.log('insert/edit button clicked!')
-        const card = (mode==='add')?new Card():this.card
-        if(mode==='add'){this.onAddCard.emit(card)}
-        if(mode==='delete'){
+        const card = (mode === 'add') ? new Card() : this.card
+        if (mode === 'add') {this.onAddCard.emit(card)}
+        if (mode === 'delete') {
             this.openDialogConfirm('Are you sure to remove this card?',
                 this.card,
                 (result) => {
-                    if(result ===1){
-                        console.log('removing favorite! ',this.card.id)
+                    if (result === 1) {
+                        console.log('removing favorite! ', this.card.id)
                         this.onDeleteCard.emit(this.card)
                         this.database.removeCard(this.card.id)
                     }
                 }
             )
 
-        }
-        else {
-            this.openDialogEditCard(card,mode)
+        } else {
+            this.openDialogEditCard(card, mode)
 
         }
     }
 
-    openDialogConfirm(promptText: string,card: Card, action: (input) => void): void {
+    openDialogConfirm(promptText: string, card: Card, action: (input) => void): void {
         console.log('open dialog')
-        const dialogData = {card:card,message: promptText,response:0}
-        let dialogRef = this.dialog.open(DialogConfirmComponent, {
+        const dialogData = {card: card, message: promptText, response: 0}
+        const dialogRef = this.dialog.open(DialogConfirmComponent, {
             width: '250px',
             height: '200px',
             data: dialogData
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('Dialog was closed, result: ',result,'=>', dialogData.response);
+            console.log('Dialog was closed, result: ', result, '=>', dialogData.response);
             action(dialogData.response)
 
         });
     }
 
-    openDialogEditCard(card:Card,mode:string): void {
+    openDialogEditCard(card: Card, mode: string): void {
         console.log('open dialog')
-        const dialogData = {card:card,response:false,mode:mode}
-        let dialogRef = this.dialog.open(DialogEditCardComponent, {
+        const dialogData = {card: card, response: false, mode: mode}
+        const dialogRef = this.dialog.open(DialogEditCardComponent, {
             width: '350px',
             height: '600px',
             data: dialogData
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed, submit = ',dialogData.response);
-            if(dialogData.response){
+            console.log('The dialog was closed, submit = ', dialogData.response);
+            if (dialogData.response) {
               // we need updateCard (remove old/insert new)
-              if(dialogData.mode=='edit') {
+              if (dialogData.mode === 'edit') {
                   this.database.updateCard(dialogData.card)
                   this.onUpdateCard.emit(dialogData.card)
-              }else if(dialogData.mode=='add'){
+              } else if (dialogData.mode === 'add') {
                   dialogData.card.columnId = this.card.columnId
                   dialogData.card.boardId = this.card.boardId
                   this.database.insertCard(dialogData.card)
@@ -283,39 +284,39 @@ getProfile(card:Card):Profile{
     }
 
     /** Detect due in days (return positive) or ovedue (return negative)*/
-    getDueInDays(card:Card):number{
+    getDueInDays(card: Card): number {
       const ONE_DAY_MS = 86400000
       const now_ms = new Date().getTime()
       const dueDate_ms = Date.parse(card.due_date) // date.parse = milliseconds elapsed since January 1, 1970, 00:00:00 UTC
-      const diff_days = Math.round(( dueDate_ms - now_ms)/ONE_DAY_MS)
+      const diff_days = Math.round(( dueDate_ms - now_ms) / ONE_DAY_MS)
       // console.log('getDueInDays',new Date(),card.due_date,diff_days)
-      if (diff_days>0 && diff_days<=3 || diff_days<0)
+      if (diff_days > 0 && diff_days <= 3 || diff_days < 0)
           return diff_days;
       else return 0;
 
     }
 
 
-    toggleDueDateEditTrigger(){
+    toggleDueDateEditTrigger() {
         this.dueDateEditTrigger = !this.dueDateEditTrigger;
     }
 
-    dueDateEditClosed(){
+    dueDateEditClosed() {
         this.dueDateEditTrigger = false;
     }
 
     datePickerValidator = (d: Date): boolean => {
 
         // THIS FUNCTION CANNOT ACCESS THE VARIABLE 'someDateToBlock'
-        return d>new Date(); // allow dates in future
+        return d > new Date(); // allow dates in future
     }
 
     formatDate(date: Date): string {
         // date -> string
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
-        const value = year+'-'+month+'-'+day;
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        const value = year + '-' + month + '-' + day;
         // console.log('format: ', date, value)
         return value
     }

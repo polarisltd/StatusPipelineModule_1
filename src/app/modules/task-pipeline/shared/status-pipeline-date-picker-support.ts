@@ -14,10 +14,10 @@ export class DatePickerSupport extends NativeDateAdapter {
 
     format(date: Date, displayFormat: any): string {
             // date -> string
-            let day = date.getDate();
-            let month = date.getMonth() + 1;
-            let year = date.getFullYear();
-            const value = year+'-'+month+'-'+day;
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            const value = year + '-' + month + '-' + day;
             // console.log('format: ', date, value)
             return value
     }

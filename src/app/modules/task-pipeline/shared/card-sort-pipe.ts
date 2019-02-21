@@ -1,8 +1,8 @@
-import {Pipe, PipeTransform} from "@angular/core";
-import {Card} from "./card";
+import {Pipe, PipeTransform} from '@angular/core';
+import {Card} from './card';
 
 
-@Pipe({name: "sortCards"})
+@Pipe({name: 'sortCards'})
 export class CardsSortPipe implements PipeTransform {
     transform(array: Array<Card>): Array<Card> {
         if (!Array.isArray(array)) {

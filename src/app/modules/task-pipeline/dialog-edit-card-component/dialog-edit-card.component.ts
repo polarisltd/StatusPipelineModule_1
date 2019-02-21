@@ -1,13 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
+  // tslint:disable-next-line
   selector: 'dialog-edit-card',
   templateUrl: 'dialog-edit-card.component.html',
   styleUrls: ['./dialog-edit-card.component.scss']
 })
-export class DialogEditCardComponent implements OnInit{
+export class DialogEditCardComponent implements OnInit {
   /*
 
   this type of form is created to restore data to previous content if cancel is pressed.
@@ -43,12 +44,12 @@ export class DialogEditCardComponent implements OnInit{
     })
   }
 
-  onCancel(){
-    this.data.response=false;
+  onCancel() {
+    this.data.response = false;
     this.dialogRef.close();
   }
 
-  onSubmit(){
+  onSubmit() {
     this.data.card.title = this.cardForm.value.title
     this.data.card.status = this.cardForm.value.status
     this.data.card.description = this.cardForm.value.description
@@ -59,7 +60,7 @@ export class DialogEditCardComponent implements OnInit{
     this.data.card.responsible_email = this.cardForm.value.responsible_email
     this.data.card.due_date = this.cardForm.value.due_date
     this.data.card.pre_due_date = this.cardForm.value.pre_due_date
-    this.data.response=true;
+    this.data.response = true;
     this.dialogRef.close();
   }
 

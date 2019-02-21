@@ -1,14 +1,16 @@
 import {Component, Input, Output, OnInit, AfterViewInit, EventEmitter, ElementRef} from '@angular/core';
+// tslint:disable-next-line:import-blacklist
 import {Observable, Subject} from 'rxjs';
-import {Database} from "../shared/status-pipeline-module.database";
-import {Board} from "../shared/board";
-import {Column} from "../shared/column";
-import {Card} from "../shared/card";
-import {IPipelineColumn, IPipelineColumnElement, IStatusChange} from "../shared/status-pipeline-module.interface";
+import {Database} from '../shared/status-pipeline-module.database';
+import {Board} from '../shared/board';
+import {Column} from '../shared/column';
+import {Card} from '../shared/card';
+import {IPipelineColumn, IPipelineColumnElement, IStatusChange} from '../shared/status-pipeline-module.interface';
 
 
 
 @Component({
+  // tslint:disable-next-line
   selector: 'app-column-component',
   templateUrl: './column-component.component.html',
   styleUrls: ['./column-component.component.css']
@@ -21,35 +23,35 @@ export class ColumnComponentComponent implements OnInit {
   boardSubject$: Subject<Board> // initialised and provided by board component
   @Input()
   column: Column; // column on which this item having ownership
-  @Input() onTransition : EventEmitter<IStatusChange>; // card, fromCol, toCol
-  @Input() onClickColumnTitle : EventEmitter<IPipelineColumn>;
+  @Input() onTransition: EventEmitter<IStatusChange>; // card, fromCol, toCol
+  @Input() onClickColumnTitle: EventEmitter<IPipelineColumn>;
   @Input() validateDropRules: Function
   @Input() onAddCard: EventEmitter<Card>;
-  @Input() onRemoveColumn : EventEmitter<IPipelineColumn>;
-  @Input() onShowMessages : EventEmitter<IPipelineColumnElement>;
+  @Input() onRemoveColumn: EventEmitter<IPipelineColumn>;
+  @Input() onShowMessages: EventEmitter<IPipelineColumnElement>;
   @Input() onUpdateCard: EventEmitter<Card>;
   @Input() onDeleteCard: EventEmitter<Card>;
   //
-  @Input() onShowNotifications : EventEmitter<IPipelineColumnElement>;
-  @Input() onShowProjectRooms : EventEmitter<IPipelineColumnElement>;
-  @Input() onRemoveFromFavorites : EventEmitter<IPipelineColumnElement>;
-  @Input() onShowDocuments : EventEmitter<IPipelineColumnElement>;
-  @Input() onArrowPress : EventEmitter<IPipelineColumnElement>;
-  @Input() onShowTask : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowNotifications: EventEmitter<IPipelineColumnElement>;
+  @Input() onShowProjectRooms: EventEmitter<IPipelineColumnElement>;
+  @Input() onRemoveFromFavorites: EventEmitter<IPipelineColumnElement>;
+  @Input() onShowDocuments: EventEmitter<IPipelineColumnElement>;
+  @Input() onArrowPress: EventEmitter<IPipelineColumnElement>;
+  @Input() onShowTask: EventEmitter<IPipelineColumnElement>;
 
 
 
-  board$ : Observable<Board>;
+  board$: Observable<Board>;
 
   database: Database
-  board : Board
+  board: Board
   dragColumnFrameClass: string = ''; // drag/drop enable/disable color
   DragCardFrameGreenId: string = ''; // drag/drop enable/disable color
-  DragCardFrameRedId:string = '';
+  DragCardFrameRedId: string = '';
   dragOverId: string = ''
-  inTimer:boolean = false;
+  inTimer: boolean = false;
   toggleColumnTitleEdit: boolean = false
-  getCardCount():number{
+  getCardCount(): number {
     return this.database.getCardCountPerColumn(this.column.id);
   }
 
@@ -61,18 +63,18 @@ export class ColumnComponentComponent implements OnInit {
        this.board$.subscribe(board => {
            // console.log('ColumnComponent#ngOnInit board$.subscribe '/*, JSON.stringify(board,null,'\t')*/)
            this.board = board
-           this.database = new Database(this.boardSubject$,this.board);
+           this.database = new Database(this.boardSubject$, this.board);
       }
 
       )
   }
 
-  getCards(columnId: string, board:Board): Card[]{
+  getCards(columnId: string, board: Board): Card[] {
     return board.cards.filter(card => columnId === card.columnId)
   }
 
-  onColumnClick(event){
-    console.log('ColumnComponent#-> onColumnClick ',this.column.title)
+  onColumnClick(event) {
+    console.log('ColumnComponent#-> onColumnClick ', this.column.title)
     this.onClickColumnTitle.emit(this.column)
   }
 
@@ -82,7 +84,7 @@ export class ColumnComponentComponent implements OnInit {
 
   handleDragOver_ColFrame(event, node) {
     event.preventDefault();
-    if(this.DEBUG_LOG_ENABLED)console.log('ColumnComponent#handleDragOver_ColFrame')
+    if (this.DEBUG_LOG_ENABLED)console.log('ColumnComponent#handleDragOver_ColFrame')
     
     const srcCardId = this.extractDragSourceId(event)
     const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
@@ -90,11 +92,11 @@ export class ColumnComponentComponent implements OnInit {
     const columnCardCount = this.board.cards.filter(entry => entry.columnId === this.column.id).length
     this.dragColumnFrameClass = ''   // reset drag indicator
 
-    if (columnCardCount>0)return; // perform card based drop. giving priority for card drop guesture
+    if (columnCardCount > 0)return; // perform card based drop. giving priority for card drop guesture
 
-    if(!this.validateDropRulesWrapper(srcCard.id,this.column.id)) { // functionality from internal method
+    if (!this.validateDropRulesWrapper(srcCard.id, this.column.id)) { // functionality from internal method
       this.colorDragProtectedArea('drag-column-frame-red') // color card to show that drag is not allowed.
-    }else
+    } else
       this.colorDragProtectedArea('drag-column-frame-green') // color card to show that drag is not allowed.
 
   }
@@ -103,25 +105,25 @@ export class ColumnComponentComponent implements OnInit {
   handleDrop_ColFrame(event, column) {
     event.preventDefault();
     const srcCardId = this.extractDragSourceId(event)
-    console.log('ColumnComponent#handleDrop-ColFrame','card => tcard,column ',srcCardId,'=>', this.dragOverId,column.id)
+    console.log('ColumnComponent#handleDrop-ColFrame', 'card => tcard,column ', srcCardId, '=>', this.dragOverId, column.id)
     this.dragColumnFrameClass = ''; // remove colouring
-    this.handleDropInternal(srcCardId, this.dragOverId,column.id)
+    this.handleDropInternal(srcCardId, this.dragOverId, column.id)
   }
 
 
-  handleDropInternal(srcCardId:string, targetCardId:string, targetColumnId:string ) {
+  handleDropInternal(srcCardId: string, targetCardId: string, targetColumnId: string ) {
 
     // find originating column
     const srcColumnId =  this.board.cards.find(entry => entry.id === srcCardId).columnId;
 
     const targColumnCardCount = this.board.cards.filter(entry => entry.columnId === targetColumnId).length
-     if(srcCardId === targetCardId)return; // dont try to drag on self
+     if (srcCardId === targetCardId)return; // dont try to drag on self
  
-    if(this.validateDropRulesWrapper(srcCardId,targetColumnId)){
+    if (this.validateDropRulesWrapper(srcCardId, targetColumnId)) {
       console.log('ColumnComponent#handleDrop - MOVING')
-      if (targColumnCardCount==0) {
+      if (targColumnCardCount === 0) {
         this.database.moveCard(srcCardId, targetColumnId)  // card => column
-      }else{ // card => over placeholder card.
+      } else { // card => over placeholder card.
         
         const srcCard =  this.board.cards.find(entry => entry.id === srcCardId);
         const targetCard =  this.board.cards.find(entry => entry.id === targetCardId);
@@ -129,8 +131,8 @@ export class ColumnComponentComponent implements OnInit {
         // moved card is getting that column id were drag target is found.
         srcCard.columnId = targetCard.columnId
         const tatgetOrderPosition: number = targetCard.order
-        this.database.promoteOrderAfterCard(targetCard,2);
-        srcCard.order = tatgetOrderPosition+1 // we inserting after this card
+        this.database.promoteOrderAfterCard(targetCard, 2);
+        srcCard.order = tatgetOrderPosition + 1 // we inserting after this card
         // next on datasource + trigger event
         this.database.updateDatasouce() // next on datasource./
 
@@ -143,9 +145,9 @@ export class ColumnComponentComponent implements OnInit {
       const movedCard = this.board.cards.find(entry => entry.id === srcCardId);
       
       const statusChange = {
-        src:fromColumn,
-        dst:toColumn,
-        elem:movedCard
+        src: fromColumn,
+        dst: toColumn,
+        elem: movedCard
       } as IStatusChange;
 
       console.log('emitting DnD statusChange: ', statusChange)
@@ -163,10 +165,10 @@ export class ColumnComponentComponent implements OnInit {
     this.DragCardFrameRedId = ''
   }
 
-  handleDrop_CardFrame(event, column:Column) {
+  handleDrop_CardFrame(event, column: Column) {
     const srcCardId = this.extractDragSourceId(event)
-    console.log('ColumnComponent#handleDrop_CardFrame',' card => card,column ',srcCardId,'=>', this.dragOverId,column.id)
-    this.handleDropInternal(srcCardId, this.dragOverId,column.id)
+    console.log('ColumnComponent#handleDrop_CardFrame', ' card => card,column ', srcCardId, '=>', this.dragOverId, column.id)
+    this.handleDropInternal(srcCardId, this.dragOverId, column.id)
     this.DragCardFrameGreenId = ''
     this.DragCardFrameRedId = ''
   }
@@ -187,12 +189,12 @@ export class ColumnComponentComponent implements OnInit {
 
     this.dragColumnFrameClass = ''   // reset column guesture drag indicator
     
-    if(!this.validateDropRulesWrapper(srcCardId,this.column.id)) { // functionality from internal method
+    if (!this.validateDropRulesWrapper(srcCardId, this.column.id)) { // functionality from internal method
       this.colorDragCardFrameAreaRed(overCard.id) // color card to show that drag is not allowed.
-    }else
+    } else
       this.colorDragCardFrameAreaGreen(overCard.id)   // updates DragCardFrameId // color card to show that drag is not allowed.
 
-    if(this.DEBUG_LOG_ENABLED)console.log('ColumnComponent#handleDragOver_CardFrame OverCardId,greenId,RedId',this.DragCardFrameGreenId, overCard.id,this.DragCardFrameRedId )
+    if (this.DEBUG_LOG_ENABLED)console.log('ColumnComponent#handleDragOver_CardFrame OverCardId,greenId,RedId', this.DragCardFrameGreenId, overCard.id, this.DragCardFrameRedId )
 
   }
 
@@ -227,21 +229,21 @@ export class ColumnComponentComponent implements OnInit {
   }
 
 
-  validateDropRulesWrapper(srcCardId:string, targetColumnId: string):boolean{
+  validateDropRulesWrapper(srcCardId: string, targetColumnId: string): boolean {
 
     const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
 
-    if(srcCard){
+    if (srcCard) {
       // console.log('CardComponent#validateRules #sourceId card/col => col' ,srcCardId,'/',srcCard.columnId,' => '   ,targetColumnId    )
-    }else{
-      console.log('****** card not found ',srcCardId,' board_cards.len '  , this.board.cards.length)
+    } else {
+      console.log('****** card not found ', srcCardId, ' board_cards.len '  , this.board.cards.length)
       return;
     }
     const srcColumn = this.board.columns.find(entry => entry.id === srcCard.columnId)
 
     const targColumn = this.board.columns.find(entry => entry.id === targetColumnId)
 
-    return srcCard.columnId === targetColumnId || this.validateDropRules({src:srcColumn,dst:targColumn,elem:srcCard} as IStatusChange)
+    return srcCard.columnId === targetColumnId || this.validateDropRules({src: srcColumn, dst: targColumn, elem: srcCard} as IStatusChange)
 
   }
 
@@ -265,36 +267,36 @@ export class ColumnComponentComponent implements OnInit {
 
 
 
-  onColumnButtonClick(column){
+  onColumnButtonClick(column) {
   console.log('ColumnComponent#onColumnButtonClick_AddCard ' , column.id)
-  const c:Card = this.database.addCardRefColumn(column.id)
+  const c: Card = this.database.addCardRefColumn(column.id)
   this.onAddCard.emit(c)
 }
 
-onColumnButtonClickRemove(column){
+onColumnButtonClickRemove(column) {
   console.log('ColumnComponent#onColumnButtonClick' , column.id)
-  const removedColumn :Column = this.database.removeColumn(column.id)
+  const removedColumn: Column = this.database.removeColumn(column.id)
   this.onRemoveColumn.emit(removedColumn)
 
 }
 
 
-extractDragSourceId(event):string{
-  return event.dataTransfer.types.find(entry => entry.includes("id=")).substr(3);
+extractDragSourceId(event): string {
+  return event.dataTransfer.types.find(entry => entry.includes('id=')).substr(3);
 }
 
-clickAnything(){
+clickAnything() {
     console.log('you clicked a button!' )
 }
 
-  onColumnTitleSubmit(){
-    console.log('New column title ',this.column.title)
+  onColumnTitleSubmit() {
+    console.log('New column title ', this.column.title)
     this.database.updateDatasouce()
-    this.toggleColumnTitleEdit=!this.toggleColumnTitleEdit
+    this.toggleColumnTitleEdit = !this.toggleColumnTitleEdit
   }
 
-  onColumnTitleClick(){
-    if(!this.toggleColumnTitleEdit){
+  onColumnTitleClick() {
+    if (!this.toggleColumnTitleEdit) {
       this.onClickColumnTitle.emit(this.column)  // emit event
       this.toggleColumnTitleEdit = true  // change to edit
     }

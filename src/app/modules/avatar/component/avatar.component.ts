@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule, MatIconModule } from '@angular/material';
-import { Sizes } from "./avatar.model";
-import {Profile} from "../../profile/component/profile.model";
+import { Sizes } from './avatar.model';
+import {Profile} from '../../profile/component/profile.model';
 
 @Component({
   selector: 'dvtx-avatar',
@@ -19,6 +19,7 @@ export class AvatarComponent implements OnInit {
   @Input() profile: Profile;
 
   @Input() set size(size: any) {
+    // tslint:disable radix
     this.avatarSizeNumber = parseInt(Sizes[size]);
     this.avatarSizeString = size;
   };

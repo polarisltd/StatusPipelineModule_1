@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
-import {TaskPipelineModule} from "./modules/task-pipeline/task-pipeline.module";
-import {DemoMessagesComponent} from "./demo-messages-component";
+import {TaskPipelineModule} from './modules/task-pipeline/task-pipeline.module';
+import {DemoMessagesComponent} from './demo-messages-component';
 
 
 
@@ -12,7 +12,7 @@ import {DemoMessagesComponent} from "./demo-messages-component";
     CommonModule,
 
   ],
-  exports:[
+  exports: [
     DemoMessagesComponent
   ],
   declarations: [

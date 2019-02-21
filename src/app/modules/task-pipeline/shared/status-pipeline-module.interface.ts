@@ -1,4 +1,4 @@
-import {Column} from "./column";
+import {Column} from './column';
 
 export enum PipelineColumnElementType {
 Task = 'Task'
@@ -25,7 +25,7 @@ export interface IStatusChange {
     elem: IPipelineColumnElement;
 }
 
-export interface ITransition{
-  srcStatus:string;
-  dstStatus:string;
+export interface ITransition {
+  srcStatus: string;
+  dstStatus: string;
 }

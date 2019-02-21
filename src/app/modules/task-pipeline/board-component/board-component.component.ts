@@ -1,50 +1,48 @@
 import {Component, OnInit, Input, Output, EventEmitter, ElementRef, ChangeDetectorRef, NgZone} from '@angular/core';
+// tslint:disable-next-line:import-blacklist
 import {Observable, Subject} from 'rxjs';
 import {
   IPipelineColumn,
   IPipelineColumnElement,
   IStatusChange,
-} from "../shared/status-pipeline-module.interface";
-import {Board} from "../shared/board";
-import {StatusPipelineShared} from "../shared/status-pipeline-shared";
-import {Card} from "../shared/card";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {Portal} from "@angular/cdk/portal";
-import {MessagesPortalService} from "../shared/messages-portal-service";
+} from '../shared/status-pipeline-module.interface';
+import {Board} from '../shared/board';
+import {StatusPipelineShared} from '../shared/status-pipeline-shared';
+import {MessagesPortalService} from '../shared/messages-portal-service';
 
 
 @Component({
   selector: 'dvtx-status-pipeline',
   templateUrl: './board-component.component.html',
   styleUrls: ['./board-component.component.css'],
-  providers:[StatusPipelineShared]
+  providers: [StatusPipelineShared]
 })
 export class BoardComponentComponent implements OnInit {
-  @Input() boardSubject$ : Subject<Board>;
+  @Input() boardSubject$: Subject<Board>;
   // drag and drop
-  @Input() onTransition : EventEmitter<IStatusChange>; // drag and drop operation
+  @Input() onTransition: EventEmitter<IStatusChange>; // drag and drop operation
   @Input() validateDropRules: Function // asking permission for drag and drop
   // Card events
-  @Input() onClickColumnTitle : EventEmitter<IPipelineColumn>; // column title click
-  @Input() onAddCard : EventEmitter<IPipelineColumnElement>;
-  @Input() onDeleteCard  : EventEmitter<IPipelineColumnElement>;
-  @Input() onUpdateCard : EventEmitter<IPipelineColumnElement>;
-  @Input() onRemoveColumn : EventEmitter<IPipelineColumn>;
+  @Input() onClickColumnTitle: EventEmitter<IPipelineColumn>; // column title click
+  @Input() onAddCard: EventEmitter<IPipelineColumnElement>;
+  @Input() onDeleteCard: EventEmitter<IPipelineColumnElement>;
+  @Input() onUpdateCard: EventEmitter<IPipelineColumnElement>;
+  @Input() onRemoveColumn: EventEmitter<IPipelineColumn>;
   // assorted events
-  @Input() onShowMessages : EventEmitter<IPipelineColumnElement>;
-  @Input() onShowNotifications : EventEmitter<IPipelineColumnElement>;
-  @Input() onShowProjectRooms : EventEmitter<IPipelineColumnElement>;
-  @Input() onRemoveFromFavorites : EventEmitter<IPipelineColumnElement>;
-  @Input() onShowDocuments : EventEmitter<IPipelineColumnElement>;
-  @Input() onArrowPress : EventEmitter<IPipelineColumnElement>;
-  @Input() onShowTask : EventEmitter<IPipelineColumnElement>;
+  @Input() onShowMessages: EventEmitter<IPipelineColumnElement>;
+  @Input() onShowNotifications: EventEmitter<IPipelineColumnElement>;
+  @Input() onShowProjectRooms: EventEmitter<IPipelineColumnElement>;
+  @Input() onRemoveFromFavorites: EventEmitter<IPipelineColumnElement>;
+  @Input() onShowDocuments: EventEmitter<IPipelineColumnElement>;
+  @Input() onArrowPress: EventEmitter<IPipelineColumnElement>;
+  @Input() onShowTask: EventEmitter<IPipelineColumnElement>;
   // board: Board;
-  //board$: Observable<Board>;
+  // board$: Observable<Board>;
   board: Board;
-  board$:Observable<Board>
+  board$: Observable<Board>
   //
-  isSidebarOpen:boolean=false; // initially sidebar is closed.
-  sideBarTabIndex:number = 0;
+  isSidebarOpen: boolean = false; // initially sidebar is closed.
+  sideBarTabIndex: number = 0;
   editingTilte = false;
   currentTitle: string;
 
@@ -73,7 +71,7 @@ export class BoardComponentComponent implements OnInit {
      */
     this.onShowMessages.subscribe(
         card => {
-          this.isSidebarOpen=true;
+          this.isSidebarOpen = true;
           this.sideBarTabIndex = 1; // messages tab
 
   })
@@ -85,12 +83,12 @@ export class BoardComponentComponent implements OnInit {
     this.editingTilte = true;
   }
 
-  sidebarOpen(){
-  this.isSidebarOpen=true;
+  sidebarOpen() {
+  this.isSidebarOpen = true;
   }
 
-  sidebarClose(){
-    this.isSidebarOpen=false;
+  sidebarClose() {
+    this.isSidebarOpen = false;
   }
 
 

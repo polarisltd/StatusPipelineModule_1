@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+// tslint:disable
 @Component({
     selector: 'demo-messages-component',
     template: `        
