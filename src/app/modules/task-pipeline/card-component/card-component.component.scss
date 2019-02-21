@@ -219,3 +219,12 @@
     font-size:24px !important;
   }
 
+// make datepicker being centered
+::ng-deep .mat-datepicker-toggle {
+  position: relative;
+  height:200px;
+  max-height: 200px;
+}
+
+
+

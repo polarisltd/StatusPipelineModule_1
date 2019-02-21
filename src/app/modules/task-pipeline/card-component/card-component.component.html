@@ -21,7 +21,7 @@
 								   formControlName="due_date"
 							>
 							<mat-datepicker-toggle matSuffix [for]="picker2" matTooltip="Update Due Date"></mat-datepicker-toggle>
-							<mat-datepicker #picker2 (closed)="dueDateEditClosed()"></mat-datepicker>
+							<mat-datepicker #picker2 (closed)="dueDateEditClosed()"  [touchUi]="true"></mat-datepicker>
 				</div>
 				<div class="card-top-row-item" id="card-top-row-item-2"></div>
 				<div class="card-top-row-item" id="card-top-row-item-3"></div>
