@@ -6,7 +6,7 @@ import {Card} from "../shared/card";
 import {Observable, Subject} from "rxjs";
 import {Board} from "../shared/board";
 import {IPipelineColumnElement, IStatusChange} from "../shared/status-pipeline-module.interface";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Profile} from "../../profile/component/profile.model";
 import {MatDialog, MatIconRegistry} from "@angular/material";
 import {DomSanitizer} from "@angular/platform-browser";
@@ -52,6 +52,8 @@ export class CardComponentComponent implements OnInit {
 
   dueDateEditTrigger:boolean = false
 
+  dueDateFg: FormGroup;
+
   constructor(private fb: FormBuilder,
               private matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer,
@@ -71,6 +73,13 @@ export class CardComponentComponent implements OnInit {
 
       );
 
+      this.dueDateFg = new FormGroup({
+          due_date: new FormControl()
+      });
+      this.dueDateFg.controls['due_date'].valueChanges.subscribe(value => {
+          console.log('due_date changed: ' , value);
+          this.card.due_date = this.formatDate(value)
+      });
 
   }
 
@@ -95,11 +104,16 @@ export class CardComponentComponent implements OnInit {
       });
 
 
+      //this.dueDateValue.setValue(this.card.due_date)
+      //this.dueDateValue.registerOnChange(item => console.log('datePicker changed',item))
 
   }
 
   clickOnCardField(event){
   console.log('CardComponent#-> onCardTitleClick ',   this.card.title)
+
+  //this.dueDateFg = this.fb.group({'due_date':this.card.due_date})
+
 }
 
 
@@ -280,5 +294,22 @@ getProfile(card:Card):Profile{
     dueDateEditClosed(){
         this.dueDateEditTrigger = false;
     }
+
+    datePickerValidator = (d: Date): boolean => {
+
+        // THIS FUNCTION CANNOT ACCESS THE VARIABLE 'someDateToBlock'
+        return d>new Date(); // allow dates in future
+    }
+
+    formatDate(date: Date): string {
+        // date -> string
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        const value = year+'-'+month+'-'+day;
+        // console.log('format: ', date, value)
+        return value
+    }
+
 
 }

@@ -14,10 +14,12 @@
 					<path d="M19 14v6H5V4h14v2l2-2c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8l-2 2z"/>
 				</svg>
 				</a>
-
-				<div class="card-top-row-item" id="card-top-row-item-1">
+<!--  [(ngModel)]="card.due_date" name="due_date" -->
+				<div [formGroup]="dueDateFg" class="card-top-row-item" id="card-top-row-item-1">
 							<input [matDatepicker]="picker2" type="hidden"
-								   [(ngModel)]="card.due_date" name="due_date">
+								   [matDatepickerFilter]="datePickerValidator"
+								   formControlName="due_date"
+							>
 							<mat-datepicker-toggle matSuffix [for]="picker2" matTooltip="Update Due Date"></mat-datepicker-toggle>
 							<mat-datepicker #picker2 (closed)="dueDateEditClosed()"></mat-datepicker>
 				</div>
@@ -78,7 +80,7 @@
 			</mat-list-item>
 
 	       <mat-list-item class="card-row-2">
-			    {{card.title}} [{{card.id}}]
+			    {{card.title}} 
 			   <dvtx-avatar size="me" [profile]="getProfile(card)" class="card-header-icon-spacing"></dvtx-avatar>
 		   </mat-list-item>
 			<mat-list-item class="card-row-3">

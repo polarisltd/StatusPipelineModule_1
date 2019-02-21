@@ -23,7 +23,7 @@ import {
   MatTooltipModule,
   MatTabsModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule, DateAdapter
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {ColumnsSortPipe} from "./shared/column-sort-pipe";
@@ -35,6 +35,7 @@ import {DialogConfirmComponent} from "./dialog-confirm-component/dialog-confirm.
 import {DialogEditCardComponent} from "./dialog-edit-card-component/dialog-edit-card.component";
 import {PortalModule} from "@angular/cdk/portal";
 import {MessagesPortalService} from "./shared/messages-portal-service";
+import {DatePickerSupport} from "./shared/status-pipeline-date-picker-support";
 
 
 @NgModule({
@@ -85,7 +86,8 @@ import {MessagesPortalService} from "./shared/messages-portal-service";
   ],
   providers: [
     MessagesPortalService,
-    MatDatepickerModule
+    MatDatepickerModule,
+    { provide: DateAdapter, useClass: DatePickerSupport },
   ],
   entryComponents: [
       DialogConfirmComponent,
