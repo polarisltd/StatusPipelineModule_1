@@ -46,8 +46,6 @@
 
 <section id="main" >
 
-    <button (click)="sidebarOpen()"  class="side-nav-btn">[O]</button>
-
 <div *ngIf="board$ | async as board else loading" class="board-title">
 
 <ng-template #loading>
