@@ -31,7 +31,7 @@ export class DialogEditCardComponent implements OnInit{
   ngOnInit() {
     this.cardForm = this.formBuilder.group({
       'title': this.formBuilder.control(this.data.card.title),
-      'content': this.formBuilder.control(this.data.card.content),
+      'status': this.formBuilder.control(this.data.card.status),
       'description': this.formBuilder.control(this.data.card.description),
       'priority': this.formBuilder.control(this.data.card.priority),
       'favorite': this.formBuilder.control(this.data.card.favorite),
@@ -50,7 +50,7 @@ export class DialogEditCardComponent implements OnInit{
 
   onSubmit(){
     this.data.card.title = this.cardForm.value.title
-    this.data.card.content = this.cardForm.value.content
+    this.data.card.status = this.cardForm.value.status
     this.data.card.description = this.cardForm.value.description
     this.data.card.priority = this.cardForm.value.priority
     this.data.card.favorite = this.cardForm.value.favorite

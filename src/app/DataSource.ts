@@ -62,7 +62,7 @@ export class DataSource  {
             {
                 "id": "002-001",
                 "title": "DAily topic test task",
-                "content": "DAily topic test task",
+                "status": "open",
                 "boardId": "000-000",
                 "order": 1,
                 "columnId": "001-001",
@@ -77,7 +77,7 @@ export class DataSource  {
             {
                 "id": "002-002",
                 "title": "Each column must ",
-                "content": "Each column must ",
+                "status": "open",
                 "boardId": "000-000",
                 "order": 2,
                 "columnId": "001-001",
@@ -91,7 +91,7 @@ export class DataSource  {
             {
                 "id": "002-003",
                 "title": "editable title",
-                "content": "editable title",
+                "status": "open",
                 "boardId": "000-000",
                 "order": 1,
                 "columnId": "001-002",
@@ -105,7 +105,7 @@ export class DataSource  {
             {
                 "id": "002-004",
                 "title": "allow to transit ",
-                "content": "allow to transit .",
+                "status": "open",
                 "boardId": "000-000",
                 "order": 1,
                 "columnId": "001-003",
@@ -119,7 +119,7 @@ export class DataSource  {
             {
                 "id": "002-005",
                 "title": "so a transition",
-                "content": "so a transition",
+                "status": "closed",
                 "boardId": "000-000",
                 "order": 1,
                 "columnId": "001-004",
@@ -134,7 +134,7 @@ export class DataSource  {
             {
                 "id": "002-006",
                 "title": "so a transition",
-                "content": "so a transition.",
+                "status": "closed",
                 "boardId": "000-000",
                 "order": 2,
                 "columnId": "001-002",
@@ -148,7 +148,7 @@ export class DataSource  {
             {
                 "id": "002-007",
                 "title": "Each column ",
-                "content": "Each column .",
+                "status": "open",
                 "boardId": "000-000",
                 "order": 3,
                 "columnId": "001-002",
@@ -161,7 +161,7 @@ export class DataSource  {
             {
                 "id": "002-008",
                 "title": "Each column ",
-                "content": "Each column .",
+                "status": "closed",
                 "boardId": "000-000",
                 "order": 4,
                 "columnId": "001-002",
@@ -174,7 +174,7 @@ export class DataSource  {
             {
                 "id": "002-009",
                 "title": "Each column ",
-                "content": "Each column .",
+                "status": "open",
                 "boardId": "000-000",
                 "order": 5,
                 "columnId": "001-002",
@@ -187,7 +187,7 @@ export class DataSource  {
             {
                 "id": "002-010",
                 "title": "Each column ",
-                "content": "Each column .",
+                "status": "closed",
                 "boardId": "000-000",
                 "order": 6,
                 "columnId": "001-002",
@@ -200,7 +200,7 @@ export class DataSource  {
             {
                 "id": "002-011",
                 "title": "Each column ",
-                "content": "Each column .",
+                "status": "open",
                 "boardId": "000-000",
                 "order": 7,
                 "columnId": "001-002",
@@ -213,7 +213,7 @@ export class DataSource  {
             {
                 "id": "002-012",
                 "title": "Each column ",
-                "content": "Each column .",
+                "status": "open",
                 "boardId": "000-000",
                 "order": 8,
                 "columnId": "001-002",
@@ -226,7 +226,7 @@ export class DataSource  {
             {
                 "id": "002-013",
                 "title": "Each column ",
-                "content": "Each column .",
+                "status": "open",
                 "boardId": "000-000",
                 "order": 39,
                 "columnId": "001-002",

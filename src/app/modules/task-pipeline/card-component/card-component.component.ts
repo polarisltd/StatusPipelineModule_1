@@ -94,13 +94,13 @@ export class CardComponentComponent implements OnInit {
 
       this.cardForm = this.fb.group({
           'title': this.card.title,
-          'content': this.card.content
+          'status': this.card.status
       });
       this.cardForm.valueChanges.subscribe(form => {
           console.log('CardComponent#cardForm.valueChanges')
           this.cardFormChanged = true;
           this.card.title = form.title;
-          this.card.content = form.content;
+          this.card.status = form.status;
       });
 
 
