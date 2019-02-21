@@ -165,7 +165,7 @@ getProfile(card:Card):Profile{
     email         : card.responsible_email,
     first_name    : card.responsible_name,
     last_name     : card.responsible_name,
-    bg_color      : 'blue',
+    bg_color      : 'black',
     fg_color      : 'white',
     image         : null
 } as Profile;
