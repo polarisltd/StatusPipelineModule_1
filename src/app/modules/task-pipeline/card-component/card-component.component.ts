@@ -79,7 +79,6 @@ export class CardComponentComponent implements OnInit {
           due_date: new FormControl()
       });
       this.dueDateFg.controls['due_date'].valueChanges.subscribe(value => {
-          console.log('due_date changed: ' , value);
           this.card.due_date = this.formatDate(value)
       });
 
@@ -88,7 +87,6 @@ export class CardComponentComponent implements OnInit {
   ngOnInit() {
         this.board$ = this.boardSubject$; // this.database.getBoardObservable()
         this.board$.subscribe(board => {
-            // console.log('CardComponent#ngOnInit board$.subscrive '/*, JSON.stringify(board,null,'\t')*/)
             this.board = board
             this.database = new Database(this.boardSubject$, this.board);
             }
@@ -99,47 +97,27 @@ export class CardComponentComponent implements OnInit {
           'status': this.card.status
       });
       this.cardForm.valueChanges.subscribe(form => {
-          console.log('CardComponent#cardForm.valueChanges')
           this.cardFormChanged = true;
           this.card.title = form.title;
           this.card.status = form.status;
       });
 
-
-      // this.dueDateValue.setValue(this.card.due_date)
-      // this.dueDateValue.registerOnChange(item => console.log('datePicker changed',item))
-
   }
-
-  clickOnCardField(event) {
-  console.log('CardComponent#-> onCardTitleClick ',   this.card.title)
-
-  // this.dueDateFg = this.fb.group({'due_date':this.card.due_date})
-
-}
-
-
 
 handleDragStart(event, card) {
    this.insertDragSourceId(event, this.card.id)
-   console.log('CardComponent#handleDragStart', card.id)
 }
 
 
 handleDragLeave(card) {
-        console.log('dragLeave', card)
         this.dragNodeState = ''
 }
 
-
-
 clickBtnProjectRoom(card) {
-    console.log('CardComponent#clickOnPROJECT_ROOM' , card.id)
     this.onShowProjectRooms.emit(card)
 }
 
 clickExitUpdate() {
-    console.log('onKeyEnter()')
     // we will emit from formGroup change subscription.
     this.isCardEditMode = false
     if (this.cardFormChanged) {
@@ -177,36 +155,30 @@ getProfile(card: Card): Profile {
 
 
     clickBtnMessage() {
-        console.log('you clicked a MESSAGE button!')
         this.onShowMessages.emit(this.card)
 
     }
 
 
     clickBtnNotifications(card) {
-        console.log('you clicked an NOTIFICATIONS button!')
         this.onShowNotifications.emit(card)
     }
 
     clickBtnShowTask(card) {
-        console.log('you clicked an TASK button!')
         this.onShowTask.emit(card)
 
     }
 
 
     clickBtnDocuments(card) {
-        console.log('you clicked an DOCUMENTS button!')
         this.onShowDocuments.emit(card)
     }
 
     clickBtnFavorite() {
-        console.log('you clicked a button!' )
         this.openDialogConfirm('Are you sure to remove this card from Favorites?',
             this.card,
             (result) => {
                 if (result === 1) {
-                    console.log('removing favorite! ', this.card.id)
                     this.card.favorite = false;
                     this.database.updateDatasouce();
                     this.onRemoveFromFavorites.emit(this.card)
@@ -216,12 +188,10 @@ getProfile(card: Card): Profile {
     }
 
     clickBtnRightArrow(card) {
-        console.log('you clicked a RIGHT_ARROW button!' )
         this.onArrowPress.emit(card)
     }
 
     clickBtnUpdateCard(mode: string) {
-        console.log('insert/edit button clicked!')
         const card = (mode === 'add') ? new Card() : this.card
         if (mode === 'add') {this.onAddCard.emit(card)}
         if (mode === 'delete') {
@@ -229,7 +199,6 @@ getProfile(card: Card): Profile {
                 this.card,
                 (result) => {
                     if (result === 1) {
-                        console.log('removing favorite! ', this.card.id)
                         this.onDeleteCard.emit(this.card)
                         this.database.removeCard(this.card.id)
                     }
@@ -243,7 +212,6 @@ getProfile(card: Card): Profile {
     }
 
     openDialogConfirm(promptText: string, card: Card, action: (input) => void): void {
-        console.log('open dialog')
         const dialogData = {card: card, message: promptText, response: 0}
         const dialogRef = this.dialog.open(DialogConfirmComponent, {
             width: '250px',
@@ -252,14 +220,12 @@ getProfile(card: Card): Profile {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('Dialog was closed, result: ', result, '=>', dialogData.response);
             action(dialogData.response)
 
         });
     }
 
     openDialogEditCard(card: Card, mode: string): void {
-        console.log('open dialog')
         const dialogData = {card: card, response: false, mode: mode}
         const dialogRef = this.dialog.open(DialogEditCardComponent, {
             width: '350px',
@@ -268,7 +234,6 @@ getProfile(card: Card): Profile {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed, submit = ', dialogData.response);
             if (dialogData.response) {
               // we need updateCard (remove old/insert new)
               if (dialogData.mode === 'edit') {
@@ -289,7 +254,6 @@ getProfile(card: Card): Profile {
       const now_ms = new Date().getTime()
       const dueDate_ms = Date.parse(card.due_date) // date.parse = milliseconds elapsed since January 1, 1970, 00:00:00 UTC
       const diff_days = Math.round(( dueDate_ms - now_ms) / ONE_DAY_MS)
-      // console.log('getDueInDays',new Date(),card.due_date,diff_days)
       if (diff_days > 0 && diff_days <= 3 || diff_days < 0)
           return diff_days;
       else return 0;
@@ -317,7 +281,6 @@ getProfile(card: Card): Profile {
         const month = date.getMonth() + 1;
         const year = date.getFullYear();
         const value = year + '-' + month + '-' + day;
-        // console.log('format: ', date, value)
         return value
     }
 

@@ -8,7 +8,6 @@ import {
 } from '../shared/status-pipeline-module.interface';
 import {Board} from '../shared/board';
 import {StatusPipelineShared} from '../shared/status-pipeline-shared';
-import {MessagesPortalService} from '../shared/messages-portal-service';
 
 
 @Component({
@@ -36,22 +35,12 @@ export class BoardComponentComponent implements OnInit {
   @Input() onShowDocuments: EventEmitter<IPipelineColumnElement>;
   @Input() onArrowPress: EventEmitter<IPipelineColumnElement>;
   @Input() onShowTask: EventEmitter<IPipelineColumnElement>;
-  // board: Board;
-  // board$: Observable<Board>;
+
   board: Board;
   board$: Observable<Board>
   //
   isSidebarOpen: boolean = false; // initially sidebar is closed.
   sideBarTabIndex: number = 0;
-  editingTilte = false;
-  currentTitle: string;
-
-  constructor(
-     statusPipelineShared: StatusPipelineShared,
-     messagesPortalService: MessagesPortalService
-     ) {
-
-  }
 
   ngOnInit() {
 
@@ -76,15 +65,6 @@ export class BoardComponentComponent implements OnInit {
 
   })
 
-  }
-
-  editTitle() {
-    this.currentTitle = this.board.title;
-    this.editingTilte = true;
-  }
-
-  sidebarOpen() {
-  this.isSidebarOpen = true;
   }
 
   sidebarClose() {

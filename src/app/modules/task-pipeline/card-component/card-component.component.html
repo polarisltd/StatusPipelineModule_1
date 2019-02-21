@@ -14,7 +14,6 @@
 					<path d="M19 14v6H5V4h14v2l2-2c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8l-2 2z"/>
 				</svg>
 				</a>
-<!--  [(ngModel)]="card.due_date" name="due_date" -->
 				<div [formGroup]="dueDateFg" class="card-top-row-item" id="card-top-row-item-1">
 							<input [matDatepicker]="picker2" type="hidden"
 								   [matDatepickerFilter]="datePickerValidator"
@@ -42,10 +41,6 @@
 					<div class="card-top-row-item" id="card-top-row-item-5a"></div>
 				</ng-template>
 
-
-
-
-				<!-- alert-octagone-outline -->
 				<div class="card-top-row-item"   id="card-top-row-item-6"
 					 *ngIf="getDueInDays(card)!=0;else placeHolderItem6" [ngClass]="{'dueInDays':getDueInDays(card)>0,'overDue':getDueInDays(card)<0,'inRange':getDueInDays(card)===0}"
 					 matTooltip="InDue is close or OverDue">
@@ -109,10 +104,6 @@
 				<ng-template #placeHolderBottomRowItem3>
 					<div class="card-top-row-item" id="card-top-row-item-3a"></div>
 				</ng-template>
-
-
-
-
 
 				<div class="card-bottom-row-item">
 					<mat-icon class="card-bottom-row-item"

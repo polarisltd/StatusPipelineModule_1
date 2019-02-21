@@ -10,31 +10,13 @@
 
            <mat-tab-group [selectedIndex]="sideBarTabIndex">
                <mat-tab label="Comments" >
-                   <h1>Some tab content</h1>
-                   <p>...</p>
                </mat-tab>
                <mat-tab label="Messages">
-
-                   <div>- Opening side bar when clicked on messages icon and open comments tab:
-                       this must be implemented both ways: must open sidebar and emit an event onDetails(item)
-                       so the item can be fetched by the container.</div>
-
-                   <div >
-
-                       content could be implemented as portal <br>
-
-                       which type are we using here? <br>
-
-                       Portal. This is a component (ComponentPortal), or an embedded template (TemplatePortal) you would like to display
-
-
-                   </div>
                    <div *ngIf="messagesPortalService?.messagesPortal$| async as portal">
                      <div class="portal_container">
                        <ng-container [cdkPortalOutlet]="portal"></ng-container>
                      </div>
                    </div>
-
                </mat-tab>
            </mat-tab-group>
 
@@ -52,12 +34,7 @@
         <p>Task pipoeline is loading ...</p>
 </ng-template>
 
- <!--span  (click)="editTitle()">
-   {{ board?.title }}
- </span-->
-
-
- <div class="container"
+<div class="container"
      fxLayout
      fxLayout.xs="column"
      fxLayoutAlign="left"
