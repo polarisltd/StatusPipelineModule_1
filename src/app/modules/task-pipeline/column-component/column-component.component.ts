@@ -61,7 +61,6 @@ export class ColumnComponentComponent implements OnInit {
   ngOnInit() {
        this.board$ = this.boardSubject$;
        this.board$.subscribe(board => {
-           // console.log('ColumnComponent#ngOnInit board$.subscribe '/*, JSON.stringify(board,null,'\t')*/)
            this.board = board
            this.database = new Database(this.boardSubject$, this.board);
       }
@@ -73,19 +72,9 @@ export class ColumnComponentComponent implements OnInit {
     return board.cards.filter(card => columnId === card.columnId)
   }
 
-  onColumnClick(event) {
-    console.log('ColumnComponent#-> onColumnClick ', this.column.title)
-    this.onClickColumnTitle.emit(this.column)
-  }
-
-
-  handleDragStart(event, node) {
-  }
-
   handleDragOver_ColFrame(event, node) {
     event.preventDefault();
-    if (this.DEBUG_LOG_ENABLED)console.log('ColumnComponent#handleDragOver_ColFrame')
-    
+
     const srcCardId = this.extractDragSourceId(event)
     const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
 
@@ -105,8 +94,8 @@ export class ColumnComponentComponent implements OnInit {
   handleDrop_ColFrame(event, column) {
     event.preventDefault();
     const srcCardId = this.extractDragSourceId(event)
-    console.log('ColumnComponent#handleDrop-ColFrame', 'card => tcard,column ', srcCardId, '=>', this.dragOverId, column.id)
     this.dragColumnFrameClass = ''; // remove colouring
+    // TODO: there is no this.dragOverId when drag over empty column!
     this.handleDropInternal(srcCardId, this.dragOverId, column.id)
   }
 
@@ -128,17 +117,20 @@ export class ColumnComponentComponent implements OnInit {
         const targetCard =  this.board.cards.find(entry => entry.id === targetCardId);
         
         // moved card is getting that column id were drag target is found.
-        srcCard.columnId = targetCard.columnId
-        const tatgetOrderPosition: number = targetCard.order
-        this.database.promoteOrderAfterCard(targetCard, 2);
-        srcCard.order = tatgetOrderPosition + 1 // we inserting after this card
+        if (!targetCard || !targetCard.columnId) { // in case of dragging into empty column there will be no target card id!!!!
+           console.log('ColumnComponentComponent # handleDropInternal **** no target card, guess is that happens when dragging into empty column! targetCardId, targetCard:', targetCardId, targetCard)
+           srcCard.columnId = targetColumnId
+           srcCard.order = 0 // it goes first
+        }else {
+          srcCard.columnId = targetCard.columnId
+          const tatgetOrderPosition: number = targetCard.order
+          this.database.promoteOrderAfterCard(targetCard, 2);
+          srcCard.order = tatgetOrderPosition + 1 // we inserting after this card
+        }
         // next on datasource + trigger event
         this.database.updateDatasouce() // next on datasource./
-
       }
- 
-      // TODO: move card after given one
-      
+
       const toColumn = this.board.columns.find(entry => entry.id === targetColumnId);
       const fromColumn = this.board.columns.find(entry => entry.id === srcColumnId);
       const movedCard = this.board.cards.find(entry => entry.id === srcCardId);
@@ -226,7 +218,7 @@ export class ColumnComponentComponent implements OnInit {
     const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
 
     if (!srcCard) {
-      console.log('****** card not found ', srcCardId, ' board_cards.len '  , this.board.cards.length)
+      console.log('ColumnComponentComponent # validateDropRulesWrapper ****** card not found ', srcCardId, ' board_cards.len '  , this.board.cards.length)
       return;
     }
     const srcColumn = this.board.columns.find(entry => entry.id === srcCard.columnId)
@@ -258,7 +250,6 @@ extractDragSourceId(event): string {
 }
 
   onColumnTitleSubmit() {
-    console.log('New column title ', this.column.title)
     this.database.updateDatasouce()
     this.toggleColumnTitleEdit = !this.toggleColumnTitleEdit
   }
