@@ -1,5 +1,14 @@
 
-import {Component, Input, Output, OnInit, AfterViewInit, EventEmitter, ElementRef} from '@angular/core';
+import {
+    Component,
+    Input,
+    Output,
+    OnInit,
+    AfterViewInit,
+    EventEmitter,
+    ElementRef,
+    ChangeDetectionStrategy, ChangeDetectorRef
+} from '@angular/core';
 import { ViewChild} from '@angular/core';
 import {Database} from '../shared/status-pipeline-module.database';
 import {Card} from '../shared/card';
@@ -19,7 +28,8 @@ import {DialogEditCardComponent} from '../dialog-edit-card-component/dialog-edit
 // tslint:disable-next-line
   selector: 'app-card-component',
   templateUrl: './card-component.component.html',
-  styleUrls: ['./card-component.component.scss']
+  styleUrls: ['./card-component.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponentComponent implements OnInit {
   @ViewChild('emptyItem') emptyItem: ElementRef;
@@ -59,7 +69,8 @@ export class CardComponentComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer,
-              private dialog: MatDialog
+              private dialog: MatDialog,
+              private cd: ChangeDetectorRef
               ) {
 
       this.matIconRegistry.addSvgIcon(
@@ -88,7 +99,7 @@ export class CardComponentComponent implements OnInit {
         this.board$ = this.boardSubject$; // this.database.getBoardObservable()
         this.board$.subscribe(board => {
             this.board = board
-            this.database = new Database(this.boardSubject$, this.board);
+            this.database = new Database(this.boardSubject$, this.board, this.cd);
             }
         )
 
@@ -103,6 +114,10 @@ export class CardComponentComponent implements OnInit {
       });
 
   }
+
+refresh() {
+        this.cd.detectChanges();
+}
 
 handleDragStart(event, card) {
    this.insertDragSourceId(event, this.card.id)

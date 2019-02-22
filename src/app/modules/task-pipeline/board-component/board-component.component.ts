@@ -1,4 +1,11 @@
-import {Component, OnInit, Input, Output, EventEmitter, ElementRef, ChangeDetectorRef, NgZone} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy
+} from '@angular/core';
 // tslint:disable-next-line:import-blacklist
 import {Observable, Subject} from 'rxjs';
 import {
@@ -8,13 +15,15 @@ import {
 } from '../shared/status-pipeline-module.interface';
 import {Board} from '../shared/board';
 import {StatusPipelineShared} from '../shared/status-pipeline-shared';
+import {MatDialog} from '@angular/material';
 
 
 @Component({
   selector: 'dvtx-status-pipeline',
   templateUrl: './board-component.component.html',
   styleUrls: ['./board-component.component.css'],
-  providers: [StatusPipelineShared]
+  providers: [StatusPipelineShared],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BoardComponentComponent implements OnInit {
   @Input() boardSubject$: Subject<Board>;
@@ -42,13 +51,18 @@ export class BoardComponentComponent implements OnInit {
   isSidebarOpen: boolean = false; // initially sidebar is closed.
   sideBarTabIndex: number = 0;
 
+
+  constructor(
+      private cd: ChangeDetectorRef) {
+  }
+
   ngOnInit() {
 
-
-    this.board$ = this.boardSubject$
-    this.board$.subscribe(board => {
+    this.board$ = this.boardSubject$  // boardSubject$ is input.
+    this.boardSubject$.subscribe(board => {
     // console.log('BoardComponent#ngOnInit subscribe board$ {}'/*,JSON.stringify(data,null,'\t')*/)
     this.board = board
+    this.refresh()
     })
 
 
@@ -65,6 +79,10 @@ export class BoardComponentComponent implements OnInit {
 
   })
 
+  }
+
+  refresh() {
+    this.cd.detectChanges();
   }
 
   sidebarClose() {

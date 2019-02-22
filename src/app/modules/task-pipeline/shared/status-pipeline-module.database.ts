@@ -7,43 +7,20 @@ import {Card} from './card';
 import {Column} from './column';
 import {Board} from './board';
 import {IPipelineColumn, IPipelineColumnElement} from './status-pipeline-module.interface';
+import {ChangeDetectorRef} from '@angular/core';
 
 
 export class Database {
 
-  dndSourceCard: Card;
-  dndTargetColumn: Column;
-
-
-
-  boardInternal: Board;
-  board$: Observable<Board>;
-  boardSubject$: Subject<Board>;
-
-
-  constructor(boardSubject$: Subject<Board>,
-              board: Board) {
-    // console.log('Database# constructor{}')
-    this.boardSubject$ = boardSubject$;
-    this.boardInternal = board;
+  constructor(private boardSubject$: Subject<Board>,
+              private boardInternal: Board,
+              private cd: ChangeDetectorRef) {
+    // database object is created manually at board$.subscribe()
+    // so it having prepopulated dataset inside.
   }
-
-  setupObservable() {
-
-
-    // Important!
-    // remebemr that observable will return data later then expected :)
-
-
-   // this.boardSubject$.next(this.board);
-
-  }
-
 
   public getBoardObservable(): Observable<Board> {
-    
-    return this.board$
-
+    return this.boardSubject$
   }
 
 
@@ -52,7 +29,7 @@ export class Database {
     this.boardInternal.cards.splice(
       this.boardInternal.cards.indexOf(c), 1
     )
-    this.boardSubject$.next(this.boardInternal);
+    this.updateDatasouce();
   }
 
   addCardRefCard(cardId: string): Card {
@@ -65,7 +42,7 @@ export class Database {
     newCard.content = 'coming soon'
 
     this.boardInternal.cards.push(newCard)
-    this.boardSubject$.next(this.boardInternal);  // submit to topic
+    this.updateDatasouce();  // submit to topic
     return newCard;
   }
 
@@ -77,7 +54,7 @@ export class Database {
    if (oldCardIdx >= 0)  {
      console.log('Database#updating card', newImage)
      this.boardInternal.cards.splice(oldCardIdx, 1, newImage)
-     this.boardSubject$.next(this.boardInternal);
+     this.updateDatasouce();
    }
   }
 
@@ -92,7 +69,7 @@ export class Database {
     newCard.content = 'coming soon'
 
     this.boardInternal.cards.push(newCard)
-    this.boardSubject$.next(this.boardInternal);  // submit to topic
+    this.updateDatasouce();  // submit to topic
     return newCard;
   }
 
@@ -100,13 +77,9 @@ export class Database {
   insertCard(newCard: Card): Card  {
     newCard.id = this.uuidv4()
     this.boardInternal.cards.push(newCard)
-    this.boardSubject$.next(this.boardInternal);  // submit to topic
+    this.updateDatasouce();  // submit to topic
     return newCard;
   }
-
-
-
-
 
   getColumn(columnId: string): IPipelineColumn  {
     const column: Column =  this.boardInternal.columns.find(c => c.id === columnId);
@@ -131,7 +104,7 @@ export class Database {
 
     console.log('moving card->column ', this.boardInternal.cards[idxC].id, ' -> ', this.boardInternal.cards[idxC].columnId)
 
-    this.boardSubject$.next(this.boardInternal);
+    this.updateDatasouce()
 
   }
 
@@ -144,7 +117,7 @@ export class Database {
       this.boardInternal.columns.splice(
         this.boardInternal.columns.indexOf(column), 1
       )
-    this.boardSubject$.next(this.boardInternal);
+    this.updateDatasouce()
     return column;
   }
 
@@ -179,8 +152,9 @@ export class Database {
   }
 
   updateDatasouce() {
-    console.log('boardSubject$.next')
+    console.log('!!!!! boardSubject$.next')
     this.boardSubject$.next(this.boardInternal);
+    this.cd.detectChanges()
   }
 
   getCardCountPerColumn(columnId: string): number {

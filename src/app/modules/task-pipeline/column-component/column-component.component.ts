@@ -1,4 +1,13 @@
-import {Component, Input, Output, OnInit, AfterViewInit, EventEmitter, ElementRef} from '@angular/core';
+import {
+    Component,
+    Input,
+    Output,
+    OnInit,
+    AfterViewInit,
+    EventEmitter,
+    ElementRef,
+    ChangeDetectorRef, ChangeDetectionStrategy
+} from '@angular/core';
 // tslint:disable-next-line:import-blacklist
 import {Observable, Subject} from 'rxjs';
 import {Database} from '../shared/status-pipeline-module.database';
@@ -13,7 +22,8 @@ import {IPipelineColumn, IPipelineColumnElement, IStatusChange} from '../shared/
   // tslint:disable-next-line
   selector: 'app-column-component',
   templateUrl: './column-component.component.html',
-  styleUrls: ['./column-component.component.css']
+  styleUrls: ['./column-component.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ColumnComponentComponent implements OnInit {
 
@@ -51,18 +61,21 @@ export class ColumnComponentComponent implements OnInit {
   dragOverId: string = ''
   inTimer: boolean = false;
   toggleColumnTitleEdit: boolean = false
+
+  currentCardDragPos: string[] = ['', '']
+
   getCardCount(): number {
     return this.database.getCardCountPerColumn(this.column.id);
   }
 
-  constructor( ) {
+  constructor(private cd: ChangeDetectorRef) {
   }
 
   ngOnInit() {
        this.board$ = this.boardSubject$;
        this.board$.subscribe(board => {
            this.board = board
-           this.database = new Database(this.boardSubject$, this.board);
+           this.database = new Database(this.boardSubject$, this.board,this.cd);
       }
 
       )
@@ -121,7 +134,7 @@ export class ColumnComponentComponent implements OnInit {
            console.log('ColumnComponentComponent # handleDropInternal **** no target card, guess is that happens when dragging into empty column! targetCardId, targetCard:', targetCardId, targetCard)
            srcCard.columnId = targetColumnId
            srcCard.order = 0 // it goes first
-        }else {
+        } else {
           srcCard.columnId = targetCard.columnId
           const tatgetOrderPosition: number = targetCard.order
           this.database.promoteOrderAfterCard(targetCard, 2);
@@ -146,6 +159,7 @@ export class ColumnComponentComponent implements OnInit {
   }
 
   handleDragEnd_ColFrame(event) {
+     this.dragColumnFrameClass = ''; // remove colouring
   }
 
   handleDragEnd_CardFrame(event) {
@@ -171,11 +185,6 @@ export class ColumnComponentComponent implements OnInit {
 
     const columnCardCount = this.board.cards.filter(entry => entry.columnId === this.column.id).length
 
-
-    // if (columnCardCount>0)return; // perform card based drop. giving priority for card drop guesture
-
-    this.dragColumnFrameClass = ''   // reset column guesture drag indicator
-    
     if (!this.validateDropRulesWrapper(srcCardId, this.column.id)) { // functionality from internal method
       this.colorDragCardFrameAreaRed(overCard.id) // color card to show that drag is not allowed.
     } else
