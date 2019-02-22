@@ -81,6 +81,10 @@ export class ColumnComponentComponent implements OnInit {
       )
   }
 
+    refresh() {
+        this.cd.detectChanges();
+    }
+
   getCards(columnId: string, board: Board): Card[] {
     return board.cards.filter(card => columnId === card.columnId)
   }
@@ -97,9 +101,9 @@ export class ColumnComponentComponent implements OnInit {
     if (columnCardCount > 0)return; // perform card based drop. giving priority for card drop guesture
 
     if (!this.validateDropRulesWrapper(srcCard.id, this.column.id)) { // functionality from internal method
-      this.colorDragProtectedArea('drag-column-frame-red') // color card to show that drag is not allowed.
+      this.colorDragColumnFrameArea('drag-column-frame-red') // color card to show that drag is not allowed.
     } else
-      this.colorDragProtectedArea('drag-column-frame-green') // color card to show that drag is not allowed.
+      this.colorDragColumnFrameArea('drag-column-frame-green') // color card to show that drag is not allowed.
 
   }
 
@@ -196,12 +200,13 @@ export class ColumnComponentComponent implements OnInit {
     this.DragCardFrameGreenId = valueOn;
     this.DragCardFrameRedId = ''
 
-        this.dragOverId = valueOn; // this is used for drop
+    this.dragOverId = valueOn; // this is used for drop
     if (!this.inTimer) {
       this.inTimer = true;
       setTimeout(() => {
         this.DragCardFrameGreenId = '';
         this.inTimer = false;
+        this.refresh()
       }, 1000);
     }
   }
@@ -217,6 +222,7 @@ export class ColumnComponentComponent implements OnInit {
       setTimeout(() => {
         this.DragCardFrameRedId = '';
         this.inTimer = false;
+          this.refresh()
       }, 1000);
     }
   }
@@ -238,14 +244,15 @@ export class ColumnComponentComponent implements OnInit {
 
   }
 
-  colorDragProtectedArea = (colorOn) => {
+  colorDragColumnFrameArea = (colorOn) => {
 
     this.dragColumnFrameClass = colorOn;
     if (!this.inTimer) {
       this.inTimer = true;
       setTimeout(() => {
-        this.dragColumnFrameClass = 'drag-column-frame-off';
+        this.dragColumnFrameClass = '';
         this.inTimer = false;
+        this.refresh()
       }, 2000);
     }
 
