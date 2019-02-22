@@ -260,7 +260,7 @@ extractDragSourceId(event): string {
 
   onColumnTitleSubmit() {
     this.database.updateDatasouce()
-    this.toggleColumnTitleEdit = !this.toggleColumnTitleEdit
+    this.toggleColumnTitleEdit = false
   }
 
   onColumnTitleClick() {
