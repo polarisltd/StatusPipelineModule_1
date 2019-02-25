@@ -56,11 +56,13 @@ export class ColumnComponentComponent implements OnInit {
   database: Database
   board: Board
   dragColumnFrameClass: string = ''; // drag/drop enable/disable color
-  DragCardFrameGreenId: string = ''; // drag/drop enable/disable color
-  DragCardFrameRedId: string = '';
+  dragCardFrameGreenId: string = ''; // drag/drop enable/disable color
+  dragCardFrameRedId: string = '';
   dragOverId: string = ''
-  inTimer: boolean = false;
+  dragColumnFrameInTimer: boolean = false;
+  colorDragCardFrameInTimer: boolean = false;
   toggleColumnTitleEdit: boolean = false
+  readonly DRAG_EFFECT_TIMEOUT: number = 1000
 
   currentCardDragPos: string[] = ['', '']
 
@@ -75,7 +77,7 @@ export class ColumnComponentComponent implements OnInit {
        this.board$ = this.boardSubject$;
        this.board$.subscribe(board => {
            this.board = board
-           this.database = new Database(this.boardSubject$, this.board,this.cd);
+           this.database = new Database(this.boardSubject$, this.board, this.cd);
       }
 
       )
@@ -167,15 +169,15 @@ export class ColumnComponentComponent implements OnInit {
   }
 
   handleDragEnd_CardFrame(event) {
-    this.DragCardFrameGreenId = ''
-    this.DragCardFrameRedId = ''
+    this.dragCardFrameGreenId = ''
+    this.dragCardFrameRedId = ''
   }
 
   handleDrop_CardFrame(event, column: Column) {
     const srcCardId = this.extractDragSourceId(event)
     this.handleDropInternal(srcCardId, this.dragOverId, column.id)
-    this.DragCardFrameGreenId = ''
-    this.DragCardFrameRedId = ''
+    this.dragCardFrameGreenId = ''
+    this.dragCardFrameRedId = ''
   }
 
   handleDragOver_CardFrame(event, overCard) {
@@ -189,6 +191,8 @@ export class ColumnComponentComponent implements OnInit {
 
     const columnCardCount = this.board.cards.filter(entry => entry.columnId === this.column.id).length
 
+    this.dragOverId = overCard.id; // this is used for drop
+
     if (!this.validateDropRulesWrapper(srcCardId, this.column.id)) { // functionality from internal method
       this.colorDragCardFrameAreaRed(overCard.id) // color card to show that drag is not allowed.
     } else
@@ -197,33 +201,31 @@ export class ColumnComponentComponent implements OnInit {
 
   colorDragCardFrameAreaGreen = (valueOn) => {
 
-    this.DragCardFrameGreenId = valueOn;
-    this.DragCardFrameRedId = ''
+    this.dragCardFrameGreenId = valueOn;
+    this.dragCardFrameRedId = ''
 
-    this.dragOverId = valueOn; // this is used for drop
-    if (!this.inTimer) {
-      this.inTimer = true;
+    if (!this.colorDragCardFrameInTimer) {
+      this.colorDragCardFrameInTimer = true;
       setTimeout(() => {
-        this.DragCardFrameGreenId = '';
-        this.inTimer = false;
+        this.dragCardFrameGreenId = '';
+        this.colorDragCardFrameInTimer = false;
         this.refresh()
-      }, 1000);
+      }, this.DRAG_EFFECT_TIMEOUT);
     }
   }
 
   colorDragCardFrameAreaRed = (valueOn) => {
 
-    this.DragCardFrameRedId = valueOn;
-    this.DragCardFrameGreenId = ''
+    this.dragCardFrameRedId = valueOn;
+    this.dragCardFrameGreenId = ''
 
-        this.dragOverId = valueOn; // this is used for drop
-    if (!this.inTimer) {
-      this.inTimer = true;
+    if (!this.colorDragCardFrameInTimer) {
+      this.colorDragCardFrameInTimer = true;
       setTimeout(() => {
-        this.DragCardFrameRedId = '';
-        this.inTimer = false;
+        this.dragCardFrameRedId = '';
+        this.colorDragCardFrameInTimer = false;
           this.refresh()
-      }, 1000);
+      }, this.DRAG_EFFECT_TIMEOUT);
     }
   }
 
@@ -247,13 +249,13 @@ export class ColumnComponentComponent implements OnInit {
   colorDragColumnFrameArea = (colorOn) => {
 
     this.dragColumnFrameClass = colorOn;
-    if (!this.inTimer) {
-      this.inTimer = true;
+    if (!this.dragColumnFrameInTimer) {
+      this.dragColumnFrameInTimer = true;
       setTimeout(() => {
         this.dragColumnFrameClass = '';
-        this.inTimer = false;
+        this.dragColumnFrameInTimer  = false;
         this.refresh()
-      }, 2000);
+      }, this.DRAG_EFFECT_TIMEOUT);
     }
 
 
