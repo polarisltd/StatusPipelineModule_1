@@ -18,23 +18,27 @@
 }
 
 .drag-card-frame-green{
-  min-height: 200px;
-  height: 200px;
-  background-color:lightgoldenrodyellow;
+  height: 50px;
+  background-color:green;
+  transform: scaleY(5);
+  transition: all 2s ease-in-out;
 }
 
 .drag-card-frame-red{
-  min-height: 200px;
-  height: 200px;
+  height: 50px;
   background-color:palevioletred;
+  transform: scaleY(5);
+  transition: all 2s ease-in-out;
 }
 
 .drag-column-frame-green{
-  background-color:lightgoldenrodyellow;
+  background-color:green;
+  transition: background-color 2s;
 }
 
 .drag-column-frame-red{
   background-color:palevioletred;
+  transition: background-color 2s;
 }
 
 .drag-column-frame-off{

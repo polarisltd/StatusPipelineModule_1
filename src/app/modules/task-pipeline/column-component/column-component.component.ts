@@ -224,11 +224,25 @@ export class ColumnComponentComponent implements OnInit {
       setTimeout(() => {
         this.dragCardFrameRedId = '';
         this.colorDragCardFrameInTimer = false;
-          this.refresh()
+        this.refresh()
       }, this.DRAG_EFFECT_TIMEOUT);
     }
   }
 
+  colorDragColumnFrameArea = (colorOn) => {
+
+    this.dragColumnFrameClass = colorOn;
+    if (!this.dragColumnFrameInTimer) {
+      this.dragColumnFrameInTimer = true;
+      setTimeout(() => {
+        this.dragColumnFrameClass = '';
+        this.dragColumnFrameInTimer  = false;
+        this.refresh()
+      }, this.DRAG_EFFECT_TIMEOUT);
+    }
+
+
+  }
 
   validateDropRulesWrapper(srcCardId: string, targetColumnId: string): boolean {
 
@@ -246,20 +260,7 @@ export class ColumnComponentComponent implements OnInit {
 
   }
 
-  colorDragColumnFrameArea = (colorOn) => {
 
-    this.dragColumnFrameClass = colorOn;
-    if (!this.dragColumnFrameInTimer) {
-      this.dragColumnFrameInTimer = true;
-      setTimeout(() => {
-        this.dragColumnFrameClass = '';
-        this.dragColumnFrameInTimer  = false;
-        this.refresh()
-      }, this.DRAG_EFFECT_TIMEOUT);
-    }
-
-
-  }
 
 
 
