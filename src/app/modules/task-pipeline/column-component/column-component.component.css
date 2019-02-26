@@ -31,23 +31,21 @@
 /** Next 3 are for DnD Column frame animation */
 
 .drag-column-frame-green{
-  background-color:green;
-  height:800px;
-  transition: all 2s 0s ease-in-out;
-  transform: scaleY(5);
+  background-color:mediumaquamarine;
+  height:1300px;
+  transition: background-color 2s 0s ease-in-out;
 }
 
 .drag-column-frame-red{
   background-color:palevioletred;
-  height:800px;
-  transition: all 2s 0s ease-in-out;
-  transform: scaleY(5);
+  height:1300px;
+  transition: background-color 2s 0s ease-in-out;
 }
 
 .drag-column-frame-none{
   background-color:#E9EBEC;
   transition: all 2s 0s ease-in-out;
-  height:800px; /* we keep height to generate DragOver events while mouse is anywere under column*/
+  height:1300px; /* we keep height to generate DragOver events while mouse is anywere under column*/
   width:100%;
 }
 

@@ -68,7 +68,7 @@ export class CardComponentComponent implements OnInit {
 
   dueDateFg: FormGroup;
 
-  dragColorRedCardId : string = '';
+  dragColorRedCardId: string = '';
 
   readonly DRAG_EFFECT_TIMEOUT: number = 1000;
 
@@ -133,7 +133,11 @@ export class CardComponentComponent implements OnInit {
   }
 
 refresh() {
+      try {
         this.cd.detectChanges();
+      } catch (e) {
+          console.log('exception in refresh ', e.message)
+      }
 }
 
 handleDragStart(event, card) {
