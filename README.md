@@ -8,32 +8,65 @@ via drag and drop.
 Component visual layout is based on outside of component provided Observable data. It is based on following data model:
 
 - Board, can having multiple Columns;
+
 - Columns, can having multiple Cards;
+
 - Cards, those containing Task data.
 
 Functionality
 
 - Board is built dynamically based on above data model;
+
 - Columns having defined sequence of following on Board;
-- Draggable Cards between columns;
+
+- Draggable Cards between Cards and Columns;
+
+- There is animation feature during DnD - Scaling for drop between Cards and Color animation dropping into empty column;
+
 - Rules describing Drag and Drop permissions are provided as Callback at embedding component side;
+
 - Column title editable;
-- Click on column title emitting event;
-- Cards can be added; Event emitted and Data updated.
-- Cards cn be edited; updated card delivered as event and Data updated.
-- Cards can be removed; Delivered as Event and Data updated.
+
+- Card can be added/edited/updated; Event emitted and Data updated. There are popup modal Form available for this. Press on "Submit" saves changes, otherwise they are discarded
+
+- Column Header can be edited;
+
+- Events being generated at following conditions:
+
+    - Click on column title;
+
+    - Removal of Card from Favorites; 
+ 
+    - Press on Card "Show Messages" button
+    
+    - Press on Card "Documents" button
+
+    - Press on Card "Arrow" button;
+
+    - Press on Card "Project Room" button;
+    
+- More functionality
+
+    - Press on Card "Show Messages" button opens sidebar in tab "Messages and embeds content passed from Portal"
+        
+    - Option to Edit Due Date by Pressing "Due Date" icon on Card. This shows Date Pickup form.  Only future dates are available for selection e.g. Due Date can only be promoted.    
+
+    - Due Date has been colored if current date is in 3 days (Orange) or Over Due (Red). As well same color exclamation mark is shown on the top right corner of card.
+
 - Board Layout design allows to scroll horizontally to accomodate Columns left on right side and to scroll up and down to see cards left bellow window area.
   Cards and columns are designed to be fixed width so they could imitate "real" cards we accustomed to see on task planning board. 
 
 ## Architectural bits
 
-- StatusPipeline component is implemented internally as 3 sub components namely Board-component, column-component, card-component. There is a single instance of such component per data element.
+- StatusPipeline component is implemented internally as 3 sub components namely Board-component, Column-component, Card-component. There is a single instance of such component per data element.
 
 - Static Json Input data and Subject/Observable are defined within dataSource. We make sure Subject is a singleton so all subcomponents receive same instance. Each subcomponent subscribes to this Observable in order to redraw  UI layout on data change.
 
 - There is API code class Database which is used by subcomponents and share data update API. It being created with new operator and encapsulates Topic/Observable to push make data updates from within sub components.
 
 - Column ordering is implemented as Angular Pipe.
+
+- One of input parameters provides Portal object which can be inserted into Portal Outlet in a sidebar.
 
 ## Data model
 
@@ -277,67 +310,37 @@ cd <project_dir>
 git init .
 git clone https://github.com/polarisltd/StatusPipelineModule.git
 
+
+# install Node and npm if it was not there on beforehand.
+
+# https://nodejs.org/en/
+
+# install Angular CLI
+
+npm install -g @angular/cli 
+
+# install project packages
+
 ng install
+
+# build project
+
+ng build
+
+# launch application. It usually launch on http://local;host:4200, option -o opens web browser instantly.
 ng serve -o
 ```
 
 
 # Implementation status
 
-## 2019-0218
-
-- badge with actual number of cards per column
-- card side color
-- removal from Favorite, dialog prompt.
-- Card insert with popup
-- Card update with popup
-- Card delete popup confirmation.
-- tooltips for icons
-- Coluring Due Date In days and OverDue
-
 # TODOs
-- Drop into empty column
-- drop uncolors a trace of drag target
-- drop with required visual effect
-- When the user picks a card he can see where the original item place was (in light grey box), 
 
-  and where it might be placed between other cards 
+- DnD Icon for Drag&Drop (<mat-icon>drag_indicator</mat-icon>) 
+- If Time: CSS3 transition for animation of the yellow, red placeholders:
+  *** Let height grow, shrink
+- Create demo portal component and show how it can be placed into sidebar.  
   
-  Icon for Drag&Drop (<mat-icon>drag_indicator</mat-icon>) 
-  
-- Bell appearance when new notification available on item
-
-- Opening side bar when clicked on messages icon and open comments tab 
-
-- Arrow navigates to groups listing of selected item (if task) 
-
-- Ability to change the title and the due date (datepicker) by clicking on it
-
-- Events:
-  
-  -> drag_n_drop emit_event
-  
-    - Click on Project Room
-  event emitted @Output() onProjectRoomClick
-  
-    - Remove from Favorite
-  emitted @Output() onToggleFavorite 
-  
-    - Navigate to documents view inside project room when clicking on the [docs icon]: 
-  event emitted on click on document icon @Output() onDocumentClick     
-  
-    - Bell appearance when new notification available on item: this would be a property on the card item 
-  that is injected by the store. But he must read an attribute unreadCount from the card item.
-  
-    - Opening side bar when clicked on messages icon and open comments tab: 
-this must be implemented both ways: must open sidebar and emit an event onDetails(item) 
-so the item can be fetched by the container 
-
-    - Arrow navigates to groups listing of selected item (if task): emitted as output @Output() onArrowClick 
-
-    - Ability to remove item (delete): emitted as output @Output() onDeleteItem(id) 
-
-    - Ability to add item (+ card is added): emitted as output @Output() onADddItem(Details) 
 
 
 
