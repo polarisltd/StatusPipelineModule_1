@@ -25,8 +25,11 @@
         </div>
       </div>
      <div class="card-list" [attr.column-id]="column.id">
-        <div *ngFor="let card of getCards(column.id,board) | sortCards">
+        <div *ngFor="let card of getCards(column.id,board) | sortCards"
+
+        >
             <app-card-component
+                    [ngClass]="{'drag-card-frame-red-oncard':dragCardFrameRedId==card.id}"
                     [card]="card"
                     [boardSubject$]="boardSubject$"
                     [onShowMessages]="onShowMessages"
@@ -39,10 +42,11 @@
                     [onShowDocuments] = "onShowDocuments"
                     [onArrowPress] = "onArrowPress"
                     [onShowTask]="onShowTask"
-                    [validateDropRules]="validateDropRules">
+                    [validateDropRules]="validateDropRules"
+                    [dragColorRedCardEvt]="dragColorRedCardEvt">
             </app-card-component>
             <div
-                 [ngClass]="{'drag-card-frame-green':dragCardFrameGreenId==card.id,'drag-card-frame-red':dragCardFrameRedId==card.id,'drag-card-frame-none':!dragCardFrameGreenId && !dragCardFrameRedId}"
+                 [ngClass]="{'drag-card-frame-green':dragCardFrameGreenId==card.id,'drag-card-frame-none':!dragCardFrameGreenId}"
                  droppable="true"
                  draggable="true"
                  (dragover)="handleDragOver_CardFrame($event,card)"

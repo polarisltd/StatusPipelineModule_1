@@ -15,6 +15,12 @@
   transform: scaleY(5);
 }
 
+::ng-deep .drag-card-frame-red-oncard{
+  background-color:palevioletred;
+  transition: all 2s 0s ease-in-out;
+}
+
+
 .drag-card-frame-none{
   height: 3px;
   background-color:#F5F5F5;

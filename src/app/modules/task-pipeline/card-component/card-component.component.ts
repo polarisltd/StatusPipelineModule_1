@@ -47,6 +47,8 @@ export class CardComponentComponent implements OnInit {
   @Input() onArrowPress: EventEmitter<IPipelineColumnElement>;
   @Input() onShowTask: EventEmitter<IPipelineColumnElement>;
   //
+  @Input() dragColorRedCardEvt: EventEmitter<string>;
+  //
   @Input() validateDropRules: Function
   //
   database: Database;
@@ -65,6 +67,10 @@ export class CardComponentComponent implements OnInit {
   dueDateEditTrigger: boolean = false
 
   dueDateFg: FormGroup;
+
+  dragColorRedCardId : string = '';
+
+  readonly DRAG_EFFECT_TIMEOUT: number = 1000;
 
   constructor(private fb: FormBuilder,
               private matIconRegistry: MatIconRegistry,
@@ -112,6 +118,17 @@ export class CardComponentComponent implements OnInit {
           this.card.title = form.title;
           this.card.status = form.status;
       });
+
+      this.dragColorRedCardEvt.subscribe(id => {
+          console.log('dragOver emit: ', id)
+          this.dragColorRedCardId = id;
+          this.refresh()
+          setTimeout(() => {
+              this.dragColorRedCardId =  '';
+              this.refresh()
+          }, this.DRAG_EFFECT_TIMEOUT);
+      })
+
 
   }
 
@@ -299,5 +316,9 @@ getProfile(card: Card): Profile {
         return value
     }
 
+    getCardBackground(card: Card) {
+       // return 'aqua';
+        return card.id === this.dragColorRedCardId;
+    }
 
 }

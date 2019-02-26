@@ -232,3 +232,8 @@
   font-weight: bolder;
 }
 
+.dragColorRed{
+  background-color: lightpink;
+  transition: all 1s 0s ease-in-out;
+  transform: rotate(10deg);
+}

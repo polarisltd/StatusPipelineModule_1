@@ -64,6 +64,8 @@ export class ColumnComponentComponent implements OnInit {
   toggleColumnTitleEdit: boolean = false
   readonly DRAG_EFFECT_TIMEOUT: number = 1000
 
+  dragColorRedCardEvt: EventEmitter<string> = new EventEmitter<string>();
+
   currentCardDragPos: string[] = ['', '']
 
   getCardCount(): number {
@@ -194,7 +196,8 @@ export class ColumnComponentComponent implements OnInit {
     this.dragOverId = overCard.id; // this is used for drop
 
     if (!this.validateDropRulesWrapper(srcCardId, this.column.id)) { // functionality from internal method
-      this.colorDragCardFrameAreaRed(overCard.id) // color card to show that drag is not allowed.
+       // this.colorDragCardFrameAreaRed(overCard.id) // color card to show that drag is not allowed.
+      this.dragColorRedCardEvt.emit(overCard.id)
     } else
       this.colorDragCardFrameAreaGreen(overCard.id)   // updates DragCardFrameId // color card to show that drag is not allowed.
   }
