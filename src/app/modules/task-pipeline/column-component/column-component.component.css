@@ -1,53 +1,51 @@
 
-.drag-color-ok{
-  border-color: greenyellow;
-  border-width: 5px;
-  border-style: dashed;
-}
-
-.drag-color-refuse{
-  border-color: mediumvioletred;
-  border-width: 5px;
-  border-style: dashed;
-}
-
-
-.drag-color0{
-  background-color: white;
-  border-style: none;
-}
+/** Next 3 are for DnD Card frame animation */
 
 .drag-card-frame-green{
   height: 50px;
-  background-color:green;
-  transform: scaleY(5);
+  background-color:mediumaquamarine;
   transition: all 2s ease-in-out;
+  transform: scaleY(5);
 }
 
 .drag-card-frame-red{
   height: 50px;
   background-color:palevioletred;
+  transition: all 2s 0s ease-in-out;
   transform: scaleY(5);
-  transition: all 2s ease-in-out;
 }
+
+.drag-card-frame-none{
+  height: 3px;
+  background-color:#F5F5F5;
+  transition: all 2s 0s ease-in-out;
+  transform: scaleY(5);
+}
+
+/** Next 3 are for DnD Column frame animation */
 
 .drag-column-frame-green{
   background-color:green;
-  transition: background-color 2s;
+  height:800px;
+  transition: all 2s 0s ease-in-out;
+  transform: scaleY(5);
 }
 
 .drag-column-frame-red{
   background-color:palevioletred;
-  transition: background-color 2s;
+  height:800px;
+  transition: all 2s 0s ease-in-out;
+  transform: scaleY(5);
 }
 
-.drag-column-frame-off{
+.drag-column-frame-none{
+  background-color:#E9EBEC;
+  transition: all 2s 0s ease-in-out;
+  height:800px; /* we keep height to generate DragOver events while mouse is anywere under column*/
+  width:100%;
 }
-
-
 
 .column {
-
   border: 3px solid gray; /* border around card */
   background-color: #E2E4E6;
   /* border-radius: 10px;  rounded corners of card */
@@ -155,7 +153,3 @@ ul.card-list > li {
 }
 
 
-.drag-column-container{ /* make sure its here for drag band drop to work*/
-  min-height:800px;
-  width:100%;
-}

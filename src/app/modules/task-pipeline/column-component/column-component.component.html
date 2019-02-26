@@ -1,11 +1,7 @@
-
-<div  >
+<div>
   <div *ngIf="board$ | async as board">
-
-      <div [ngClass]="dragColumnFrameClass" class="drag-column-container" (dragover)="handleDragOver_ColFrame($event,column)"
+      <div [ngClass]="{'drag-column-frame-red':dragColumnFrameClass==='red','drag-column-frame-green':dragColumnFrameClass==='green','drag-column-frame-none':!dragColumnFrameClass}"  (dragover)="handleDragOver_ColFrame($event,column)"
            (drop)="handleDrop_ColFrame($event,column)" (dragend)="handleDragEnd_ColFrame($event)">
-
-      <!--h2 class="column-header"> {{column.title}}</h2-->
       <div class="column-header-outer">
         <div class="column-header">
          <div class="column-heading-row">
@@ -24,15 +20,8 @@
                      {{column.title}}
                  </div>
              </div>
-
              <div [matBadge]="getCardCount()" matBadgeOverlap="false" class="column-heading-right" matBadgeColor="white" matBadgeSize="medium" ></div>
-
          </div>
-            <!--
-           <input [value]="column.title" (input)="column.title = $event.target.value;" (click)="onColumnClick($event)"   >   />
-           <button  (click)="onColumnButtonClick(column)"  >[+card]</button>
-           <button  (click)="onColumnButtonClickRemove(column)"  >[-column]</button>
-            -->
         </div>
       </div>
      <div class="card-list" [attr.column-id]="column.id">
@@ -53,7 +42,7 @@
                     [validateDropRules]="validateDropRules">
             </app-card-component>
             <div
-                 [ngClass]="{'drag-card-frame-green':dragCardFrameGreenId==card.id,'drag-card-frame-red':dragCardFrameRedId==card.id}"
+                 [ngClass]="{'drag-card-frame-green':dragCardFrameGreenId==card.id,'drag-card-frame-red':dragCardFrameRedId==card.id,'drag-card-frame-none':!dragCardFrameGreenId && !dragCardFrameRedId}"
                  droppable="true"
                  draggable="true"
                  (dragover)="handleDragOver_CardFrame($event,card)"

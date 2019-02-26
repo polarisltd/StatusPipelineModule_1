@@ -103,9 +103,9 @@ export class ColumnComponentComponent implements OnInit {
     if (columnCardCount > 0)return; // perform card based drop. giving priority for card drop guesture
 
     if (!this.validateDropRulesWrapper(srcCard.id, this.column.id)) { // functionality from internal method
-      this.colorDragColumnFrameArea('drag-column-frame-red') // color card to show that drag is not allowed.
+      this.colorDragColumnFrameArea('red') // color card to show that drag is not allowed.
     } else
-      this.colorDragColumnFrameArea('drag-column-frame-green') // color card to show that drag is not allowed.
+      this.colorDragColumnFrameArea('green') // color card to show that drag is not allowed.
 
   }
 
@@ -199,9 +199,9 @@ export class ColumnComponentComponent implements OnInit {
       this.colorDragCardFrameAreaGreen(overCard.id)   // updates DragCardFrameId // color card to show that drag is not allowed.
   }
 
-  colorDragCardFrameAreaGreen = (valueOn) => {
+  colorDragCardFrameAreaGreen = (greenId) => {
 
-    this.dragCardFrameGreenId = valueOn;
+    this.dragCardFrameGreenId = greenId;
     this.dragCardFrameRedId = ''
 
     if (!this.colorDragCardFrameInTimer) {
@@ -214,9 +214,9 @@ export class ColumnComponentComponent implements OnInit {
     }
   }
 
-  colorDragCardFrameAreaRed = (valueOn) => {
+  colorDragCardFrameAreaRed = (redId) => {
 
-    this.dragCardFrameRedId = valueOn;
+    this.dragCardFrameRedId = redId;
     this.dragCardFrameGreenId = ''
 
     if (!this.colorDragCardFrameInTimer) {
