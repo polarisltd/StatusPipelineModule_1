@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import {Component, Inject, InjectionToken} from '@angular/core';
+import {Card} from './modules/task-pipeline/shared/card';
+
+export const DEMO_PORTAL_DATA = new InjectionToken<{}>('PortalData');
 
 // tslint:disable
 @Component({
     selector: 'demo-messages-component',
     template: `        
-        <h1>Hello from portal component</h1>
+        <h1>Portal messages for card {{card?.id}}</h1>
     `,
     styles: [`
       h1 { 
@@ -14,5 +17,9 @@ import { Component } from '@angular/core';
       `]
 })
 export class DemoMessagesComponent {
-    constructor() { }
+    public card: Card;
+    constructor(@Inject(DEMO_PORTAL_DATA) public data ) {
+        console.log('DemoMessagesComponent#demo_portal_data', data);
+        this.card = data.card;
+    }
 }

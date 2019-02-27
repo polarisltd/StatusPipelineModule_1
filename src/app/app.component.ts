@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, InjectionToken, Injector, Input, OnInit} from '@angular/core';
 // tslint:disable-next-line:import-blacklist
 import {Subject} from 'rxjs';
 import {DataSource} from './DataSource';
@@ -9,12 +9,8 @@ import {
   IStatusChange
 } from './modules/task-pipeline/shared/status-pipeline-module.interface';
 import {MessagesPortalService} from './modules/task-pipeline/shared/messages-portal-service';
-import {ComponentPortal, Portal} from '@angular/cdk/portal';
-import {DemoMessagesComponent} from './demo-messages-component';
-
-
-
-
+import {ComponentPortal, Portal, PortalInjector} from '@angular/cdk/portal';
+import {DEMO_PORTAL_DATA, DemoMessagesComponent} from './demo-messages-component';
 
 @Component({
   // tslint:disable-next-line
@@ -70,8 +66,11 @@ export class AppComponent implements OnInit {
 
   messageArea: string = 'Demo events.'
 
+
+
   constructor(private dataSource: DataSource,
-              private messagePortalService: MessagesPortalService
+              private messagePortalService: MessagesPortalService,
+              private injector: Injector // required to supply parameters to portal component
   ) {
     // this.dataSource = dataSource;
     this.onTransition.subscribe(item => this.showMessage('Drag-n-drop:', item))
@@ -93,7 +92,15 @@ export class AppComponent implements OnInit {
       //
       // TODO: provide input parameter and pass it into component to be portaled!
       //
-      const portal   = new ComponentPortal(DemoMessagesComponent);
+      // const portal   = new ComponentPortal(DemoMessagesComponent);
+
+
+      const portal = new ComponentPortal(
+          DemoMessagesComponent,
+          null,
+          this.createInjector({card: card})
+      );
+
       messagePortalService.setPortal(portal) // portalDSertvice.next()
     })
 
@@ -105,6 +112,14 @@ export class AppComponent implements OnInit {
 
   }
 
+  private createInjector(data): PortalInjector {
+
+    const injectorTokens = new WeakMap<any, any>([
+      [DEMO_PORTAL_DATA, data],
+    ]);
+
+    return new PortalInjector(this.injector, injectorTokens);
+  }
 
   /** Actual validation function */
   validateDropRules(statusChange: IStatusChange): boolean {
