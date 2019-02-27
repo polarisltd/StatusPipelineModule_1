@@ -1,12 +1,12 @@
 import {
-    Component,
-    Input,
-    Output,
-    OnInit,
-    AfterViewInit,
-    EventEmitter,
-    ElementRef,
-    ChangeDetectorRef, ChangeDetectionStrategy
+  Component,
+  Input,
+  Output,
+  OnInit,
+  AfterViewInit,
+  EventEmitter,
+  ElementRef,
+  ChangeDetectorRef, ChangeDetectionStrategy, ViewRef
 } from '@angular/core';
 // tslint:disable-next-line:import-blacklist
 import {Observable, Subject} from 'rxjs';
@@ -85,9 +85,12 @@ export class ColumnComponentComponent implements OnInit {
       )
   }
 
-    refresh() {
-        this.cd.detectChanges();
-    }
+  refresh() {
+      // make it safe in case component is destroyed already
+      if (!(this.cd as ViewRef).destroyed) {
+        this.cd.detectChanges()
+      }
+  }
 
   getCards(columnId: string, board: Board): Card[] {
     return board.cards.filter(card => columnId === card.columnId)
@@ -217,21 +220,6 @@ export class ColumnComponentComponent implements OnInit {
     }
   }
 
-  colorDragCardFrameAreaRed = (redId) => {
-
-    this.dragCardFrameRedId = redId;
-    this.dragCardFrameGreenId = ''
-
-    if (!this.colorDragCardFrameInTimer) {
-      this.colorDragCardFrameInTimer = true;
-      setTimeout(() => {
-        this.dragCardFrameRedId = '';
-        this.colorDragCardFrameInTimer = false;
-        this.refresh()
-      }, this.DRAG_EFFECT_TIMEOUT);
-    }
-  }
-
   colorDragColumnFrameArea = (colorOn) => {
 
     this.dragColumnFrameClass = colorOn;
@@ -263,13 +251,9 @@ export class ColumnComponentComponent implements OnInit {
 
   }
 
-
-
-
-
-extractDragSourceId(event): string {
-  return event.dataTransfer.types.find(entry => entry.includes('id=')).substr(3);
-}
+  extractDragSourceId(event): string {
+    return event.dataTransfer.types.find(entry => entry.includes('id=')).substr(3);
+  }
 
   onColumnTitleSubmit() {
     this.database.updateDatasouce()

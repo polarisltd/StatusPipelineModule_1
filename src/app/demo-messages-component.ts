@@ -19,7 +19,6 @@ export const DEMO_PORTAL_DATA = new InjectionToken<{}>('PortalData');
 export class DemoMessagesComponent {
     public card: Card;
     constructor(@Inject(DEMO_PORTAL_DATA) public data ) {
-        console.log('DemoMessagesComponent#demo_portal_data', data);
         this.card = data.card;
     }
 }

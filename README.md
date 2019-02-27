@@ -289,8 +289,6 @@ this.validateDragFunction = this.validateDropRules.bind(this); // bind actual me
 
 validateDropRules(statusChange: IStatusChange):boolean{
 
-    console.log('app.component#validateDragRules  ',statusChange)
-
     return (this.ALLOWED_TRANSITIONS.filter(
 
         elem => elem[0] === statusChange.src.id &&

@@ -52,7 +52,6 @@ export class Database {
    const oldImage: Card = this.boardInternal.cards.find(c => c.id === newImage.id)
    const oldCardIdx =  this.boardInternal.cards.indexOf(oldImage)
    if (oldCardIdx >= 0)  {
-     console.log('Database#updating card', newImage)
      this.boardInternal.cards.splice(oldCardIdx, 1, newImage)
      this.updateDatasouce();
    }
@@ -94,15 +93,11 @@ export class Database {
   /** drag n drop support. Move card to different column */
   moveCard(cardId, targetColumnId) {
 
-    console.log('moveCard boardInternal', this.boardInternal)
-
     const card: Card = this.boardInternal.cards.find(c => c.id === cardId)
 
     const idxC = this.boardInternal.cards.indexOf(card)
 
     this.boardInternal.cards[idxC].columnId = targetColumnId;
-
-    console.log('moving card->column ', this.boardInternal.cards[idxC].id, ' -> ', this.boardInternal.cards[idxC].columnId)
 
     this.updateDatasouce()
 
@@ -152,7 +147,6 @@ export class Database {
   }
 
   updateDatasouce() {
-    console.log('!!!!! boardSubject$.next')
     this.boardSubject$.next(this.boardInternal);
     this.cd.detectChanges()
   }

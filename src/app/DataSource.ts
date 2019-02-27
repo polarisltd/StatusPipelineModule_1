@@ -243,10 +243,7 @@ export class DataSource  {
     boardSubject$: Subject<Board>;
 
     constructor() {
-
        this.boardSubject$ = new BehaviorSubject<Board>(this.dataSource);
-       console.log('DataSource#ngOnInit')
-
     }
 
 }

@@ -4,7 +4,7 @@ import {
   Input,
   EventEmitter,
   ChangeDetectorRef,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy, ViewRef
 } from '@angular/core';
 // tslint:disable-next-line:import-blacklist
 import {Observable, Subject} from 'rxjs';
@@ -80,12 +80,15 @@ export class BoardComponentComponent implements OnInit {
           // but input data for portal component has to be taken from here (card argument)
           // wait a second. onShowMessages.subscribe() is available at app.component as well!# Wailla ....
           // that means we are good, here we just open tab but data is inserted from parent (e.g. app.component)
-  })
+    })
 
   }
 
   refresh() {
-    this.cd.detectChanges();
+    // make it safe in case component is already destroyed.
+    if (!(this.cd as ViewRef).destroyed) {
+      this.cd.detectChanges()
+    }
   }
 
   sidebarClose() {

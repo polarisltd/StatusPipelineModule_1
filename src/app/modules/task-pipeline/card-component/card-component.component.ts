@@ -7,7 +7,7 @@ import {
     AfterViewInit,
     EventEmitter,
     ElementRef,
-    ChangeDetectionStrategy, ChangeDetectorRef
+    ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy, ViewRef
 } from '@angular/core';
 import { ViewChild} from '@angular/core';
 import {Database} from '../shared/status-pipeline-module.database';
@@ -31,7 +31,7 @@ import {DialogEditCardComponent} from '../dialog-edit-card-component/dialog-edit
   styleUrls: ['./card-component.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardComponentComponent implements OnInit {
+export class CardComponentComponent implements OnInit, OnDestroy {
   @ViewChild('emptyItem') emptyItem: ElementRef;
   @Input() boardSubject$: Subject<Board> // initialised and provided by board component
   @Input() card: Card;
@@ -120,7 +120,6 @@ export class CardComponentComponent implements OnInit {
       });
 
       this.dragColorRedCardEvt.subscribe(id => {
-          console.log('dragOver emit: ', id)
           this.dragColorRedCardId = id;
           this.refresh()
           setTimeout(() => {
@@ -128,21 +127,26 @@ export class CardComponentComponent implements OnInit {
               this.refresh()
           }, this.DRAG_EFFECT_TIMEOUT);
       })
-
-
   }
 
-refresh() {
-      try {
-        this.cd.detectChanges();
-      } catch (e) {
-          console.log('exception in refresh ', e.message)
-      }
-}
 
-handleDragStart(event, card) {
+  ngOnDestroy() {
+  }
+
+  refresh() {
+      try {
+          // trying to escape exception that component is already destroyed.
+          if (!(this.cd as ViewRef).destroyed) {
+              this.cd.detectChanges()
+          }
+      } catch (e) {
+          console.log('exception cd.detectChanges ', e.message)
+      }
+  }
+
+  handleDragStart(event, card) {
    this.insertDragSourceId(event, this.card.id)
-}
+  }
 
 
 handleDragLeave(card) {

@@ -226,14 +226,16 @@
   max-height: 200px;
 }
 
+/** bellow is a way to change background color for badge showing card count */
 ::ng-deep .mat-badge-content{
   background-color: white;
   color: black;
   font-weight: bolder;
 }
 
+/** this is effect to show card can't be dragged here*/
 .dragColorRed{
   background-color: lightpink;
-  transition: all 1s 0s ease-in-out;
+  transition: all 0.5s 0s ease-in-out;
   transform: rotate(10deg);
 }

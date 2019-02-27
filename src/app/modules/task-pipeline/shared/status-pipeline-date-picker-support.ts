@@ -3,7 +3,6 @@ import { NativeDateAdapter } from '@angular/material';
 export class DatePickerSupport extends NativeDateAdapter {
     useUtcForDisplay = true;
     parse(value: any): Date | null {
-        console.log('parse: ', value)
         if (typeof value === 'string') {
             return new Date(value);
         }
@@ -18,7 +17,6 @@ export class DatePickerSupport extends NativeDateAdapter {
             const month = date.getMonth() + 1;
             const year = date.getFullYear();
             const value = year + '-' + month + '-' + day;
-            // console.log('format: ', date, value)
             return value
     }
 
