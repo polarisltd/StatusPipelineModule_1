@@ -12,7 +12,7 @@
                <mat-tab label="Comments" >
                </mat-tab>
                <mat-tab label="Messages">
-                   <div *ngIf="messagesPortalService?.messagesPortal$| async as portal">
+                   <div *ngIf="messagePortalService.messagesPortal$| async as portal">
                      <div class="portal_container">
                        <ng-container [cdkPortalOutlet]="portal"></ng-container>
                      </div>

@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
 
   validateDragFunction: Function;
   boardSubject$: Subject<Board>
-  dataSource: DataSource;
+  // dataSource: DataSource;
   onTransition = new EventEmitter<IStatusChange>();
   onClickColumnTitle = new EventEmitter<IPipelineColumn>();
   onShowMessages = new EventEmitter<IPipelineColumnElement>();
@@ -70,10 +70,10 @@ export class AppComponent implements OnInit {
 
   messageArea: string = 'Demo events.'
 
-  constructor(dataSource: DataSource,
-              messagePortalService: MessagesPortalService
+  constructor(private dataSource: DataSource,
+              private messagePortalService: MessagesPortalService
   ) {
-    this.dataSource = dataSource;
+    // this.dataSource = dataSource;
     this.onTransition.subscribe(item => this.showMessage('Drag-n-drop:', item))
     this.onClickColumnTitle.subscribe(item => this.showMessage('click column:', item))
     this.onAddCard.subscribe(item => this.showMessage('addCard:', item))
@@ -87,10 +87,14 @@ export class AppComponent implements OnInit {
     this.onArrowPress .subscribe(item => this.showMessage('onArrowPress', item))
     this.onShowTask .subscribe(item => this.showMessage('onShowTask', item))
 
-    this.onShowMessages.subscribe(item => {
-      this.showMessage('onShowMessage', item)
+    this.onShowMessages.subscribe(card => {
+
+      this.showMessage('AppComponent£onShowMessage we providing Portal component along with data!', card)
+      //
+      // TODO: provide input parameter and pass it into component to be portaled!
+      //
       const portal   = new ComponentPortal(DemoMessagesComponent);
-      messagePortalService.setPortal(portal)
+      messagePortalService.setPortal(portal) // portalDSertvice.next()
     })
 
   }

@@ -21,6 +21,8 @@ import {DemoMessagesComponent} from './demo-messages-component';
   ],
   providers: [
   ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ,
+    DemoMessagesComponent
+  ]
 })
 export class AppModule { }

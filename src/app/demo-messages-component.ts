@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'demo-messages-component',
     template: `        
-        <h1>Embeded message</h1>
+        <h1>Hello from portal component</h1>
     `,
     styles: [`
       h1 { 

@@ -15,7 +15,7 @@ import {
 } from '../shared/status-pipeline-module.interface';
 import {Board} from '../shared/board';
 import {StatusPipelineShared} from '../shared/status-pipeline-shared';
-import {MatDialog} from '@angular/material';
+import {MessagesPortalService} from '../shared/messages-portal-service';
 
 
 @Component({
@@ -44,6 +44,7 @@ export class BoardComponentComponent implements OnInit {
   @Input() onShowDocuments: EventEmitter<IPipelineColumnElement>;
   @Input() onArrowPress: EventEmitter<IPipelineColumnElement>;
   @Input() onShowTask: EventEmitter<IPipelineColumnElement>;
+  @Input() messagePortalService: MessagesPortalService;
 
   board: Board;
   board$: Observable<Board>
@@ -60,7 +61,6 @@ export class BoardComponentComponent implements OnInit {
 
     this.board$ = this.boardSubject$  // boardSubject$ is input.
     this.boardSubject$.subscribe(board => {
-    // console.log('BoardComponent#ngOnInit subscribe board$ {}'/*,JSON.stringify(data,null,'\t')*/)
     this.board = board
     this.refresh()
     })
@@ -76,7 +76,10 @@ export class BoardComponentComponent implements OnInit {
         card => {
           this.isSidebarOpen = true;
           this.sideBarTabIndex = 1; // messages tab
-
+          // We want portal being originated from parent component e.g. AppComponent
+          // but input data for portal component has to be taken from here (card argument)
+          // wait a second. onShowMessages.subscribe() is available at app.component as well!# Wailla ....
+          // that means we are good, here we just open tab but data is inserted from parent (e.g. app.component)
   })
 
   }
