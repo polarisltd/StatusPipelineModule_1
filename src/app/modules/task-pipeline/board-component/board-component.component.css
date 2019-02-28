@@ -1,13 +1,3 @@
-
-.sidebar{
-    width: 250px;
-    background-color: #E9EBEC;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-}
-
-
 .scroll-this {
   overflow: scroll;
 }
@@ -85,8 +75,8 @@
 	vertical-align: middle;
 	padding: 7px;
 	font-size: 14px;
-  cursor: pointer;
-  cursor: hand;
+    cursor: pointer;
+    cursor: hand;
 }
 
 .add-column input {	
@@ -98,3 +88,51 @@
 	padding: 3px 5px 4px 5px;
 }
 
+/* styling tabcontrol */
+
+::ng-deep .mat-tab-labels{
+  min-height: 40px;
+}
+
+
+/* styling side panel close button */
+.side-nav-btn{
+  background-color: #E9EBEC;
+  box-shadow: none;
+}
+
+.sidebar{
+  width: 350px;
+  background-color: #E9EBEC;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+::ng-deep .mat-tab-label{
+  font-weight: normal;
+  font-size: larger;
+  color: gray();
+  padding-bottom: 5px;
+  min-height:60px;
+  background-color: lightgrey ;
+  opacity: 1 !important;
+}
+
+::ng-deep .mat-tab-label-active{
+  font-weight: bolder;
+  font-size: 18px;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  color: white;
+  padding-bottom: 5px;
+  min-height:60px;
+  background-color: #4F5B6B ;
+  opacity: 1 !important;
+}
+
+.portal_container{
+  background-color: white;
+  border-style: inset;
+  border-color: black;
+  border-width: 0.1px;
+}

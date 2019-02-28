@@ -24,7 +24,6 @@
 .drag-card-frame-none{
   height: 5px;
   min-height: 5px;
-  /* background-color:#F5F5F5; */
   transition: all 2s 0s ease-in-out;
   transform: scaleY(5);
   padding-bottom: 4px; /* spacing between cards*/
@@ -54,7 +53,6 @@
 .column {
   border: 3px solid gray; /* border around card */
   background-color: #E2E4E6;
-  /* border-radius: 10px;  rounded corners of card */
   width:  400px; /* !!! width of Column */
   margin-left: 10px;
   box-sizing: border-box;
@@ -100,6 +98,7 @@
   line-height: 18px;
   padding-left: 15px; /* this is left offset for column text */
   font-size: 18px;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
   border-radius: 3px;
   margin: 0px 0px 0px 0px;
   /* background-color: #4F5B6B; column header background color */
@@ -145,8 +144,6 @@ ul.card-list > li {
 
 .column-heading-left{
   margin-left: 15px;
-/*  border-style: solid;
-  border-width: 1px;*/
   width:100px;
   min-width:100px;
 }
