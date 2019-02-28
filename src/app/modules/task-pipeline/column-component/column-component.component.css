@@ -22,10 +22,12 @@
 
 
 .drag-card-frame-none{
-  height: 3px;
-  background-color:#F5F5F5;
+  height: 5px;
+  min-height: 5px;
+  /* background-color:#F5F5F5; */
   transition: all 2s 0s ease-in-out;
   transform: scaleY(5);
+  padding-bottom: 4px; /* spacing between cards*/
 }
 
 /** Next 3 are for DnD Column frame animation */

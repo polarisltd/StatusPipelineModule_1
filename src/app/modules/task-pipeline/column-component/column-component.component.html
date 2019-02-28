@@ -25,9 +25,7 @@
         </div>
       </div>
      <div class="card-list" [attr.column-id]="column.id">
-        <div *ngFor="let card of getCards(column.id,board) | sortCards"
-
-        >
+        <div *ngFor="let card of getCards(column.id,board) | sortCards">
             <app-card-component
                     [ngClass]="{'drag-card-frame-red-oncard':dragCardFrameRedId==card.id}"
                     [card]="card"
@@ -45,14 +43,17 @@
                     [validateDropRules]="validateDropRules"
                     [dragColorRedCardEvt]="dragColorRedCardEvt">
             </app-card-component>
-            <div
+
+
+         <div
                  [ngClass]="{'drag-card-frame-green':dragCardFrameGreenId==card.id,'drag-card-frame-none':!dragCardFrameGreenId}"
                  droppable="true"
                  draggable="true"
                  (dragover)="handleDragOver_CardFrame($event,card)"
                  (drop)="handleDrop_CardFrame($event,card)"
                  (dragend)="handleDragEnd_CardFrame($event)"
-            >=</div>
+         >=</div>
+
         </div>
      </div>
 

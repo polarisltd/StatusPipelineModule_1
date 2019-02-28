@@ -18,11 +18,17 @@
   white-space: normal;
   word-wrap: break-word;
   list-style: none;
-  border-bottom: solid 1px #ccc;
+  border-bottom:   1px #ccc;
   transition: all;
   transition-property: all;
   transition-duration: 150ms;
   transition-timing-function: ease;
+
+}
+
+
+.card-shadow{
+  box-shadow: 4px 4px  dimgrey; /* card bottom shadow */
 }
 
 
