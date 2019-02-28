@@ -59,15 +59,8 @@ export class CardComponentComponent implements OnInit, OnDestroy {
   cardForm: FormGroup;
   cardFormChanged: boolean = false;
   dragNodeState: string;
-  dragStatus: string;
-
-  dragClass: string = 'drag-color0'; // drag/drop enable/disable color
-  inTimer: boolean = false;
-
   dueDateEditTrigger: boolean = false
-
   dueDateFg: FormGroup;
-
   dragColorRedCardId: string = '';
 
   readonly DRAG_EFFECT_TIMEOUT: number = 1000;
@@ -79,19 +72,9 @@ export class CardComponentComponent implements OnInit, OnDestroy {
               private cd: ChangeDetectorRef
               ) {
 
-      this.matIconRegistry.addSvgIcon(
-          'task',
-          this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/task.svg')
-          // this.domSanitizer.bypassSecurityTrustHtml(svg1) // alternative not working for me.
-      );
-      this.matIconRegistry.addSvgIcon(
-          'project_room',
-          //
-          this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/project_room.svg')
-          // this.domSanitizer.bypassSecurityTrustHtml(svg1)
 
-      );
 
+      /** Due Date change group */
       this.dueDateFg = new FormGroup({
           due_date: new FormControl()
       });
@@ -109,6 +92,7 @@ export class CardComponentComponent implements OnInit, OnDestroy {
             }
         )
 
+      /** Build card edit form */
       this.cardForm = this.fb.group({
           'title': this.card.title,
           'status': this.card.status
@@ -119,6 +103,7 @@ export class CardComponentComponent implements OnInit, OnDestroy {
           this.card.status = form.status;
       });
 
+      /** This event is passed from Column component to visualize prohibited drop target */
       this.dragColorRedCardEvt.subscribe(id => {
           this.dragColorRedCardId = id;
           this.refresh()
@@ -133,6 +118,7 @@ export class CardComponentComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
+  /** We using manual Angular Change Management so this call is request for change detection */
   refresh() {
           // trying to escape exception that component is already destroyed.
           if (!(this.cd as ViewRef).destroyed) {
@@ -140,6 +126,9 @@ export class CardComponentComponent implements OnInit, OnDestroy {
           }
   }
 
+  /** DnDg Start handler. Source card reference needs to be inserted into event so target side can retrieve.
+   * this.card == argument card so any can be used.
+   * Notice that Drop operation is handled into Column Component*/
   handleDragStart(event, card) {
    this.insertDragSourceId(event, this.card.id)
   }
@@ -149,9 +138,8 @@ handleDragLeave(card) {
         this.dragNodeState = ''
 }
 
-clickBtnProjectRoom(card) {
-    this.onShowProjectRooms.emit(card)
-}
+
+
 
 clickExitUpdate() {
     // we will emit from formGroup change subscription.
@@ -163,7 +151,8 @@ clickExitUpdate() {
 }
 
 
-
+/** Extract source card id from event.dataTransfer.
+ * Please read comment about encoding method */
 insertDragSourceId(event, id: string) {
     // known behavior, dragOver did not make available originating item.
     // normally we insert drag source via event.dataTransfer.setData(key,value)
@@ -174,7 +163,7 @@ insertDragSourceId(event, id: string) {
 
 
 
-
+/** Populate Avatar companion object. It provides info about Avatar to be inserted. */
 getProfile(card: Card): Profile {
 
   const profile =  {
@@ -190,26 +179,35 @@ getProfile(card: Card): Profile {
 }
 
 
+    /** Button pres  handler: Show Project Room */
+    clickBtnProjectRoom(card) {
+        this.onShowProjectRooms.emit(card)
+    }
+
+    /** Button pres  handler: Show Messages */
     clickBtnMessage() {
         this.onShowMessages.emit(this.card)
 
     }
 
-
+    /** Button pres  handler: Show Notifications
+     * Button is shown if card attribute notificationCount > 0 */
     clickBtnNotifications(card) {
         this.onShowNotifications.emit(card)
     }
 
+    /** Button pres  handler: Show Tasks */
     clickBtnShowTask(card) {
         this.onShowTask.emit(card)
 
     }
 
-
+    /** Button pres  handler: Show Documents */
     clickBtnDocuments(card) {
         this.onShowDocuments.emit(card)
     }
 
+    /** Button pres  handler: Favorite removal */
     clickBtnFavorite() {
         this.openDialogConfirm('Are you sure to remove this card from Favorites?',
             this.card,
@@ -223,10 +221,12 @@ getProfile(card: Card): Profile {
         )
     }
 
+    /** Button press  handler: Right Arrow function */
     clickBtnRightArrow(card) {
         this.onArrowPress.emit(card)
     }
 
+    /** Button press  handler */
     clickBtnUpdateCard(mode: string) {
         const card = (mode === 'add') ? new Card() : this.card
         if (mode === 'add') {this.onAddCard.emit(card)}
@@ -247,6 +247,7 @@ getProfile(card: Card): Profile {
         }
     }
 
+    /** Confirmation dialog handler. Currently used to confirm removal from Favorites. */
     openDialogConfirm(promptText: string, card: Card, action: (input) => void): void {
         const dialogData = {card: card, message: promptText, response: 0}
         const dialogRef = this.dialog.open(DialogConfirmComponent, {
@@ -261,6 +262,9 @@ getProfile(card: Card): Profile {
         });
     }
 
+    /** Card Edit dialaog handler.
+     * Supports insert/update/delete
+     * dialog having data interface. mode defines action. response states what was outcome of dialog */
     openDialogEditCard(card: Card, mode: string): void {
         const dialogData = {card: card, response: false, mode: mode}
         const dialogRef = this.dialog.open(DialogEditCardComponent, {
@@ -301,16 +305,19 @@ getProfile(card: Card): Profile {
         this.dueDateEditTrigger = !this.dueDateEditTrigger;
     }
 
+    /** Due Date Edit Trigger. Reference from html template */
     dueDateEditClosed() {
         this.dueDateEditTrigger = false;
     }
 
+    /** DatePicker validator. Makes sense to allow only future dates. Could be removed if no need. */
     datePickerValidator = (d: Date): boolean => {
 
         // THIS FUNCTION CANNOT ACCESS THE VARIABLE 'someDateToBlock'
         return d > new Date(); // allow dates in future
     }
 
+    /** Used by DatePicker component.*/
     formatDate(date: Date): string {
         // date -> string
         const day = date.getDate();
@@ -320,6 +327,7 @@ getProfile(card: Card): Profile {
         return value
     }
 
+    /** Function used to draw effect of prohibited Drag action. Refers to card with given Id */
     getCardBackground(card: Card) {
        // return 'aqua';
         return card.id === this.dragColorRedCardId;

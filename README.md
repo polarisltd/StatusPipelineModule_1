@@ -298,7 +298,19 @@ validateDropRules(statusChange: IStatusChange):boolean{
   }
 ```
 
-# Project setup instructions
+### Drag and drop implementation
+
+Drag operation is always originated in Card component and is targeted into Column component.
+
+Here Drop is accomplished either on Card or on Column if Column is empty.
+
+Drag and Drop mechanism is most basic HTML5 as we want to keep Angular 6 compatibility.
+
+DnD uses color animation to show allowed or prohibited position. To show prohibited position into Card Event emitter has been used and passed into card as input parameter.
+
+Try to read code comments about implementation specifics.
+
+### Project setup instructions
 
 Clone project from Github and launch application.
 Browser will open when ready.
@@ -330,14 +342,14 @@ ng serve -o
 ```
 
 
-# Implementation status
+### Unused dependency check
+```
+# install 
+npm install depcheck -g
+# run check
+depcheck
+```
 
-# TODOs
-
-- DnD Icon for Drag&Drop (<mat-icon>drag_indicator</mat-icon>) 
-- If Time: CSS3 transition for animation of the yellow, red placeholders:
-  *** Let height grow, shrink
-- Create demo portal component and show how it can be placed into sidebar.  
   
 
 
