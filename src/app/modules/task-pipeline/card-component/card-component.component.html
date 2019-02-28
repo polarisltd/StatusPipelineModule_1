@@ -66,9 +66,9 @@
 				</div>
 				</ng-template>
 
-				  <span *ngIf="getDueInDays(card)>0">{{card.due_date}}  Due in {{getDueInDays(card)}}days</span>
-				  <span *ngIf="getDueInDays(card)<0">{{card.due_date}} Over Due</span>
-				  <span *ngIf="getDueInDays(card)==0">{{card.due_date}}</span>
+				  <span *ngIf="getDueInDays(card)>0">{{card.due_date | dateFormat}} Due in {{getDueInDays(card)}}days</span>
+				  <span *ngIf="getDueInDays(card)<0">{{card.due_date | dateFormat}} Over Due</span>
+				  <span *ngIf="getDueInDays(card)==0">{{card.due_date | dateFormat}}</span>
 				</div>
 				</div>
 			</mat-list-item>

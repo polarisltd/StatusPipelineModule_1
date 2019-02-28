@@ -35,7 +35,8 @@ import {DialogConfirmComponent} from './dialog-confirm-component/dialog-confirm.
 import {DialogEditCardComponent} from './dialog-edit-card-component/dialog-edit-card.component';
 import {PortalModule} from '@angular/cdk/portal';
 import {MessagesPortalService} from './shared/messages-portal-service';
-import {DatePickerSupport} from './shared/status-pipeline-date-picker-support';
+import {DateFormatPipe} from './shared/date-formatter-pipe';
+import {GermanDateAdapter} from './shared/german-date-adapter.service';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {DatePickerSupport} from './shared/status-pipeline-date-picker-support';
     DialogConfirmComponent,
     DialogEditCardComponent,
     ColumnsSortPipe,
-    CardsSortPipe
+    CardsSortPipe,
+    DateFormatPipe
   ],
   imports: [
     CommonModule,
@@ -87,7 +89,8 @@ import {DatePickerSupport} from './shared/status-pipeline-date-picker-support';
   providers: [
     MessagesPortalService,
     MatDatepickerModule,
-    { provide: DateAdapter, useClass: DatePickerSupport },
+    /*{ provide: DateAdapter, useClass: DatePickerSupport},*/
+    { provide: DateAdapter, useClass:  GermanDateAdapter}
   ],
   entryComponents: [
       DialogConfirmComponent,
