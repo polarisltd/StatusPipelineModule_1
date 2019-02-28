@@ -134,14 +134,10 @@ export class CardComponentComponent implements OnInit, OnDestroy {
   }
 
   refresh() {
-      try {
           // trying to escape exception that component is already destroyed.
           if (!(this.cd as ViewRef).destroyed) {
               this.cd.detectChanges()
           }
-      } catch (e) {
-          console.log('exception cd.detectChanges ', e.message)
-      }
   }
 
   handleDragStart(event, card) {

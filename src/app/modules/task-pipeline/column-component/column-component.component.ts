@@ -178,9 +178,9 @@ export class ColumnComponentComponent implements OnInit {
     this.dragCardFrameRedId = ''
   }
 
-  handleDrop_CardFrame(event, column: Column) {
+  handleDrop_CardFrame(event, dstCard: Card) {
     const srcCardId = this.extractDragSourceId(event)
-    this.handleDropInternal(srcCardId, this.dragOverId, column.id)
+    this.handleDropInternal(srcCardId, this.dragOverId, dstCard.columnId)
     this.dragCardFrameGreenId = ''
     this.dragCardFrameRedId = ''
   }
@@ -235,19 +235,28 @@ export class ColumnComponentComponent implements OnInit {
 
   }
 
-  validateDropRulesWrapper(srcCardId: string, targetColumnId: string): boolean {
+  validateDropRulesWrapper(srcCardId: string, dstColumnId: string): boolean {
 
     const srcCard = this.board.cards.find(entry => entry.id === srcCardId)
 
-    if (!srcCard) {
+    if (!srcCard) {  // don't propagate to caller invalid args
       console.log('ColumnComponentComponent # validateDropRulesWrapper ****** card not found ', srcCardId, ' board_cards.len '  , this.board.cards.length)
+      return;
+    }
+    if (!dstColumnId) {  // don't propagate to caller invalid args
+      console.log('ColumnComponentComponent # validateDropRulesWrapper ****** targetColumnId missing ', dstColumnId)
       return;
     }
     const srcColumn = this.board.columns.find(entry => entry.id === srcCard.columnId)
 
-    const targColumn = this.board.columns.find(entry => entry.id === targetColumnId)
+    const dstColumn = this.board.columns.find(entry => entry.id === dstColumnId)
 
-    return srcCard.columnId === targetColumnId || this.validateDropRules({src: srcColumn, dst: targColumn, elem: srcCard} as IStatusChange)
+    if (!dstColumn) { // don't propagate to caller invalid args
+      console.log('ColumnComponentComponent # validateDropRulesWrapper ****** dstColumn not found ', dstColumnId)
+      return;
+    }
+
+    return srcCard.columnId === dstColumnId || this.validateDropRules({src: srcColumn, dst: dstColumn, elem: srcCard} as IStatusChange)
 
   }
 
