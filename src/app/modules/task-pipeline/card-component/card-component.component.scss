@@ -231,6 +231,11 @@
   height:200px;
   max-height: 200px;
 }
+::ng-deep .cdk-global-overlay-wrapper, .cdk-overlay-container  {
+  top: 200px; /* provides date picker framr top offset*/
+  max-height: 700px;  /* provides date picker frame height, otherwise it occupies 100% of screen height */
+}
+
 
 /** bellow is a way to change background color for badge showing card count */
 ::ng-deep .mat-badge-content{
